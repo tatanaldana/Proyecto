@@ -141,6 +141,7 @@ require 'view/includeUsuario/funciones.php';
     <br><br><br><br><br><br><br>
     <?php
         incluirTemplate('footer');
+      //  prueba de pull 
     ?>
 </html>
 
