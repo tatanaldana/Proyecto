@@ -30,7 +30,7 @@
             </div>  
 
                 <div class="menu">
-                    <img src=/Proyecto/view/public/img/menu.png" width='35px' height='35px' alt="Menu Hamburguesa">
+                    <img src= "/Proyecto/view/public/img/menu.png" width='35px' height='35px' alt="Menu Hamburguesa">
                 </div>
             
  
