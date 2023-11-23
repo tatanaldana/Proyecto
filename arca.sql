@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-11-2023 a las 04:57:17
+-- Tiempo de generación: 23-11-2023 a las 04:53:30
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carrito` (
-  `idcarrito` int(10) NOT NULL,
+  `id` int(10) NOT NULL,
   `forma_pago` varchar(50) NOT NULL,
   `estado` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -37,7 +37,7 @@ CREATE TABLE `carrito` (
 -- Volcado de datos para la tabla `carrito`
 --
 
-INSERT INTO `carrito` (`idcarrito`, `forma_pago`, `estado`) VALUES
+INSERT INTO `carrito` (`id`, `forma_pago`, `estado`) VALUES
 (1, 'efectivo', 2),
 (3, 'efectivo', 2),
 (4, 'efectivo', 1),
@@ -162,7 +162,7 @@ CREATE TABLE `materias_primas_has_proveedores` (
 --
 
 CREATE TABLE `mat_pri` (
-  `cod_materia_pri` int(10) UNSIGNED NOT NULL,
+  `cod` int(10) UNSIGNED NOT NULL,
   `referencia` varchar(50) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
   `existencia` int(10) NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE `mat_pri` (
 -- Volcado de datos para la tabla `mat_pri`
 --
 
-INSERT INTO `mat_pri` (`cod_materia_pri`, `referencia`, `descripcion`, `existencia`, `entrada`, `salida`, `stock`) VALUES
+INSERT INTO `mat_pri` (`cod`, `referencia`, `descripcion`, `existencia`, `entrada`, `salida`, `stock`) VALUES
 (0, 'pollo', 'pollo completo ', 100, 20, 10, 110);
 
 -- --------------------------------------------------------
@@ -328,7 +328,7 @@ CREATE TABLE `usuarios_has_categorias` (
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`idcarrito`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `categorias`
@@ -362,7 +362,7 @@ ALTER TABLE `materias_primas_has_proveedores`
 -- Indices de la tabla `mat_pri`
 --
 ALTER TABLE `mat_pri`
-  ADD PRIMARY KEY (`cod_materia_pri`);
+  ADD PRIMARY KEY (`cod`);
 
 --
 -- Indices de la tabla `pqr`
@@ -400,7 +400,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  MODIFY `idcarrito` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
