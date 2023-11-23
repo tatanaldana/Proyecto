@@ -1,5 +1,5 @@
 <?php
-equire_once('conexion.php');
+require_once('conexion.php');
 
 #Creamos la clase usuarios y heredamos los metodos de la clase conexion.
   class Com_venta extends Conexion{
@@ -39,7 +39,7 @@ public function upgrade_venta($doc){
   $conectar= parent::conexion();
   parent::set_names();
   $sql="UPDATE com_venta SET estado = 2 WHERE carrito_idcarrito = :carrito_idcarrito";
-  $stmt=$conectar->prepare($stmt);
+  $stmt=$conectar->prepare($sql);
   $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
   $stmt->execute();
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);

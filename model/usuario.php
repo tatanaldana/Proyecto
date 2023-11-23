@@ -134,30 +134,41 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
 }
 }
 
-public function editarUsuario($email, $tel, $apellido, $genero, $fecha_naci , $tipo_doc, $doc, $fecha_reg, $direccion)
+public function editarUsuario($email, $tel, $genero, $direccion)
     {
       try {
       $conectar = parent::conexion();  
       parent::set_names();
-
-      $stmt = "UPDATE usuarios SET(nombre=:nombre, email=:email, clave=:clave, tel=:tel, apellido=:apellido, genero=:genero, fecha_naci=:fecha_naci,
-       tipo_doc=:tipo_doc, doc=:doc, fecha_reg=:fecha_reg, direccion=:direccion) WHERE doc=:doc";
-      $stmt->bindParam(':nombre', $nombre);
+      $stmt = "UPDATE usuarios SET(email=:email, tel=:tel, genero=:genero, direccion=:direccion) WHERE doc=:doc";
+      $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':clave', $clave);
       $stmt->bindParam(':tel', $tel);
-      $stmt->bindParam(':apellido', $apellido);
       $stmt->bindParam(':genero', $genero);
-      $stmt->bindParam(':fecha_naci', $fecha_naci);
-      $stmt->bindParam(':tipo_doc', $tipo_doc);
-      $stmt->bindParam(':doc', $doc);
-      $stmt->bindParam(':fecha_reg', $fecha_reg);
       $stmt->bindParam(':direccion', $direccion);
       $stmt->execute();
 
       echo '../clientes.php';
   } catch (PDOException $e) {
       echo 'Error en el registro: ' . $e->getMessage();
+      return false;
+  }
+}
+
+public function get_usuario() {
+  try {
+      // ... tu código existente ...
+
+      $conectar=parent::conexion();
+      parent::set_names();
+      $stmt="SELECT * FROM usuarios";
+      $stmt=$conectar->prepare($stmt);
+      $stmt->execute();
+      $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $resultado;
+  } catch (PDOException $e) {
+      // Mostrar detalles del error en la consola o en el registro de errores
+      error_log('Error en la búsqueda: ' . $e->getMessage());
       return false;
   }
 }
@@ -187,7 +198,7 @@ public function get_usuario_por_doc($doc) {
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $sql="UPDATE usuarios SET estado = '0' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET estado = '0' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();
@@ -203,7 +214,7 @@ public function active_usuario($doc){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $sql="UPDATE usuarios SET estado = '2' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET estado = '2' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();

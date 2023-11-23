@@ -4,7 +4,7 @@
 
 require_once "conexion.php";
 
-class categorias extends Conectar
+class categorias extends Conexion
 {
 
     //Funcion para mostrar categoria en pantalla
