@@ -34,7 +34,7 @@ if (isset($_SESSION['id'])) {
   <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
   <link rel="stylesheet" href="public/css/style.css">
   <!-- Personalizado daniel  -->
-  <link href="css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+  <link href="public/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
 </head>
 
 
@@ -234,7 +234,7 @@ incluirTemplate('header');
   <!-- SweetAlert js -->
   <script src="public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
-  <script src="public/js/operaciones.js"></script>
+  <script src="public/js/usuario.js"></script>
 </body>
 
 <br><br><br><br><br><br><br>
