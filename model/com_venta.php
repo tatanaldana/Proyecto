@@ -38,7 +38,7 @@ public function upgrade_venta($doc){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $sql="UPDATE com_venta SET estado = 2 WHERE carrito_idcarrito = :carrito_idcarrito";
+  $stmt="UPDATE com_venta SET estado = 2 WHERE carrito_idcarrito = :carrito_idcarrito";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
   $stmt->execute();
@@ -63,6 +63,54 @@ public function delete_venta($carrito_idcarrito){
   return false;
 }
 }
+
+public function detalle_venta($carrito_idcarrito){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT producto, precio, cantidad, subtotal FROM com_venta WHERE carrito_idcarrito = :carrito_idcarrito";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo 'Error al eliminar: ' . $e->getMessage();
+  return false;
+}
+}
+
+public function total_venta($carrito_idcarrito){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT totalventa FROM com_venta WHERE carrito_idcarrito = :carrito_idcarrito";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo 'Error al eliminar: ' . $e->getMessage();
+  return false;
+}
+}
+
+public function historico_venta($carrito_idcarrito,$docCliente){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fecha_venta, cv.totalventa, cv.estado
+  FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc=:docCliente AND cv.carrito_idcarrito = :carrito_idcarrito";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
+  $stmt->bindParam(':docCliente', $docCliente);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+  echo 'Error al eliminar: ' . $e->getMessage();
+  return false;
+}
+}
+
 }
 
 ?>
