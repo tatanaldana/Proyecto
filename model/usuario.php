@@ -134,7 +134,9 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
 }
 }
 
-public function editarUsuario($email, $tel, $genero, $direccion)
+// editar un usuario pendinete para revisar
+
+public function editarUsuario($doc,$email, $tel, $genero, $direccion)
     {
       try {
       $conectar = parent::conexion();  
@@ -145,6 +147,7 @@ public function editarUsuario($email, $tel, $genero, $direccion)
       $stmt->bindParam(':tel', $tel);
       $stmt->bindParam(':genero', $genero);
       $stmt->bindParam(':direccion', $direccion);
+      $stmt->bindParam(':doc', $doc);
       $stmt->execute();
 
       echo '../clientes.php';
@@ -198,7 +201,7 @@ public function get_usuario_por_doc($doc) {
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="UPDATE usuarios SET estado = '0' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET cargo = '0' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();
@@ -214,7 +217,7 @@ public function active_usuario($doc){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="UPDATE usuarios SET estado = '2' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET cargo = '2' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();

@@ -20,12 +20,12 @@ switch($_GET["op"]){
             break;
 
                 case "Insert":
-                $datos=$Usuarios->registroUsuario($body["doc"],$body["nombre"],$body["apellido"],$body["tipo_doc"],$body["clave"],$body["tel"],$body["email"],$body["fecha_naci"],$body["genero"],$body["direccion"],$body["fecha_reg"]);
+                $datos=$Usuarios->registroUsuario($body["nombre"],$body["email"],$body["clave"],$body["tel"],$body["apellido"],$body["genero"],$body["fecha_naci"],$body["tipo_doc"],$body["doc"],$body["fecha_reg"],$body["direccion"]);
                  echo json_encode("Insert Correto");
                  break;
 
                     case "Update":
-                    $datos=$Usuarios->editarUsuario($body["id"],$body["nombre"],$body["apellido"],$body["clave"],$body["tel"],$body["email"],$body["fecha_naci"],$body["genero"],$body["direccion"]);
+                    $datos=$Usuarios->editarUsuario($body["doc"],$body["email"],$body["tel"],$body["genero"],$body["direccion"]);
                     echo json_encode("Update Correto");
                     break;
 
@@ -34,7 +34,12 @@ switch($_GET["op"]){
                         echo json_encode("Eliminacion Correcta");
                         break;
 
-                        case "actuser":
+                        case "Downuser":
+                            $datos = $Usuarios->down_usuario($body["doc"]);
+                            echo json_encode("Cambio Correcto");
+                            break;
+
+                        case "Actuser":
                             $datos = $Usuarios->active_usuario($body["doc"]);
                             echo json_encode("Cambio Correcto");
                             break;
