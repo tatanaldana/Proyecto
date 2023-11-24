@@ -2,7 +2,7 @@
 header('content-Type: aplication/json');
 
 require_once("../../model/conexion.php");
-require_once("../../model/promo.php");
+require_once("../../model/promocion.php");
 $Promocion = new Promocion();
 
 $body = json_decode(file_get_contents("php://input"), true);
