@@ -1,6 +1,10 @@
 <?php
-class Promocion extends Conexion{
-    public function get_promocion(){
+class Promocion extends Conexion
+{
+
+
+    public function get_promocion()
+    {
         $conectar= parent::conexion();
         parent::set_names();
         $sql="SELECT * FROM promocion";
@@ -9,44 +13,47 @@ class Promocion extends Conexion{
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function get_promocion_x_id($id_promo){
+    public function get_promocion_x_id($id_promo)
+    {
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="SELECT * FROM promocion WHERE id_promo = ?";
+        $sql="SELECT * FROM promocion WHERE id_promo = :id_promo";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $id_promo);
+        $sql->bindParam(1,':id_promo', $id_promo);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function insert_promocion($nom_promo,$totalpromo,$categorias_idcategoria){
+    public function insert_promocion($nom_promo,$totalpromo,$categorias_idcategoria)
+    {
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="INSERT INTO promocion(id_promo,nom_promo,totalpromo,categorias_idcategoria) VALUES (Null,?,?,?);";
+        $sql="INSERT INTO promocion(id_promo,nom_promo,totalpromo,categorias_idcategoria) VALUES (Null,:nom_promo,:totalpromo,:categorias_idcategoria);";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $nom_promo);
-        $sql->bindValue(2, $totalpromo);
-        $sql->bindValue(3, $categorias_idcategoria);
+        $sql->bindParam(':nom_promo', $nom_promo);
+        $sql->bindParam(':totalpromo', $totalpromo);
+        $sql->bindParam(':categorias_idcategoria', $categorias_idcategoria);
         $sql->execute();
         
         
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function update_promocion($id_promo,$nom_promo,$totalpromo,$categorias_idcategoria){
+    public function update_promocion($id_promo,$nom_promo,$totalpromo,$categorias_idcategoria)
+    {
         $conectar= parent::conexion();
         parent::set_names();
         $sql=" UPDATE promocion set
-        nom_promo = ?,
-        totalpromo = ?,
-        categorias_idcategoria = ?
+        nom_promo = :nom_promo,
+        totalpromo = :totalpromo,
+        categorias_idcategoria = :categorias_idcategoria
         WHERE
-        id_promo =?";
+        id_promo =:id_promo";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $nom_promo);
-        $sql->bindValue(2, $totalpromo);
-        $sql->bindValue(3, $categorias_idcategoria);
-        $sql->bindValue(4, $id_promo);
+        $sql->bindParam(':nom_promo', $nom_promo);
+        $sql->bindParam(':totalpromo', $totalpromo);
+        $sql->bindParam(':categorias_idcategoria', $categorias_idcategoria);
+        $sql->bindParam(':id_promo', $id_promo);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -55,9 +62,9 @@ class Promocion extends Conexion{
     public function eliminar_promocion($id_promo){
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="DELETE FROM promocion WHERE id_promo = ?";
+        $sql="DELETE FROM promocion WHERE id_promo = :id_promo";
         $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $id_promo);
+        $sql->bindParam(1, $id_promo);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -65,7 +72,7 @@ class Promocion extends Conexion{
 
 
 
-//insert into det_promo
+
 
 }  
 ?>
