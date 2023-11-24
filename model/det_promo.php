@@ -1,7 +1,7 @@
 <?php
 class Det_promo extends Conexion{
     //se obtiene todos los registros de la tabla det_prom
-    public function get_det_promo(){
+    public function get_promo(){
         $conectar= parent::conexion();
         parent::set_names();
         $sql="SELECT * FROM det_promo";
@@ -10,7 +10,7 @@ class Det_promo extends Conexion{
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 //Se obtiene el detalle de una promoción.
-    public function get__det_promo_x_idpromo($idpromo){
+    public function get_promo_x_idpromo($idpromo){
         $conectar= parent::conexion();
         parent::set_names();
         $sql="SELECT * FROM det_promo WHERE idpromo = :idpromo";
@@ -20,7 +20,7 @@ class Det_promo extends Conexion{
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 //se inserta el detalle de la promoción
-    public function insert_det_promo($nom_prod,$pre_prod,$cantidad,$descuento,$subtotal,$total,$promocion_idpromo){
+    public function insert_promo($nom_prod,$pre_prod,$cantidad,$descuento,$subtotal,$total,$promocion_idpromo){
         $conectar= parent::conexion();
         parent::set_names();
         $sql="INSERT INTO det_promo(idpromo,nom_prod,pre_prod,cantidad,descuento,subtotal,total,promocion_idpromo) VALUES (Null,:nom_pro,:pre_pro,:cantidad,:descuento,:subtotal,:total,:promocion_idpromo);";
@@ -38,7 +38,7 @@ class Det_promo extends Conexion{
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 //Se actualiza el detalle de una promoción
-    public function update_det_promo($idpromo,$nom_prod,$pre_prod,$cantidad,$descuento,$subtotal,$total,$promocion_idpromo){
+    public function update_promo($idpromo,$nom_prod,$pre_prod,$cantidad,$descuento,$subtotal,$total,$promocion_idpromo){
         $conectar= parent::conexion();
         parent::set_names();
         $sql=" UPDATE det_promo set nom_prod = :nom_pro,pre_prod =:pre_pro, cantidad = :cantidad, descuento = :descuento,
@@ -57,7 +57,7 @@ class Det_promo extends Conexion{
     }
 
 //Se elimina una el detalle de una promoción.
-    public function eliminar_det_promo($idpromo){
+    public function eliminar_promo($idpromo){
         $conectar= parent::conexion();
         parent::set_names();
         $sql="DELETE FROM det_promo WHERE idpromo = :idpromo";
