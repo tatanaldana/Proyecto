@@ -20,7 +20,7 @@ switch($_GET["op"]){
             break;
 
             case "Insert":
-                $datos=$provee->insert_provee($body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
+                $datos=$provee->insert_provee($body["idproveedor"],$body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
                 echo json_encode("Insert Correto");
                 break;
 
