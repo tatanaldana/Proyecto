@@ -4,7 +4,7 @@
 require_once 'conexion.php';
 
 
-$consulta = "SELECT * FROM usuarios WHERE id = '".$_SESSION['id']. "' ";
+$consulta = "SELECT * FROM usuarios WHERE doc = '".$_SESSION['doc']. "' ";
 
 $resultado = mysqli_query($conexion, $consulta);
 
