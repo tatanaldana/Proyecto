@@ -26,7 +26,7 @@
       if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
         # Incluimos la clase usuario
-        require_once('../model/usuario.php');
+        require_once('../../model/usuario.php');
 
         # Creamos un objeto de la clase usuario
         $usuario = new Usuario();
