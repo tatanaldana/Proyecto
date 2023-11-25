@@ -114,7 +114,7 @@ if(isset($_SESSION['id'])){
     <!-- SweetAlert js -->
     <script src="public/js/sweetalert.min.js"></script>
     <!-- Js personalizado -->
-    <script src="public/js/operaciones.js"></script>
+    <script src="public/js/usuario.js"></script>
   </body>
 
 
