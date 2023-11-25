@@ -90,7 +90,7 @@ require 'view/includeUsuario/funciones.php';
                     </div>
 
                     <div class="item">
-                        <img src="/view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
+                        <img src="view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
@@ -126,7 +126,7 @@ require 'view/includeUsuario/funciones.php';
 
 
                 <div class="center mt-3">
-                    <a href="/Proyecto/view/categorias/categorias.php" class=""><img src="img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
+                    <a href="/view/user/categorias/categorias.php" class=""><img src="view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                 </div>
 
 

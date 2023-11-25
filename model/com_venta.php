@@ -6,16 +6,16 @@ require_once('conexion.php');
 
 
 
-public function registroVenta($doc_cliente,$fechaVenta,$producto,$precio,$cantidad,$subtotal,$totalventa,$idCarrito,$estadoComventa)
+public function registroVenta($doc_cliente,$fecha_venta,$producto,$precio,$cantidad,$subtotal,$totalventa,$carrito_idcarrito,$estado)
 {
   try {
   $conectar = parent::conexion();  
   parent::set_names();
-  $stmt = "INSERT INTO com_venta (doc_cliente, fecha_venta, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito,estado)
-  VALUES (:doc_cliente,:fechaVenta, :producto, :precio,:cantidad, :subtotal, :totalventa,:carrito_idcarrito,:estado)";
+  $stmt = "INSERT INTO com_venta (doc_cliente, fecha_venta, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
+  VALUES (:doc_cliente, :fecha_venta, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
   $stmt = $conectar->prepare($stmt);
   $stmt->bindParam(':doc_cliente', $doc_cliente); 
-  $stmt->bindParam(':fechaVenta', $fecha_venta); 
+  $stmt->bindParam(':fecha_venta', $fecha_venta); 
   $stmt->bindParam(':producto', $producto);
   $stmt->bindParam(':precio', $precio);
   $stmt->bindParam(':cantidad', $cantidad); 
@@ -34,7 +34,7 @@ public function registroVenta($doc_cliente,$fechaVenta,$producto,$precio,$cantid
 }
 
 //Cambiar el estado de la venta de preapración a completada
-public function upgrade_venta($doc){
+public function upgrade_venta($carrito_idcarrito){
   try {
   $conectar= parent::conexion();
   parent::set_names();
@@ -110,6 +110,47 @@ public function historico_venta($carrito_idcarrito,$docCliente){
   return false;
 }
 }
+
+public function get_venta() {
+  try {
+      // ... tu código existente ...
+
+      $conectar=parent::conexion();
+      parent::set_names();
+      $stmt="SELECT * FROM com_venta";
+      $stmt=$conectar->prepare($stmt);
+      $stmt->execute();
+      $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $resultado;
+  } catch (PDOException $e) {
+      // Mostrar detalles del error en la consola o en el registro de errores
+      error_log('Error en la búsqueda: ' . $e->getMessage());
+      return false;
+  }
+}
+
+public function get_venta_por_doc($doc_cliente) {
+  try {
+      // ... tu código existente ...
+
+      $conectar=parent::conexion();
+      parent::set_names();
+      $stmt="SELECT * FROM com_venta WHERE doc_cliente = :doc_cliente";
+      $stmt=$conectar->prepare($stmt);
+      $stmt->bindParam(':doc_cliente', $doc_cliente);
+      $stmt->execute();
+      $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+      return $resultado;
+  } catch (PDOException $e) {
+      // Mostrar detalles del error en la consola o en el registro de errores
+      error_log('Error en la búsqueda: ' . $e->getMessage());
+      return false;
+  }
+}
+
+
 
 }
 
