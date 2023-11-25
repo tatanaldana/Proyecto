@@ -33,24 +33,24 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
    
-   <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
+   <link rel="stylesheet" href="/Proyecto/view/public/bootstrap/css/bootstrap.min.css">
        <!-- Font Awesome: para los iconos -->
-       <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
+       <link rel="stylesheet" href="/Proyecto/view/public/css/font-awesome.min.css">
        <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-       <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
+       <link rel="stylesheet" href="/Proyecto/view/public/css/sweetalert.css">
        <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-       <link rel="stylesheet" href="/Proyecto/css/style.css">
+       <link rel="stylesheet" href="/Proyecto/view/public/css/style.css">
        <!-- Personalizado daniel  -->
-       <link href="/Proyecto/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+       <link href="/Proyecto/view/public/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     </head>
 
     <?php
-        require '../../includeUsuario/funciones.php';
+        require '../includeUsuario/funciones.php';
         incluirTemplate('header');
 
 
@@ -68,12 +68,12 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
     </div>
     <div class="barramenu">
         <nav class="menu-productos row">
-            <a href="/Proyecto/carrito/catcombos.php" class="col-sm"> <img src="../../img/combo.png" alt="icono Promociones">Combos </a>
-            <a href="/Proyecto/carrito/catpizza.php" class="col-sm"> <img src="../../img/pizza.png" alt="icono Pizzas">Pizzas</a>
-            <a href="/Proyecto/carrito/catpollo.php" class="col-sm"> <img src="../../img/pollo.png" alt="icono Pollos">Pollos</a>
-            <a href="/Proyecto/carrito/catburguer.php" class="col-sm"> <img src="../../img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
-            <a href="/Proyecto/carrito/catespecialidades.php" class="col-sm"> <img src="../../img/especialidades.png" alt="icono Especiales">Especialidades</a>
-            <a href="/Proyecto/carrito/catbebidas.php" class="col-sm"> <img src="../../img/bebida.png" alt="icono Bebidas">Bebidas</a>
+            <a href="/Proyecto/view/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
+            <a href="/Proyecto/view/carrito/catpollo.php" class="col-sm"> <img src="/Proyecto/view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
+            <a href="/Proyecto/view/carrito/catcombos.php" class="col-sm"> <img src="/Proyecto/view/public/img/combo.png" alt="icono Promociones">Combos </a>
+            <a href="/Proyecto/view/carrito/catburguer.php" class="col-sm"> <img src="/Proyecto/view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
+            <a href="/Proyecto/view/carrito/catespecialidades.php" class="col-sm"> <img src="/Proyecto/view/public/img/especialidades.png" alt="icono Especiales">Especialidades</a>
+            <a href="/Proyecto/view/carrito/catbebidas.php" class="col-sm"> <img src="/Proyecto/view/public/img/bebida.png" alt="icono Bebidas">Bebidas</a>
         </nav>
 
     </div>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner width:50% height:50%;">
                     <div class="item active">
-                        <img src="../../img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
+                        <img src="/Proyecto/view/public/img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
                         <div class="carousel-caption">
                             <h3>Hamburguesa</h3>
                             <p>We love the Big Apple!</p>
@@ -103,7 +103,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     </div>
 
                     <div class="item">
-                        <img src="../../img/pollo.jpg" alt="Chicago" style="width:100%;">
+                        <img src="/Proyecto/view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     </div>
 
                     <div class="item">
-                        <img src="../../img/pizza.jpg" alt="New york" style="width:100%;">
+                        <img src="/Proyecto/view/public/img/pizza.jpg" alt="New york" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pizzas Especiales</h3>
                             <p>We love the Big Apple!</p>
@@ -139,7 +139,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
 
 
                 <div class="center mt-3">
-                    <a href="/Proyecto/view/categorias/categoriasuser.php" class=""><img src="../../img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
+                    <a href="/Proyecto/view/categorias/categoriasuser.php" class=""><img src="/Proyecto/view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                 </div>
             </div>
         </div>

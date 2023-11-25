@@ -12,7 +12,7 @@ session_start();
 
 // isset verifica si existe una variable
 if (isset($_SESSION['id'])) {
-  header('location: controller/redirec.php');
+  header('location: controller/usuario/redirec.php');
 }
 
 ?>
@@ -41,6 +41,8 @@ if (isset($_SESSION['id'])) {
 <?php
 require_once 'includeUsuario/funciones.php';
 incluirTemplate('header');
+
+
 ?>
 
 
@@ -68,7 +70,7 @@ incluirTemplate('header');
             <label class="sr-only" for="user">Nombre</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="name" placeholder="Ingresa tu nombre">
+              <input type="text" class="form-control" name="nombre" placeholder="Ingresa tu nombre">
             </div>
 
             <!-- Div espaciador -->
@@ -197,7 +199,7 @@ incluirTemplate('header');
             <!-- Animacion de load (solo sera visible cuando el cliente espere una respuesta del servidor )-->
             <div class="row" id="load" hidden="hidden">
               <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
-                <img src="img/load.gif" width="100%" alt="">
+                <img src="public/img/load.gif" width="100%" alt="">
               </div>
               <div class="col-xs-12 center text-accent">
                 <span>Validando información...</span>
