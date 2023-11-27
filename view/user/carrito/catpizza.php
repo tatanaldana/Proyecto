@@ -1,9 +1,11 @@
 <?php
 session_start();
 
-require_once("conexion.php");
+require_once("../../../model/conexion.php");
 
-$usar_db = new DBControl();
+$usar_db = new Conexion();
+$usar_db->conexion();
+$usar_db->set_names();
 ?>
 
 
@@ -13,22 +15,13 @@ $usar_db = new DBControl();
 
 <head>
     <title>La cabaña</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="/Proyecto/css/style.css">
-    <!-- Personalizado daniel  -->
-    <link href="/Proyecto/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+    <?php 
+            include '../includeUsuario/head.php';
+        ?>
 </head>
 
 <?php
-        require '../includeUsuario/funciones.php';
+        require '../../includeUsuario/funciones.php';
         incluirTemplate('header')
 ?>
 
@@ -74,7 +67,7 @@ $usar_db = new DBControl();
                 }
             } else {
                 echo '<div class="pantallaerror">';
-                echo ' <img src="../img/Error.png" alt="Imagen de error" class>';
+                echo ' <img src="../../public/img/Error.png" alt="Imagen de error" class>';
                 echo '<h1>Lo sentimos, no encontramos resultados de su busqueda</h1>';
                 echo '</div>';
             }
