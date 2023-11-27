@@ -16,9 +16,9 @@ $usar_db->set_names();
 <head>
     <title>La cabaña</title>
 
-    <?php 
-            include '../includeUsuario/head.php';
-        ?>
+    <?php
+        include '../../includeUsuario/head.php';
+    ?>
 </head>
 
 <?php

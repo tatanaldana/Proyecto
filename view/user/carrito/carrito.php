@@ -75,7 +75,7 @@ if (!empty($_GET["accion"])) {
 <head>
     <title>La cabaña</title>
     <?php
-        include '../includeUsuario/head.php';
+        include '../../includeUsuario/head.php';
     ?>
 </head>
 
