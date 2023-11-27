@@ -25,16 +25,9 @@ if (isset($_SESSION['id'])) {
   <meta charset="utf-8">
   <title>Login</title>
 
-  <!-- Importamos los estilos de Bootstrap -->
-  <link rel="stylesheet" href="public/css/bootstrap.min.css">
-  <!-- Font Awesome: para los iconos -->
-  <link rel="stylesheet" href="public/css/font-awesome.min.css">
-  <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-  <link rel="stylesheet" href="public/css/sweetalert.css">
-  <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-  <link rel="stylesheet" href="public/css/style.css">
-  <!-- Personalizado daniel  -->
-  <link href="public/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+  <?php 
+            include 'user/includeUsuario/head.php';
+        ?>
 </head>
 
 
