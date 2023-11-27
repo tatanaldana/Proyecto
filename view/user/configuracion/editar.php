@@ -20,22 +20,14 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     <head>
         <meta charset="utf-8">
         <title> Update</title>
-        <!-- Importamos los estilos de Bootstrap -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
-       <!-- Font Awesome: para los iconos -->
-       <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
-       <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-       <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
-       <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-       <link rel="stylesheet" href="/Proyecto/css/style.css">
-       <!-- Personalizado daniel  -->
-       <link href="/Proyecto/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+        <?php
+            include '../../includeUsuario/head.php';
+        ?>
     </head>
 
     <?php 
     
-     require_once '../../../includeUsuario/funciones.php'; 
+     require_once '../../includeUsuario/funciones.php'; 
       incluirTemplate('header')
     ?>
 
@@ -45,8 +37,8 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
      $consulta = editarFormulario($_GET['id']);
      
     function editarFormulario($ident){
-        require_once '../../conexion/conexion.php';
-        $editar = "SELECT * FROM usuarios WHERE id= '".$ident. "'";
+        require_once '../conexion.php';
+        $editar = "SELECT * FROM usuarios WHERE doc= '".$ident. "'";
         $resultado = $conexion -> query($editar) or die ('Error'.mysqli_error($conexion));
         $file = $resultado -> fetch_assoc();
 
@@ -94,6 +86,8 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
         
         echo '<pre>';
          var_dump($consulta[1]);
+         var_dump($_SESSION);
+
          echo '</pre>';
 
          ?>
@@ -104,20 +98,20 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
         <input type="email" name="email" value="<?php echo $consulta[3]?>">
 
         <label for="">Genero: </label>
-        <?php echo $consulta[4]?>
-        <input type="text" name="genero" value="hombre" disabled>
+       
+        <input type="text" name="genero" value=" <?php echo $consulta[4]?>" readonly>
         
 
         <label for="">Fecha Nacimiento: </label>
         <input type="text" name="fecha_naci" value="<?php echo $consulta[5]?>">
 
         <label for="">Tipo Doc: </label>
-        <input type="text" name="tipo_doc" value="<?php echo $consulta[6]?>" disabled/>
+        <input type="text" name="tipo_doc" value="<?php echo $consulta[6]?>" readonly/>
         
 
 
         <label for="">Documento Identidad: </label>
-        <input type="number" name="doc" value="<?php echo $consulta[7]?>"disabled >
+        <input type="number" name="doc" value="<?php echo $consulta[7]?>"readonly >
 
     </fieldset>
     
