@@ -126,7 +126,7 @@ require 'view/includeUsuario/funciones.php';
 
 
                 <div class="center mt-3">
-                    <a href="/view/user/categorias/categorias.php" class=""><img src="view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
+                    <a href='/Proyecto/view/user/categorias/categorias.php' class=""><img src="view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                 </div>
 
 
