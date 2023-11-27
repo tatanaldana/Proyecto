@@ -22,8 +22,8 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmacion Datos</title>
     <?php
-          include '../includeUsuario/head.php';
-      ?>    
+        include '../../includeUsuario/head.php';
+    ?>  
     
 </head>
 
