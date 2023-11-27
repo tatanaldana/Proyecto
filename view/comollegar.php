@@ -12,8 +12,8 @@ session_start();
     <title>Restaurante La cabaña</title>
 
     <?php 
-            include 'user/includeUsuario/head.php';
-        ?>
+        include 'includeUsuario/head.php';
+    ?>
 </head>
 
 <body>

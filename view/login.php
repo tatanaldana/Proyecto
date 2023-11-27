@@ -19,10 +19,9 @@ if(isset($_SESSION['doc'])){
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-
     <?php 
-            include 'user/includeUsuario/head.php';
-        ?>
+        include 'includeUsuario/head.php';
+    ?>
   </head>
 
   <?php

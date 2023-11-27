@@ -26,8 +26,8 @@ if (isset($_SESSION['id'])) {
   <title>Login</title>
 
   <?php 
-            include 'user/includeUsuario/head.php';
-        ?>
+        include 'includeUsuario/head.php';
+    ?>
 </head>
 
 
