@@ -7,10 +7,10 @@ class Conexion
 
   protected $dbh;
 
-  protected function conexion(){
+  public function conexion(){
     try {
 
-      $conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=arca","root","");
+      $conectar = $this->dbh = new PDO("mysql:host=localhost;dbname=arca","root","");
            
         return $conectar;
 
@@ -36,7 +36,27 @@ class Conexion
     }
 
 
-  }
+
+    function larausequery($query)
+    {
+        $statement = $this->dbh->prepare($query);
+        $statement->execute();
+        $resultado = $statement->fetchAll(PDO::FETCH_ASSOC);
+    
+        return $resultado;
+    }
+      
+    function nfilas($query) {
+    $statement  = $this->dbh->prepare($query);
+    $statement->execute();
+    $totalfilas = $statement->rowCount();
+    return $totalfilas;
+
+    }
+
+
+}
+
 /*
     #Atributos de la clase conexion 
     private $mysqli = '';
