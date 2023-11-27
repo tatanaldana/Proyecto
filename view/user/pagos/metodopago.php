@@ -21,24 +21,16 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmacion Datos</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-       <!-- Importamos los estilos de Bootstrap -->
-       <link rel="stylesheet" href="../../../css/bootstrap.min.css">
-        <!-- Font Awesome: para los iconos -->
-        <link rel="stylesheet" href="../../../css/font-awesome.min.css">
-        <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-        <link rel="stylesheet" href="../../../css/sweetalert.css">
-        <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-        <link rel="stylesheet" href="../../../css/style.css">
-        <!-- Personalizado daniel  -->
-        <link href="../../../css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+    <?php
+          include '../includeUsuario/head.php';
+      ?>    
     
 </head>
 
 </head>
 
 <?php
-        require '../../../includeUsuario/funciones.php';
+        require '../../includeUsuario/funciones.php';
         incluirTemplate('header');
 
         require '../datos.php' ;
@@ -54,26 +46,24 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
             <fieldset>
                 <legend class="titulo-check">Modo de Pago</legend>
                     <label for="tarjeta">
-                        <input type="radio" name="metodo_pago" value= "tarjeta"> <p> Terjeta Debito / Crédito </p>
+                        <input type="radio" name="metodo_pago" value= "tarjeta" required> <p> Terjeta Debito / Crédito </p>
                     </label>
                     <label for="plataforma">
-                        <input type="radio" name="metodo_pago" value= "plataforma"><p> Nequi o Daviplata</p>
+                        <input type="radio" name="metodo_pago" value= "plataforma" required><p> Nequi o Daviplata</p>
                     </label>
                     <label for="efectivo">
-                        <input type="radio" name="metodo_pago" value= "efectivo"><p> Efectivo.</p>
+                        <input type="radio" name="metodo_pago" value= "efectivo" required><p> Efectivo.</p>
                     </label>
-            </fieldset>
+            </fieldset>            
 
-            <input type="submit" value="Continuar">.
-
-        <?php
-        ?>
+            <input type="submit" value="Continuar" class= "campo-obligatorio">
         </form>
 
     </div>
 </div>
 </body>
 
+<script src="../js/app1.js" type="text/javascript"></script>
 <br><br><br><br><br><br><br>
     <?php 
    incluirTemplate('footer');
