@@ -13,9 +13,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categorias</title>
-        <?php 
-            include '../includeUsuario/head.php';
-        ?>
+    <?php
+        include '../../includeUsuario/head.php';
+    ?>
 </head>
 
     <?php
