@@ -32,7 +32,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
         <title>Restaurante La cabaña</title>
 
         <?php 
-            include 'includeUsuario/head.php';
+            include '../includeUsuario/head.php';
         ?>
     </head>
 

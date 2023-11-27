@@ -16,9 +16,9 @@ $db = new Conexion();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu Perfil</title>
   
-        <?php 
-            include 'includeUsuario/head.php';
-        ?>
+  <?php 
+      include '../includeUsuario/head.php';
+  ?>
 
 </head>
 
