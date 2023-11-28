@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 03:18:13
+-- Tiempo de generación: 28-11-2023 a las 03:46:15
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -83,7 +83,7 @@ CREATE TABLE `com_venta` (
   `subtotal` int(50) NOT NULL,
   `totalventa` int(50) NOT NULL,
   `doc_cliente` int(11) NOT NULL,
-  `fecha_venta` datetime NOT NULL,
+  `fechaventa` varchar(50) NOT NULL,
   `carrito_idcarrito` int(10) NOT NULL,
   `estado` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -92,7 +92,7 @@ CREATE TABLE `com_venta` (
 -- Volcado de datos para la tabla `com_venta`
 --
 
-INSERT INTO `com_venta` (`id_venta`, `producto`, `precio`, `cantidad`, `subtotal`, `totalventa`, `doc_cliente`, `fecha_venta`, `carrito_idcarrito`, `estado`) VALUES
+INSERT INTO `com_venta` (`id_venta`, `producto`, `precio`, `cantidad`, `subtotal`, `totalventa`, `doc_cliente`, `fechaventa`, `carrito_idcarrito`, `estado`) VALUES
 (46, 'hamburguesa doble de carne', 19300, 1, 19300, 19300, 1006155207, '2023-09-20 19:31:18', 4, 1);
 
 -- --------------------------------------------------------
