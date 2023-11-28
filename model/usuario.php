@@ -134,20 +134,20 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
 }
 }
 
-public function editarUsuario($email, $tel, $genero, $direccion)
+public function editarUsuario($email, $tel, $genero, $direccion,$doc)
     {
       try {
       $conectar = parent::conexion();  
       parent::set_names();
-      $stmt = "UPDATE usuarios SET(email=:email, tel=:tel, genero=:genero, direccion=:direccion) WHERE doc=:doc";
+      $stmt = "UPDATE usuarios SET email=:email, tel=:tel, genero=:genero, direccion=:direccion WHERE doc=:doc";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':tel', $tel);
       $stmt->bindParam(':genero', $genero);
       $stmt->bindParam(':direccion', $direccion);
+      $stmt->bindParam(':doc', $doc);
       $stmt->execute();
 
-      echo '../clientes.php';
   } catch (PDOException $e) {
       echo 'Error en el registro: ' . $e->getMessage();
       return false;
