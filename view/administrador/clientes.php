@@ -40,8 +40,6 @@
 <div class="my-5"></div>
 
 <?php 
-    include 'crud/conexion.php';
-    
     include 'forms/form_cliente.php';
 
     include 'include/img_menu.php';
@@ -52,7 +50,7 @@
 
   <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js usuarios -->
-  <script src="../public/js/operaciones.js"></script>
+  <script src="../public/js/usuario.js"></script>
 <!-- Js botones -->
   <script src="../public/js/buttons.js"></script>
   </body>
