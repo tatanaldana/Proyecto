@@ -2,10 +2,12 @@
 session_start();
 
 
-require_once("conexion.php");
+require_once("../../../model/conexion.php");
 
 
-$usar_db = new DBControl();
+$usar_db = new Conexion();
+$usar_db->conexion();
+$usar_db->set_names();
 
 if (!empty($_GET["accion"])) {
     switch ($_GET["accion"]) {
@@ -72,22 +74,13 @@ if (!empty($_GET["accion"])) {
 
 <head>
     <title>La cabaña</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="/Proyecto/css/style.css">
-    <!-- Personalizado daniel  -->
-    <link href="/Proyecto/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+    <?php
+        include '../../includeUsuario/head.php';
+    ?>
 </head>
 
 <?php
-        require_once '../includeUsuario/funciones.php';
+        require_once '../../includeUsuario/funciones.php';
         incluirTemplate('header');
     ?>
 
@@ -118,7 +111,7 @@ if (!empty($_GET["accion"])) {
                         <th style="width:10%">Cantidad</th>
                         <th style="width:10%">Precio x unidad</th>
                         <th style="width:10%">Precio</th>
-                        <th style="width:10%"><a href="../view/categorias/categoriasuser.php?accion=eliminar&eliminarcode=">Regresar</a></th>
+                        <th style="width:10%"><a href="../categorias/categoriasuser.php?accion=eliminar&eliminarcode=">Regresar</a></th>
                     </tr>
                     <?php
 
@@ -143,14 +136,25 @@ if (!empty($_GET["accion"])) {
                         <td colspan="2"><b>Total de productos:</b></td>
                         <td><b><?php echo $totcantidad; ?></b></td>
                         <td colspan="2"><strong><?php echo "$ " . number_format($totprecio, 2); ?></strong></td>
-                        <td><a href="../view/user/pagos/pagodatos.php">Pagar</a></td>
+                        <?php
+                        if(!isset($_SESSION['nombre'])){
+                        echo
+                        '<td><a href="../../login.php">Pagar</a></td>';
+                        
+                        }else{
+                            echo
+                            '<td><a href="../pagos/pagodatos.php">Pagar</a></td>';
+                        }
+                        ?>
+                        
+                        
                     </tr>
                 </table>
 
             <?php
             }
             ?>
-            <a href="javascript:history.back(1)"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>
+            <a href="../index.php"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>
         </div>
     </center>
 

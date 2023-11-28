@@ -11,24 +11,9 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante La cabaña</title>
 
-    <!-- bootstrap online -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Importamos los estilos de Bootstrap -->
-    <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="/Proyecto/css/style.css">
-    <!-- Personalizado daniel  -->
-    <link rel="stylesheet" href="/Proyecto/css/stylesg.css" type="text/css" media="all">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <?php 
+        include 'includeUsuario/head.php';
+    ?>
 </head>
 
 <body>

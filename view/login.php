@@ -8,8 +8,8 @@ cuando inicie sesion lo redireccione a rol correspondiente
 session_start();
 
 // isset verifica si existe una varible 
-if(isset($_SESSION['id'])){
-    header('location: controller/redirec.php');
+if(isset($_SESSION['doc'])){
+    header('location: ../../controller/redirec.php');
   }
 
 ?>
@@ -19,16 +19,9 @@ if(isset($_SESSION['id'])){
   <head>
     <meta charset="utf-8">
     <title>Login</title>
-
-    <link rel="stylesheet" href="public/css/bootstrap.min.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="public/css/font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="public/css/sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="public/css/style.css">
-    <!-- Personalizado daniel  -->
-    <link rel="stylesheet" href="public/css/stylesg.css"  type="text/css" media="all">
+    <?php 
+        include 'includeUsuario/head.php';
+    ?>
   </head>
 
   <?php
@@ -114,7 +107,7 @@ if(isset($_SESSION['id'])){
     <!-- SweetAlert js -->
     <script src="public/js/sweetalert.min.js"></script>
     <!-- Js personalizado -->
-    <script src="public/js/operaciones.js"></script>
+    <script src="public/js/usuario.js"></script>
   </body>
 
 

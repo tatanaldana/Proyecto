@@ -15,24 +15,16 @@ $db = new Conexion();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tu Perfil</title>
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="/Proyecto/css/bootstrap.min.css">
-  <!-- Font Awesome: para los iconos -->
-  <link rel="stylesheet" href="/Proyecto/css/font-awesome.min.css">
-  <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-  <link rel="stylesheet" href="/Proyecto/css/sweetalert.css">
-  <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-  <link rel="stylesheet" href="/Proyecto/css/style.css">
-  <!-- Personalizado daniel  -->
-  <link href="/Proyecto/css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+  
+  <?php 
+      include '../includeUsuario/head.php';
+  ?>
 
 </head>
 
 
 <?php
-require '../../includeUsuario/funciones.php';
+require '../includeUsuario/funciones.php';
 incluirTemplate('header')
 ?>
 
@@ -74,9 +66,9 @@ incluirTemplate('header')
 
 
         <div class='col-sm-2'>
-          <a href='configuracion/editar.php?id=" . $_SESSION['id'] . "'><button class='btn-event' style = border:none ;><i class='fa fa-edit' style='font-size:20px'></i></button></a>
+          <a href='configuracion/editar.php?id=" . $_SESSION['doc'] . "'><button class='btn-event' style = border:none ;><i class='fa fa-edit' style='font-size:20px'></i></button></a>
                 <div class= 'vr'></div>
-                <a href='configuracion/eliminar.php?id=" . $_SESSION['id'] . "'><button class='btn-enviar' style = border:none ;><i class='fa fa-trash' style='font-size:20px'></i></button></a>
+                <a href='configuracion/eliminar.php?id=" . $_SESSION['doc'] . "'><button class='btn-enviar' style = border:none ;><i class='fa fa-trash' style='font-size:20px'></i></button></a>
             </div>
           
           </div>
@@ -88,7 +80,7 @@ incluirTemplate('header')
         " ; ?>
 
 
-  <script src="../../js/app.js" type="text/javascript"></script>
+  <script src="/Proyecto/view/public/js/app.js" type="text/javascript"></script>
 
 
   </div>

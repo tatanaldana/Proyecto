@@ -198,7 +198,7 @@ public function get_usuario_por_doc($doc) {
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="UPDATE usuarios SET estado = '0' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET cargo = '0' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();
@@ -214,7 +214,7 @@ public function active_usuario($doc){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="UPDATE usuarios SET estado = '2' WHERE doc = :doc";
+  $stmt="UPDATE usuarios SET cargo = '2' WHERE doc = :doc";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2023 a las 04:53:30
+-- Tiempo de generación: 28-11-2023 a las 03:46:15
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -64,7 +64,10 @@ INSERT INTO `categorias` (`id_categoria`, `nombre_cat`) VALUES
 (3, 'catespecial'),
 (4, 'cathambur'),
 (5, 'catpromo'),
-(6, 'catbebida');
+(6, 'catbebida'),
+(10, 'pepa'),
+(11, 'cat_home'),
+(12, 'jugo');
 
 -- --------------------------------------------------------
 
@@ -80,8 +83,8 @@ CREATE TABLE `com_venta` (
   `subtotal` int(50) NOT NULL,
   `totalventa` int(50) NOT NULL,
   `doc_cliente` int(11) NOT NULL,
-  `fecha_venta` datetime NOT NULL,
-  `carrito_idcarrito` int(50) NOT NULL,
+  `fechaventa` varchar(50) NOT NULL,
+  `carrito_idcarrito` int(10) NOT NULL,
   `estado` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -89,35 +92,8 @@ CREATE TABLE `com_venta` (
 -- Volcado de datos para la tabla `com_venta`
 --
 
-INSERT INTO `com_venta` (`id_venta`, `producto`, `precio`, `cantidad`, `subtotal`, `totalventa`, `doc_cliente`, `fecha_venta`, `carrito_idcarrito`, `estado`) VALUES
-(1, 'hamburguesa de carne', 11300, 1, 11300, 59600, 1006155207, '2023-09-20 19:31:18', 0, 2),
-(11, 'hamburguesa de carne', 11300, 1, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(12, 'pollo ', 31800, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(13, 'pollo y medio', 48300, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(14, 'hamburguesa de pollo', 11000, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(15, 'pizza hawuallana', 6800, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(16, 'pizza mexicana', 6800, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(17, 'gaseosa manzana', 2000, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(18, 'gaseosa manzana', 3000, 0, 0, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(19, 'medio pollo', 15400, 0, 15400, 15400, 1006155207, '2023-09-21 01:19:16', 3, 2),
-(20, 'hamburguesa de carne', 11300, 1, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(21, 'pollo ', 31800, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(22, 'pollo y medio', 48300, 0, 48300, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(23, 'hamburguesa de pollo', 11000, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(24, 'pizza hawuallana', 6800, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(25, 'pizza mexicana', 6800, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(26, 'gaseosa manzana', 2000, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(27, 'gaseosa manzana', 3000, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(28, 'medio pollo', 15400, 0, 0, 48300, 1006155207, '2023-09-21 01:19:38', 4, 1),
-(29, 'hamburguesa de carne', 11300, 2, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(30, 'pollo ', 31800, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(31, 'pollo y medio', 48300, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(32, 'hamburguesa de pollo', 11000, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(33, 'pizza hawuallana', 6800, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(34, 'pizza mexicana', 6800, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(35, 'gaseosa manzana', 2000, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(36, 'gaseosa manzana', 3000, 0, 6000, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1),
-(37, 'medio pollo', 15400, 0, 0, 6000, 1006155207, '2023-09-21 01:19:51', 5, 1);
+INSERT INTO `com_venta` (`id_venta`, `producto`, `precio`, `cantidad`, `subtotal`, `totalventa`, `doc_cliente`, `fechaventa`, `carrito_idcarrito`, `estado`) VALUES
+(46, 'hamburguesa doble de carne', 19300, 1, 19300, 19300, 1006155207, '2023-09-20 19:31:18', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -176,7 +152,8 @@ CREATE TABLE `mat_pri` (
 --
 
 INSERT INTO `mat_pri` (`cod`, `referencia`, `descripcion`, `existencia`, `entrada`, `salida`, `stock`) VALUES
-(0, 'pollo', 'pollo completo ', 100, 20, 10, 110);
+(0, 'pollo', 'pollo completo ', 100, 20, 10, 110),
+(1111, 'jamon', 'jamon de cerdo ', 20, 10, 0, 30);
 
 -- --------------------------------------------------------
 
@@ -192,6 +169,14 @@ CREATE TABLE `pqr` (
   `estado` int(11) NOT NULL,
   `usuarios_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pqr`
+--
+
+INSERT INTO `pqr` (`id`, `sugerencia`, `tipo_sugerencia`, `fecha_pqr`, `estado`, `usuarios_id`) VALUES
+(14, 'muy mala comida ', 'queja', '2023-11-24 20:02:40', 1, 1006155207),
+(15, 'muy mala comida y no voy a volver ☠️ ', 'queja', '2023-11-24 20:02:40', 1, 1111332367);
 
 -- --------------------------------------------------------
 
@@ -224,13 +209,8 @@ INSERT INTO `productos` (`idProducto`, `nombre_pro`, `detalle`, `precio_pro`, `c
 (22, 'gaseosa manzana', '350', 3000, 6, NULL, 'a3'),
 (23, 'medio pollo', 'patacon y papa salada', 15400, 1, NULL, 'a4'),
 (24, 'pizza pollo con champiñon', 'queso  pollo chanpiñon', 6800, 2, NULL, 'a20'),
-(25, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a29'),
-(26, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a29'),
-(27, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a30'),
-(28, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a30'),
-(29, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a30'),
-(30, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a30'),
-(31, 'pizza pollo con jamon', 'queso  pollo jamon', 6800, 2, NULL, 'a30');
+(32, 'hamburguesa china', 'queso tomate cebolla y papas', 11300, 4, NULL, 'b50'),
+(33, 'pizza', 'doble queso ', 5000, 2, NULL, 'a100');
 
 -- --------------------------------------------------------
 
@@ -277,6 +257,13 @@ CREATE TABLE `provee` (
   `direccion_proveedor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `provee`
+--
+
+INSERT INTO `provee` (`idproveedor`, `nom_proveedor`, `telefono_proveedor`, `direccion_proveedor`) VALUES
+(1, 'luis', '3143878596', 'carrera 41a # 4a-33');
+
 -- --------------------------------------------------------
 
 --
@@ -306,8 +293,9 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `doc`, `nombre`, `apellido`, `tipo_doc`, `clave`, `tel`, `email`, `fecha_naci`, `genero`, `cargo`, `direccion`, `fecha_reg`, `com_venta_id_venta`, `carrito_idcarrito`) VALUES
-(8, 1006155207, 'yonner', 'vargas bernate', 'cc', '61b1fb3f59e28c67f3925f3c79be81a1', '3212296918', 'yonnervargasbernate7@gmail.com', '2002-01-10', 'hombre', 1, 'diagonal 74sur #78c-72', '2023-09-20 00:00:00', 0, 0),
-(14, 11111111, 'luis', 'cortes', 'cc', '202cb962ac59075b964b07152d234b70', '3143878596', 'vargasbernateyonner06@gmail.com', '2000-09-19', 'hombre', 2, 'carrera 41 a # 4 a-33', '2023-09-21 00:00:00', 0, 0);
+(8, 1006155207, 'yonner', 'vargas bernate', 'cc', '1832', '3212296918', 'yonnervargasbernate7@gmail.com', '2002-01-10', 'hombre', 1, 'diagonal 74sur #78c-72', '2023-09-20 00:00:00', 0, 0),
+(21, 1111332367, 'anyi', 'cardenas', 'CC', '1111', '3143878596', 'nellyenyelinbernatecardenas@gmail.com', '2023-10-31', 'Mujer', 2, 'Diagonal 74sur #78c-72', '2023-11-27 00:00:00', 0, 0),
+(22, 1111111, 'juan mene', 'bernate cardenas', 'cc', '1111', '3143878596', 'nellyvargasbernate7@gmail.com', '2000-01-10', 'femenino', 2, 'diagonal 74sur #78c-72', '2023-09-20 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -386,6 +374,12 @@ ALTER TABLE `promocion`
   ADD KEY `categorias_idcategoria` (`categorias_idcategoria`) USING BTREE;
 
 --
+-- Indices de la tabla `provee`
+--
+ALTER TABLE `provee`
+  ADD PRIMARY KEY (`idproveedor`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -406,13 +400,13 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_categoria` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `com_venta`
 --
 ALTER TABLE `com_venta`
-  MODIFY `id_venta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_venta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `det_promo`
@@ -424,13 +418,13 @@ ALTER TABLE `det_promo`
 -- AUTO_INCREMENT de la tabla `pqr`
 --
 ALTER TABLE `pqr`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
@@ -439,10 +433,16 @@ ALTER TABLE `promocion`
   MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
+-- AUTO_INCREMENT de la tabla `provee`
+--
+ALTER TABLE `provee`
+  MODIFY `idproveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- Restricciones para tablas volcadas

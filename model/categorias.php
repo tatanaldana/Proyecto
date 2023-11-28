@@ -23,55 +23,50 @@ class categorias extends Conexion
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "SELECT * FROM categorias WHERE id_categoria = ?";
+        $sql = "SELECT * FROM categorias WHERE id_categoria = :id_categoria";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $id_categoria);
+        $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
 
     //Ingresar categoria
-    public function insert_categorias($nombre_cat, $estado)
+    public function insert_categorias($nombre_cat)
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "INSERT INTO categorias(id_categoria,nombre_cat,,estado) VALUES (NULL,?,?,?);";
+        $sql = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat);";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $nombre_cat);
-        $sql->bindValue(3, $estado);
-
+        $sql->bindParam(':nombre_cat', $nombre_cat);
         $sql->execute();
-
 
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //actualizar categoria
-    public function update_categorias($nombre_cat, $estado)
-    {
+    public function update_categorias($id_categoria,$nombre_cat){
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = " UPDATE categorias set
-        nombre_cat = ?,
-        estado = ?,
+        $sql=" UPDATE categorias set
+        nombre_cat = :nombre_cat
         WHERE
-        id_categoria =?";
+        id_categoria =:id_categoria";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $nombre_cat);
-        $sql->bindValue(3, $estado);
+        $sql->bindParam(':nombre_cat', $nombre_cat);
+        $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //eliminar categoria
-    public function eliminar_categorias($instru_id)
+    public function eliminar_categorias($id_categoria)
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "DELETE FROM categorias WHERE id_categoria = ?";
+        $sql = "DELETE FROM categorias WHERE id_categoria = :id_categoria";
         $sql = $conectar->prepare($sql);
-        $sql->bindValue(1, $instru_id);
+        $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }

@@ -13,17 +13,9 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categorias</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-   
-   <link rel="stylesheet" href="../../css/bootstrap.min.css">
-       <!-- Font Awesome: para los iconos -->
-       <link rel="stylesheet" href="../../css/font-awesome.min.css">
-       <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-       <link rel="stylesheet" href="../../css/sweetalert.css">
-       <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-       <link rel="stylesheet" href="../../css/style.css">
-       <!-- Personalizado daniel  -->
-       <link href="../../css/stylesg.css" rel="stylesheet" type="text/css" media="all">
+    <?php
+        include '../../includeUsuario/head.php';
+    ?>
 </head>
 
     <?php
@@ -50,45 +42,45 @@ session_start();
             <div class="listado-categorias">
                 
                 <div class="categoria">
-                    <img src="../../img/Promociones.jpg" alt="img promociones">
+                    <img src="../../Public/img/Promociones.jpg" alt="img promociones">
                         <div class="texto-categoria">
-                            <a href="../../carrito//catcombos.php">Combos</a>
+                            <a href="../carrito//catcombos.php">Combos</a>
                         </div><!--Informacion del producto-->
                 </div><!--Produto-->
 
                 <div class="categoria">
-                    <img src="../../img/pollo.jpg" alt="img pollo">
+                    <img src="../../Public/img/pollo.jpg" alt="img pollo">
                     
                         <div class="texto-categoria">
-                            <a href="../../carrito/catpollo.php">Pollos</a>
+                            <a href="../carrito/catpollo.php">Pollos</a>
                         </div> <!--Informacion del producto--> 
                 </div><!--Produto-->
 
                 <div class="categoria">
-                    <img src="../../img/bebidas.jpg" alt="img bebida">             
+                    <img src="../../Public/img/bebidas.jpg" alt="img bebida">             
                         <div class="texto-categoria">
-                            <a href="../../carrito/catbebidas.php">Bebidas</a>
+                            <a href="../carrito/catbebidas.php">Bebidas</a>
                         </div><!--Informacion del producto-->
                 </div><!--Produto-->
 
                 <div class="categoria">
-                    <img src="../../img/pizza.jpg" alt="img pizza">
+                    <img src="../../Public/img/pizza.jpg" alt="img pizza">
                         <div class="texto-categoria"> 
-                            <a href="../../carrito/catpizza.php">Pizzas</a>
+                            <a href="../carrito/catpizza.php">Pizzas</a>
                         </div><!--Informacion del producto-->
                 </div><!--Produto-->
 
                 <div class="categoria">
-                    <img src="../../img/especialidades.jpg" alt="img especialidades">
+                    <img src="../../Public/img/especialidades.jpg" alt="img especialidades">
                         <div class="texto-categoria">
-                            <a href="../../carrito/catespecialidades.php">Especialidades</a>
+                            <a href="../carrito/catespecialidades.php">Especialidades</a>
                         </div><!--Informacion del producto-->
                 </div><!--Produto-->
 
                 <div class="categoria">
-                    <img src="../../img/hamburguesas.jpg" alt="img hamburguesa">
+                    <img src="../../Public/img/hamburguesas.jpg" alt="img hamburguesa">
                         <div class="texto-categoria">
-                        <a href="../../carrito/catburguer.php">Hamburguesas</a>
+                        <a href="../carrito/catburguer.php">Hamburguesas</a>
                     </div><!--Informacion del producto-->
                 </div><!--Produto-->
             </div><!--Fin listados de productos-->

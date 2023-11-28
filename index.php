@@ -55,12 +55,12 @@ require 'view/includeUsuario/funciones.php';
 
     <div class="barramenu">
         <nav class="menu-productos row">
-            <a href="/Proyecto/carrito/catcombos.php" class="col-sm"> <img src="view/public/img/combo.png" alt="icono Combos">Combos </a>
-            <a href="/Proyecto/carrito/catpizza.php" class="col-sm"> <img src="view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
-            <a href="/Proyecto/carrito/catpollo.php" class="col-sm"> <img src="view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
-            <a href="/Proyecto/carrito/catburguer.php" class="col-sm"> <img src="view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
-            <a href="/Proyecto/carrito/catespecialidades.php" class="col-sm"> <img src="view/public/img/especialidades.png" alt="icono Especiales">Especialidades</a>
-            <a href="/Proyecto/carrito/catbebidas.php" class="col-sm"> <img src="view/public/img/bebida.png" alt="icono Bebidas">Bebidas</a>
+        <a href="/Proyecto/view/user/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
+            <a href="/Proyecto/view/user/carrito/catpollo.php" class="col-sm"> <img src="/Proyecto/view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
+            <a href="/Proyecto/view/user/carrito/catcombos.php" class="col-sm"> <img src="/Proyecto/view/public/img/combo.png" alt="icono Promociones">Combos </a>
+            <a href="/Proyecto/view/user/carrito/catburguer.php" class="col-sm"> <img src="/Proyecto/view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
+            <a href="/Proyecto/view/user/carrito/catespecialidades.php" class="col-sm"> <img src="/Proyecto/view/public/img/especialidades.png" alt="icono Especiales">Especialidades</a>
+            <a href="/Proyecto/view/user/carrito/catbebidas.php" class="col-sm"> <img src="/Proyecto/view/public/img/bebida.png" alt="icono Bebidas">Bebidas</a>
         </nav>
 
     </div>
@@ -90,7 +90,7 @@ require 'view/includeUsuario/funciones.php';
                     </div>
 
                     <div class="item">
-                        <img src="/view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
+                        <img src="view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
@@ -126,7 +126,7 @@ require 'view/includeUsuario/funciones.php';
 
 
                 <div class="center mt-3">
-                    <a href="/Proyecto/view/categorias/categorias.php" class=""><img src="img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
+                    <a href='/Proyecto/view/user/categorias/categorias.php' class=""><img src="view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                 </div>
 
 

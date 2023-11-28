@@ -37,24 +37,21 @@
  
             <nav class="rutas">
 
-             
-     
-   
                 <?php 
                     if (isset($_SESSION['nombre'])){
                         echo 
                         "<a href='/Proyecto/view/user/index.php'>Inicio</a>
                         <a href='/Proyecto/view/comollegar.php'>como llegar</a>
-                        <a href='/Proyecto/view/categorias/categoriasuser.php'>Menu</a>
+                        <a href='/Proyecto/view/user/categorias/categoriasuser.php'>Menu</a>
                         <a href='/Proyecto/view/user/sugerenciasuser.php'>Sugerencias</a>
                         <a href='/Proyecto/view/user/perfil.php'>perfil</a>
                         <a href='/Proyecto/controller/cerrarSesion.php'>Cerrar Sesion</a>
-                        <a href='/Proyecto/carrito/carrito.php'>Carrito</a>";
+                        <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
                     }else{
                         echo "
                         <a href='/Proyecto/index.php'>Inicio</a>
                         <a href='/Proyecto/view/comollegar.php'>como llegar</a>
-                        <a href='/Proyecto/view/categorias/categorias.php'>Menu</a>
+                        <a href='/Proyecto/view/user/categorias/categorias.php'>Menu</a>
                         <a href='/Proyecto/view/sugerencias.php'>Sugerencias</a>
                         <a href='/Proyecto/view/login.php'>Iniciar Sesion</a>
                         <a href='/Proyecto/view/registro.php'>Registrarse</a>";
@@ -72,12 +69,14 @@
                 <a href="/Proyecto/view/sugerencias.php">Sugerencias</a>
                 <?php 
                     if (isset($_SESSION['nombre'])){
-                        echo "<a href='/Proyecto/view/user/perfil.php'>Perfil</a>
-                        <a href='/Proyecto/controller/cerrarSesion.php'>cerrar sesion</a>
-                        <a href='/Proyecto/carrito/carrito.php'>Carrito</a>";
+                        echo 
+                        "<a href='/Proyecto/view/user/perfil.php'>perfil</a>
+                        <a href='/Proyecto/controller/cerrarSesion.php'>Cerrar Sesion</a>
+                        <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
                     }else{
-                        echo "<a href='/Proyecto/view/login.php'>Iniciar Sesion</a>
-                        <a href='/Proyecto/view/registro.php'>Registro</a>";
+                        echo 
+                        "<a href='/Proyecto/view/login.php'>Iniciar Sesion</a>
+                        <a href='/Proyecto/view/registro.php'>Registrarse</a>";
                     }
                 ?>
 
