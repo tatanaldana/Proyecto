@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,17 +57,6 @@ include("../../include/header.php");
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
-            <!-- Caja de texto para el Genero -->
-            <div class="input-group">
-              <div class="input-group-addon"><label for="genero">Genero:</label>
-                <select name="genero" id="genero">
-                  <option value="Hombre">Hombre</option>
-                  <option value="Mujer">Mujer</option>
-                </select>
-              </div>
-            </div>
-
-
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
@@ -116,6 +104,17 @@ include("../../include/header.php");
 
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
+            <!-- Caja de texto para el Genero -->
+            <div class="input-group">
+              <div class="input-group-addon"><label for="genero">Genero:</label>
+                <select name="genero" id="genero">
+                  <option value="Hombre">Hombre</option>
+                  <option value="Mujer">Mujer</option>
+                </select>
+              </div>
+            </div>
+            
+            <div class="spacing-2"></div>
 
             <!-- Caja de texto para Documento -->
             <label class="sr-only" for="user">Documento</label>
@@ -162,8 +161,8 @@ include("../../include/header.php");
               </div>
             </div>
             <!-- Fin load -->
-
-
+              <!-- Campo oculto para enviar doc al controller de edicion -->
+            <input type="hidden" id="doc_hidden" name="doc">
             <!-- Boton Login para activar la funcion click y enviar los datos mediante ajax -->
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
