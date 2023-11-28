@@ -1,21 +1,41 @@
+//Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
-    var usuarioData = sessionStorage.getItem('usuarioData');
-    if (usuarioData) {
-      var usuario = JSON.parse(usuarioData);
-      console.log(usuario);
-      document.getElementById('nombre').value = usuario.nombre;
-      document.getElementById('apellido').value = usuario.apellido;
-      document.getElementById('genero').value = usuario.genero;
-      document.getElementById('fecha_naci').value = usuario.fech_naci;
-      document.getElementById('tipo_doc').value = usuario.tipo_doc;
-      document.getElementById('doc').value = usuario.doc;
-      document.getElementById('email').value = usuario.email;
-      document.getElementById('direccion').value = usuario.direccion;
-      document.getElementById('tel').value = usuario.tel;
-      
-  
-      sessionStorage.removeItem('usuarioData');
-    } else {
-      console.log("No se han encontrado datos del usuario");
+  //Verificamos que ne l asesión del navegador exista el elemnto llamado 'usuarioData'
+  var usuarioData = sessionStorage.getItem('usuarioData');
+
+  //Si el 'usuarioData' existe, entonces convertimos el JSON alamacenado en un array
+  if (usuarioData) {
+    var usuarioArray= JSON.parse(usuarioData);//este es el array
+    //Obtenemos el primer objeto del array y lo asigna a la variable 'usuario'
+    var usuario = usuarioArray[0];
+
+    //creamos la funcion para poder llenar los campos del formulario
+    function asignarvalores(){
+    //se llenan los campos deacuerdo al id de cada uno en el formulariop
+    document.getElementById('nombre').value = usuario.nombre;
+    document.getElementById('apellido').value = usuario.apellido;
+    document.getElementById('genero').value = usuario.genero;
+    document.getElementById('fecha_naci').value = usuario.fecha_naci;
+    document.getElementById('tipo_doc').value = usuario.tipo_doc;
+    document.getElementById('doc').value = usuario.doc;
+    document.getElementById('email').value = usuario.email;
+    document.getElementById('direccion').value = usuario.direccion;
+    document.getElementById('tel').value = usuario.tel;
+    document.getElementById('doc_hidden').value = usuario.doc;
     }
-  });
+    //Llamamos la función para que se ejecute
+    asignarvalores();
+    //Eliminamos el elemento 'usuarioData' de la sesion de almacenamiento.
+    sessionStorage.removeItem('usuarioData');
+//Luego deshabilitamos los campos que no vamos a modificar
+    document.getElementById('nombre').disabled = true;
+    document.getElementById('apellido').disabled = true;
+    document.getElementById('fecha_naci').disabled = true;
+    document.getElementById('tipo_doc').disabled = true;
+    document.getElementById('doc').disabled = true;
+//si no se encuentra 'usuarioData' entonces imprime el mensaje
+
+  } else {
+    console.log("No se han encontrado datos del usuario");
+  }
+});
