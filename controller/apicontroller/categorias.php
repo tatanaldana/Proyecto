@@ -20,7 +20,7 @@ switch($_GET["op"]){
             break;
 
                 case "Insert":
-                $datos=$Categorias->insert_categorias($body["id_categoria"],$body["nombre_cat"]);
+                $datos=$Categorias->insert_categorias($body["nombre_cat"]);
                  echo json_encode("Insert Correto");
                  break;
 

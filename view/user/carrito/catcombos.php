@@ -68,9 +68,8 @@ $usar_db->set_names();
                 }
                 }else{
                     echo '<div class="pantallaerror">';
-                    echo ' <img src="../../Public/img/Error.png" alt="Imagen de error" class>';
+                    echo ' <img src="../../public/img/" alt="Imagen de error" class>';
                     echo '<h1>Lo sentimos, no encontramos resultados de su busqueda</h1>';
-
                     echo '</div>';
     
                 }

@@ -29,7 +29,7 @@ class Productos extends Conexion{
     public function insert_productos($nombre_pro,$detalle,$precio_pro,$categorias_idcategoria,$cod,){
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="INSERT INTO productos(idProducto,nombre_pro,detalle,precio_pro,categorias_idcategoria,cod) VALUES (NULL,:nombre_pro,:detalle,:precio_pro,:ategorias_idcategoria,:cod);";
+        $sql="INSERT INTO productos(idProducto,nombre_pro,detalle,precio_pro,categorias_idcategoria,cod) VALUES (NULL,:nombre_pro,:detalle,:precio_pro,:categorias_idcategoria,:cod);";
         $sql=$conectar->prepare($sql);
         $sql->bindParam(':nombre_pro', $nombre_pro);
         $sql->bindParam(':detalle', $detalle);

@@ -32,34 +32,29 @@ class categorias extends Conexion
 
 
     //Ingresar categoria
-    public function insert_categorias($nombre_cat, $estado)
+    public function insert_categorias($nombre_cat)
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "INSERT INTO categorias(id_categoria,nombre_cat,estado) VALUES (NULL,:id_categoria,:nombre_cat,:estado);";
+        $sql = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat);";
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':nombre_cat', $nombre_cat);
-        $sql->bindParam(':estado', $estado);
-
         $sql->execute();
-
 
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
     //actualizar categoria
-    public function update_categorias($nombre_cat, $estado)
-    {
+    public function update_categorias($id_categoria,$nombre_cat){
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = " UPDATE categorias set
-        nombre_cat = :nombre_cat,
-        estado = :estado,
+        $sql=" UPDATE categorias set
+        nombre_cat = :nombre_cat
         WHERE
         id_categoria =:id_categoria";
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':nombre_cat', $nombre_cat);
-        $sql->bindParam(':estado', $estado);
+        $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
         return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
     }
