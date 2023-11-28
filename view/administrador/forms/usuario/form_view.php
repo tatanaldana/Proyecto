@@ -30,17 +30,17 @@ include("../../include/header.php");
         <!-- Margen superior (css personalizado )-->
         <div class="spacing-1"></div>
 
-        <form id="formregistro">
+        <form id="formview">
           <!-- Estructura del formulario -->
           <fieldset>
 
-            <legend class="center">Registro</legend>
+            <legend class="center">Información del usuario</legend>
 
             <!-- Caja de texto para usuario -->
             <label class="sr-only" for="user">Nombre</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="name" placeholder="Ingresa tu nombre">
+              <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingresa tu nombre">
             </div>
 
             <!-- Div espaciador -->
@@ -51,7 +51,7 @@ include("../../include/header.php");
             <label class="sr-only" for="user">Apellido</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="apellido" placeholder="Ingresa tu apellido">
+              <input type="text" class="form-control" name="apellido" id="apellido" placeholder="Ingresa tu apellido">
             </div>
 
             <!-- Div espaciador -->
@@ -75,7 +75,7 @@ include("../../include/header.php");
             <label class="sr-only" for="user">Fecha nacimiento</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="date" class="form-control" name="fecha_naci">
+              <input type="date" class="form-control" name="fecha_naci" id="fecha_naci">
             </div>
 
 
@@ -101,7 +101,7 @@ include("../../include/header.php");
             <label class="sr-only" for="user">No Documento</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="number" class="form-control" name="doc" placeholder="Ingresa tu numero de documento ">
+              <input type="number" class="form-control" name="doc" id="doc" placeholder="Ingresa tu numero de documento ">
             </div>
             <!-- Div espaciador
               <div class="spacing-2"></div>
@@ -120,7 +120,7 @@ include("../../include/header.php");
             <label class="sr-only" for="user">Documento</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="email" placeholder="Ingresa tu Email">
+              <input type="text" class="form-control" name="email"  id="email" placeholder="Ingresa tu Email">
             </div>
 
 
@@ -131,7 +131,7 @@ include("../../include/header.php");
             <label class="sr-only" for="user">Direccion</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="direccion" placeholder="Ingresa tu Direccion">
+              <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingresa tu Direccion">
             </div>
 
 
@@ -143,28 +143,12 @@ include("../../include/header.php");
             <label class="sr-only" for="user">telefono</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="tel" class="form-control" name="tel" placeholder="Ingresa tu Telefono">
+              <input type="tel" class="form-control" name="tel" id="tel" placeholder="Ingresa tu Telefono">
             </div>
 
             <!-- Div espaciador -->
             <div class="spacing-2"></div>
 
-            <!-- Caja de texto para la clave-->
-            <label class="sr-only" for="clave">Contraseña</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="password" autocomplete="off" class="form-control" name="clave" placeholder="Ingresa tu clave">
-            </div>
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para la clave-->
-            <label class="sr-only" for="clave">Verificar contraseña</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="password" autocomplete="off" class="form-control" name="clave2" placeholder="Verificar clave">
-            </div>
             <!-- Boton Login para activar la funcion click y enviar los datos mediante ajax -->
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
@@ -189,6 +173,8 @@ include("../../include/header.php");
   <script src="../../../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src= "../../../public/js/usuario.js"></script>
+  <!-- Js personalizado -->
+  <script src= "../../../public/js/dates2.js"></script>
 </body>
 
 <br><br><br><br><br><br><br>
