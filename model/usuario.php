@@ -134,12 +134,18 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
 }
 }
 
-public function editarUsuario($email, $tel, $genero, $direccion,$doc)
+public function editarUsuario($doc,$email, $tel, $genero, $direccion)
     {
       try {
       $conectar = parent::conexion();  
       parent::set_names();
-      $stmt = "UPDATE usuarios SET email=:email, tel=:tel, genero=:genero, direccion=:direccion WHERE doc=:doc";
+      $stmt = "UPDATE usuarios SET 
+      email=:email, 
+      tel=:tel, 
+      genero=:genero, 
+      direccion=:direccion 
+      WHERE 
+      doc=:doc";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':tel', $tel);

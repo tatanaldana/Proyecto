@@ -19,7 +19,7 @@ class Promocion extends Conexion
         parent::set_names();
         $sql="SELECT * FROM promocion WHERE id_promo = :id_promo";
         $sql=$conectar->prepare($sql);
-        $sql->bindParam(1,':id_promo', $id_promo);
+        $sql->bindParam(':id_promo', $id_promo);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }

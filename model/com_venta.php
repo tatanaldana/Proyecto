@@ -6,16 +6,16 @@ require_once('conexion.php');
 
 
 
-public function registroVenta($doc_cliente,$fecha_venta,$producto,$precio,$cantidad,$subtotal,$totalventa,$carrito_idcarrito,$estado)
+public function registroVenta($doc_cliente,$fechaventa,$producto,$precio,$cantidad,$subtotal,$totalventa,$carrito_idcarrito,$estado)
 {
   try {
   $conectar = parent::conexion();  
   parent::set_names();
-  $stmt = "INSERT INTO com_venta (doc_cliente, fecha_venta, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
-  VALUES (:doc_cliente, :fecha_venta, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
+  $stmt = "INSERT INTO com_venta (doc_cliente, fechaventa, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
+  VALUES (:doc_cliente, :fechaventa, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
   $stmt = $conectar->prepare($stmt);
   $stmt->bindParam(':doc_cliente', $doc_cliente); 
-  $stmt->bindParam(':fecha_venta', $fecha_venta); 
+  $stmt->bindParam(':fechaventa', $fechaventa); 
   $stmt->bindParam(':producto', $producto);
   $stmt->bindParam(':precio', $precio);
   $stmt->bindParam(':cantidad', $cantidad); 
@@ -34,13 +34,13 @@ public function registroVenta($doc_cliente,$fecha_venta,$producto,$precio,$canti
 }
 
 //Cambiar el estado de la venta de preapración a completada
-public function upgrade_venta($carrito_idcarrito){
+public function upgrade_venta($doc_cliente){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="UPDATE com_venta SET estado = 2 WHERE carrito_idcarrito = :carrito_idcarrito";
+  $stmt="UPDATE com_venta SET estado = '2' WHERE doc_cliente = :doc_cliente";
   $stmt=$conectar->prepare($stmt);
-  $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
+  $stmt->bindParam(':doc_cliente', $doc_cliente);
   $stmt->execute();
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
@@ -49,13 +49,13 @@ public function upgrade_venta($carrito_idcarrito){
 }
 } 
 //Eliminar la venta en caso de haber ingresado un dato de manera errada.
-public function delete_venta($carrito_idcarrito){
+public function delete_venta($doc_cliente){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt="DELETE FROM com_venta WHERE carrito_idcarrito = :carrito_idcarrito";
+  $stmt="DELETE FROM com_venta WHERE doc_cliente = :doc_cliente";
   $stmt=$conectar->prepare($stmt);
-  $stmt->bindParam(':carrito_idcarrito', $carrito_idcarrito);
+  $stmt->bindParam(':doc_cliente', $doc_cliente);
   $stmt->execute();
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
