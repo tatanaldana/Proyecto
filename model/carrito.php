@@ -45,12 +45,12 @@ class Ventas extends Conexion{
     }
 
 
-    public function eliminar_ventas_carrito($cod){
+    public function eliminar_ventas_carrito($id){
         $conectar= parent::conexion();
         parent::set_names();
         $sql="DELETE FROM carrito WHERE id = :id";
         $sql=$conectar->prepare($sql);
-        $sql->bindParam(':cod', $cod);
+        $sql->bindParam(':id', $id);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -75,9 +75,9 @@ class Ventas extends Conexion{
         $sql=" UPDATE carrito set
         estado = '2'
         WHERE
-        idcarrito =:idcarrito";
+        id =:id";
         $sql=$conectar->prepare($sql);
-        $sql->bindParam(':idcarrito', $id);
+        $sql->bindParam(':id', $id);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
