@@ -7,29 +7,29 @@ $Ventas = new Ventas();
 
 $body = json_decode(file_get_contents("php://input"), true);
 
-switch($_GET["op"]){
+switch($_GET["arc"]){
 
-    case "GetAll":
+    case "Get_v_ca":
         $datos=$Ventas->get_ventas_carrito();
         echo json_encode($datos);
         break;
 
-        case "GetId":
+        case "Get_v_ca_id":
             $datos=$Ventas->get_ventas_carrito_x_id($body["id"]);
             echo json_encode($datos);
             break;
 
-                case "Insert":
+                case "Insert_v_ca_for":
                 $datos=$Ventas->insert_ventas_carrito($body["forma_pago"]);
                  echo json_encode("Insert Correto");
                  break;
 
-                    case "Update":
+                    case "Update_v_ca_for":
                     $datos=$Ventas->update_ventas_carrito($body["id"],$body["forma_pago"]);
                     echo json_encode("Update Correto");
                     break;
 
-                    case "EliminarId":
+                    case "Eliminar_v_ca_id":
                         $datos = $Ventas->eliminar_ventas_carrito($body["id"]);
                         echo json_encode("Eliminacion Correcta");
                         break;  

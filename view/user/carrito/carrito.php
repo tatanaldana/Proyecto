@@ -153,8 +153,21 @@ if (!empty($_GET["accion"])) {
 
             <?php
             }
+
+
+            if(!isset($_SESSION['nombre'])){
+            echo
+                '<a href="../../../index.php"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>';
+            }else{
+
+                echo
+
+                '<a href="../index.php"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>';
+            }
             ?>
-            <a href="../index.php"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>
+
+            
+            
         </div>
     </center>
 
