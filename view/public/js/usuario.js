@@ -134,7 +134,7 @@ $(document).ready(function() {
             sessionStorage.setItem('usuarioData', JSON.stringify(usuario));
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
-              window.location.href = '../administrador/forms/usuario/form_editar.php';
+              window.location.href = '../administrador/forms/clientes/form_editar.php';
             }, 1000);
           } else {
             console.log(usuario.error);
@@ -234,7 +234,7 @@ $(document).ready(function() {
             sessionStorage.setItem('usuarioData', JSON.stringify(usuario));
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
-              window.location.href = '../administrador/forms/usuario/form_view.php';
+              window.location.href = '../administrador/forms/clientes/form_view.php';
             }, 1000);
           } else {
             console.log(usuario.error);
@@ -248,4 +248,71 @@ $(document).ready(function() {
       }
     });
   });
+});
+//Aca se realiza el envio del dato para realizar la busqueda relativa a la base
+$(document).ready(function() {
+//Funcion para ejecutar la busqueda cuando se haga click ene l boton btnbuscar
+  $('#btnbuscar').click(function() {
+      var buscar = $('#buscar').val();
+//Se realiza la solicitud AJAX para buscar según el valor ingresado
+      $.ajax({
+          method: 'POST',
+          url: '../../controller/usuario/mostrarController.php',
+          //se envia el valor del campo al controlador
+          data: { buscar_php: buscar },
+          success: function(response) {
+              var datos = JSON.parse(response);
+              var tablaHTML = '';
+//Se genera el HTML para visualizar el resultado de la busqueda en la tabla
+              for (var i = 0; i < datos.length; i++) {
+                  tablaHTML += '<tr>';
+                  tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-doc-usuario="' + datos[i].doc + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+                  tablaHTML += '<td>' + datos[i].doc + '</td>';
+                  tablaHTML += '<td>' + datos[i].nombre + '</td>';
+                  tablaHTML += '<td>' + datos[i].apellido + '</td>';
+                  tablaHTML += '<td>' + datos[i].tel + '</td>';
+                  tablaHTML += '<td>' + datos[i].email + '</td>';
+                  tablaHTML += '</tr>';
+              }
+// se inserta el HTML generado en tbody de la tabla
+              $('#filasTabla').html(tablaHTML);
+          },
+          error: function(xhr) {
+              console.error(xhr.responseText);
+          }
+      });
+  });
+});
+
+//Mostrar registros existentes apenas ingresa a la pagina clientes.php
+$(document).ready(function() {
+  //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
+  if (window.location.pathname.endsWith("clientes.php")) {
+    //Se realiza la solicitud AJAX al cargar la página
+    $.ajax({
+      method: 'POST',
+      url: '../../controller/usuario/mostrartodoController.php',
+
+      success: function(response) {
+        var datos = JSON.parse(response);
+        var tablaHTML = '';
+
+        for (var i = 0; i < datos.length; i++) {
+          tablaHTML += '<tr>';
+          tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-doc-usuario="' + datos[i].doc + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+          tablaHTML += '<td>' + datos[i].doc + '</td>';
+          tablaHTML += '<td>' + datos[i].nombre + '</td>';
+          tablaHTML += '<td>' + datos[i].apellido + '</td>';
+          tablaHTML += '<td>' + datos[i].tel + '</td>';
+          tablaHTML += '<td>' + datos[i].email + '</td>';
+          tablaHTML += '</tr>';
+      }
+
+        $('#filasTabla').html(tablaHTML);
+    },
+    error: function(xhr) {
+      console.error(xhr.responseText);
+    }
+});
+}
 });
