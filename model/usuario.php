@@ -110,8 +110,8 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
       echo 'error_3'; // Usuario ya registrado con ese correo
   } else {
       // Insertar nuevo usuario
-      $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion) 
-               VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion)";
+      $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion,cargo) 
+               VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion,2)";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':nombre', $nombre);
       $stmt->bindParam(':email', $email);
@@ -241,30 +241,37 @@ public function delete_usuario($doc){
 }
 public function ver_usuario($buscar){
   try {
-    $conectar= parent::conexion();
-    parent::set_names();
-  if($buscar=! 0){
+  $conectar= parent::conexion();
+  parent::set_names();
   $stmt="SELECT doc,nombre,apellido,tel,email,cargo FROM usuarios WHERE doc LIKE :buscar";
   $stmt=$conectar->prepare($stmt);
-  $stmt->bindParam(':buscar', $buscar.'%');
+  $buscar='%'.$buscar.'%';
+  $stmt->bindParam(':buscar', $buscar);
   $stmt->execute();
-}
-else{
-  $stmt=$conectar->query("SELECT * FROM usuarios ORDER BY doc ASC");
-}
-
-return $stmt;
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
 
 } catch (PDOException $e) {
-  echo 'Error al eliminar: ' . $e->getMessage();
+  echo 'Error: ' . $e->getMessage();
   return false;
 }
+}
 
+public function ver_usuario2(){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT * FROM usuarios WHERE cargo=2 ORDER BY doc ASC";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
 
-
-
-
-  }
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
+}
 }
 
 ?>
