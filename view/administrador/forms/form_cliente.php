@@ -1,4 +1,22 @@
-
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Clientes</li>
+  </ol>
+</nav>
+<form id="formmostrar">
+<div class="container">
+<div class="contenedor-busqueda" id="contenedor-busqueda">
+<div class="mx-auto" style="width:300px">
+<div class="input-group">
+  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
+  <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
+</div>
+</div>
+</div>
+</div>
+</form>
+<div class="my-5"></div>
 <div class="container">
 <div class="d-flex justify-content-center">
 <div class="row">
@@ -14,35 +32,7 @@
         <th scope="col">Correo</th>
         </tr>
     </thead>
-    <tbody>
-    <?php
-    include_once 'crud/conexion.php';
-        if(isset($_POST['btnbuscar']))
-        {
-            $buscar=$_POST['txtbuscar'];
-            $queryusuarios=mysqli_query($conexion,"SELECT doc,nombre,apellido,tel,email,cargo FROM usuarios WHERE doc LIKE '".$buscar."%'");
-        }
-        else
-        {
-            $queryusuarios=mysqli_query($conexion,"SELECT * FROM usuarios ORDER BY doc ASC");
-        }
- 
-            while($mostrar=mysqli_fetch_array($queryusuarios)){
-            
-            if($mostrar['cargo']!=1){
-            echo "<tr>";
-            echo "<td><div class='form-check' >
-            <input  class='form-check-input' type='checkbox' value='' data-doc-usuario='" . $mostrar['doc'] . "' style='text-align:center' onchange='toggleButtons(this)'/>
-            </div></td>";
-            echo "<td>"; echo $mostrar['doc']; echo "</td>";
-            echo "<td>"; echo $mostrar['nombre']; echo "</td>";
-            echo "<td>"; echo $mostrar['apellido']; echo "</td>";
-            echo "<td>"; echo $mostrar['tel']; echo "</td>";
-            echo "<td>"; echo $mostrar['email']; echo "</td>";
-            echo "</tr>";
-        }
-    }
-        ?>
+    <tbody id="filasTabla">
     </tbody>
     </table>
     </div>
@@ -54,7 +44,7 @@
             <div class="row">
             <table class="table-responsive">
                 <tr>
-                    <td><a href="forms/usuario/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
+                    <td><a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
                     <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
                     <td><a class="btn btn-primary" id="editButton">Editar</a></td>
                     <td><a class="btn btn-primary delete-button" id="deleteButton">Eliminar</a></td>
