@@ -23,7 +23,7 @@ class provee extends Conexion{
     public function insert_provee($nom_proveedor,$telefono_proveedor,$direccion_proveedor){
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="INSERT INTO provee(idproveedor,nom_proveedor,telefono_proveedor,direccion_proveedor) VALUES (Null,:nom_proveedor,:telefono_proveedor,:direccion_proveedor);";
+        $sql="INSERT INTO provee(idproveedor,nom_proveedor,telefono_proveedor,direccion_proveedor) VALUES (NULL,:nom_proveedor,:telefono_proveedor,:direccion_proveedor);";
         $sql=$conectar->prepare($sql);
         $sql->bindParam(':nom_proveedor', $nom_proveedor);
         $sql->bindParam(':telefono_proveedor', $telefono_proveedor);

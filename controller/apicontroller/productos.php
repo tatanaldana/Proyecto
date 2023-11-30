@@ -8,29 +8,29 @@ $productos = new Productos();
 
 $body = json_decode(file_get_contents("php://input"), true);
 
-switch($_GET["op"]){
+switch($_GET["arc"]){
 
-    case "GetAll":
+    case "Get_pro":
         $datos=$productos->get_productos();
         echo json_encode($datos);
         break;
 
-        case "GetId":
+        case "Get_Id_pro":
             $datos=$productos->get_productos_x_id($body["idProducto"]);
             echo json_encode($datos);
             break;
 
-                case "Insert":
+                case "Insert_pro":
                 $datos=$productos->insert_productos($body["nombre_pro"],$body["detalle"],$body["precio_pro"],$body["categorias_idcategoria"],$body["cod"]);
                  echo json_encode("Insert Correto");
                  break;
 
-                    case "Update":
+                    case "Update_pro":
                     $datos=$productos->update_productos($body["idProducto"],$body["nombre_pro"],$body["detalle"],$body["precio_pro"],$body["categorias_idcategoria"],$body["cod"]);
                     echo json_encode("Update Correto");
                     break;
 
-                    case "EliminarId":
+                    case "Eliminar_Id_pro":
                         $datos = $productos->eliminar_productos($body["idProducto"]);
                         echo json_encode("Eliminacion Correcta");
                         break;

@@ -19,19 +19,19 @@
 
                         if (isset($_POST['btnbuscar'])) {
                             $buscar = $_POST['txtbuscar'];
-                            $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, 
+                            $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, 
                             CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
                             FROM com_venta AS c
-                            JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito
+                            JOIN carrito AS cv ON c.carrito_idcarrito = cv.id
                             WHERE c.estado = 1 AND c.doc_cliente LIKE '" . $buscar . "%'
-                            GROUP BY cv.idcarrito");
+                            GROUP BY cv.id");
                         } else {
-                            $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, 
+                            $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, 
                             CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
                             FROM com_venta AS c
-                            JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito
+                            JOIN carrito AS cv ON c.carrito_idcarrito = cv.id
                             WHERE c.estado = 1
-                            GROUP BY cv.idcarrito");
+                            GROUP BY cv.id");
                         }
 
                         while ($mostrar = mysqli_fetch_array($queryusuarios)) {
@@ -41,7 +41,7 @@
                                     data-doc-usuario2='" . $mostrar['doc_cliente'] . "' style='text-align:center' onchange='toggleButtons(this)'/>
                                     </div></td>";
                             echo "<td>"; echo $mostrar['doc_cliente']; echo "</td>";
-                            echo "<td>"; echo $mostrar['fecha_venta']; echo "</td>";
+                            echo "<td>"; echo $mostrar['fechaventa']; echo "</td>";
                             echo "<td>"; echo $mostrar['carrito_idcarrito']; echo "</td>";
                             echo "<td>"; echo $mostrar['totalventa']; echo "</td>";
                             echo "<td>"; echo $mostrar['estado']; echo "</td>";

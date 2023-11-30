@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-11-2023 a las 03:46:15
+-- Tiempo de generación: 29-11-2023 a las 21:13:53
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -93,7 +93,7 @@ CREATE TABLE `com_venta` (
 --
 
 INSERT INTO `com_venta` (`id_venta`, `producto`, `precio`, `cantidad`, `subtotal`, `totalventa`, `doc_cliente`, `fechaventa`, `carrito_idcarrito`, `estado`) VALUES
-(46, 'hamburguesa doble de carne', 19300, 1, 19300, 19300, 1006155207, '2023-09-20 19:31:18', 4, 1);
+(46, 'hamburguesa doble de carne', 19300, 1, 19300, 19300, 1006155207, '2023-09-20 19:31:18', 4, 2);
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `det_promo` (
 
 INSERT INTO `det_promo` (`idPromo`, `nom_prod`, `pre_prod`, `cantidad`, `descuento`, `subtotal`, `total`, `promocion_idpromo`) VALUES
 (6, 'pollo ', 31800, 2, 22, 49608, 12410, 6),
-(7, 'hamburguesa de pollo gurmet', 11500, 3, 25, 34500, 20000, 6);
+(9, 'hamburguesa y perro', 10000, 3, 25, 30000, 20000, 6);
 
 -- --------------------------------------------------------
 
@@ -153,7 +153,7 @@ CREATE TABLE `mat_pri` (
 
 INSERT INTO `mat_pri` (`cod`, `referencia`, `descripcion`, `existencia`, `entrada`, `salida`, `stock`) VALUES
 (0, 'pollo', 'pollo completo ', 100, 20, 10, 110),
-(1111, 'jamon', 'jamon de cerdo ', 20, 10, 0, 30);
+(2222, 'piña', 'piña entera sin pelar ', 10, 10, 0, 20);
 
 -- --------------------------------------------------------
 
@@ -175,8 +175,7 @@ CREATE TABLE `pqr` (
 --
 
 INSERT INTO `pqr` (`id`, `sugerencia`, `tipo_sugerencia`, `fecha_pqr`, `estado`, `usuarios_id`) VALUES
-(14, 'muy mala comida ', 'queja', '2023-11-24 20:02:40', 1, 1006155207),
-(15, 'muy mala comida y no voy a volver ☠️ ', 'queja', '2023-11-24 20:02:40', 1, 1111332367);
+(16, 'muy mala comida y no voy a volver ☠️ ', 'queja', '2023-11-24 20:02:40', 2, 1111332367);
 
 -- --------------------------------------------------------
 
@@ -209,8 +208,7 @@ INSERT INTO `productos` (`idProducto`, `nombre_pro`, `detalle`, `precio_pro`, `c
 (22, 'gaseosa manzana', '350', 3000, 6, NULL, 'a3'),
 (23, 'medio pollo', 'patacon y papa salada', 15400, 1, NULL, 'a4'),
 (24, 'pizza pollo con champiñon', 'queso  pollo chanpiñon', 6800, 2, NULL, 'a20'),
-(32, 'hamburguesa china', 'queso tomate cebolla y papas', 11300, 4, NULL, 'b50'),
-(33, 'pizza', 'doble queso ', 5000, 2, NULL, 'a100');
+(32, 'hamburguesa china', 'verdura y pulpo marino', 11300, 4, NULL, 'b50');
 
 -- --------------------------------------------------------
 
@@ -241,8 +239,7 @@ CREATE TABLE `promocion` (
 --
 
 INSERT INTO `promocion` (`id_promo`, `nom_promo`, `totalpromo`, `categorias_idcategoria`) VALUES
-(6, 'combo yonner', 67688, 3),
-(8, 'combo daniel', 10000, 3);
+(6, 'combo yonner', 67688, 3);
 
 -- --------------------------------------------------------
 
@@ -294,8 +291,7 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id`, `doc`, `nombre`, `apellido`, `tipo_doc`, `clave`, `tel`, `email`, `fecha_naci`, `genero`, `cargo`, `direccion`, `fecha_reg`, `com_venta_id_venta`, `carrito_idcarrito`) VALUES
 (8, 1006155207, 'yonner', 'vargas bernate', 'cc', '1832', '3212296918', 'yonnervargasbernate7@gmail.com', '2002-01-10', 'hombre', 1, 'diagonal 74sur #78c-72', '2023-09-20 00:00:00', 0, 0),
-(21, 1111332367, 'anyi', 'cardenas', 'CC', '1111', '3143878596', 'nellyenyelinbernatecardenas@gmail.com', '2023-10-31', 'Mujer', 2, 'Diagonal 74sur #78c-72', '2023-11-27 00:00:00', 0, 0),
-(22, 1111111, 'juan mene', 'bernate cardenas', 'cc', '1111', '3143878596', 'nellyvargasbernate7@gmail.com', '2000-01-10', 'femenino', 2, 'diagonal 74sur #78c-72', '2023-09-20 00:00:00', 0, 0);
+(21, 1111332367, 'anyi', 'cardenas', 'CC', '1111', '3143878596', 'nellybernate7@gmail.com', '2023-10-31', 'mujer', 2, 'diagonal 74sur #78c-74', '2023-11-27 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -406,43 +402,43 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `com_venta`
 --
 ALTER TABLE `com_venta`
-  MODIFY `id_venta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_venta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `det_promo`
 --
 ALTER TABLE `det_promo`
-  MODIFY `idPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pqr`
 --
 ALTER TABLE `pqr`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
 --
 ALTER TABLE `promocion`
-  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `provee`
 --
 ALTER TABLE `provee`
-  MODIFY `idproveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idproveedor` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Restricciones para tablas volcadas

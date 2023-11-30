@@ -75,19 +75,19 @@
                 $fecha_inicial = $_POST['fecha_inicial'];
                 $fecha_final = $_POST['fecha_final'];
 
-                $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, 
+                $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, 
                 CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
                 FROM com_venta AS c
-                JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito
+                JOIN carrito AS cv ON c.carrito_idcarrito = cv.id
                 WHERE c.estado = 2 AND c.fecha_venta BETWEEN '$fecha_inicial' AND '$fecha_final'
-                GROUP BY cv.idcarrito");
+                GROUP BY cv.id");
             } else {
-                $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, 
+                $queryusuarios = mysqli_query($conexion, "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, 
                 CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
                 FROM com_venta AS c
-                JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito
+                JOIN carrito AS cv ON c.carrito_idcarrito = cv.id
                 WHERE c.estado = 2
-                GROUP BY cv.idcarrito");
+                GROUP BY cv.id");
             }
 
             while ($mostrar = mysqli_fetch_array($queryusuarios)) {
@@ -97,7 +97,7 @@
                         data-doc-usuario2='" . $mostrar['doc_cliente'] . "' style='text-align:center' onchange='toggleButtons(this)'/>
                         </div></td>";
                 echo "<td>"; echo $mostrar['doc_cliente']; echo "</td>";
-                echo "<td>"; echo $mostrar['fecha_venta']; echo "</td>";
+                echo "<td>"; echo $mostrar['fechaventa']; echo "</td>";
                 echo "<td>"; echo $mostrar['carrito_idcarrito']; echo "</td>";
                 echo "<td>"; echo $mostrar['totalventa']; echo "</td>";
                 echo "<td>"; echo $mostrar['estado']; echo "</td>";

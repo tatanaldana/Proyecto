@@ -7,29 +7,29 @@ $provee = new provee();
 
 $body = json_decode(file_get_contents("php://input"), true);
 
-switch($_GET["op"]){
+switch($_GET["arc"]){
 
-    case "GetAll":
+    case "Get_provee":
         $datos=$provee->get_provee();
         echo json_encode($datos);
         break;
 
-        case "GetId":
+        case "Get_Id_provee":
             $datos=$provee->get_provee_x_idproveedor($body["idproveedor"]);
             echo json_encode($datos);
             break;
 
-            case "Insert":
-                $datos=$provee->insert_provee($body["idproveedor"],$body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
+            case "Insert_provee":
+                $datos=$provee->insert_provee($body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
                 echo json_encode("Insert Correto");
                 break;
 
-                    case "Update":
+                    case "Update_provee":
                         $datos=$provee->update_provee($body["idproveedor"],$body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
                          echo json_encode("Insert Correto");
                         break;
                 
-                            case "DeleteId":
+                            case "Delete_Id_provee":
                                 $datos = $provee->delete_provee($body["idproveedor"]);
                                 echo json_encode("Eliminado correctamente");
                                 break;  
