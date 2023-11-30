@@ -16,30 +16,8 @@
   </head>
   <body>
   <?php
-  include 'include/header.php';
+    include 'include/header.php';
 
-    ?>
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Clientes</li>
-  </ol>
-</nav>
-<form method="POST">
-<div class="container">
-<div class="contenedor-busqueda" id="contenedor-busqueda">
-<div class="mx-auto" style="width:300px">
-<div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="txtbuscar" required/>
-  <button type="submit" class="btn btn-outline-primary" name="btnbuscar">Buscar</button>
-</div>
-</div>
-</div>
-</div>
-</form>
-<div class="my-5"></div>
-
-<?php 
     include 'forms/form_cliente.php';
 
     include 'include/img_menu.php';
