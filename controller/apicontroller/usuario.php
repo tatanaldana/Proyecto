@@ -44,6 +44,15 @@ switch($_GET["arc"]){
                             echo json_encode("Cambio Correcto");
                             break;
 
+                            case "Get_buscar":
+                                $datos=$Usuarios->ver_usuario($body["buscar"]);
+                                echo json_encode($datos);
+                                break;
+
+                                case "Get_ver_user":
+                                    $datos=$Usuarios->ver_usuario2();
+                                    echo json_encode($datos);
+                                    break;
 
 }
 ?>
