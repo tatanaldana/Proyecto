@@ -33,7 +33,7 @@
                     <td colspan="2">
                         <button type="button" class="btn btn-outline-primary" onclick="cancelarform()">Cancelar</button>
                         <input type="submit" class="btn btn-outline-primary" name="btnregistrar" value="Registrar" onclick= "javascript:return confirm
-                        ('¿Deseas registrar a este usuario?');">
+                        ('¿Deseas registrar a esta categoria?');">
                     </td>
                 </tr>
             </table>
