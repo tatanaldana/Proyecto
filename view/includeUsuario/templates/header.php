@@ -45,7 +45,7 @@
                         <a href='/Proyecto/view/user/categorias/categoriasuser.php'>Menu</a>
                         <a href='/Proyecto/view/user/sugerenciasuser.php'>Sugerencias</a>
                         <a href='/Proyecto/view/user/perfil.php'>perfil</a>
-                        <a href='/Proyecto/controller/cerrarSesion.php'>Cerrar Sesion</a>
+                        <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
                         <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
                     }else{
                         echo "
@@ -71,7 +71,7 @@
                     if (isset($_SESSION['nombre'])){
                         echo 
                         "<a href='/Proyecto/view/user/perfil.php'>perfil</a>
-                        <a href='/Proyecto/controller/cerrarSesion.php'>Cerrar Sesion</a>
+                        <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
                         <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
                     }else{
                         echo 
