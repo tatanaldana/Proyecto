@@ -65,7 +65,7 @@
             <div class="desplegue">
                 <a href="/Proyecto/index.php">Inicio</a>
                 <a href="/Proyecto/view/comollegar.php">Como llegar</a>
-                <a href="/Proyecto/view/categorias/categorias.php">Menu</a>
+                <a href="/Proyecto/view/user/categorias/categorias.php">Menu</a>
                 <a href="/Proyecto/view/sugerencias.php">Sugerencias</a>
                 <?php 
                     if (isset($_SESSION['nombre'])){
