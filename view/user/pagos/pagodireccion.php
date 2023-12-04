@@ -39,32 +39,21 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 
 
 <body >
-  <div class="container"> 
-    <h1 class="center" style="color:var(--primario)">Informacion del Cliente</h1>
 
-    <div class="row justify-content-md-center mt-5">
-      <div class="col-2 ">
-        <p class="p-2 mb-2">Domicilio: </p>
-      </div>
-    
-      <div class="col-5">
-        <input type="text" class="p-2 bg-light border mb-2" value="<?php echo ucfirst($_SESSION['direccion']) ?> " readonly="readonly"  style='min-width:100%;'>
-      </div>
+<?php
+    include "../forms/form_pagodireccion.php.php";
+  ?>
 
-      <div class="col-3">
-        <input class="p-2 bg-light border mb-2" type="text" placeholder="Barrio, Casa, Apto">
-      </div>
+  
+  <script src="../../public/js/jquery.js"></script>
 
-      <div class="col-2 align-items-end">
-        <button class='btn-event mb-2 p-2 bg-light ' style = border:none ;><i class='fa fa-edit ' style='font-size:20px'></i></button><br>
-      </div>
-
-    </div>
+  <script src="../../public/js/sweetalert.min.js"></script>
+  <!-- Js usuarios -->
+  <script src="../../public/js/usuario.js"></script>
+  <!-- Js botones -->
+  <script src="../../public/js/buttons.js"></script>
   </div>
 
-  <div class="center">
-    <a href="metodopago.php" class=""><button type="buttom" class="btn regular-button mt-5" style="background: var(--primario); color: white;"> Continuar </button></a>
-  </div>
 
 
 </body>
