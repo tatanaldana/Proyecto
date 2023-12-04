@@ -33,59 +33,40 @@ session_start();
 
     <main class="container">
 
+    <div class="listado-categorias" id="listado-categorias">
+    <script>
+function mostrarCategorias(categorias) {
+  // Obtener el contenedor donde se mostrarán las categorías
+  var listadoCategorias = $('#listado-categorias');
 
-    
-   
-         
-        <section class="categorias">
+  // Limpiar el contenido existente en el contenedor
+  listadoCategorias.empty();
 
-            <div class="listado-categorias">
-                
-                <div class="categoria">
-                    <img src="../../Public/img/Promociones.jpg" alt="img promociones">
-                        <div class="texto-categoria">
-                            <a href="../carrito//catcombos.php">Combos</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
+  // Verificar si categorias es un array antes de intentar iterar sobre él
+  if (Array.isArray(categorias)) {
+    // Iterar sobre las categorías y agregarlas al contenedor
+    categorias.forEach(function(categoria) {
+      var categoriaHTML = `
+        <div class="categoria">
+          <img src="ruta/para/tu/imagen/${categoria.nombre_cat}.jpg" alt="${categoria.nombre_cat}">
+          <a href="#">${categoria.nombre_cat}</a>
+          
+        </div>
+      `;
 
-                <div class="categoria">
-                    <img src="../../Public/img/pollo.jpg" alt="img pollo">
-                    
-                        <div class="texto-categoria">
-                            <a href="../carrito/catpollo.php">Pollos</a>
-                        </div> <!--Informacion del producto--> 
-                </div><!--Produto-->
+      // Agregar la categoría al contenedor
+      listadoCategorias.append(categoriaHTML);
+    });
+  } else {
+    // Si categorias no es un array, muestra un mensaje de error
+    console.error("La respuesta no es un array:", categorias);
+    // Puedes agregar un mensaje o realizar alguna acción en caso de error
+  }
+}
 
-                <div class="categoria">
-                    <img src="../../Public/img/bebidas.jpg" alt="img bebida">             
-                        <div class="texto-categoria">
-                            <a href="../carrito/catbebidas.php">Bebidas</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
+</script>
+    </div>
 
-                <div class="categoria">
-                    <img src="../../Public/img/pizza.jpg" alt="img pizza">
-                        <div class="texto-categoria"> 
-                            <a href="../carrito/catpizza.php">Pizzas</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../Public/img/especialidades.jpg" alt="img especialidades">
-                        <div class="texto-categoria">
-                            <a href="../carrito/catespecialidades.php">Especialidades</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../Public/img/hamburguesas.jpg" alt="img hamburguesa">
-                        <div class="texto-categoria">
-                        <a href="../carrito/catburguer.php">Hamburguesas</a>
-                    </div><!--Informacion del producto-->
-                </div><!--Produto-->
-            </div><!--Fin listados de productos-->
-            
-        </section>
     </main>
 
 </body>
@@ -94,4 +75,8 @@ session_start();
     <?php
         incluirTemplate('footer');
     ?>
+
+
+
+
 </html>
