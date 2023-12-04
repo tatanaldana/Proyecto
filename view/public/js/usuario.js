@@ -316,3 +316,176 @@ $(document).ready(function() {
 });
 }
 });
+
+
+//Funcion para mostrar los datos del perfil
+
+$(document).ready(function() {
+  // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
+  if (window.location.pathname.endsWith("perfil.php")) {
+      // Se realiza la solicitud AJAX al cargar la página
+      $.ajax({
+          method: 'POST',
+          url: '../../controller/usuario/mostrartodoUsuario.php',
+          success: function(response) {
+            console.log(response);  // Imprime la respuesta en la consola
+        
+            // No es necesario parsear la respuesta si ya es un objeto JSON
+            var datos = Array.isArray(response) ? response[0] : response;
+            console.log(datos);     // Imprime los datos en la consola
+        
+            // Utiliza text() para elementos que muestran texto (como h6)
+            $('#nombre').text(datos.nombre);
+            $('#apellido').text(datos.apellido);
+            $('#email').text(datos.email);
+            $('#genero').text(datos.genero);
+            $('#fecha_naci').text(datos.fecha_naci);
+            $('#tipo_doc').text(datos.tipo_doc);
+            $('#doc').text(datos.doc);
+            $('#tel').text(datos.tel);
+            $('#direccion').text(datos.direccion);
+        },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            console.error("Status: " + status);
+            console.error("Error: " + error);
+        }
+      });
+  }
+});
+
+
+$(document).ready(function() {
+  // Se verifica que la ruta del archivo termine en perfil.php para ejecutar la solicitud AJAX
+  if (window.location.pathname.endsWith("categorias.php")) {
+      // Se realiza la solicitud AJAX al cargar la página
+      obtenerCategorias();
+  }
+});
+
+function obtenerCategorias() {
+  // Realizar la solicitud AJAX para obtener las categorías
+  $.ajax({
+      method: 'POST',
+      url: '../../../controller/categorias/todoCategorias.php',
+
+      success: function(response) {
+        console.log(response);  // Verifica la estructura de la respuesta
+    
+        try {
+            // Intenta parsear la respuesta como JSON
+            var categorias = JSON.parse(response);
+    
+            // Asegúrate de que la respuesta es un array antes de llamar a mostrarCategorias
+            if (Array.isArray(categorias)) {
+                // Llama a la función para mostrar las categorías
+                mostrarCategorias(categorias);
+            } else {
+                console.error("La respuesta del servidor no es un array:", categorias);
+            }
+        } catch (error) {
+            // Si hay un error al parsear, muestra un mensaje de error en la consola
+            console.error("Error al parsear la respuesta JSON:", error);
+        }
+    },
+  });
+}
+function mostrarCategorias(categorias) {
+  // Obtener el contenedor donde se mostrarán las categorías
+  var listadoCategorias = $('#listado-categorias');
+
+  // Limpiar el contenido existente en el contenedor
+  listadoCategorias.empty();
+
+  // Verificar si categorias es un array antes de intentar iterar sobre él
+  if (Array.isArray(categorias)) {
+    // Iterar sobre las categorías y agregarlas al contenedor
+    categorias.forEach(function(categoria) {
+      var categoriaHTML = `
+        <div class="categoria">
+          <img src="ruta/para/tu/imagen/${categoria.nombre_cat}.jpg" alt="${categoria.nombre_cat}">
+          <a href="../carrito/catburguer.php">${categoria.nombre_cat}</a>
+        </div>
+      `;
+
+      // Agregar la categoría al contenedor
+      listadoCategorias.append(categoriaHTML);
+    });
+  } else {
+    // Si categorias no es un array, muestra un mensaje de error
+    console.error("La respuesta no es un array:", categorias);
+    // Puedes agregar un mensaje o realizar alguna acción en caso de error
+  }
+}
+
+//Funcion para mostrar los datos del perfil
+
+$(document).ready(function() {
+  // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
+  if (window.location.pathname.endsWith("pagodatos.php")) {
+      // Se realiza la solicitud AJAX al cargar la página
+      $.ajax({
+          method: 'POST',
+          url: '../../../controller/usuario/mostrartodoUsuario.php',
+          success: function(response) {
+            console.log(response);  // Imprime la respuesta en la consola
+        
+            // No es necesario parsear la respuesta si ya es un objeto JSON
+            var datos = Array.isArray(response) ? response[0] : response;
+            console.log(datos);     // Imprime los datos en la consola
+        
+            // Utiliza text() para elementos que muestran texto (como h6)
+            $('#nombre').text(datos.nombre);
+            $('#apellido').text(datos.apellido);
+            $('#email').text(datos.email);
+            $('#genero').text(datos.genero);
+            $('#fecha_naci').text(datos.fecha_naci);
+            $('#tipo_doc').text(datos.tipo_doc);
+            $('#doc').text(datos.doc);
+            $('#tel').text(datos.tel);
+            $('#direccion').text(datos.direccion);
+        },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            console.error("Status: " + status);
+            console.error("Error: " + error);
+        }
+      });
+  }
+});
+
+
+$(document).ready(function() {
+  // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
+  if (window.location.pathname.endsWith("chekckout.php")) {
+      // Se realiza la solicitud AJAX al cargar la página
+      $.ajax({
+          method: 'POST',
+          url: '../../../controller/usuario/mostrartodoUsuario.php',
+          success: function(response) {
+            console.log(response);  // Imprime la respuesta en la consola
+        
+            // No es necesario parsear la respuesta si ya es un objeto JSON
+            var datos = Array.isArray(response) ? response[0] : response;
+            console.log(datos);     // Imprime los datos en la consola
+        
+            // Utiliza text() para elementos que muestran texto (como h6)
+            $('#nombre').text(datos.nombre);
+            $('#apellido').text(datos.apellido);
+            $('#email').text(datos.email);
+            $('#genero').text(datos.genero);
+            $('#fecha_naci').text(datos.fecha_naci);
+            $('#tipo_doc').text(datos.tipo_doc);
+            $('#doc').text(datos.doc);
+            $('#tel').text(datos.tel);
+            $('#direccion').text(datos.direccion);
+        },
+          error: function(xhr, status, error) {
+            console.error(xhr.responseText);
+            console.error("Status: " + status);
+            console.error("Error: " + error);
+        }
+      });
+  }
+});
+
