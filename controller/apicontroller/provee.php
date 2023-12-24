@@ -26,7 +26,7 @@ switch($_GET["arc"]){
 
                     case "Update_provee":
                         $datos=$provee->update_provee($body["idproveedor"],$body["nom_proveedor"], $body["telefono_proveedor"],$body["direccion_proveedor"]);
-                         echo json_encode("Insert Correto");
+                        echo json_encode("Insert Correto");
                         break;
                 
                             case "Delete_Id_provee":
@@ -34,7 +34,6 @@ switch($_GET["arc"]){
                                 echo json_encode("Eliminado correctamente");
                                 break;  
 
-                       
 
 }
 ?>

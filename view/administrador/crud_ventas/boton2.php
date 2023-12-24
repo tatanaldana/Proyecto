@@ -1,5 +1,5 @@
 <style>
-   #viewButton{
+#viewButton{
         display: none;
     }
 </style>

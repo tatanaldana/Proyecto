@@ -20,12 +20,12 @@ switch($_GET["arc"]){
             echo json_encode($datos);
             break;
 
-                case "Insert_pro":
+            case "Insert_pro":
                 $datos=$productos->insert_productos($body["nombre_pro"],$body["detalle"],$body["precio_pro"],$body["categorias_idcategoria"],$body["cod"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
-                    case "Update_pro":
+                case "Update_pro":
                     $datos=$productos->update_productos($body["idProducto"],$body["nombre_pro"],$body["detalle"],$body["precio_pro"],$body["categorias_idcategoria"],$body["cod"]);
                     echo json_encode("Update Correto");
                     break;

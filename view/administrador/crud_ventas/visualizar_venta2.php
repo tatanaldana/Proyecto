@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Ventas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Importamos los estilos de Bootstrap -->
-    <link rel="stylesheet" href="..\css\bootstrap.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="..\css\font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="..\css\sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="..\css\style.css">
-  </head>
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <title>Ventas</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Importamos los estilos de Bootstrap -->
+        <link rel="stylesheet" href="..\css\bootstrap.css">
+        <!-- Font Awesome: para los iconos -->
+        <link rel="stylesheet" href="..\css\font-awesome.min.css">
+        <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
+        <link rel="stylesheet" href="..\css\sweetalert.css">
+        <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
+        <link rel="stylesheet" href="..\css\style.css">
+    </head>
+<body>
 
 <?php
 include_once('../crud/conexion.php');
@@ -28,24 +28,24 @@ $estados=array(
 
 ?>
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="..\administrador\index.php">Inicio</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="..\administrador\ventas.php">Ventas</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="..\ventas\his_ventas.php">Historico</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="#">Visualizar</a></li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="..\administrador\index.php">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="..\administrador\ventas.php">Ventas</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="..\ventas\his_ventas.php">Historico</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="#">Visualizar</a></li>
+    </ol>
 </nav>
 <?php
 
 
 if (isset($_GET['doc_cliente']) && isset($_GET['doc'])) {
-  $docCliente = $_GET['doc_cliente'];
-  $idCarrito = $_GET['doc'];
-  
-      $queryusuarios = mysqli_query($conexion, "SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fecha_venta, cv.totalventa, cv.estado
-      FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc = '$docCliente' AND cv.carrito_idcarrito = '$idCarrito'");
+    $docCliente = $_GET['doc_cliente'];
+    $idCarrito = $_GET['doc'];
 
-  }
+    $queryusuarios = mysqli_query($conexion, "SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fecha_venta, cv.totalventa, cv.estado
+    FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc = '$docCliente' AND cv.carrito_idcarrito = '$idCarrito'");
+
+}
     // Verificar si se encontraron resultados
     if (mysqli_num_rows($queryusuarios) > 0) {
         // Se encontraron resultados, procesamos los datos
@@ -139,7 +139,7 @@ echo "<div class='my-5'></div>";
                 echo '</tr>';
             }
             }
-     
+
         echo "<tr>";
         echo "<td colspan='4'><a href='../ventas/his_ventas.php' class='btn btn-primary'>Cerrar</a></td>";
         echo "</tr>";

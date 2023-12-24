@@ -1,5 +1,5 @@
 <style>
-   #deleteButton, #viewButton,#addButton {
+#deleteButton, #viewButton,#addButton {
         display: none;
     }
 </style>

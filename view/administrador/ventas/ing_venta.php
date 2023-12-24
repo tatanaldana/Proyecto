@@ -4,7 +4,7 @@ include '../crud/conexion.php';
 if (isset($queryusuarios) && mysqli_num_rows($queryusuarios) > 0) {
     // Consulta SQL para obtener productos y precios
     $sql = "SELECT idProducto, nombre_pro, precio_pro FROM productos";
-   $result = $conexion->query($sql);
+    $result = $conexion->query($sql);
 
     if ($result->num_rows > 0) {
         // Inicializa los arrays para almacenar los productos y precios

@@ -13,9 +13,9 @@
   }else{
 
     /*
-       Si tu usuario require de una validacion de email,
-       es decir que contenga @ y .com, .es etc.
-       habilita las lineas 21, 32, 33 y 34
+      Si tu usuario require de una validacion de email,
+      es decir que contenga @ y .com, .es etc.
+      habilita las lineas 21, 32, 33 y 34
     */
 
     // if(filter_var($user, FILTER_VALIDATE_EMAIL)){

@@ -23,7 +23,6 @@
         $categorias -> update_categorias($id_categoria ,$nombre_cat);
       // se redirecciona al usuario despues de realizar el update
       echo '../../categorias.php';
-     
 
     }catch(PDOException $e){
       echo 'Error en el registro';

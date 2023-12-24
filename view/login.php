@@ -100,8 +100,8 @@ if(isset($_SESSION['doc'])){
 
 <!-- Final formulario login -->
 
- <!-- Jquery -->
- <script src="public/js/jquery.js"></script>
+<!-- Jquery -->
+<script src="public/js/jquery.js"></script>
     <!-- Bootstrap js -->
     <script src="public/js/bootstrap.min.js"></script>
     <!-- SweetAlert js -->

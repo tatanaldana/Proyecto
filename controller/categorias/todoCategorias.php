@@ -1,7 +1,7 @@
 <?php
     # Incluimos la clase categorias
     require_once('../../model/categorias.php');
-     # Creamos un objeto de la clase categorias
+    # Creamos un objeto de la clase categorias
     $categorias = new Categorias();
     # Llamamos al metodo  para realizar la consulta en la base de datos
     $resultado = $categorias->get_categorias();

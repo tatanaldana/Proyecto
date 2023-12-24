@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>Sugerencias</title>
     <?php 
-      include '../includeUsuario/head.php';
+    include '../includeUsuario/head.php';
     ?>
 
 </head>
@@ -34,7 +34,7 @@
             <div class="row mb-5 ">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
 
- 
+
 
                     <form class="text-center" action="sugerencia2.php" method="POST">
                         <h2 class="w-lg-50">Nos Encantaria Conocer tu Opinión</h2>

@@ -22,7 +22,7 @@
             <div class="buscar">
                 <form action="/Proyecto/view/includeUsuario/templates/buscar.php" method="POST">
                     <div class="input-group center">
-                      
+                    
                         <input class="px-4" type="search" name="textbuscar" placeholder="&#128270; Buscar Producto" required>
                         <button  class="input-group-addon" type="submit" name="btnbuscar" style="border-radius:50%; width:30px; height:30px;"><i class='bi bi-search' ></i></button>
                     </div>
@@ -33,8 +33,8 @@
                     <img src= "/Proyecto/view/public/img/menu.png" width='35px' height='35px' alt="Menu Hamburguesa">
                 </div>
             
- 
- 
+
+
             <nav class="rutas">
 
                 <?php 

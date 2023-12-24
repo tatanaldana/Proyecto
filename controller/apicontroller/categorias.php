@@ -19,12 +19,12 @@ switch($_GET["arc"]){
             echo json_encode($datos);
             break;
 
-                case "Insert_cat":
+            case "Insert_cat":
                 $datos=$Categorias->insert_categorias($body["nombre_cat"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
-                    case "Update_cat":
+                case "Update_cat":
                     $datos=$Categorias->update_categorias($body["id_categoria"],$body["nombre_cat"]);
                     echo json_encode("Update Correto");
                     break;

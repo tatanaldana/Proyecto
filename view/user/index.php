@@ -45,7 +45,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
 
     <div class="imagenindex">
         <p>Bienvenido <?php echo  ucfirst($_SESSION ['nombre']) ?></p>
-      
+    
     </div>
     <div class="barramenu">
         <nav class="menu-productos row">
@@ -130,14 +130,14 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
     include 'datos.php';
 
 
-      echo '<pre>';
-      var_dump( $_SESSION);
-      var_dump( $_SESSION['apellido']);
+    echo '<pre>';
+    var_dump( $_SESSION);
+    var_dump( $_SESSION['apellido']);
 
-  
 
-      echo '</pre>';
-      echo $_SESSION['apellido'];
+
+    echo '</pre>';
+    echo $_SESSION['apellido'];
 
 
 ?>
