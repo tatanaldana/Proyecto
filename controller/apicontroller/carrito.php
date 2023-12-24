@@ -38,7 +38,7 @@ switch($_GET["arc"]){
                             $datos = $Ventas->cambiar_estado1($body["id"]);
                             echo json_encode("Cambio Correcto");
                             break;
-                    
+
                             case "Estado_v_ca_2":
                                 $datos = $Ventas->cambiar_estado2($body["id"]);
                                 echo json_encode("Cambio Correcto");

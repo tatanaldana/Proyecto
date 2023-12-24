@@ -1,20 +1,20 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Categorias</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Importamos los estilos de Bootstrap -->
-    <link rel="stylesheet" href="..\..\css\bootstrap.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="..\..\css\font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="..\..\css\sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="..\..\css\style.css">
-  </head>
+    <head>
+        <meta charset="utf-8">
+        <title>Categorias</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Importamos los estilos de Bootstrap -->
+        <link rel="stylesheet" href="..\..\css\bootstrap.css">
+        <!-- Font Awesome: para los iconos -->
+        <link rel="stylesheet" href="..\..\css\font-awesome.min.css">
+        <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
+        <link rel="stylesheet" href="..\..\css\sweetalert.css">
+        <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
+        <link rel="stylesheet" href="..\..\css\style.css">
+    </head>
     <body>
     <?php
 include_once('../../crud/conexion.php');
@@ -23,22 +23,22 @@ include '../../include/header.php';
 ?>
 
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
-    <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="../categorias_adm.php">Categorias</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Categorias</li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="../categorias_adm.php">Categorias</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Categorias</li>
+    </ol>
 </nav>
 <?php
 
 if(isset($_GET['id_cat'])){
     $codigo = $_GET['id_cat'];
-  
-      $queryusuarios = mysqli_query($conexion, "SELECT u.idProducto, u.nombre_pro, u.detalle, u.precio_pro,u.categorias_idcategoria,cv.nombre_cat
-      FROM productos AS u JOIN categorias AS cv ON u.categorias_idcategoria = cv.id_categoria WHERE u.categorias_idcategoria = '$codigo'");
-
-  }
+    
+    $queryusuarios = mysqli_query($conexion, "SELECT u.idProducto, u.nombre_pro, u.detalle, u.precio_pro,u.categorias_idcategoria,cv.nombre_cat
+    FROM productos AS u JOIN categorias AS cv ON u.categorias_idcategoria = cv.id_categoria WHERE u.categorias_idcategoria = '$codigo'");
+    
+    }
     // Verificar si se encontraron resultados
     if (mysqli_num_rows($queryusuarios) > 0) {
         // Se encontraron resultados, procesamos los datos

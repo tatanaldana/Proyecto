@@ -29,7 +29,6 @@
             var id_cat = checkbox.getAttribute('data-doc-categorias');
             console.log("Valor data-doc-categorias: " + id_cat);
 
-           
             var editLink = document.getElementById('editButton');
             editLink.href = "../gestion/categorias/editar_cat.php?id_cat=" + id_cat;
 

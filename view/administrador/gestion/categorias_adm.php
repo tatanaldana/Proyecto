@@ -16,13 +16,13 @@
     
 
     <script type="text/javascript">
-       
+    
     </script>
   </head>
   <body>
 
   <?php
-     include '../crud/conexion.php';
+    include '../crud/conexion.php';
 
     include '../include/header.php';
 
