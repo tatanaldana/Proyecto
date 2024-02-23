@@ -8,7 +8,7 @@
 <div class="d-flex justify-content-center">
 <div class="row">
 <div class="col-md-12 table-responsive" >
-   <table class="table table-bordered border-primary table-striped " style="text-align:center" >
+    <table class="table table-bordered border-primary table-striped " style="text-align:center" >
     <thead>
         <tr>
             </tr>
@@ -33,7 +33,7 @@
         {
             $querycategorias=mysqli_query($conexion,"SELECT * FROM categorias ORDER BY id_categoria ASC");
         }
- 
+
             while($mostrar=mysqli_fetch_array($querycategorias)) {
                 
             if($mostrar['id_categoria']!=5){
@@ -57,16 +57,16 @@
     <div class="container">
         <div class="d-flex justify-content-around">
             <div class="row">
-            <table class="table-responsive">
-                <tr>
-                    <td><a  class="btn btn-primary" id="addButton" onclick="abrirform()">Agregar</a></td>
-                    <td><a href="../categorias/agregar_cat.php?id_cat=<?php echo $mostrar['id_categoria'];?>"   class="btn btn-primary" id="viewButton">Visualizar</a></td>
-                    <td><a href="../categorias/editar.php?id_cat=<?php echo $mostrar['id_categoria'];?>"   class="btn btn-primary" id="editButton">Editar</a></td>
-                    <td><a href="../categorias/eliminar_prod.php?id_cat=<?php echo $mostrar['id_categoria']; ?>"
-               class="btn btn-primary delete-button" id="deleteButton"
-               onClick="javascript: return confirm('¿Estás seguro de eliminar a <?php echo $mostrar['nombre_pro']; ?>?')">Eliminar</a></td>
-                </tr> 
-            </table>
+                <table class="table-responsive">
+                    <tr>
+                        <td><a  class="btn btn-primary" id="addButton" onclick="abrirform()">Agregar</a></td>
+                        <td><a href="../categorias/agregar_cat.php?id_cat=<?php echo $mostrar['id_categoria'];?>"   class="btn btn-primary" id="viewButton">Visualizar</a></td>
+                        <td><a href="../categorias/editar.php?id_cat=<?php echo $mostrar['id_categoria'];?>"   class="btn btn-primary" id="editButton">Editar</a></td>
+                        <td><a href="../categorias/eliminar_prod.php?id_cat=<?php echo $mostrar['id_categoria']; ?>"
+                        class="btn btn-primary delete-button" id="deleteButton"
+                        onClick="javascript: return confirm('¿Estás seguro de eliminar a <?php echo $mostrar['nombre_pro']; ?>?')">Eliminar</a></td>
+                    </tr> 
+                </table>
             </div>
         </div>
     </div>

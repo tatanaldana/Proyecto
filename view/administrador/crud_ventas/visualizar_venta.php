@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Ventas</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Importamos los estilos de Bootstrap -->
-    <link rel="stylesheet" href="..\administrador\css\bootstrap.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="..\administrador\css\font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="..\administrador\css\sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="..\css\style.css">
-  </head>
-  <body>
+    <head>
+        <meta charset="utf-8">
+        <title>Ventas</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Importamos los estilos de Bootstrap -->
+        <link rel="stylesheet" href="..\administrador\css\bootstrap.css">
+        <!-- Font Awesome: para los iconos -->
+        <link rel="stylesheet" href="..\administrador\css\font-awesome.min.css">
+        <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
+        <link rel="stylesheet" href="..\administrador\css\sweetalert.css">
+        <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
+        <link rel="stylesheet" href="..\css\style.css">
+    </head>
+<body>
 
 <?php
 include_once('../crud/conexion.php');
@@ -23,12 +23,12 @@ include '../include/header.php';
 
 ?>
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="..\administrador\index.php">Inicio</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="..\administrador\ventas.php">Ventas</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="..\ventas\ver_ventas.php">Preparación</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><a href="#">Visualizar</a></li>
-  </ol>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="..\administrador\index.php">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="..\administrador\ventas.php">Ventas</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="..\ventas\ver_ventas.php">Preparación</a></li>
+        <li class="breadcrumb-item active" aria-current="page"><a href="#">Visualizar</a></li>
+    </ol>
 </nav>
 <?php
 
@@ -107,7 +107,7 @@ if (isset($_GET['doc'])) {
                 echo '</tr>';
             }
             }
-         } 
+        } 
     $queryTotalVenta = mysqli_query($conexion, "SELECT totalventa FROM com_venta WHERE carrito_idcarrito = '$idCarrito'");
     if ($ventaData = mysqli_fetch_array($queryTotalVenta)) {
         $totalVenta = $ventaData['totalventa'];

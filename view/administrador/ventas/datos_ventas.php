@@ -28,7 +28,7 @@ if (isset($_POST['btncontinuar'])) {
         echo '<script type="text/javascript">
         alert("El cliente no esta registrado, por favor genere el registro en sistema");
         window.location.href="../administrador/clientes.php";
-      </script>';
+    </script>';
     }
 }
 ?>

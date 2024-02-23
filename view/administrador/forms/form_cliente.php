@@ -21,7 +21,7 @@
 <div class="d-flex justify-content-center">
 <div class="row">
 <div class="col-md-12 table-responsive" >
-   <table class="table table-bordered border-primary" style="text-align:center" >
+  <table class="table table-bordered border-primary" style="text-align:center" >
     <thead>
         <tr>
         <th scope="col">Seleccionar</th>
@@ -53,4 +53,3 @@
             </div>
         </div>
     </div>
-   

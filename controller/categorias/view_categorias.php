@@ -3,9 +3,9 @@ if (isset($_POST['id_cat'])) {
     $id_categoria = $_POST['id_cat'];
     // Aquí podrías sanitizar $id_categoria antes de utilizarlo en la consulta
 
-     # Incluimos la clase categorias
+    # Incluimos la clase categorias
     require_once('../../model/categorias.php');
-     # Creamos un objeto de la clase usuario
+    # Creamos un objeto de la clase usuario
     $categorias = new Categorias();
     # Llamamos al metodo  para realizar la consulta en la base de datos
     $resultado = $categorias->get_categorias_x_id($id_categoria);

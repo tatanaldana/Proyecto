@@ -14,7 +14,7 @@ if (isset($_GET['doc'])) {
             echo '<script type="text/javascript">
                     alert("Venta completada exitosamente");
                     window.location.href="../ventas/ver_ventas.php";
-                  </script>';
+                </script>';
         } else {
             echo "Error al actualizar el estado en la tabla 'carrito': " . $conexion->error;
         }

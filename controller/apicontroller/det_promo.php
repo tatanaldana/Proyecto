@@ -19,12 +19,12 @@ switch($_GET["arc"]){
             echo json_encode($datos);
             break;
 
-                case "Insert_det_promo":
+            case "Insert_det_promo":
                 $datos=$Promo->insert_promo($body["nom_prod"],$body["pre_prod"],$body["cantidad"],$body["descuento"],$body["subtotal"],$body["total"],$body["promocion_idpromo"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
-                    case "Update_det_promo":
+                case "Update_det_promo":
                     $datos=$Promo->update_promo($body["idpromo"],$body["nom_prod"],$body["pre_prod"],$body["cantidad"],$body["descuento"],$body["subtotal"],$body["total"]);
                     echo json_encode("Update Correto");
                     break;

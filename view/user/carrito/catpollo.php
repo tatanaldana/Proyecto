@@ -43,8 +43,6 @@ $usar_db->set_names();
             // $daed = "SELECT * FROM categorias INNER JOIN productos ON  productos.idProductos = categorias.productId ";
 
             /*Larause*/
-    
-     
 
             $productos_array = $usar_db->larausequery(
                 
@@ -77,7 +75,7 @@ $usar_db->set_names();
                     echo '</div>';
     
                 }
-      
+
             ?>
             
         </div>

@@ -27,7 +27,6 @@
         $usuario -> editarUsuario($email, $tel, $genero, $direccion,$doc);
       // se redirecciona al usuario despues de realizar el update
       echo '../../clientes.php';
-     
 
     }catch(PDOException $e){
       echo 'Error en el registro';

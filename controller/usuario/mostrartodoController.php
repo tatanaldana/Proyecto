@@ -1,7 +1,7 @@
 <?php
     # Incluimos la clase usuario
     require_once('../../model/usuario.php');
-     # Creamos un objeto de la clase usuario
+    # Creamos un objeto de la clase usuario
     $usuario = new Usuario();
     # Llamamos al metodo  para realizar la consulta en la base de datos
     $resultado = $usuario->ver_usuario2();

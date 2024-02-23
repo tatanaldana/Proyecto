@@ -21,8 +21,8 @@ switch($_GET["arc"]){
 
                 case "Insert_v_ca_for":
                 $datos=$Ventas->insert_ventas_carrito($body["forma_pago"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
                     case "Update_v_ca_for":
                     $datos=$Ventas->update_ventas_carrito($body["id"],$body["forma_pago"]);
@@ -38,7 +38,7 @@ switch($_GET["arc"]){
                             $datos = $Ventas->cambiar_estado1($body["id"]);
                             echo json_encode("Cambio Correcto");
                             break;
-                    
+
                             case "Estado_v_ca_2":
                                 $datos = $Ventas->cambiar_estado2($body["id"]);
                                 echo json_encode("Cambio Correcto");

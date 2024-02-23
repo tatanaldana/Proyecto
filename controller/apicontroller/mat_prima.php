@@ -19,12 +19,12 @@ switch($_GET["arc"]){
             echo json_encode($datos);
             break;
 
-                case "Insert_mat_prima":
+            case "Insert_mat_prima":
                 $datos=$Mat_prima->insert_mat_prima($body["cod"],$body["referencia"],$body["descripcion"],$body["existencia"],$body["entrada"],$body["salida"],$body["stock"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
-                    case "Update_mat_prima":
+                case "Update_mat_prima":
                     $datos=$Mat_prima->update_mat_prima($body["cod"],$body["referencia"],$body["descripcion"],$body["existencia"],$body["entrada"],$body["salida"],$body["stock"]);
                     echo json_encode("Update Correto");
                     break;

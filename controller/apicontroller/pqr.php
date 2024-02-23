@@ -19,20 +19,20 @@ switch($_GET["arc"]){
             echo json_encode($datos);
             break;
 
-                case "Insert_pqr":
+            case "Insert_pqr":
                 $datos=$pqr->insert_pqr($body["sugerencia"],$body["tipo_sugerencia"], $body["fecha_pqr"],$body["estado"], $body["usuarios_id"]);
-                 echo json_encode("Insert Correto");
-                 break;
+                echo json_encode("Insert Correto");
+                break;
 
-                    case "Eliminar_Id_pqr":
-                        $datos = $pqr->delete_pqr($body["id"]);
-                        echo json_encode("Eliminado correctamente");
+                case "Eliminar_Id_pqr":
+                    $datos = $pqr->delete_pqr($body["id"]);
+                    echo json_encode("Eliminado correctamente");
+                    break;  
+
+                    case "Update_Estado_1_pqr":
+                        $datos = $pqr->upgrade_pqr($body["id"]);
+                        echo json_encode("Enviado");
                         break;  
-
-                        case "Update_Estado_1_pqr":
-                            $datos = $pqr->upgrade_pqr($body["id"]);
-                            echo json_encode("Enviado");
-                            break;  
 
 }
 ?>

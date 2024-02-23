@@ -27,15 +27,15 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 
     <?php 
     
-     require_once '../../includeUsuario/funciones.php'; 
-      incluirTemplate('header')
+    require_once '../../includeUsuario/funciones.php'; 
+    incluirTemplate('header')
     ?>
 
 <?php
-     
 
-     $consulta = editarFormulario($_GET['id']);
-     
+
+    $consulta = editarFormulario($_GET['id']);
+
     function editarFormulario($ident){
         require_once '../conexion.php';
         $editar = "SELECT * FROM usuarios WHERE doc= '".$ident. "'";
@@ -73,7 +73,7 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     <fieldset>
     <legend class="centrado">Datos Personales</legend>
 
-  
+
         
         <label for="">id</label>
         <input type="hidden" name = "id" value="<?php echo $consulta[0]?>">
@@ -85,12 +85,12 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 
         
         echo '<pre>';
-         var_dump($consulta[1]);
-         var_dump($_SESSION);
+        var_dump($consulta[1]);
+        var_dump($_SESSION);
 
-         echo '</pre>';
+        echo '</pre>';
 
-         ?>
+        ?>
         <label for="">Apellido(s): </label>
         <input type="text" name="apellido" value="<?php echo $consulta[2]?>">
 
@@ -98,7 +98,7 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
         <input type="email" name="email" value="<?php echo $consulta[3]?>">
 
         <label for="">Genero: </label>
-       
+
         <input type="text" name="genero" value=" <?php echo $consulta[4]?>" readonly>
         
 
@@ -115,7 +115,7 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 
     </fieldset>
     
-   <fieldset>
+    <fieldset>
         <legend>Datos de Domicilio</legend>
 
         <label for="">Telefono: </label>
@@ -149,7 +149,7 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 <br><br><br><br><br><br><br>
     <?php 
 
-       incluirTemplate('footer')
+    incluirTemplate('footer')
 
 ?>
 

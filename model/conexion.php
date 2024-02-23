@@ -11,13 +11,13 @@ class Conexion
     try {
 
       $conectar = $this->dbh = new PDO("mysql:host=localhost;dbname=arca","root","");
-           
+        
         return $conectar;
 
     } catch (Exception $e) {
 
       print "¡Error!: " . $e->getMessage() . "<br/>";
-           die();  
+        die();  
       
     }
 

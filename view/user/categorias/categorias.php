@@ -35,8 +35,7 @@ session_start();
 
 
     
-   
-         
+
         <section class="categorias">
 
             <div class="listado-categorias">

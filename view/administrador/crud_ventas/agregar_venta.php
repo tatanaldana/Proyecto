@@ -34,7 +34,7 @@ if (isset($_POST['btnCalcular'])) {
             $estadoComventa=1;
             // Consulta SQL para insertar cada fila en la tabla `com_venta` ( ya se encuentra la función en el modelo com_venta )
             $sqlInsertComVenta = "INSERT INTO com_venta (doc_cliente, fecha_venta, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito,estado)
-             VALUES ('$doc_cliente', '$fechaVenta', '$producto', '$precio', '$cantidad', '$subtotal', '$totalventa', '$idCarrito','$estadoComventa')";
+            VALUES ('$doc_cliente', '$fechaVenta', '$producto', '$precio', '$cantidad', '$subtotal', '$totalventa', '$idCarrito','$estadoComventa')";
 
             if (!$conexion->query($sqlInsertComVenta)) {
                 // Si una inserción falla, marca el flag como falso
@@ -47,7 +47,7 @@ if (isset($_POST['btnCalcular'])) {
             echo '<script type="text/javascript">
             alert("Venta ingresada exitosamente");
             window.location.href="../ventas/ver_ventas.php";
-          </script>';
+            </script>';
             exit();
         } else {
             echo "Ha ocurrido un error en alguna inserción.";
