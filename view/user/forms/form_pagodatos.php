@@ -50,11 +50,11 @@
 
 
   <div class="center">
-  <a href="../forms/form_metodopago.php" class=""><button type="buttom" class="btn regular-button mt-5" style="background: var(--primario); color: white;"> Continuar </button></a>
+         <a href="../pagos/metodopago.php"><button type="buttom" class="btn regular-button mt-5" style="background: var(--primario); color: white;"> Continuar </button></a>
     
   </div>
   
-
+</div>
 
 <script src="../../public/js/jquery.js"></script>
 

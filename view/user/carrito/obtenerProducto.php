@@ -44,16 +44,15 @@ $usar_db->set_names();
             /*Larause*/
             $productos_array = $usar_db->larausequery(
                 
-                "SELECT * FROM productos INNER JOIN categorias ON  categorias_idcategoria = id_categoria WHERE id_categoria = '6' ");
+                "SELECT * FROM productos INNER JOIN categorias ON  categorias_idcategoria = id_categoria WHERE id_categoria = '5' ");
                 // "SELECT * FROM categorias WHERE id_categoria = '2' ORDER BY id_categoria ASC"
 
             if (!empty($productos_array)) {
                 foreach ($productos_array as $i => $k) {
-                    
             ?>
                     <div class="contenedor_productos">
-
-                        <form method="POST" action="carrito.php?accion=agregar&cod=<?php echo $productos_array[$i]["cod"]; ?>">
+                        <form method="POST" action="carrito.php?accion=agregar&cod=
+<?php echo $productos_array[$i]["cod"]; ?>">
                             <div><img src="<?php echo $productos_array[$i]["img"]; ?>"></div>
                             <div>
                                 <div style="padding-top:20px;font-size:18px;"><?php echo $productos_array[$i]["nombre_pro"]; ?></div>
@@ -65,12 +64,11 @@ $usar_db->set_names();
                             </div>
                         </form>
                     </div>
-                    <a href="javascript:history.back(1)"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>
-            <?php
+                    <?php
                 }
                 }else{
                     echo '<div class="pantallaerror">';
-                    echo ' <img src="../../Public/Error.png" alt="Imagen de error" class>';
+                    echo ' <img src="../../public/img/" alt="Imagen de error" class>';
                     echo '<h1>Lo sentimos, no encontramos resultados de su busqueda</h1>';
                     echo '</div>';
     
@@ -86,7 +84,7 @@ $usar_db->set_names();
 </body>
 
 <br><br><br><br><br><br><br>
-    
+
     <?php
         incluirTemplate('footer');
     ?>

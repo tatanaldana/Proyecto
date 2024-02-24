@@ -20,7 +20,7 @@
             </div>
 
             <div class="buscar">
-                <form action="/Proyecto/view/includeUsuario/templates/buscar.php" method="POST">
+                <form action="includeUsuario/templates/buscar.php" method="POST">
                     <div class="input-group center">
                       
                         <input class="px-4" type="search" name="textbuscar" placeholder="&#128270; Buscar Producto" required>
@@ -46,7 +46,7 @@
                         <a href='/Proyecto/view/user/sugerenciasuser.php'>Sugerencias</a>
                         <a href='/Proyecto/view/user/perfil.php'>perfil</a>
                         <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
-                        <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
+                        <a href='/Proyecto/view/user/productos/carrito.php'>Carrito</a>";
                     }else{
                         echo "
                         <a href='/Proyecto/index.php'>Inicio</a>
@@ -72,7 +72,7 @@
                         echo 
                         "<a href='/Proyecto/view/user/perfil.php'>perfil</a>
                         <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
-                        <a href='/Proyecto/view/user/carrito/carrito.php'>Carrito</a>";
+                        <a href='/Proyecto/view/user/productos/carrito.php'>Carrito</a>";
                     }else{
                         echo 
                         "<a href='/Proyecto/view/login.php'>Iniciar Sesion</a>

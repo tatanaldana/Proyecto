@@ -41,13 +41,18 @@
             <div class="sec1" >
                 <fieldset>
                     <legend class="titulo-check">Modo de Entrega</legend>
+
                     <label for="">
                         <input type="radio" name="domicilio" disabled> <p> A domicilio.</p>
                     </label>
-                    <p><font color="silver"><?php echo $_SESSION['direccion']?> </font></p>
+
+                    <p><font color="silver"><?php echo $_POST['direccion']?> </font></p>
+                    <h6 id = "direccion"></h6>
+
                     <label for="">
                         <input type="radio" name="domicilio" checked disabled> <p> Entrega en tienda. </p>
                     </label>
+
                 </fieldset>
             </div>
             <div class="sec1">

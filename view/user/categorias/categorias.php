@@ -32,47 +32,15 @@ session_start();
 </div>
 
     <main class="container">
-
-    <div class="listado-categorias" id="listado-categorias">
-    <script>
-function mostrarCategorias(categorias) {
-  // Obtener el contenedor donde se mostrarán las categorías
-  var listadoCategorias = $('#listado-categorias');
-
-  // Limpiar el contenido existente en el contenedor
-  listadoCategorias.empty();
-
-  // Verificar si categorias es un array antes de intentar iterar sobre él
-  if (Array.isArray(categorias)) {
-    // Iterar sobre las categorías y agregarlas al contenedor
-    categorias.forEach(function(categoria) {
-      var categoriaHTML = `
-        <div class="categoria">
-          <img src="ruta/para/tu/imagen/${categoria.nombre_cat}.jpg" alt="${categoria.nombre_cat}">
-          <a href="#">${categoria.nombre_cat}</a>
-          
-        </div>
-      `;
-
-      // Agregar la categoría al contenedor
-      listadoCategorias.append(categoriaHTML);
-    });
-  } else {
-    // Si categorias no es un array, muestra un mensaje de error
-    console.error("La respuesta no es un array:", categorias);
-    // Puedes agregar un mensaje o realizar alguna acción en caso de error
-  }
-}
-
-</script>
-    </div>
-
+        <div class="listado-categorias" id="listado-categorias"></div>
     </main>
 
-</body>
-
 <br><br><br><br><br><br><br>
+
+<script src="../../public/js/usuario.js"></script>
     <?php
+        
+
         incluirTemplate('footer');
     ?>
 

@@ -46,10 +46,18 @@ $db = new Conexion();
   <?php
     include '../forms/form_checkout.php'
   ?>
-  
 
 </body>
 
+<script src="../../public/js/jquery.js"></script>
+
+<script src="../../public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="../../public/js/usuario.js"></script>
+<!-- Js botones -->
+<script src="../../public/js/buttons.js"></script>
+
+<script src="../../public/js/dates.js"></script>
 
 <br><br><br><br><br><br><br>
     <?php 

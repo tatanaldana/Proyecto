@@ -42,7 +42,7 @@ $db = new Conexion();
 <body>
 
     <?php
-        include "../forms/form_pagodireccion.php";
+        include "../forms/form_metodopago.php";
     ?>
 
   

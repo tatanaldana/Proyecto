@@ -176,6 +176,8 @@ if (!empty($_GET["accion"])) {
     <?php
         incluirTemplate('footer');
     ?>
+
+<script src = "../../public/js/usuario.js" ></script>
 </body>
 
 </html>
