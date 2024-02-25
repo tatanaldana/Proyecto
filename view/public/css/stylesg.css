@@ -261,12 +261,12 @@ body{
     border-radius: 4rem;
     margin-top: 3rem;
     padding: 2rem;
-    max-width: 70rem;
+    max-width: 100rem;
 }
 
-
-
-
+.datos-perfil h6{
+    text-transform: uppercase;
+}
 
 /* INPUT PERFIL*/
 .informacion{
