@@ -13,7 +13,7 @@ $sql="SELECT id_categoria,nombre_cat FROM categorias";
 $result=mysqli_query($conexion,$sql);
 ?>
 <div class="caja_popup" id="form_prod">
-    <form action="../gestion/productos/agregar_prod.php" class="contenedor_popup" method="POST">
+    <form action="../gestion/productos/agregar_prod.php" class="contenedor_popup" method="POST" enctype="multipart/form-data">
         <div class="container">
         <div class="d-flex justify-content-center">
         <div class="row">
@@ -55,6 +55,10 @@ $result=mysqli_query($conexion,$sql);
                 <tr>
                     <td>codigo</td>
                     <td><input type="text" name="cod" required></td>
+                </tr>
+                <tr>
+                    <td>imagen</td>
+                    <td><input type="text" name="foto" required></td>
                 </tr>
 
 
