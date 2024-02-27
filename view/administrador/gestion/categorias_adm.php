@@ -53,3 +53,13 @@
 
     </body>
 </html>
+
+<script src="/Proyecto/view/public/js/jquery.js"></script>
+
+<script src="/Proyecto/view/public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="/Proyecto/view/public/js/usuario.js"></script>
+<!-- Js botones -->
+<script src="/Proyecto/view/public/js/buttons.js"></script>
+
+<script src="/Proyecto/view/public/js/dates.js"></script>
