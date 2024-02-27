@@ -12,13 +12,13 @@
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
   </head>
   <body>
   <?php
   include 'include/header.php';
 
-  include 'forms/form_registro.php';
+ /* include 'forms/form_registro.php';*/
 
   include 'gestion/barra.php';
 
@@ -30,12 +30,22 @@
 <?php 
     include 'crud/conexion.php';
     
-    include 'crud/crud.php';
+    /*include 'crud/crud.php';*/
 
     include 'include/img_menu.php';
 
     include 'include/footer.php';
   ?> 
+
+<script src="../public/js/jquery.js"></script>
+
+<script src="../public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="../public/js/usuario.js"></script>
+<!-- Js botones -->
+<script src="../public/js/buttons.js"></script>
+</body>
+</html>
 
     </body>
 </html>

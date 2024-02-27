@@ -19,7 +19,7 @@ echo "
         </div>
 
         <div class='col-md-3'>
-        <a href='/Proyecto/view/administrador/sugerencias.php'><img src='/Proyecto/view/public/img/sugerencias.png' alt='' class='rounded-circle'></a>
+        <a href='/Proyecto/view/administrador/sugerencias.php'><img src='/Proyecto/view/public/img/utilidades/sugerencias.png' alt='' class='rounded-circle'></a>
         <h2>Sugerencias</h2>
     </div>
 

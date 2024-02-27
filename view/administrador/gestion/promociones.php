@@ -13,7 +13,7 @@
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="..\css\sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="stylesheet" href="../../css/style.css">
   </head>
   <body>
   <?php
