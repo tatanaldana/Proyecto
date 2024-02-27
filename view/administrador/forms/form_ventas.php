@@ -14,9 +14,9 @@
         <div class="row">
         <table class="table-responsive">
             <tr>
-                <td><a class="btn btn-primary" onclick="abrirform()">Ingresar Venta</a></td>
-                <td><a href="ventas/ver_ventas.php" class="btn btn-primary" >Verificar venta</a></td>
-                <td><a href="ventas/his_ventas.php"  class="btn btn-primary" >Historico</a></td>
+                <td><a class="btn btn-primary" onclick="abrirform()" style=' margin-left: 0px'>Ingresar Venta</a></td>
+                <td><a href="ventas/ver_ventas.php" class="btn btn-primary" style=' margin-left: 200px'>Verificar venta</a></td>
+                <td><a href="ventas/his_ventas.php"  class="btn btn-primary" style='margin-left: 200px'>Historico</a></td>
             </tr> 
         </table>
         </div>

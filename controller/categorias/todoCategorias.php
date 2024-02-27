@@ -7,7 +7,7 @@
     $resultado = $categorias->get_categorias();
 
     if ($resultado) {
-        #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTA POR MEDIO DEL AJAX
+        #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTAPOR MEDIO DEL AJAX#
         $json_response = json_encode($resultado);
         echo $json_response;
     } else {

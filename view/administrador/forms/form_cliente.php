@@ -1,9 +1,4 @@
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Clientes</li>
-  </ol>
-</nav>
+
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">

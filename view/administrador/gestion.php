@@ -15,14 +15,24 @@
     <link rel="stylesheet" href="../public/css/styles.css">
   </head>
   <body>
+  
+
   <?php
   include 'include/header.php';
 
  /* include 'forms/form_registro.php';*/
 
+  ?>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Gestion</li>
+  </ol>
+</nav>
+  <?php
   include 'gestion/barra.php';
 
-  include 'include/img_bienve.php';
+  include 'include/img_gestion.php';
 
     ?>
 
@@ -37,13 +47,7 @@
     include 'include/footer.php';
   ?> 
 
-<script src="../public/js/jquery.js"></script>
 
-<script src="../public/js/sweetalert.min.js"></script>
-<!-- Js usuarios -->
-<script src="../public/js/usuario.js"></script>
-<!-- Js botones -->
-<script src="../public/js/buttons.js"></script>
 </body>
 </html>
 
