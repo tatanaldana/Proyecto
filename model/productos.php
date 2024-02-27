@@ -1,6 +1,6 @@
-
-
 <?php
+require_once 'conexion.php';
+
 class Productos extends Conexion{
 
     //Funcion para mostrar productos en pantalla
@@ -23,6 +23,36 @@ class Productos extends Conexion{
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+//funcion que busca productos por categoría
+        public function get_productos_por_categoria($idCategoria){
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql = "SELECT * FROM productos WHERE categorias_idcategoria = :idCategoria";
+            $sql = $conectar->prepare($sql);
+            $sql->bindParam(':idCategoria', $idCategoria);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return [];  // o return null; según tu lógica
+            }
+        }
+
+        //funcion que busca productos por codigo
+        public function get_productos_por_codigo($cod){
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql = "SELECT * FROM productos WHERE cod = :cod";
+            $sql = $conectar->prepare($sql);
+            $sql->bindParam(':cod', $cod);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return [];  // o return null; según tu lógica
+            }
+        }
 
 
     //Ingresar productos

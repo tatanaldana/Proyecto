@@ -8,8 +8,7 @@ session_start();
 
 
 <!DOCTYPE html>
-<html lang="es">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,13 +18,12 @@ session_start();
     ?>
 </head>
 
-<body>
-
     <?php
         require_once '../../includeUsuario/funciones.php';
         incluirTemplate('header');
     ?>
 <body>
+
 
 <div class="imagenindex">
 
@@ -33,64 +31,16 @@ session_start();
 
 </div>
 
-
-    
-   
-         
-        <section class="categorias">
-
-            <div class="listado-categorias">
-                
-                <div class="categoria">
-                    <img src="../../public/img/promociones.jpg" alt="img promociones">
-                        <div class="texto-categoria">
-                            <a href="../carrito/catcombos.php">Combos</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../public/img/pollo.jpg" alt="img pollo">
-                        <div class="texto-categoria">
-                            <a href="../carrito/catpollo.php">Pollos</a>
-                        </div> <!--Informacion del producto--> 
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../public/img/bebidas.jpg" alt="img bebida">             
-                        <div class="texto-categoria">
-                            <a href="../carrito/catbebidas.php">Bebidas</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../public/img/pizza.jpg" alt="img pizza">
-                        <div class="texto-categoria"> 
-                            <a href="../carrito/catpizza.php">Pizzas</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../public/img/especialidades.jpg" alt="img especialidades">
-                        <div class="texto-categoria">
-                            <a href="../carrito/catespecialidades.php">Especialidades</a>
-                        </div><!--Informacion del producto-->
-                </div><!--Produto-->
-
-                <div class="categoria">
-                    <img src="../../public/img/hamburguesas.jpg" alt="img hamburguesa">
-                        <div class="texto-categoria">
-                        <a href="../carrito/catburguer.php">Hamburguesas</a>
-                    </div><!--Informacion del producto-->
-                </div><!--Produto-->
-            </div><!--Fin listados de productos-->
-            
-        </section>
+    <main class="container">
+        <div class="listado-categorias" id="listado-categorias"></div>
     </main>
 
-</body>
-
 <br><br><br><br><br><br><br>
-    <?php   
+
+<script src="../../public/js/usuario.js"></script>
+    <?php
+        
+
         incluirTemplate('footer');
     ?>
 

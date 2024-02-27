@@ -53,8 +53,7 @@ $usar_db->set_names();
             ?>
                     <div class="contenedor_productos">
 
-                        <form method="POST" action="carrito.php?accion=agregar&cod=
-<?php echo $productos_array[$i]["cod"]; ?>">
+                        <form method="POST" action="carrito.php?accion=agregar&cod=<?php echo $productos_array[$i]["cod"]; ?>">
                             <div><img src="<?php echo $productos_array[$i]["img"]; ?>"></div>
                             <div>
                                 <div style="padding-top:20px;font-size:18px;"><?php echo $productos_array[$i]["nombre_pro"]; ?></div>
