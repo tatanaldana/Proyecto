@@ -36,5 +36,16 @@
     include 'include/footer.php';
   ?> 
   
+
+  <!-- Final formulario login -->
+
+  <!-- Jquery -->
+  <script src="public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="public/js/bootstrap.min.js"></script>
+  <!-- SweetAlert js -->
+  <script src="public/js/sweetalert.min.js"></script>
+  <!-- Js personalizado -->
+  <script src="public/js/usuario.js"></script>
   </body>
 </html>
