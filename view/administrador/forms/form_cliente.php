@@ -4,7 +4,9 @@
 <div class="contenedor-busqueda" id="contenedor-busqueda">
 <div class="mx-auto" style="width:300px">
 <div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
+  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" 
+  aria-describedby="search-addon" name="buscar" id="buscar"required/>
+  
   <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
 </div>
 </div>

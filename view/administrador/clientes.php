@@ -27,6 +27,7 @@
 </nav>
    <?php
     include 'include/img_clientes.php';
+    
     include 'forms/form_cliente.php';
      
   
