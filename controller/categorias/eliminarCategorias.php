@@ -1,6 +1,6 @@
 <?php
 
-$id_categoria=$_POST['$id_categoria'];
+$id_categoria=$_POST['id_categoria'];
 
 
 if(empty($id_categoria)){
@@ -16,3 +16,4 @@ if(empty($id_categoria)){
 }
 
   ?>
+

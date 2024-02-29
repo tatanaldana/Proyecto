@@ -8,11 +8,14 @@
   aria-describedby="search-addon" name="buscar" id="buscar"required/>
   
   <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
+
 </div>
 </div>
 </div>
 </div>
 </form>
+
+
 <div class="my-5"></div>
 <div class="container">
 <div class="d-flex justify-content-center">
