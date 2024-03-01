@@ -42,7 +42,7 @@ include("../../include/header.php");
     <tr>
         <td colspan="2" class="center">
             <div class="btn-group" role="group" aria-label="Botones">
-                <button type="submit" class="btn btn-primary my-4 ms-2" id="btnagregarCategoria" name="btnregistrar" value="registrar">Agregar</button> 
+                <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarCategoria" name="btnregistrar" value="registrar">Agregar</button> 
                 <a href="../../../administrador/gestion/categorias_adm.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
             </div>
         </td>

@@ -1,24 +1,26 @@
+
 <?php
-$nombre_cat=$_POST['nombre_cat'];
+// Verificar si las variables POST están definidas
+if(isset($_POST['categoria'])) {
+    $nombre_cat = $_POST['categoria'];
 
-if(empty($nombre_cat)){
+    if(empty($nombre_cat)){
+        echo 'error_1'; // Un campo está vacío y es obligatorio
+    } else {
+        try {
+            // Incluimos la clase Categorias
+            require_once('../../model/categorias.php');
 
-    echo'error_1';// un campo esta vacio y es obligatorio
+            // Creamos un objeto de la clase Categorias
+            $categorias = new Categorias();
 
-}else{
-    try{
-        //inclimos la clase categorias
-        require_once('../../model/categorias.php');
-
-        #creamos un objeto de la clase de  la categorias
-        $categorias= new Categorias();
-
-        #llamamos al metodo categorias para validar los datos de la base de datos 
-        $categorias->insert_categorias($nombre_cat);
-    }catch(PDOException $e){
-        echo 'error en el registro';
+            // Llamamos al método insert_categorias para insertar los datos en la base de datos
+            $categorias->insert_categorias($nombre_cat);
+        } catch(PDOException $e) {
+            echo 'error en el registro';
+        }
     }
+} else {
+    echo 'error_2'; // Alguna de las variables POST no está definida
 }
-
-
 ?>
