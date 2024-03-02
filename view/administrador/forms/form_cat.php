@@ -1,7 +1,18 @@
-
-
+ <!-- Formulario de búsqueda -->
 <form id="formmostrar">
-    <!-- Formulario de búsqueda -->
+    <div class="container">
+        <div class="contenedor-busqueda" id="contenedor-busqueda">
+            <div class="mx-auto" style="width:300px">
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Ingrese id de categoria" aria-label="Buscar" 
+                    aria-describedby="search-addon" name="buscar" id="buscar"required/>
+                    
+                    <button type="button" class="btn btn-primary my-3" name="btnbuscar" id="btnbuscar">Buscar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
 
 <!-- Espacio en blanco -->
@@ -38,12 +49,10 @@
             <!-- Tabla de botones -->
             <table class="table-responsive">                    
                 <tr>
-<!-- Botones de acción --> <td><a href="../forms/categorias/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
-                   
-                
+                    <td><a href="../forms/categorias/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
                     <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
                     <td><a class="btn btn-primary" id="editButton">Editar</a></td>
-                    <td><a class="btn btn-primary delete-button" id="deleteButton">Eliminar</a></td>
+                    <td><button class="btn btn-danger delete-button" id="deleteButton">Eliminar</button></td>
                 </tr> 
             </table>
         </div>

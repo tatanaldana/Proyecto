@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         try {
             // Incluimos la clase Categorias
-            require_once('model/categoria.php');
+            require_once('../../model/categoria.php');
     
             // Creamos un objeto de la clase Categorias
             $categorias = new Categorias();

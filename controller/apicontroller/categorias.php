@@ -31,7 +31,7 @@ switch($_GET["arc"]){
         break;
 
     case "Eliminar_cat_Id":
-        $datos = $Categorias->eliminar_categorias($body["id_categoria"]);
+        $datos=$Categorias->eliminar_categorias($body["id_categoria"]);
         echo json_encode("Eliminacion Correcta");
         break;  
 }

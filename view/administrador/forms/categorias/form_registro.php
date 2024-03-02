@@ -38,7 +38,7 @@ include("../../include/header.php");
                                 <td><label for="categoria"></label></td>
                                 <td><input type="text" class="form" id="categoria" name="categoria" placeholder="Ingresa la categoría"></td>
                             </tr>
-                            <form id="agregarCategoria">
+
     <tr>
         <td colspan="2" class="center">
             <div class="btn-group" role="group" aria-label="Botones">
@@ -63,5 +63,7 @@ include("../../include/header.php");
 <script src="../../../public/js/sweetalert.min.js"></script>
 <!-- Js personalizado -->
 <script src="../../../public/js/categorias.js"></script>
+
+
 </body>
 </html>

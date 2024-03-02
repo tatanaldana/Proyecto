@@ -35,10 +35,8 @@
         <?php 
 
           include '../forms/form_cat.php';
-
-         /* include '../gestion/categorias/tabla_cat.php';*/
         
-          include '../gestion/categorias/botones_cat.php';     
+         include '../gestion/categorias/botones_cat.php';     
             
           include '../include/img_menu.php';
 
@@ -48,12 +46,11 @@
     </body>
   </html>
 
-    <script src="/Proyecto/view/public/js/jquery.js"></script>
+    <script src="../../public/js/jquery.js"></script>
 
-    <script src="/Proyecto/view/public/js/sweetalert.min.js"></script>
+    <script src="../../public/js/sweetalert.min.js"></script>
     <!-- Js usuarios -->
-    <script src="/Proyecto/view/public/js/categorias.js"></script>
-    <!-- Js botones -->
-    <script src="/Proyecto/view/public/js/buttons.js"></script>
-
+    <script src="../../public/js/categorias.js"></script>
+    
+ 
    

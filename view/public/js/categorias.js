@@ -53,76 +53,130 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $('#deleteButton').click(function() {
-    var id_categoria = $('input:checkbox:checked').data('id_categoria');
-    console.log(id_categoria);
+      // Obtener el ID de categoría del checkbox marcado
+      var id_categoria = $('input:checkbox:checked').data('id_categoria');
 
-    $.ajax({
-      method: 'POST',
-      url: '../../controller/categorias/eliminarCategorias.php',
-      data: { id_categoria:id_categoria},
-      beforeSend: function() {
-        $('#load').show();
-      },
-      success: function(res) {
-        $('#load').hide();
-  
-        if (res == 'error_1') {
-          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-        } else if (res == 'error_2') {
-          swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
-        } else if (res == 'error_3') {
-          swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
-        } else if (res == 'error_4') {
-          swal('Error', 'Por favor ingresa un correo valido', 'warning');
-        } else {
-          window.location.href = res;
-        }
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
+      // Verificar si se seleccionó alguna categoría
+      if (id_categoria) {
+          console.log('ID de categoría a eliminar:', id_categoria);
+
+          // Realizar la solicitud AJAX para eliminar la categoría
+          $.ajax({
+              method: 'POST',
+              url: '../../../controller/categorias/eliminarCategorias.php',
+              data: { id_categoria: id_categoria },
+              beforeSend: function() {
+                  // Mostrar un indicador de carga mientras se procesa la solicitud
+                  $('#load').show();
+              },
+              success: function(res) {
+                  // Ocultar el indicador de carga después de completar la solicitud
+                  $('#load').hide();
+                  response=JSON.parse(res);
+                  // Verificar la respuesta del servidor
+                  if (response.success) {
+                      
+                      // La categoría se eliminó correctamente
+                      alert(response.message);
+                      // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
+                      window.location.href = '../gestion/categorias_adm.php';
+                      // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
+                   
+                  } else {
+                      // Ocurrió un error o la categoría no se pudo eliminar
+                      // Mostrar un mensaje de error o manejar el caso según sea necesario
+                      alert('Ocurrió un error al eliminar la categoría');
+                  }
+              },
+              error: function(xhr) {
+                  // Manejar errores de la solicitud AJAX
+                  console.error('Error en la solicitud AJAX:', xhr.responseText);
+                  alert('Ocurrió un error en la solicitud AJAX');
+              }
+          });
+      } else {
+          // No se seleccionó ninguna categoría, mostrar un mensaje de advertencia
+          alert('Por favor, selecciona una categoría para eliminar');
       }
-    });
   });
 });
 
 
 
 
-
-
   //view categorias  
 
-function mostrarCategorias(categorias) {
-  // Obtener el contenedor donde se mostrarán las categorías
-  var listadoCategorias = $('#listado-categorias');
-  // Limpiar el contenido existente en el contenedor
-  listadoCategorias.empty();
-  // Verificar si categorias es un array antes de intentar iterar sobre él
-  if (Array.isArray(categorias)) {
-    // Iterar sobre las categorías y agregarlas al contenedor
+  function mostrarCategorias(categorias) {
+    // Obtener el cuerpo de la tabla donde se mostrarán las categorías
+    var tbody = $('#filasTabla');
+    // Limpiar el contenido existente en el cuerpo de la tabla
+    tbody.empty();
+    // Iterar sobre las categorías y agregarlas a la tabla
     categorias.forEach(function(categoria) {
-      var categoriaHTML = `
-        <div class="categoria" data-id_categoria="${categoria.id_categoria}">
-          <img src="../../public/img/categorias/${categoria.nombre_cat}.jpg" alt="${categoria.nombre_cat}">
-          <a href="../../user/productos/productos.php?idCategoria=${categoria.id_categoria}" >${categoria.nombre_cat}</a>
-        </div>`;
-      // Agregar la categoría al contenedor
-      listadoCategorias.append(categoriaHTML);
+        // Crear una nueva fila de tabla
+        var row = $('<tr>');
+        // Crear el checkbox con el atributo data-id_categoria
+        var checkbox = $('<input>').attr({
+            type: 'checkbox',
+            'data-id_categoria': categoria.id_categoria
+        }).click(function() {
+            toggleButtons(id_categoria);
+        });
+        // Agregar el checkbox a la primera celda de la fila
+        $('<td>').append(checkbox).appendTo(row);
+        // Agregar el ID de la categoría a la segunda celda de la fila
+        $('<td>').text(categoria.id_categoria).appendTo(row);
+        // Agregar el nombre de la categoría a la tercera celda de la fila
+        $('<td>').text(categoria.nombre_categoria).appendTo(row);
+        // Agregar la fila a la tabla
+        row.appendTo(tbody);
     });
-  } else {  
-    // Si categorias no es un array, muestra un mensaje de error
-    console.error("La respuesta no es un array:", categorias);
-    // Puedes agregar un mensaje o realizar alguna acción en caso de error
-  }
 }
-//Muestra la Categoria
-$(document).ready(function() {
-  // Extraer el ID de la categoría de la URL
-  var id_Categoria = new URLSearchParams(window.location.search).get('id_Categoria');
 
-  // Llamar a la función para cargar productos
-  cargarCategoria(id_Categoria);
-});
+
+ 
+/*function cargarCategoria(id_Categoria) {
+  if (id_Categoria !== null && id_Categoria !== undefined && id_Categoria !== '') {
+    console.log('Antes de la llamada AJAX');
+    $.ajax({
+      method: 'GET',
+      url: '../../../controller/categorias/view_categorias.php',
+      data: { id_Categoria: id_Categoria }, // Pasar el ID de la categoría como parámetro
+      success: function(response) {
+        console.log('Tipo de datos de la respuesta:', typeof response);
+        console.log('Respuesta del servidor:', response);
+        try {
+          var data;
+
+          // Si la respuesta ya es un objeto, úsala directamente
+          if (typeof response === 'object') {
+            data = response;
+          } else {
+            // Intenta parsear la respuesta como JSON
+            data = JSON.parse(response);
+          }
+
+          // Verifica si es un array antes de llamar a mostrarcategorias
+          if (Array.isArray(data)) {
+            // Llama a la función para mostrar las categorias y pasa el id de la categoría
+            mostrarcategorias(data, id_Categoria);
+          } else {
+            console.error('La respuesta del servidor no es un array:', data);
+          }
+        } catch (error) {
+          console.error('Error al procesar la respuesta:', error);
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error al cargar productos:', textStatus, errorThrown, jqXHR);
+        // Puedes agregar un mensaje o realizar alguna acción en caso de error
+      }
+    });
+  } else {
+    console.error('ID de categoría no válido:', id_Categoria);
+  }
+}*/
+
 
 
 
@@ -142,7 +196,7 @@ $(document).ready(function() {
         var tablaHTML = '';
         for (var i = 0; i < datos.length; i++) {
           tablaHTML += '<tr>';
-          tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" dataid_categoria="' + datos[i].id_categoria + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+          tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-id_categoria="' + datos[i].id_categoria + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
           tablaHTML += '<td>' + datos[i].id_categoria + '</td>';
           tablaHTML += '<td>' + datos[i].nombre_cat + '</td>';
           tablaHTML += '</tr>';
