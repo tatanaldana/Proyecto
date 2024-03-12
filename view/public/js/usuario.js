@@ -498,7 +498,7 @@ function mostrarProductos(productos, idCategoria) {
               <form method="POST" action="../productos/carrito.php?accion=agregar&cod=${producto.cod}">
                   <div>
                       <div class="d-flex flex-column align-items-center">
-                          <img src="../../public/img/categorias/cat pollo.jpg" alt="${producto.nombre_pro}">
+                          <img src="../../public/img/productos/${producto.nombre_pro}.jpeg" alt="${producto.nombre_pro}">
                           <div style="padding-top:20px;font-size:18px;">${producto.nombre_pro}</div>
                           <div style="padding-top:20px;font-size:18px;"><?php echo $productos_array[$i]["nombre_pro"]; ?></div>
                           <div style="padding-top:10px;font-size:20px;"><?php echo "$" . $productos_array[$i]["precio_pro"]; ?></div>

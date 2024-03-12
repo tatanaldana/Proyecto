@@ -19,7 +19,7 @@ if (!empty($_GET["accion"])) {
                     'larause_cod'        => $codproducto[0]["cod"],
                     'txtcantidad'        => $_POST["txtcantidad"],
                     'larause_pre'        => $codproducto[0]["precio_pro"],
-                    'larause_img'        => $codproducto[0]["img"]
+                    'larause_img'		=>$codproducto[0]["img"]
                 ));
 
                 if (!empty($_SESSION["items_carrito"])) {
@@ -75,14 +75,14 @@ if (!empty($_GET["accion"])) {
 <head>
     <title>La cabaña</title>
     <?php
-        include '../../includeUsuario/head.php';
+    include '../../includeUsuario/head.php';
     ?>
 </head>
 
 <?php
-        require_once '../../includeUsuario/funciones.php';
-        incluirTemplate('header');
-    ?>
+require_once '../../includeUsuario/funciones.php';
+incluirTemplate('header');
+?>
 
 <body>
 
@@ -112,6 +112,7 @@ if (!empty($_GET["accion"])) {
                         <th style="width:10%">Precio x unidad</th>
                         <th style="width:10%">Precio</th>
                         <th style="width:10%"><a href="../categorias/categoriasuser.php?accion=eliminar&eliminarcode=">Regresar</a></th>
+                        <th style="width:10%"></th>
                     </tr>
                     <?php
 
@@ -119,12 +120,13 @@ if (!empty($_GET["accion"])) {
                         $item_price = $item["txtcantidad"] * $item["larause_pre"];
                     ?>
                         <tr>
-                            <td><img src="<?php echo $item["larause_img"]; ?>" class="imagen_peque" /><?php echo $item["larause_nom"]; ?></td>
+                            <td><?php echo $item["larause_nom"]; ?></td>
                             <td><?php echo $item["larause_cod"]; ?></td>
                             <td><?php echo $item["txtcantidad"]; ?></td>
                             <td><?php echo "$ " . $item["larause_pre"]; ?></td>
                             <td><?php echo "$ " . number_format($item_price, 2); ?></td>
                             <td><a href="carrito.php?accion=eliminar&eliminarcode=<?php echo $item["larause_cod"]; ?>">Eliminar</a></td>
+                            <td><img src="../../public/img/productos/<?php echo $item["larause_img"]; ?>"alt="Imagen del producto" style='width: 100px; height: 100px; object-fit: cover;' /></td>
                         </tr>
                     <?php
                         $totcantidad += $item["txtcantidad"];
@@ -137,17 +139,16 @@ if (!empty($_GET["accion"])) {
                         <td><b><?php echo $totcantidad; ?></b></td>
                         <td colspan="2"><strong><?php echo "$ " . number_format($totprecio, 2); ?></strong></td>
                         <?php
-                        if(!isset($_SESSION['nombre'])){
-                        echo
-                        '<td><a href="../../login.php">Pagar</a></td>';
-                        
-                        }else{
+                        if (!isset($_SESSION['nombre'])) {
+                            echo
+                            '<td><a href="../../login.php">Pagar</a></td>';
+                        } else {
                             echo
                             '<td><a href="../pagos/pagodatos.php">Pagar</a></td>';
                         }
                         ?>
-                        
-                        
+
+
                     </tr>
                 </table>
 
@@ -155,10 +156,10 @@ if (!empty($_GET["accion"])) {
             }
 
 
-            if(!isset($_SESSION['nombre'])){
-            echo
+            if (!isset($_SESSION['nombre'])) {
+                echo
                 '<a href="../../../index.php"><button type="button" class="btn regular-button" style="background: var(--primario); color: white;">Regresar</button></a>';
-            }else{
+            } else {
 
                 echo
 
@@ -166,18 +167,16 @@ if (!empty($_GET["accion"])) {
             }
             ?>
 
-            
-            
+
+
         </div>
     </center>
 
- 
+
     <br><br><br><br><br><br><br>
     <?php
-        incluirTemplate('footer');
+    incluirTemplate('footer');
     ?>
-
-<script src = "../../public/js/usuario.js" ></script>
 </body>
 
 </html>

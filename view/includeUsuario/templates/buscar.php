@@ -24,7 +24,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
     <title>La cabaña</title>
 
     <?php
-        include '../../includeUsuario/head.php';
+    include '../../includeUsuario/head.php';
     ?>
 
 </head>
@@ -45,32 +45,32 @@ incluirTemplate('header')
         $conectar = new mysqli('localhost', 'root', '', 'arca');
 
         // Check the connection
-        if ($conectar->connect_error) {
-            die("Connection failed: " . $conectar->connect_error);
-        }
+        if ($conectar->connect_error){
+                die("Connection failed: " . $conectar->connect_error);
+            }
 
         $buscar = $_POST['textbuscar'];
 
-        $queryusuarios = mysqli_query($conectar, "SELECT * FROM productos WHERE nombre_pro like '" . $buscar . "%'");
-        if ($queryusuarios->num_rows > 0) {
+        $queryusuarios = mysqli_query($conectar, "SELECT * FROM productos WHERE nombre_pro like '%" . $buscar . "%'");
+        if ($queryusuarios->num_rows > 0){
 
             while ($mostrar = mysqli_fetch_array($queryusuarios)) {
 
-                $mostrar["foto"];
+                $mostrar["img"];
                 $mostrar["nombre_pro"];
                 $mostrar["precio_pro"];
-
         ?>
                 <div class="contenedor_productos">
-                    <div><img src="<?php echo $mostrar["foto"]; ?>"></div>
+                    <div><img src="../../public/img/productos/<?php echo $mostrar["img"]; ?>" alt="Imagen del producto" style='width: 100px; height: 100px; object-fit: cover;' /></div>
                     <div>
-                        <form action="/Proyecto/carrito/carrito.php">
-                            <div style="padding-top:20px;font-size:18px;"><?php echo $mostrar["nombre_pro"]; ?></div>
-                            <div style="padding-top:10px;font-size:20px;"><?php echo "$" . $mostrar["precio_pro"]; ?></div>
-                            <div class="d-flex flex-column align-items-center">
-                                <input type="text" name="txtcantidad" value="1" size="1" class="mb-2" />
-                                <input type="submit" value="Agregar" style="background: var(--primario); color: white; border:none; padding:10px; width:100%;" />
-                        </form>
+                        <form method="POST" action="../../user/productos/carrito.php?accion=agregar&cod=<?php echo $mostrar["cod"]; ?>">
+                            
+                                <div style="padding-top:20px;font-size:18px;"><?php echo $mostrar["nombre_pro"]; ?></div>
+                                <div style="padding-top:10px;font-size:20px;"><?php echo "$" . $mostrar["precio_pro"]; ?></div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <input type="text" name="txtcantidad" value="1" size="1" class="mb-2" />
+                                    <input type="submit" value="Agregar" style="background: var(--primario); color: white; border:none; padding:10px; width:100%;" />
+                            </form>
                     </div>
                 </div>
     </div>

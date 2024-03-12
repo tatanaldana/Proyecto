@@ -58,7 +58,7 @@ $result=mysqli_query($conexion,$sql);
                 </tr>
                 <tr>
                     <td>imagen</td>
-                    <td><input type="text" name="foto" required></td>
+                    <td><input type="file" name="img" required></td>
                 </tr>
 
 

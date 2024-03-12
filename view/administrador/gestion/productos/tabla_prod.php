@@ -54,7 +54,7 @@
                             echo $mostrar['cod'];
                             echo "</td>";
                             echo "<td>";
-                            echo "<img src='" . $mostrar['foto'] . "' alt='Product Image' style='width: 100px; height: 100px; object-fit: cover;' />";
+                            echo "<img src='../../public/img/productos/$mostrar[img]'style='width: 100px; height: 100px; object-fit: cover;' />";
                             echo "</td>";
                             echo "</tr>";
                         }
