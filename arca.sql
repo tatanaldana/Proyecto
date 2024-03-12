@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-02-2024 a las 01:11:47
+-- Tiempo de generación: 12-03-2024 a las 19:44:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -43,6 +43,13 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nombre_cat` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+
+INSERT INTO `categorias` (`id_categoria`, `nombre_cat`) VALUES
+(9, 'POLLO');
 
 -- --------------------------------------------------------
 
@@ -119,8 +126,16 @@ CREATE TABLE `pqr` (
   `tipo_sugerencia` varchar(20) NOT NULL,
   `fecha_pqr` datetime NOT NULL,
   `estado` int(11) NOT NULL,
-  `usuarios_id` int(11) NOT NULL
+  `usuarios_id` int(11) NOT NULL,
+  `link_res` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pqr`
+--
+
+INSERT INTO `pqr` (`id`, `sugerencia`, `tipo_sugerencia`, `fecha_pqr`, `estado`, `usuarios_id`, `link_res`) VALUES
+(26, 'scacass', 'reclamo', '2024-03-12 05:15:26', 1, 0, '');
 
 -- --------------------------------------------------------
 
@@ -134,9 +149,17 @@ CREATE TABLE `productos` (
   `detalle` varchar(200) NOT NULL,
   `precio_pro` int(11) NOT NULL,
   `categorias_idcategoria` int(11) NOT NULL,
-  `img` text DEFAULT NULL,
-  `cod` varchar(10) NOT NULL
+  `cod` varchar(10) NOT NULL,
+  `img` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `productos`
+--
+
+INSERT INTO `productos` (`idProducto`, `nombre_pro`, `detalle`, `precio_pro`, `categorias_idcategoria`, `cod`, `img`) VALUES
+(67, 'medio pollo', 'patacon yuca papa salada y francesa', 21500, 9, 'mp1', '../../../public/img/productos/medio pollo.jpeg'),
+(68, 'pollo', 'patacon yuca papa salada y francesa', 34800, 9, 'p1', '../../../public/img/productos/pollo.jpeg');
 
 -- --------------------------------------------------------
 
@@ -304,7 +327,7 @@ ALTER TABLE `carrito`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `com_venta`
@@ -319,16 +342,22 @@ ALTER TABLE `det_promo`
   MODIFY `idPromo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT de la tabla `mat_pri`
+--
+ALTER TABLE `mat_pri`
+  MODIFY `cod_materia_pri` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `pqr`
 --
 ALTER TABLE `pqr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `idProducto` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT de la tabla `promocion`
