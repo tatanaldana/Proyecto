@@ -16,7 +16,7 @@ if(isset($_POST['id_categoria'])) {
 
         // Verificar si la eliminación fue exitosa
         if($result) {
-           $response = array ("success" => true, "message" => "Venta eliminada de manera exitosa");
+           $response = array ("success" => true, "message" => "categoria eliminada de manera exitosa");
            echo json_encode($response);
            
            

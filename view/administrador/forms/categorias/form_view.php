@@ -25,7 +25,7 @@ include("../../include/header.php");
 
   <form id="visualizarCategoria">
     <div class="row d-flex justify-content-center">
-      <div class="col-xs-6">
+      <div class="col-xs-2">
         <div class="card mb-5">
           <div class="card-body d-flex flex-column align-items-center">
             <table class="table">
@@ -39,11 +39,11 @@ include("../../include/header.php");
                   <td>
                     <div class="mb-3">
                       <label for="idCategoria" class="form-label">ID Categoría</label>
-                      <input type="text" class="form-control" id="idCategoria" name="idCategoria" readonly>
+                      <input type="number" class="form-control" id="id_categoria" name="id_categoria" readonly>
                     </div>
                     <div class="mb-3">
                       <label for="nombreCategoria" class="form-label">Nombre Categoría</label>
-                      <input type="text" class="form-control" id="nombreCategoria" name="nombreCategoria" readonly>
+                      <input type="text" class="form-control" id="nombre_cat" name="nombre_cat" readonly>
                     </div>
                   </td>
                 </tr>

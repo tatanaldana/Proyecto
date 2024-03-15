@@ -39,13 +39,104 @@ $(document).ready(function() {
 
 //editarcategoria.php
 
-//
-//
-//
-//
-//
-//
+//formulario de consulta para llevar datos del formulario  a modificar
+//Usamos la función $document.ready para que el DOM se cargue completamente antes de ejecutar el código.
 
+  $('#editButton').click(function() {
+//Cuando se da click en el boton con el id EditButton , se recupera el valor id_categoria del checkbox seleccionado
+    var id_categoria = $('input:checkbox:checked').data('id_categoria');
+//Se realiza la petición AJAX por metodo POST 
+    $.ajax({
+      method: 'POST',
+      url: '../../../controller/categorias/view_categorias.php',
+      //Se envía el dato 'id_categoria' al controlador PHP
+      data: { id_categoria: id_categoria },
+      //Si la solicitud es exitosa
+      success: function(response) {
+        try {
+
+        //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos la cadena de texto JSON a un objeto javascript
+          var id_categoria = JSON.parse(response);
+          if (!id_categoria.error) {
+            //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
+            //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
+            sessionStorage.setItem('categoriaData', JSON.stringify(id_categoria));
+            //Se redirecciona al formulario de edicion luego de un segundo
+            setTimeout(function() {
+              window.location.href = '../forms/categorias/form_editar.php';
+            }, 1000);
+          } else {
+            console.log(usuario.error);
+          }
+        } catch (error) {
+          console.error('Error al analizar la respuesta JSON:', error);
+        }
+      },
+      error: function(xhr) {
+        console.error(xhr.responseText);
+      }
+    });
+  });
+
+//Datos para realizar update del registro
+
+  $('#btnmodificar').click(function() {
+    var editarCategoria = $('#editarCategoria').serialize();
+console.log (editarCategoria);
+    $.ajax({
+      method: 'POST',
+      url: '../../../../controller/categorias/editarCategoria.php',
+      data: editarCategoria,
+      beforeSend: function() {
+        $('#load').show();
+      },
+      success: function(response) {
+        $('#load').hide();
+  
+        if (response == 'error_1') {
+          swal('Error', 'Campos obligatorios, por favor llena nombre de la categoria', 'warning');
+        } else {
+          window.location.href = '../../gestion/categorias_adm.php';
+        }
+      },
+      error: function(xhr) {
+        console.error(xhr.responseText);
+      }
+    });
+  });
+
+
+//Aca esperamos que cargue totalmente el DOM para poder iniciar el código
+document.addEventListener('DOMContentLoaded', function() {
+  //Verificamos que en la asesión del navegador exista el elemento llamado 'categoriaData'
+  var categoriaData = sessionStorage.getItem('categoriaData');
+
+  //Si el 'categoriaData' existe, entonces convertimos el JSON almacenado en un array
+  if (categoriaData) {
+    var categoriaArray= JSON.parse(categoriaData);//este es el array
+    //Obtenemos el primer objeto del array y lo asigna a la variable 'categorias'
+    var categorias = categoriaArray[0];
+    console.log(categorias);
+    //creamos la funcion para poder llenar los campos del formulario
+    function asignarvalores(){
+    //se llenan los campos de acuerdo al id de cada uno en el formulario
+    document.getElementById('id_categoria').value = categorias.id_categoria;
+    document.getElementById('nombre_cat').value = categorias.nombre_cat;
+    document.getElementById('doc_hidden').value = categorias.id_categoria;
+    }
+    //Llamamos la función para que se ejecute
+    asignarvalores();
+    //Eliminamos el elemento 'categoriaData' de la sesion de almacenamiento.
+    sessionStorage.removeItem('categoriaData');
+//Luego deshabilitamos los campos que no vamos a modificar
+    document.getElementById('id_categoria').disabled = true;
+   
+//si no se encuentra 'categoriaData' entonces imprime el mensaje
+
+  } else {
+    console.log("No se han encontrado datos de la categoria");
+  }
+});
 
 
 
@@ -106,77 +197,74 @@ $(document).ready(function() {
 
   //view categorias  
 
-  function mostrarCategorias(categorias) {
-    // Obtener el cuerpo de la tabla donde se mostrarán las categorías
-    var tbody = $('#filasTabla');
-    // Limpiar el contenido existente en el cuerpo de la tabla
-    tbody.empty();
-    // Iterar sobre las categorías y agregarlas a la tabla
-    categorias.forEach(function(categoria) {
-        // Crear una nueva fila de tabla
-        var row = $('<tr>');
-        // Crear el checkbox con el atributo data-id_categoria
-        var checkbox = $('<input>').attr({
-            type: 'checkbox',
-            'data-id_categoria': categoria.id_categoria
-        }).click(function() {
-            toggleButtons(id_categoria);
+  $('#viewButton').click(function() {
+    //Cuando se da click en el boton con el id viewButton , se recupera el valor id_categoria del checkbox seleccionado
+        var view_categoria = $('input:checkbox:checked').data('id_categoria');
+    //Se realiza la petición AJAX por metodo POST 
+        $.ajax({
+          method: 'POST',
+          url: '../../../controller/categorias/view_categorias.php',
+          //Se envía el dato 'id_categoria' al controlador PHP
+          data: { id_categoria: view_categoria },
+          //Si la solicitud es exitosa
+          success: function(response) {
+            try {
+    
+            //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos 
+            //la cadena de texto JSON a un objeto javascript
+              var view_categoria = JSON.parse(response);
+              if (!view_categoria.error) {
+                //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
+                //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
+                sessionStorage.setItem('viewData', JSON.stringify(view_categoria));
+                //Se redirecciona al formulario de view luego de un segundo
+                setTimeout(function() {
+                  window.location.href = '../forms/categorias/form_view.php';
+                }, 1000);
+              } else {
+                console.log(usuario.error);
+              }
+            } catch (error) {
+              console.error('Error al analizar la respuesta JSON:', error);
+            }
+          },
+          error: function(xhr) {
+            console.error(xhr.responseText);
+          }
         });
-        // Agregar el checkbox a la primera celda de la fila
-        $('<td>').append(checkbox).appendTo(row);
-        // Agregar el ID de la categoría a la segunda celda de la fila
-        $('<td>').text(categoria.id_categoria).appendTo(row);
-        // Agregar el nombre de la categoría a la tercera celda de la fila
-        $('<td>').text(categoria.nombre_categoria).appendTo(row);
-        // Agregar la fila a la tabla
-        row.appendTo(tbody);
-    });
-}
+      });
+    //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
+document.addEventListener('DOMContentLoaded', function() {
+  //Verificamos que en la asesión del navegador exista el elemento llamado 'viewData'
+  var viewData = sessionStorage.getItem('viewData');
 
+  //Si el 'viewData' existe, entonces convertimos el JSON almacenado en un array
+  if (viewData) {
+    var viewArray= JSON.parse(viewData);//este es el array
+    //Obtenemos el primer objeto del array y lo asigna a la variable 'viewdata'
+    var viewData = viewArray[0];
+    console.log(viewData);
+    //creamos la funcion para poder llenar los campos del formulario
+    function asignarvalores2(){
+    //se llenan los campos de acuerdo al id de cada uno en el formulario
+    document.getElementById('id_categoria').value = viewData.id_categoria;
+    document.getElementById('nombre_cat').value = viewData.nombre_cat;
+    
+    }
+    //Llamamos la función para que se ejecute
+    asignarvalores2();
+    //Eliminamos el elemento 'viewData' de la sesion de almacenamiento.
+    sessionStorage.removeItem('viewData');
+//Luego deshabilitamos los campos que no vamos a modificar
+    document.getElementById('id_categoria').disabled = true;
+    document.getElementById('nombre_cat').disabled = true;
+//si no se encuentra 'viewData' entonces imprime el mensaje
 
- 
-/*function cargarCategoria(id_Categoria) {
-  if (id_Categoria !== null && id_Categoria !== undefined && id_Categoria !== '') {
-    console.log('Antes de la llamada AJAX');
-    $.ajax({
-      method: 'GET',
-      url: '../../../controller/categorias/view_categorias.php',
-      data: { id_Categoria: id_Categoria }, // Pasar el ID de la categoría como parámetro
-      success: function(response) {
-        console.log('Tipo de datos de la respuesta:', typeof response);
-        console.log('Respuesta del servidor:', response);
-        try {
-          var data;
-
-          // Si la respuesta ya es un objeto, úsala directamente
-          if (typeof response === 'object') {
-            data = response;
-          } else {
-            // Intenta parsear la respuesta como JSON
-            data = JSON.parse(response);
-          }
-
-          // Verifica si es un array antes de llamar a mostrarcategorias
-          if (Array.isArray(data)) {
-            // Llama a la función para mostrar las categorias y pasa el id de la categoría
-            mostrarcategorias(data, id_Categoria);
-          } else {
-            console.error('La respuesta del servidor no es un array:', data);
-          }
-        } catch (error) {
-          console.error('Error al procesar la respuesta:', error);
-        }
-      },
-      error: function(jqXHR, textStatus, errorThrown) {
-        console.error('Error al cargar productos:', textStatus, errorThrown, jqXHR);
-        // Puedes agregar un mensaje o realizar alguna acción en caso de error
-      }
-    });
   } else {
-    console.error('ID de categoría no válido:', id_Categoria);
+    console.log("No se han encontrado datos de la categoria");
   }
-}*/
-
+});
+  
 
 
 

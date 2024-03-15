@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST['id_categoria'])) {
-    $id_categoria = $_POST['id_categotia'];
+    $id_categoria = $_POST['id_categoria'];
     // Aquí podrías sanitizar $id_categoria antes de utilizarlo en la consulta
 
      # Incluimos la clase categorias
@@ -23,3 +23,4 @@ if (isset($_POST['id_categoria'])) {
     echo json_encode($error);
 }
 ?>
+
