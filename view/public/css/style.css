@@ -66,3 +66,11 @@
 #editButton, #deleteButton, #viewButton {
 	display: none;
 }
+
+#addButton2, #deleteButton2, #viewButton2 {
+	display: none;
+}
+
+#viewButton3{
+	display:none;
+}

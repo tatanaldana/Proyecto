@@ -129,9 +129,11 @@ $(document).ready(function() {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos la cadena de texto JSON a un objeto javascript
           var usuario = JSON.parse(response);
+          
           if (!usuario.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
             sessionStorage.setItem('usuarioData', JSON.stringify(usuario));
+            
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
               window.location.href = '../administrador/forms/clientes/form_editar.php';
@@ -316,6 +318,7 @@ $(document).ready(function() {
 });
 }
 });
+<<<<<<< Updated upstream
 
 
 //Funcion para mostrar los datos del perfil
@@ -596,3 +599,6 @@ $(document).ready(function() {
   }
 });
 
+=======
+//Creacion de instancia para manejar la funcionalidad de los botones d ela pagina clientes
+>>>>>>> Stashed changes
