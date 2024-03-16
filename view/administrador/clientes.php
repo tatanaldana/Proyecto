@@ -12,24 +12,40 @@
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/styles.css">
   </head>
-  <body>
+<body>
   <?php
     include 'include/header.php';
 
+  ?> 
+  <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Clientes</li>
+  </ol>
+</nav>
+   <?php
+    include 'include/img_clientes.php';
+    
     include 'forms/form_cliente.php';
-
+     
+  
     include 'include/img_menu.php';
 
     include 'include/footer.php';
   ?> 
-  <script src="../public/js/jquery.js"></script>
+  
 
-  <script src="../public/js/sweetalert.min.js"></script>
-  <!-- Js usuarios -->
-  <script src="../public/js/usuario.js"></script>
-<!-- Js botones -->
-  <script src="../public/js/buttons.js"></script>
+  <!-- Final formulario login -->
+
+  <!-- Jquery -->
+  <script src="public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="public/js/bootstrap.min.js"></script>
+  <!-- SweetAlert js -->
+  <script src="public/js/sweetalert.min.js"></script>
+  <!-- Js personalizado -->
+  <script src="public/js/usuario.js"></script>
   </body>
 </html>

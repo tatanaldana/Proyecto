@@ -9,7 +9,7 @@ session_start();
 
 // isset verifica si existe una varible 
 if(isset($_SESSION['doc'])){
-    header('location: ../../controller/redirec.php');
+    header('location: ../../controller/usuario/redirec.php');
   }
 
 ?>

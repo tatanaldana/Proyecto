@@ -1,9 +1,11 @@
 <?php
-//Se guardan los datos enviados del formulario
-  $id_categoria  = $_POST['id_categoria'];
-  $nombre_cat  = $_POST['nombre_cat'];
-  
-//Se verifica que ningun dato este vacio
+
+    // Se obtienen los datos enviados del formulario
+    $id_categoria = $_POST['id_categoria'];
+    $nombre_cat = $_POST['nombre_cat'];
+
+   
+    //Se verifica que ningun dato este vacio
   if(empty($id_categoria) || empty($nombre_cat) )
   {
 
@@ -13,21 +15,20 @@
   else{
     try{
 
-        # Incluimos la clase categorias
-        require_once('../../model/categoria.php');
+        # Incluimos la clase usuario
+        require_once('../../model/categorias.php');
 
-        # Creamos un objeto de la clase categorias
+        # Creamos un objeto de la clase usuario
         $categorias = new Categorias();
 
         # Llamamos al metodo editarUsuario para realizar el update de los datos en la base de datos
-        $categorias -> update_categorias($id_categoria ,$nombre_cat);
+        $categorias->  update_categorias($id_categoria,$nombre_cat);
       // se redirecciona al usuario despues de realizar el update
-      echo '../../categorias.php';
+      
      
 
     }catch(PDOException $e){
       echo 'Error en el registro';
     }
   }
-
-  ?>
+?>

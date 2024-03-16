@@ -12,6 +12,11 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     header('location: ../login.php');
 }
 
+
+require_once("../../../model/conexion.php");
+
+$db = new Conexion();
+
 ?>
 
 
@@ -31,103 +36,28 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 
 </head>
 
-<?php
-        require '../../includeUsuario/funciones.php';
-        incluirTemplate('header');
-
-        require '../datos.php' ;
-?>
+  <?php
+    require '../../includeUsuario/funciones.php';
+    incluirTemplate('header');
+  ?>
 
 
-<body >
+<body>
+  <?php
+    include '../forms/form_checkout.php'
+  ?>
 
-    <div class="progress-bar">
-        <div class="stage">
-          <div class="stage-icon">
-            <span class="stage-number">1</span>
-          </div>
-          <div class="stage-description">Información</div>
-        </div>
-        <div class="stage">
-          <div class="stage-icon">
-            <span class="stage-number">2</span>
-          </div>
-          <div class="stage-description">Dirección de envío</div>
-        </div>
-        <div class="stage">
-          <div class="stage-icon">
-            <span class="stage-number">3</span>
-          </div>
-          <div class="stage-description">Forma de pago</div>
-        </div>
-        <div class="stage active">
-          <div class="stage-icon">
-            <span class="stage-number">4</span>
-          </div>
-          <div class="stage-description">Revisión y Aprobación</div>
-        </div>
-      </div>
-    <section>
-        <div class="checkout container">
-            <form action="pedido.php" method="POST">
-            <div class="sec1">
-                <fieldset>
-                    <legend class="titulo-check">Tus Datos</legend>
-
-                    <?php 
-                    echo 
-                    "
-                    <p>Nombre(s): " . $_SESSION['nombre'] . ' ' . $_SESSION['apellido'] . "</p>
-                    <p>Correo:" . $_SESSION['email'] ." </p>
-                    <p>Telefono: ". $_SESSION['tel'] ." </p>
-                    "
-                    ?>
-
-                </fieldset>
-            </div>
-
-            <div class="sec1" >
-                <fieldset>
-                    <legend class="titulo-check">Modo de Entrega</legend>
-                    <label for="">
-                        <input type="radio" name="domicilio" disabled> <p> A domicilio.</p>
-                    </label>
-                    <p><font color="silver"><?php echo $_SESSION['direccion']?> </font></p>
-                    <label for="">
-                        <input type="radio" name="domicilio" checked disabled> <p> Entrega en tienda. </p>
-                    </label>
-                </fieldset>
-            </div>
-            <div class="sec1">
-                <fieldset>
-                    <legend class="titulo-check">Modo de Pago</legend>
-                    <?php
-
-                    if(isset($_POST['metodo_pago'])){
-                       echo $_POST['metodo_pago'];
-
-                    };
-   
-                   
-                        
-                        
-                        
-                    ?>
-                    
-                </fieldset>
-            </div>
-            <a href="confirmar_pago.html"><input type="submit" value="Continuar" class="btn regular-button"></a>
-        </div>
-        <?php
-            echo '<pre>';
-            var_dump($_POST['metodo_pago']);
-            echo '<pre>';
-        ?>
-        </form>
-    </section>
-
-</html>
 </body>
+
+<script src="../../public/js/jquery.js"></script>
+
+<script src="../../public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="../../public/js/usuario.js"></script>
+<!-- Js botones -->
+<script src="../../public/js/buttons.js"></script>
+
+<script src="../../public/js/dates.js"></script>
 
 <br><br><br><br><br><br><br>
     <?php 
@@ -135,3 +65,5 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
 ?>
 
 </html>
+
+

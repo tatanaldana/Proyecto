@@ -35,8 +35,10 @@ include '../../include/header.php';
 if(isset($_GET['id_cat'])){
     $codigo = $_GET['id_cat'];
   
-      $queryusuarios = mysqli_query($conexion, "SELECT u.idProducto, u.nombre_pro, u.detalle, u.precio_pro,u.categorias_idcategoria,cv.nombre_cat
-      FROM productos AS u JOIN categorias AS cv ON u.categorias_idcategoria = cv.id_categoria WHERE u.categorias_idcategoria = '$codigo'");
+      $queryusuarios = mysqli_query($conexion, "SELECT u.idProducto, u.nombre_pro, u.detalle, 
+      u.precio_pro,u.categorias_idcategoria,cv.nombre_cat
+      FROM productos AS u JOIN categorias AS cv ON u.categorias_idcategoria = cv.id_categoria
+       WHERE u.categorias_idcategoria = '$codigo'");
 
   }
     // Verificar si se encontraron resultados

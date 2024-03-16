@@ -12,6 +12,11 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     header('location: ../login.php');
 }
 
+
+require_once("../../../model/conexion.php");
+
+$db = new Conexion();
+
 ?>
 
 
@@ -21,51 +26,41 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmacion Datos</title>
+    <head>
     <?php
         include '../../includeUsuario/head.php';
     ?>  
-    
-</head>
+    </head>
 
-</head>
 
-<?php
+    <?php 
         require '../../includeUsuario/funciones.php';
         incluirTemplate('header');
-
-        require '../datos.php' ;
-?>
+    ?>
 
 
 <body>
 
-<div class="container mt-4">
-    <div class="metodo_pago">
+    <?php
+        include "../forms/form_metodopago.php";
+    ?>
 
-        <form action="checktout.php" method= "post">
-            <fieldset>
-                <legend class="titulo-check">Modo de Pago</legend>
-                    <label for="tarjeta">
-                        <input type="radio" name="metodo_pago" value= "tarjeta" required> <p> Terjeta Debito / Crédito </p>
-                    </label>
-                    <label for="plataforma">
-                        <input type="radio" name="metodo_pago" value= "plataforma" required><p> Nequi o Daviplata</p>
-                    </label>
-                    <label for="efectivo">
-                        <input type="radio" name="metodo_pago" value= "efectivo" required><p> Efectivo.</p>
-                    </label>
-            </fieldset>            
+  
+<script src="../../public/js/jquery.js"></script>
 
-            <input type="submit" value="Continuar" class= "campo-obligatorio">
-        </form>
+<script src="../../public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="../../public/js/usuario.js"></script>
+<!-- Js botones -->
+<script src="../../public/js/buttons.js"></script>
 
-    </div>
-</div>
+<script src="../../public/js/dates.js"></script>
+
 </body>
 
-<script src="../js/app1.js" type="text/javascript"></script>
+
 <br><br><br><br><br><br><br>
-    <?php 
+<?php 
    incluirTemplate('footer');
 ?>
 
