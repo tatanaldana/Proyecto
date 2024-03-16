@@ -1,5 +1,10 @@
 <?php
+<<<<<<< Updated upstream
 require_once 'conexion.php';
+=======
+  # Incluimos la clase conexion para poder heredar los metodos de ella.
+  require_once('conexion.php');
+>>>>>>> Stashed changes
 
 class Productos extends Conexion{
 
@@ -105,6 +110,16 @@ class Productos extends Conexion{
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function get_productos2(){
+        $conectar= parent::conexion();
+        parent::set_names();
+        $sql="SELECT idProducto, nombre_pro, precio_pro FROM productos";
+        $sql=$conectar->prepare($sql);
+        $sql->execute();
+        return $sql;
+    }
+
 }  
 ?>
 

@@ -278,6 +278,25 @@ public function ver_usuario2(){
   return false;
 }
 }
+
+
+public function datos_usuario_venta($buscar){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT doc,nombre,apellido,tel,email,direccion FROM usuarios WHERE doc= :buscar";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->bindParam(':buscar', $buscar);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
+
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
 }
 
+
+}
 ?>
