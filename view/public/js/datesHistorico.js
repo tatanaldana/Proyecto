@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
       tablaHTML += '<td> Total de venta: ' + resultado.totalventa + '</td>';
       tablaHTML += '<td> Estado de venta: ' + resultado.estado + '</td>';
       tablaHTML += '</tr>';
+      totalventa = resultado.totalventa
+      console.log(totalventa);
 
       $('#datosdetalle').html(tablaHTML);
       }else{
@@ -42,7 +44,8 @@ document.addEventListener('DOMContentLoaded', function() {
         tablaHTML += '<td> Correo: ' + resultado.email + '</td>';
         tablaHTML += '<td> Dirección: ' + resultado.direccion + '</td>';
         tablaHTML += '</tr>';
-        resultado.totalventa=totalventa
+        totalventa = resultado.totalventa
+        console.log(totalventa);
 
         $('#datosdetalle').html(tablaHTML);
       }

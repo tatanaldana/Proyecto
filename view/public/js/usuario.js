@@ -318,7 +318,6 @@ $(document).ready(function() {
 });
 }
 });
-<<<<<<< Updated upstream
 
 
 //Funcion para mostrar los datos del perfil
@@ -599,6 +598,3 @@ $(document).ready(function() {
   }
 });
 
-=======
-//Creacion de instancia para manejar la funcionalidad de los botones d ela pagina clientes
->>>>>>> Stashed changes
