@@ -76,7 +76,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner width:50% height:50%;">
                     <div class="item active">
-                        <img src="/Proyecto/view/public/img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
+                        <img src="/Proyecto/view/public/categorias/img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
                         <div class="carousel-caption">
                             <h3>Hamburguesa</h3>
                             <p>We love the Big Apple!</p>
@@ -84,7 +84,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     </div>
 
                     <div class="item">
-                        <img src="/Proyecto/view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
+                        <img src="/Proyecto/view/public/categorias/img/pollo.jpg" alt="Chicago" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     </div>
 
                     <div class="item">
-                        <img src="/Proyecto/view/public/img/pizza.jpg" alt="New york" style="width:100%;">
+                        <img src="/Proyecto/view/public/categorias/img/pizza.jpg" alt="New york" style="width:100%;">
                         <div class="carousel-caption">
                             <h3>Pizzas Especiales</h3>
                             <p>We love the Big Apple!</p>

@@ -42,7 +42,7 @@ incluirTemplate('header')
 <script src="../public/js/usuario.js"></script>
 <!-- Js botones -->
 <script src="../public/js/buttons.js"></script>
-  </div>
+
 </body>
 
 <br><br><br><br><br><br><br>

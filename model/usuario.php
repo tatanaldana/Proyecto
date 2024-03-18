@@ -160,6 +160,99 @@ public function editarUsuario($doc,$email, $tel, $genero, $direccion)
   }
 }
 
+
+public function editar_datos_personales($doc, $genero, $nombre, $apellido)
+    {
+      try {
+      $conectar = parent::conexion();  
+      parent::set_names();
+      $stmt = "UPDATE usuarios SET 
+      genero=:genero,
+      nombre=:nombre,
+      apellido=:apellido
+      WHERE 
+      doc=:doc";
+      $stmt = $conectar->prepare($stmt);
+      $stmt->bindParam(':genero', $genero);
+      $stmt->bindParam(':nombre', $nombre);
+      $stmt->bindParam(':apellido', $apellido);
+      $stmt->bindParam(':doc', $doc);
+      $stmt->execute();
+
+  } catch (PDOException $e) {
+      echo 'Error en el registro: ' . $e->getMessage();
+      return false;
+  }
+}
+
+public function editar_datos_Contacto($doc, $email, $tel, $direccion)
+    {
+      try {
+      $conectar = parent::conexion();  
+      parent::set_names();
+      $stmt = "UPDATE usuarios SET
+      email=:email,
+      tel=:tel,
+      direccion=:direccion
+      WHERE 
+      email=:email";
+      $stmt = $conectar->prepare($stmt);
+      $stmt->bindParam(':email', $email);
+      $stmt->bindParam(':tel', $tel);
+      $stmt->bindParam(':direccion', $direccion);
+      $stmt->bindParam(':doc', $doc);
+      $stmt->execute();
+
+  } catch (PDOException $e) {
+      echo 'Error en el registro: ' . $e->getMessage();
+      return false;
+  }
+}
+
+
+
+public function editar_clave_usuario($doc, $clave)
+    {
+
+
+      try {
+      $conectar = parent::conexion();  
+      parent::set_names();
+      $stmt = "UPDATE usuarios SET
+      clave=:clave
+      WHERE 
+      doc=:doc";
+      $stmt = $conectar->prepare($stmt);
+      $stmt->bindParam(':clave', $clave);
+      $stmt->bindParam(':doc', $doc);
+      $stmt->execute();
+
+  } catch (PDOException $e) {
+      echo 'Error en el registro: ' . $e->getMessage();
+      return false;
+      
+  
+}
+}
+
+public function trae_campo_clave($docClave){
+
+
+  try {
+    $conectar = parent::conexion();  
+    parent::set_names();
+    $stmt = "SELECT clave FROM usuarios WHERE doc=:doc";
+    $stmt = $conectar->prepare($stmt);
+    $stmt->bindParam(':doc', $docClave);
+    $stmt->execute();
+    $resultado = $stmt->fetch(PDO::FETCH_ASSOC); 
+    return $resultado['clave'];
+} catch (PDOException $e) {
+    echo 'Error en el registro: ' . $e->getMessage();
+    return false;
+}
+}
+
 public function get_usuario() {
   try {
       // ... tu código existente ...
