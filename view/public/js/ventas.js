@@ -390,7 +390,6 @@ $(document).ready(function() {
     });
 })
 
-$(document).ready(function() {
     $('#viewButton2').click(function() {
         // Cuando se da click en el botón con el id viewButton3, se recupera el valor doc_usuario del checkbox seleccionado
         var idcarrito = $('input:checkbox:checked').data('idcarrito');
@@ -458,7 +457,6 @@ $(document).ready(function() {
             }
         });
     });
-})
 
 //funciones para mostrar datos en pagina de ventas
 
