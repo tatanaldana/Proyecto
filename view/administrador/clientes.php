@@ -1,3 +1,8 @@
+<?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,27 +22,16 @@
 <body>
   <?php
     include 'include/header.php';
-<<<<<<< Updated upstream
+
+    include 'include/img_clientes.php';
 
   ?> 
   <nav aria-label="breadcrumb">
-=======
-  ?>
-<nav aria-label="breadcrumb">
->>>>>>> Stashed changes
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
     <li class="breadcrumb-item active" aria-current="page">Clientes</li>
   </ol>
 </nav>
-<<<<<<< Updated upstream
-   <?php
-    include 'include/img_clientes.php';
-    
-    include 'forms/form_cliente.php';
-     
-  
-=======
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">
@@ -89,7 +83,6 @@
     </div>
   <?php
 
->>>>>>> Stashed changes
     include 'include/img_menu.php';
 
     include 'include/footer.php';
@@ -99,12 +92,12 @@
   <!-- Final formulario login -->
 
   <!-- Jquery -->
-  <script src="public/js/jquery.js"></script>
+  <script src="../public/js/jquery.js"></script>
   <!-- Bootstrap js -->
-  <script src="public/js/bootstrap.min.js"></script>
+  <script src="../public/js/bootstrap.min.js"></script>
   <!-- SweetAlert js -->
-  <script src="public/js/sweetalert.min.js"></script>
+  <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
-  <script src="public/js/usuario.js"></script>
+  <script src="../public/js/usuario.js"></script>
   </body>
 </html>

@@ -1,3 +1,8 @@
+<?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,11 +22,13 @@
   <body>
   <?php
     include 'include/header.php';
+
+    include 'include/img_sugerencias.php';
   ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.php">Inicio</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Sugenrecias</li>
+    <li class="breadcrumb-item active" aria-current="page">Sugerencias</li>
   </ol>
 </nav>
 <form id="formmostrar">

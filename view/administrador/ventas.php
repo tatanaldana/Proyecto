@@ -1,3 +1,8 @@
+<?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,15 +17,13 @@
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-<<<<<<< Updated upstream
     <link rel="stylesheet" href="../public/css/styles.css">
-=======
-    <link rel="stylesheet" href="../public/css/style.css">
->>>>>>> Stashed changes
   </head>
   <body>
   <?php
   include 'include/header.php';
+
+  include 'include/img_ventas.php';
   ?>
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -65,7 +68,6 @@
     </div>
 </div>
 <?php
-    include 'include/img_ventas.php';
     
     include 'include/img_menu.php';
 

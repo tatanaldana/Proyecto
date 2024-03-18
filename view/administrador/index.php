@@ -1,20 +1,7 @@
 <?php
-// pagina con todas la propiedades de administrador del software
-session_start();
+require_once '../../model/usuario.php';
 
-
-//Validamos que existe un session ademas que el cargo que exista sea igual a 1 que es administrador
-if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 1) {
-    /* 
-    para redireccionar en php se utiliza header
-    pero al ser datos enviados por la cabecera debe esjecutarse
-    antes de mostrar cualquier informcaionen DOM es por eso que coloco
-    el codigo antes de la estructura del html 
-    */
-    header("Location: ..login.php");
-
-    
-}
+usuario::verificarSesion();
 ?>
 <!DOCTYPE html>
 <html>
