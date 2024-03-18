@@ -1,3 +1,8 @@
+<?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+?>
 <!DOCTYPE html>
 <html>
   <head>
