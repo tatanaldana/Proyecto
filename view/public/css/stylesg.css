@@ -108,6 +108,7 @@ body{
 }
 
 
+
 /* Contenido header */
 
 /* .contenedor-header{
@@ -262,6 +263,7 @@ body{
     margin-top: 3rem;
     padding: 2rem;
     max-width: 100rem;
+    display: flex;
 }
 
 .datos-perfil h6{
@@ -463,9 +465,11 @@ body{
 }
 
 .categoria{
-    display: block;
+    display: flex;
     padding: 3rem 0;
     border: 1px solid var(--grisClaro);
+    flex-direction: column;
+    align-items: center;
 }
 
 
@@ -582,7 +586,7 @@ body{
 fieldset label{
     display: flex;
     line-height: 2rem;  
-
+    padding-top: 2rem;
 
 }
 
@@ -599,4 +603,86 @@ fieldset label p{
     color: var(--blanco);
     font-weight: 400;
     text-transform: uppercase;
+}
+
+
+/* Editar Perfil */
+
+.datosPersonales{
+    display: none;
+    flex-direction: column;
+}
+
+.datosContacto{
+    display: none;
+    flex-direction: column;
+}
+
+.datosSeguridad{
+    display: none;
+    flex-direction: column;
+}
+
+
+.mostrar-datos{
+    display: flex;
+    flex-direction: colum;
+    transition: .3s;
+}
+
+
+.centrado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2rem;
+    margin: auto;
+}
+
+/* Editar Perfil*/
+
+.contenedorDatosEditar{
+    border: 1px solid var(--grisClaro);
+    border-radius: 1rem;
+    margin-top: 3rem;
+    padding: 0rem 2rem 1rem 2rem;
+    
+}
+
+.alinear{
+    display: flex;
+    align-items: center;
+}
+
+#ModalEditarDatosPerfil {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color gris translúcido */
+    z-index: 1050; /* Asegura que esté por encima del modal */
+}
+
+#modalEditarContacto{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color gris translúcido */
+    z-index: 1050; /* Asegura que esté por encima del modal */
+}
+
+#modalEditarSeguridad{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Color gris translúcido */
+    z-index: 1050; /* Asegura que esté por encima del modal */
+}
+.padding-left-1{
+    padding-left: 1rem;
 }

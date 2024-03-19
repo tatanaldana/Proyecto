@@ -1,4 +1,7 @@
 <?php
+
+require_once('conexion.php');
+
 class Det_promo extends Conexion{
     //se obtiene todos los registros de la tabla det_prom
     public function get_promo(){

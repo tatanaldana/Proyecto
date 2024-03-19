@@ -1,4 +1,6 @@
 <?php
+  require_once('conexion.php');
+  
 class Mat_prima extends Conexion{
     public function get_mat_prima(){
         $conectar= parent::conexion();
