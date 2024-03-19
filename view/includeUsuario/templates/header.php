@@ -20,7 +20,7 @@
             </div>
 
             <div class="buscar">
-                <form action="includeUsuario/templates/buscar.php" method="POST">
+                <form action="/Proyecto/view/includeUsuario/templates/buscar.php" method="POST">
                     <div class="input-group center">
                       
                         <input class="px-4" type="search" name="textbuscar" placeholder="&#128270; Buscar Producto" required>

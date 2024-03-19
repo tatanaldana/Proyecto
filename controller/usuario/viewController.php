@@ -5,6 +5,8 @@ if (isset($_POST['doc_php'])) {
 
      # Incluimos la clase usuario
     require_once('../../model/usuario.php');
+
+    usuario::verificarSesion();
      # Creamos un objeto de la clase usuario
     $usuario = new Usuario();
     # Llamamos al metodo  para realizar la consulta en la base de datos

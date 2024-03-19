@@ -3,15 +3,15 @@ include_once('../../crud/conexion.php');
 
 
 
-if(isset($_GET['id_ma_prima'])){
-$codigo = $_GET['id_ma_prima'];
+if(isset($_GET['doc_materia_pri'])){
+$codigo = $_GET['doc_materia_pri'];
 }
 
-$querybuscar = mysqli_query($conexion, "SELECT * FROM ma_prima WHERE id_ma_prima = '$codigo'");
+$querybuscar = mysqli_query($conexion, "SELECT * FROM mat_pri WHERE cod_materia_pri = '$codigo'");
 
 while($mostrar = mysqli_fetch_array($querybuscar))
     {
-        $codigo = $mostrar['id_ma_prima'];
+        $codigo = $mostrar['cod_materia_pri'];
         $referencia = $mostrar['referencia'];
         $descripcion = $mostrar['descripcion'];
         $existencia = $mostrar['existencia'];
@@ -52,7 +52,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
                         </tr>
                         <tr>
                             <td>Id </td>
-                            <td><input type="number" name="id_ma_prima"  value="<?php echo $codigo;?>" disabled></td>
+                            <td><input type="number" name="cod_materia_pri"  value="<?php echo $codigo;?>" disabled></td>
                         </tr>
                         
                         <tr>

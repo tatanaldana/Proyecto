@@ -9,7 +9,7 @@ session_start();
 
 // isset verifica si existe una varible 
 if(isset($_SESSION['doc'])){
-    header('location: ../../controller/redirec.php');
+    header('location: ../controller/usuario/redirec.php');
   }
 
 ?>
@@ -46,7 +46,7 @@ if(isset($_SESSION['doc'])){
           <fieldset>
 
             <legend class="center">Login</legend>
-
+            <form id=formlogin>
             <!-- Caja de texto para usuario -->
             <label class="sr-only" for="user">Usuario</label>
             <div class="input-group">
@@ -61,7 +61,7 @@ if(isset($_SESSION['doc'])){
             <label class="sr-only" for="clave">Contraseña</label>
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="password" autocomplete="off" class="form-control" id="clave" placeholder="Ingresa tu usuario">
+              <input type="password" autocomplete="off" class="form-control" id="clave" placeholder="Ingresa tu contraseña">
             </div>
 
             <!-- Animacion de load ( Solo es visible cuando el usuario espera respuesta del servidor) --> 
@@ -92,7 +92,7 @@ if(isset($_SESSION['doc'])){
                 No tienes una cuenta? <a href="registro.php"> Registrate!</a>
               </p>
             </section>
-
+            </form>
           </fieldset>
         </div>
       </div>
@@ -102,8 +102,6 @@ if(isset($_SESSION['doc'])){
 
  <!-- Jquery -->
  <script src="public/js/jquery.js"></script>
-    <!-- Bootstrap js -->
-    <script src="public/js/bootstrap.min.js"></script>
     <!-- SweetAlert js -->
     <script src="public/js/sweetalert.min.js"></script>
     <!-- Js personalizado -->

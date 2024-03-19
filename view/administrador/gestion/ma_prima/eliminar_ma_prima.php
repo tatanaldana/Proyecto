@@ -2,7 +2,7 @@
 
 include_once('../../crud/conexion.php');
 
-$codigo=$_GET['id_ma_prima'];
+$codigo=$_GET['doc_materia_pri'];
 
 mysqli_query($conexion, "DELETE FROM mat_pri WHERE cod_materia_pri = $codigo");
 

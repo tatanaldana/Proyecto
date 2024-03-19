@@ -1,7 +1,14 @@
 <?php
+<<<<<<< HEAD
   require_once('conexion.php');
 
 class Ventas extends Conexion{
+=======
+# Incluimos la clase conexion para poder heredar los metodos de ella.
+require_once('conexion.php');
+
+class Carrito extends Conexion{
+>>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
     public function get_ventas_carrito(){
         $conectar= parent::conexion();
         parent::set_names();
@@ -21,6 +28,7 @@ class Ventas extends Conexion{
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
+<<<<<<< HEAD
     public function insert_ventas_carrito($forma_pago){
         $conectar= parent::conexion();
         parent::set_names();
@@ -29,6 +37,22 @@ class Ventas extends Conexion{
         $sql->bindParam(':forma_pago', $forma_pago);
         $sql->execute();
         return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+=======
+    public function insert_ventas_carrito($forma_pago, $estado) {
+        try {
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql = "INSERT INTO carrito(forma_pago, estado) VALUES (:forma_pago, :estado)";
+            $stmt = $conectar->prepare($sql);
+            $stmt->bindParam(':forma_pago', $forma_pago);
+            $stmt->bindParam(':estado', $estado);
+            $stmt->execute();
+            return $conectar->lastInsertId(); // Devolver el ID del último registro insertado
+        } catch (PDOException $e) {
+            echo 'Error en la inserción del carrito: ' . $e->getMessage();
+            return false;
+        }
+>>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
     }
 
     
@@ -47,14 +71,24 @@ class Ventas extends Conexion{
     }
 
 
-    public function eliminar_ventas_carrito($id){
+    public function eliminar_ventas_carrito($idcarrito){
+        try{
         $conectar= parent::conexion();
         parent::set_names();
+<<<<<<< HEAD
         $sql="DELETE FROM carrito WHERE idcarrito = :id";
+=======
+        $sql="DELETE FROM carrito WHERE idcarrito = :idcarrito";
+>>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
         $sql=$conectar->prepare($sql);
-        $sql->bindParam(':id', $id);
+        $sql->bindParam(':idcarrito', $idcarrito);
         $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        return true;
+    }
+    catch (PDOException $e) {
+        echo 'Error al eliminar: ' . $e->getMessage();
+        return false;
+      }
     }
 
     public function cambiar_estado1($id){
@@ -72,6 +106,7 @@ class Ventas extends Conexion{
 
 
     public function cambiar_estado2($id){
+        try{
         $conectar= parent::conexion();
         parent::set_names();
         $sql=" UPDATE carrito set
@@ -80,8 +115,14 @@ class Ventas extends Conexion{
         idcarrito =:id";
         $sql=$conectar->prepare($sql);
         $sql->bindParam(':id', $id);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
-    }
+        return  $sql->execute();
+        return true;
+    } catch (PDOException $e) {
+    echo 'Error en la actualizacion: ' . $e->getMessage();
+    return false;
+  }
+}
 }  
+
+//Cambiar el estado de la venta de preapración a completada
 ?>

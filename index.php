@@ -67,7 +67,7 @@ require 'view/includeUsuario/funciones.php';
 
     <div class="container">
 
-        <h1 class="center">Conocenos </h1>
+        <h1 class="center">Conocenos 👌 </h1>
 
         <div class="row align-items-center ">
 
@@ -81,25 +81,25 @@ require 'view/includeUsuario/funciones.php';
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner width:50% height:50%;">
-                    <div class="item active">
-                        <img src="view/public/img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
-                        <div class="carousel-caption">
+                    <div class="item active" style="background-color:#FD2626;">
+                        <img src="view/public/img/Hamburguesa.png" alt="Los Angeles" style="width:50%;;">
+                        <div class="carousel-caption" style="color: #ffffff;">
                             <h3>Hamburguesa</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-                    <div class="item">
-                        <img src="view/public/img/pollo.jpg" alt="Chicago" style="width:100%;">
-                        <div class="carousel-caption">
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="view/public/img/pollo.png" alt="Chicago" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-                    <div class="item">
-                        <img src="view/public/img/pizza.jpg" alt="New york" style="width:100%;">
-                        <div class="carousel-caption">
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="view/public/img/pizza.png" alt="New york" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
                             <h3>Pizzas Especiales</h3>
                             <p>We love the Big Apple!</p>
                         </div>

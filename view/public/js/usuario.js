@@ -129,9 +129,11 @@ $(document).ready(function() {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos la cadena de texto JSON a un objeto javascript
           var usuario = JSON.parse(response);
+          
           if (!usuario.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
             sessionStorage.setItem('usuarioData', JSON.stringify(usuario));
+            
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
               window.location.href = '../administrador/forms/clientes/form_editar.php';
@@ -638,6 +640,30 @@ $(document).ready(function() {
     }
 });;
 
+<<<<<<< HEAD
+=======
+    productos.forEach(function(producto) {
+      var productoHTML = `
+          <div class="contenedor_productos row categoria" data-id_categoria="${producto.id_categoria}">
+              <form method="POST" action="../productos/carrito.php?accion=agregar&cod=${producto.cod}">
+                  <div>
+                      <div class="d-flex flex-column align-items-center">
+                          <img src="../../public/img/productos/${producto.nombre_pro}.jpeg" alt="${producto.nombre_pro}">
+                          <div style="padding-top:20px;font-size:18px;">${producto.nombre_pro}</div>
+                          <div style="padding-top:20px;font-size:18px;"><?php echo $productos_array[$i]["nombre_pro"]; ?></div>
+                          <div style="padding-top:10px;font-size:20px;"><?php echo "$" . $productos_array[$i]["precio_pro"]; ?></div>
+                          <div class="d-flex flex-column align-items-center">
+                              <input type="number" name="txtcantidad" value="1" size="1" class="mb-2" />
+                              <input type="submit" value="Agregar" style="background: var(--primario); color: white; border:none; padding:10px; width:100%;" />
+                              <div class="contenido">${producto.detalle}</div>
+                              <div class="precio">$${producto.precio_pro}</div>      
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      `;
+>>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
 
 
 

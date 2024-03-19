@@ -1,13 +1,10 @@
-
-
 <?php
 
 require_once "conexion.php";
 
-class categorias extends Conexion
+class Categorias extends Conexion
 {
-
-    //Funcion para mostrar categoria en pantalla
+    //Funcion para mostrar categorias en pantalla
     public function get_categorias()
     {
         $conectar = parent::conexion();
@@ -15,10 +12,10 @@ class categorias extends Conexion
         $sql = "SELECT * FROM categorias";
         $sql = $conectar->prepare($sql);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    //funcion que busca determinado producto con id
+    // Funcion para buscar una categoría por su ID
     public function get_categorias_x_id($id_categoria)
     {
         $conectar = parent::conexion();
@@ -27,39 +24,35 @@ class categorias extends Conexion
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
-    //Ingresar categoria
+    // Funcion para insertar una nueva categoría
     public function insert_categorias($nombre_cat)
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat);";
+        $sql = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat)";
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':nombre_cat', $nombre_cat);
         $sql->execute();
-
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return "Insert Correcto";
     }
 
-    //actualizar categoria
-    public function update_categorias($id_categoria,$nombre_cat){
+    // Funcion para actualizar una categoría existente
+    public function update_categorias($id_categoria,$nombre_cat)
+    {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql=" UPDATE categorias set
-        nombre_cat = :nombre_cat
-        WHERE
-        id_categoria =:id_categoria";
+        $sql = "UPDATE categorias SET nombre_cat = :nombre_cat WHERE id_categoria = :id_categoria";
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':nombre_cat', $nombre_cat);
         $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return "Update Correcto";
     }
 
-    //eliminar categoria
+    // Funcion para eliminar una categoría
     public function eliminar_categorias($id_categoria)
     {
         $conectar = parent::conexion();
@@ -68,8 +61,9 @@ class categorias extends Conexion
         $sql = $conectar->prepare($sql);
         $sql->bindParam(':id_categoria', $id_categoria);
         $sql->execute();
-        return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+        return "Eliminacion Correcta";
     }
 }
 ?>
+
 

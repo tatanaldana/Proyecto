@@ -1,5 +1,27 @@
 <?php
-    session_start()
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Validación de entrada
+    if (empty(trim($_POST["sugerencia"]))) {
+        $sugerencia_err = "Por favor, ingrese un comentario.";
+    } else {
+        $sugerencia = trim($_POST["sugerencia"]);
+    }
+    
+    if (empty(trim($_POST["tipo_sugerencia"]))) {
+        $tipo_sugerencia_err = "Por favor, seleccione un tipo de sugerencia.";
+    } else {
+        $tipo_sugerencia = trim($_POST["tipo_sugerencia"]);
+    }
+    
+    // Si no hay errores de validación, almacene los datos en variables de sesión
+    if (empty($sugerencia_err) && empty($tipo_sugerencia_err)) {
+        $_SESSION["sugerencia"] = $sugerencia;
+        $_SESSION["tipo_sugerencia"] = $tipo_sugerencia;
+        header("location: sugerencia2.php");
+    }
+}
 ?>
 
 
@@ -49,12 +71,13 @@
 
 
 
-                            <div class="tipo">
-                                <select class="form-select mb-3" aria-label="select example" >
-                                    <option selected>Selecciona tipo de sugerencia</option>
-                                    <option value="1">Sugerencia</option>
-                                    <option value="2">Queja</option>
-                                    <option value="3">Otro</option>
+                        <form class="text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                        <div class="form-group">
+                            <select class="form-control" name="tipo_sugerencia">
+                                <option value="">Selecciona tipo de sugerencia</option>
+                                <option value="sugerencia" <?php if(isset($_POST['tipo_sugerencia']) && $_POST['tipo_sugerencia'] == 'sugerencia') echo 'selected';?>>Sugerencia</option>
+                                <option value="Queja" <?php if(isset($_POST['tipo_sugerencia']) && $_POST['tipo_sugerencia'] == 'Queja') echo 'selected';?>>Queja</option>
+                                <option value="reclamo" <?php if(isset($_POST['tipo_sugerencia']) && $_POST['tipo_sugerencia'] == 'reclamo') echo 'selected';?>>reclamo</option>
                                 </select>
                             </div>
 

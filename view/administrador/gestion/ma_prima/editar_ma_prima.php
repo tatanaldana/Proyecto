@@ -3,8 +3,8 @@ include_once('../../crud/conexion.php');
 
 
 
-if(isset($_GET['id_ma_prima'])){
-$codigo = $_GET['id_ma_prima'];
+if(isset($_GET['doc_materia_pri'])){
+$codigo = $_GET['doc_materia_pri'];
 }
 
 $querybuscar = mysqli_query($conexion, "SELECT * FROM mat_pri WHERE cod_materia_pri = '$codigo'");
@@ -52,7 +52,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
                         </tr>
                         <tr>
                             <td>id</td>
-                            <td><input type="hidden" name="id_ma_prima"  value="<?php echo $codigo;?>" required></td>
+                            <td><input type="hidden" name="cod_materia_pri"  value="<?php echo $codigo;?>" required></td>
                         </tr>
                         
                         <tr>
@@ -102,7 +102,7 @@ while($mostrar = mysqli_fetch_array($querybuscar))
 
 if(isset($_POST['btnmodificar']))
 {
-    $codigo1 = $_POST['id_ma_prima'];
+    $codigo1 = $_POST['cod_materia_pri'];
     $referencia1 = $_POST['referencia'];
     $descripcion1 = $_POST['descripcion'];
     $existencia1 = $_POST['existencia'];

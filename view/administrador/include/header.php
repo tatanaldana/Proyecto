@@ -11,7 +11,7 @@ echo "
           <li><a href='/Proyecto/view/administrador/clientes.php' class='nav-link px-2 link-secondary'>Clientes</a></li>
           <li><a href='/Proyecto/view/administrador/ventas.php' class='nav-link px-2 link-body-emphasis'>Ventas</a></li>
           <li><a href='/Proyecto/view/administrador/gestion.php' class='nav-link px-2 link-body-emphasis'>Gestion</a></li>
-          <li><a href='/Proyecto/view/administrador/clientes.php' class='nav-link px-2 link-secondary'>Sugerencias</a></li>
+          <li><a href='/Proyecto/view/administrador/sugerencias.php' class='nav-link px-2 link-secondary'>Sugerencias</a></li>
         </ul>
 
         <form class='col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3' role='search'>

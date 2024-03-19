@@ -7,93 +7,132 @@
   class Usuario extends Conexion
   {
 #Creamos la funi
-    public function login($user, $clave)
-    {
-//Usamos el bloque try-catch para poder capturar y mostrar algun mensaje de error si ocurre un error durante la ejecución de la sentencia SQL  
-      try {
-//Creamos la objeto $conectar para obtener la conexión a la base de datos,que la podemos hacer por el metodo conexión que es heredado de la clase conexión(parent::) 
-        $conectar = parent::conexion();  
+public function login($user, $clave)
+{
+    try {
+        $conectar = parent::conexion();
         parent::set_names();
-//Preparamos la consulta SQL con parametros, adcional usamos los marcadores de posición (:user), para evitar inyecciones SQL 
-        $stmt = "SELECT doc, nombre, cargo FROM usuarios WHERE email=:user AND clave=:clave";
+
+        $stmt = "SELECT doc, nombre, cargo, clave FROM usuarios WHERE email=:user";
         $stmt = $conectar->prepare($stmt);
         $stmt->bindParam(':user', $user);
-        $stmt->bindParam(':clave', $clave);
         $stmt->execute();
-//Guardamos el resultado
+        
         $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-//Verificamos si se encontro un usuario con las credenciales ingresadas.
+        
         if ($resultado) {
-//Iniciamos una sesión.          
-            session_start();
-//Guardamos los datos del usuario en variables
-            $_SESSION['doc'] = $resultado['doc'];
-            $_SESSION['nombre'] = $resultado['nombre'];
-            $_SESSION['cargo']  = $resultado['cargo'];
+            $hashed_password = $resultado['clave'];
+            
+            // Verificar si la contraseña coincide con el hash almacenado
+            if (password_verify($clave, $hashed_password)) {
+  
+                session_start();
+                $_SESSION['doc'] = $resultado['doc'];
+                $_SESSION['nombre'] = $resultado['nombre'];
+                $_SESSION['cargo']  = $resultado['cargo'];
 
-            // Verificamos el cargo del usuario y proporcionamos la respuesta para redirección en AJAX
-            if ($_SESSION['cargo'] == 1) {
-                echo 'administrador/index.php';
-            } else if ($_SESSION['cargo'] == 2) {
-                echo 'user/index.php';
+                // Verificar el cargo del usuario y proporcionar la respuesta para redirección en AJAX
+                if ($_SESSION['cargo'] == 1) {
+                    echo 'administrador/index.php';
+                } else if ($_SESSION['cargo'] == 2) {
+                    echo 'user/index.php';
+                }
+
+                exit();
             }
-
-            return true;
-        } else {
-            // El usuario y la clave son incorrectos
-            echo 'error_3';
-            return false;
         }
+
+        // La contraseña no coincide o el usuario no existe
+        echo 'error_3';
+        exit();
     } catch (PDOException $e) {
         echo 'Error en la consulta: ' . $e->getMessage();
-        return false;
+        exit();
     }
-
-    }
-
-    public function registroUsuario($nombre, $email, $clave, $tel, $apellido, $genero, $fecha_naci , $tipo_doc, $doc, $fecha_reg, $direccion)
-    {
-      try {
-      $conectar = parent::conexion();  
-      parent::set_names();
-      $stmt = "SELECT doc FROM usuarios WHERE email=:email";
-      $stmt = $conectar->prepare($stmt);
-      $stmt->bindParam(':email', $email); 
-      $stmt->execute();
-      $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-      if ($resultado) {
-          echo 'error_3'; // Usuario ya registrado con ese correo
-      } else {
-          // Insertar nuevo usuario
-          $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion,cargo) 
-                   VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion,2)";
-          $stmt = $conectar->prepare($stmt);
-          $stmt->bindParam(':nombre', $nombre);
-          $stmt->bindParam(':email', $email);
-          $stmt->bindParam(':clave', $clave);
-          $stmt->bindParam(':tel', $tel);
-          $stmt->bindParam(':apellido', $apellido);
-          $stmt->bindParam(':genero', $genero);
-          $stmt->bindParam(':fecha_naci', $fecha_naci);
-          $stmt->bindParam(':tipo_doc', $tipo_doc);
-          $stmt->bindParam(':doc', $doc);
-          $stmt->bindParam(':fecha_reg', $fecha_reg);
-          $stmt->bindParam(':direccion', $direccion);
-          $stmt->execute();
-
-          session_start();
-
-          $_SESSION['nombre'] = $nombre;
-          $_SESSION['cargo']  = 2;
-
-          echo 'user/index.php';
-      }
-  } catch (PDOException $e) {
-      echo 'Error en el registro: ' . $e->getMessage();
-      return false;
-  }
 }
+public static function verificarSesion() {
+  session_start();
+
+  // Verificar si hay una sesión iniciada y si el usuario tiene un cargo definido
+  if (isset($_SESSION['doc']) && isset($_SESSION['cargo'])) {
+      $cargo = $_SESSION['cargo'];
+
+      // Verificar el cargo del usuario
+      if ($cargo == 1) {
+          // El usuario es un administrador, permitir acceso a todas las vistas
+          return true;
+      } elseif ($cargo == 2) {
+          // El usuario es un cliente
+          // Verificar si la URL actual es para la vista del administrador
+          if (strpos($_SERVER['REQUEST_URI'], 'view/administrador') !== false) {
+              // Si es un cliente intentando acceder a la vista del administrador, redirigir al inicio de sesión
+              echo "<script type='text/javascript'>
+                      alert('Acceso no autorizado');
+                      window.location.href='/Proyecto/view/login.php';
+                    </script>";
+              exit();
+          }
+          // Si es un cliente intentando acceder a otras vistas, permitir el acceso
+          return true;
+      }
+  }
+
+  // Si no hay sesión iniciada o el usuario no tiene un cargo definido, redirigir al inicio de sesión
+  echo "<script type='text/javascript'>
+          alert ('Debes iniciar sesión para acceder a este contenido');
+          window.location.href='/Proyecto/view/login.php';
+        </script>";
+  exit();
+}
+
+  public function registroUsuario($nombre, $email, $clave, $tel, $apellido, $genero, $fecha_naci , $tipo_doc, $doc, $fecha_reg, $direccion)
+  {
+      try {
+          $conectar = parent::conexion();  
+          parent::set_names();
+  
+          // Verificar si el usuario ya está registrado con ese correo electrónico
+          $stmt = "SELECT doc FROM usuarios WHERE email=:email";
+          $stmt = $conectar->prepare($stmt);
+          $stmt->bindParam(':email', $email); 
+          $stmt->execute();
+          $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+          if ($resultado) {
+              echo 'error_3'; // Usuario ya registrado con ese correo
+          } else {
+              // Generar el hash de la contraseña
+              $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
+  
+              // Insertar nuevo usuario con la contraseña hasheada
+              $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion, cargo) 
+                       VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion, 2)";
+              $stmt = $conectar->prepare($stmt);
+              $stmt->bindParam(':nombre', $nombre);
+              $stmt->bindParam(':email', $email);
+              $stmt->bindParam(':clave', $hashed_password); // Almacenar el hash de la contraseña
+              $stmt->bindParam(':tel', $tel);
+              $stmt->bindParam(':apellido', $apellido);
+              $stmt->bindParam(':genero', $genero);
+              $stmt->bindParam(':fecha_naci', $fecha_naci);
+              $stmt->bindParam(':tipo_doc', $tipo_doc);
+              $stmt->bindParam(':doc', $doc);
+              $stmt->bindParam(':fecha_reg', $fecha_reg);
+              $stmt->bindParam(':direccion', $direccion);
+              $stmt->execute();
+  
+              // Iniciar sesión automáticamente después del registro
+              session_start();
+              $_SESSION['nombre'] = $nombre;
+              $_SESSION['cargo']  = 2;
+  
+              echo 'user/index.php';
+          }
+      } catch (PDOException $e) {
+          echo 'Error en el registro: ' . $e->getMessage();
+          return false;
+      }
+  }
 
 public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $genero, $fecha_naci , $tipo_doc, $doc, $fecha_reg, $direccion)
 {
@@ -109,13 +148,15 @@ public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $gene
   if ($resultado) {
       echo 'error_3'; // Usuario ya registrado con ese correo
   } else {
+
+    $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
       // Insertar nuevo usuario
       $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion,cargo) 
                VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion,2)";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':nombre', $nombre);
       $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':clave', $clave);
+      $stmt->bindParam(':clave', $hashed_password); // Almacenar el hash de la contraseña
       $stmt->bindParam(':tel', $tel);
       $stmt->bindParam(':apellido', $apellido);
       $stmt->bindParam(':genero', $genero);
@@ -301,7 +342,6 @@ public function get_usuario_por_doc($doc) {
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':doc', $doc);
   $stmt->execute();
-  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
   echo 'Error en el donwgrade: ' . $e->getMessage();
   return false;
@@ -371,6 +411,25 @@ public function ver_usuario2(){
   return false;
 }
 }
+
+
+public function datos_usuario_venta($buscar){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT doc,nombre,apellido,tel,email,direccion FROM usuarios WHERE doc= :buscar";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->bindParam(':buscar', $buscar);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
+
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
 }
 
+
+}
 ?>

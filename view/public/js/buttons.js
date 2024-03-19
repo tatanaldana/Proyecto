@@ -19,18 +19,6 @@ var lastChecked = null;
             viewButton.style.display='inline-block';
 
             // Obtener el valor data-doc-usuario del checkbox seleccionado
-            var docUsuario = checkbox.getAttribute('data-doc-usuario');
-            console.log("Valor data-doc-usuario: " + docUsuario);
-
-            // Agregar el valor de docUsuario a los enlaces de edición y eliminación
-            var editLink = document.getElementById('editButton');
-           // editLink.href = "../../forms/form_editar.php?doc=" + docUsuario;
-
-            var deleteLink = document.getElementById('deleteButton');
-           // deleteLink.href = "../../usuario/eliminarController.php?doc=" + docUsuario;
-
-            var viewLink = document.getElementById('viewButton');
-           // viewLink.href = "../forms/form_view.php?doc=" + docUsuario;
 
         } else {
             lastChecked = null;
@@ -52,3 +40,5 @@ deleteButtons.forEach(function(button) {
         }
     });
 });
+
+

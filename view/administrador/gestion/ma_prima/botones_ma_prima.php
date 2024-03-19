@@ -26,18 +26,18 @@
             viewButton.style.display='inline-block';
 
             
-            var id_ma_prima = checkbox.getAttribute('data-doc-prima');
-            console.log("Valor data-doc-prima: " + id_ma_prima);
+            var doc_materia_pri = checkbox.getAttribute('data-doc-prima');
+            console.log("Valor data-doc-prima: " + doc_materia_pri);
 
            
             var editLink = document.getElementById('editButton');
-            editLink.href = "../gestion/ma_prima/editar_ma_prima.php?id_ma_prima=" + id_ma_prima;
+            editLink.href = "../gestion/ma_prima/editar_ma_prima.php?doc_materia_pri=" + doc_materia_pri;
 
             var deleteLink = document.getElementById('deleteButton');
-            deleteLink.href = "../gestion/ma_prima/eliminar_ma_prima.php?id_ma_prima=" + id_ma_prima;
+            deleteLink.href = "../gestion/ma_prima/eliminar_ma_prima.php?doc_materia_pri=" + doc_materia_pri;
 
             var viewLink = document.getElementById('viewButton');
-            viewLink.href = "../gestion/ma_prima/visualizar_ma_prima.php?id_ma_prima=" + id_ma_prima;
+            viewLink.href = "../gestion/ma_prima/visualizar_ma_prima.php?doc_materia_pri=" + doc_materia_pri;
 
            
 

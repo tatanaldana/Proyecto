@@ -11,8 +11,8 @@ creamos un archivo que controle el redireccionamiento
 session_start();
 
 // isset verifica si existe una variable
-if (isset($_SESSION['id'])) {
-  header('location: controller/usuario/redirec.php');
+if (isset($_SESSION['doc'])) {
+  header('location: Proyecto/controller/usuario/redirec.php');
 }
 
 ?>
@@ -224,8 +224,6 @@ incluirTemplate('header');
 
   <!-- Jquery -->
   <script src="public/js/jquery.js"></script>
-  <!-- Bootstrap js -->
-  <script src="public/js/bootstrap.min.js"></script>
   <!-- SweetAlert js -->
   <script src="public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
