@@ -187,7 +187,7 @@ include("../../include/header.php");
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
                 <div class="spacing-2"></div>
-                <button type="button" class="btn btn-primary btn-block"  name="button" id="Cancelar"><a href="../../clientes.php">Cancelar</a></button>
+                <button type="button" class="btn btn-danger btn-block"  name="button" id="Cancelar"><a href="../../clientes.php">Cancelar</a></button>
               </div>
               <div class="spacing-4"><br></div>
             </div>

@@ -75,7 +75,7 @@ usuario::verificarSesion();
                     <td><a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
                     <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
                     <td><a class="btn btn-primary" id="editButton">Editar</a></td>
-                    <td><a class="btn btn-primary delete-button" id="deleteButton">Eliminar</a></td>
+                    <td><a class="btn btn-danger delete-button" id="deleteButton">Eliminar</a></td>
                 </tr> 
             </table>
             </div>
@@ -99,6 +99,12 @@ usuario::verificarSesion();
   <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
+<<<<<<< Updated upstream
   <!-- Js personalizado -->
   <script src="../public/js/buttons.js"></script>
+=======
+
+  <script src="../public/js/buttons.js"></script>
+  </body>
+>>>>>>> Stashed changes
 </html>

@@ -20,7 +20,7 @@
     <body>
 
         <?php
-          include '../crud/conexion.php';
+        
 
           include '../include/header.php';
         ?>

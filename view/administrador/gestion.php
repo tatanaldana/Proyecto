@@ -42,7 +42,17 @@ usuario::verificarSesion();
 
   include 'include/img_menu.php';
 
+<<<<<<< Updated upstream
   include 'include/footer.php';
+=======
+
+<?php 
+   
+
+    include 'include/img_menu.php';
+
+    include 'include/footer.php';
+>>>>>>> Stashed changes
   ?> 
 
 
