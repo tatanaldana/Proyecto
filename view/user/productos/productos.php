@@ -55,6 +55,6 @@ session_start();
     ?>
 
 
-<script src="../../public/js/usuario.js"></script>
+<script src="../../public/js/cate&Prod.js"></script>
 
 </html>

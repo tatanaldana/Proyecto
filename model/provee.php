@@ -1,4 +1,7 @@
 <?php
+
+require_once('conexion.php');
+
 class provee extends Conexion{
     //se obtiene todos los registros de la tabla det_prom
     public function get_provee(){
