@@ -75,43 +75,29 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner width:50% height:50%;">
-<<<<<<< HEAD
-                    <div class="item active">
-                        <img src="/Proyecto/view/public/categorias/img/Hamburguesas.jpg" alt="Los Angeles" style="width:100%;;">
-                        <div class="carousel-caption">
-=======
+
                     <div class="item active" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/Hamburguesa.png" alt="Los Angeles" style="width:50%;;">
                         <div class="carousel-caption" style="color: #ffffff;">
->>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
+
                             <h3>Hamburguesa</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="item">
-                        <img src="/Proyecto/view/public/categorias/img/pollo.jpg" alt="Chicago" style="width:100%;">
-                        <div class="carousel-caption">
-=======
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
->>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
+
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-<<<<<<< HEAD
-                    <div class="item">
-                        <img src="/Proyecto/view/public/categorias/img/pizza.jpg" alt="New york" style="width:100%;">
-                        <div class="carousel-caption">
-=======
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
->>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
+
                             <h3>Pizzas Especiales</h3>
                             <p>We love the Big Apple!</p>
                         </div>
