@@ -38,7 +38,8 @@ usuario::verificarSesion();
 <div class="mx-auto" style="width:300px">
 <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
-  <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
+  <div class="d-flex justify-content-around">
+  <button type="button" class="btn btn-outline-primary my-3 " name="btnbuscar" id="btnbuscar">Buscar</button>
 </div>
 </div>
 </div>
@@ -73,9 +74,9 @@ usuario::verificarSesion();
             <table class="table-responsive">
                 <tr>
                     <td><a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
-                    <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
-                    <td><a class="btn btn-primary" id="editButton">Editar</a></td>
-                    <td><a class="btn btn-danger delete-button" id="deleteButton">Eliminar</a></td>
+                    <td><a class="btn btn-primary " id="viewButton">Visualizar</a></td>
+                    <td><a class="btn btn-primary ms-3" id="editButton">Editar</a></td>
+                    <td><a class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</a></td>
                 </tr> 
             </table>
             </div>
@@ -99,12 +100,7 @@ usuario::verificarSesion();
   <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
-<<<<<<< Updated upstream
-  <!-- Js personalizado -->
-  <script src="../public/js/buttons.js"></script>
-=======
 
   <script src="../public/js/buttons.js"></script>
   </body>
->>>>>>> Stashed changes
 </html>

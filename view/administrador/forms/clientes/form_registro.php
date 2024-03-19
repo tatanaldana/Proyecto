@@ -178,7 +178,7 @@ include("../../include/header.php");
             <!-- Fin load -->
 
             <!-- Div espaciador -->
-            <div class="spacing-2"></div>
+            <div class="my-5"></div>
             <center>
               <div><input type="checkbox" class="che"><a href="#">Estoy de acuerdo con Terminos y Condiciones</a></div>
             </center>
@@ -187,13 +187,13 @@ include("../../include/header.php");
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
                 <div class="spacing-2"></div>
-                <button type="button" class="btn btn-danger btn-block"  name="button" id="Cancelar"><a href="../../clientes.php">Cancelar</a></button>
+               <a href="../../clientes.php"  type="button" class="btn btn-danger btn-block my-5"  name="button" id="Cancelar">Cancelar</a>
               </div>
-              <div class="spacing-4"><br></div>
+             
             </div>
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
-                <div class="spacing-2"></div>
+                
                 <button type="button" class="btn btn-primary btn-block" name="button" id="btnregistro">Registrate</button>
               </div>
             </div>

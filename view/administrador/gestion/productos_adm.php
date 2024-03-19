@@ -35,6 +35,7 @@
 <div class="mx-auto" style="width:300px">
 <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="txtbuscar"/>
+  <div class="d-flex justify-content-around">
   <button type="submit" class="btn btn-outline-primary" name="btnbuscar">Buscar</button>
 </div>
 </div>

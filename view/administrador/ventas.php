@@ -62,8 +62,8 @@ usuario::verificarSesion();
         <div class="row">
         <table class="table-responsive">
             <tr>
-                <td><a href="forms/ventas/form_preparacion.php" class="btn btn-primary" >Verificar venta</a></td>
-                <td><a href="forms/ventas/form_historico.php"  class="btn btn-primary" >Historico</a></td>
+                <td><a href="forms/ventas/form_preparacion.php"  class="btn btn-primary "  >Verificar venta</a></td>
+                <td><a href="forms/ventas/form_historico.php"  class="btn btn-primary ms-5" >Historico</a></td>
             </tr> 
         </table>
         </div>

@@ -154,7 +154,7 @@ include("../../include/header.php");
               <div class="col-xs-8 col-xs-offset-2 ">
                 <div class="spacing-2"></div>
                 <div class="my-5"></div>
-                <button type="button"  class="btn btn-danger  btn-block"  name="button" id="Cancelar"><a href="../../clientes.php">Cancelar</a></button>
+                <a href="../../clientes.php" class="btn btn-danger  btn-block"  name="button" id="Cancelar">Cancelar</a>
               </div>
               <div class="spacing-4"><br></div>
             </div>
