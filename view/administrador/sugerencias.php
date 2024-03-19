@@ -22,8 +22,6 @@ usuario::verificarSesion();
   <body>
   <?php
     include 'include/header.php';
-
-    include 'include/img_sugerencias.php';
   ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -31,6 +29,9 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Sugerencias</li>
   </ol>
 </nav>
+<?php
+    include 'include/img_sugerencias.php';
+  ?>
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">

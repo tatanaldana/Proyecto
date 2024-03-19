@@ -17,14 +17,11 @@ usuario::verificarSesion();
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/style.css">
   </head>
 <body>
   <?php
     include 'include/header.php';
-
-    include 'include/img_clientes.php';
-
   ?> 
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -32,6 +29,9 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Clientes</li>
   </ol>
 </nav>
+<?php
+    include 'include/img_clientes.php';
+  ?>
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">
@@ -99,5 +99,6 @@ usuario::verificarSesion();
   <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
-  </body>
+  <!-- Js personalizado -->
+  <script src="../public/js/buttons.js"></script>
 </html>
