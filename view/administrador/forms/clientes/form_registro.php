@@ -179,9 +179,9 @@ include("../../include/header.php");
 
             <!-- Div espaciador -->
             <div class="my-5"></div>
-            <center>
+           <!--  <center>
               <div><input type="checkbox" class="che"><a href="#">Estoy de acuerdo con Terminos y Condiciones</a></div>
-            </center>
+            </center>-->
 
             <!-- Boton Login para activar la funcion click y enviar los datos mediante ajax -->
             <div class="row">

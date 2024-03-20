@@ -1,10 +1,6 @@
+
 <?php
-<<<<<<< Updated upstream
-require_once 'conexion.php';
-=======
-  # Incluimos la clase conexion para poder heredar los metodos de ella.
-  require_once('conexion.php');
->>>>>>> Stashed changes
+  require_once "conexion.php";
 
 class Productos extends Conexion{
 

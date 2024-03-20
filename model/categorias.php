@@ -63,7 +63,24 @@ class Categorias extends Conexion
         $sql->execute();
         return "Eliminacion Correcta";
     }
+
+
+   // Funcion para buscar una categoría
+public function ver_categoria($buscar)
+{
+    $conectar = parent::conexion();
+    parent::set_names();
+    $stmt = "SELECT id_categoria, nombre_cat FROM categorias WHERE id_categoria LIKE :buscar";
+    $stmt = $conectar->prepare($stmt);
+    $buscar = '%'.$buscar.'%';
+    $stmt->bindParam(':buscar', $buscar);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultado;
 }
+}
+    
+  
 ?>
 
 
