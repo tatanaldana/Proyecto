@@ -105,9 +105,5 @@ usuario::verificarSesion();
   <script src="../public/js/usuario.js"></script>
 
   <script src="../public/js/buttons.js"></script>
-<<<<<<< Updated upstream
   </body>
 </html>
-=======
-</html>
->>>>>>> Stashed changes
