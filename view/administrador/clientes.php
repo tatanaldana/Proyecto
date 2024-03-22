@@ -1,8 +1,4 @@
-<?php
-require_once '../../model/usuario.php';
 
-usuario::verificarSesion();
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +14,20 @@ usuario::verificarSesion();
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
     <link rel="stylesheet" href="../public/css/style.css">
+      <!-- Jquery -->
+  <script src="../public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="../public/js/bootstrap.min.js"></script> 
+      <!-- SweetAlert js -->
+  <script src="../public/js/sweetalert.min.js"></script>
   </head>
+
+  <?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+
+?>
 <body>
   <?php
     include 'include/header.php';
@@ -92,15 +101,13 @@ usuario::verificarSesion();
 
   <!-- Final formulario login -->
 
-  <!-- Jquery -->
-  <script src="../public/js/jquery.js"></script>
-  <!-- Bootstrap js -->
-  <script src="../public/js/bootstrap.min.js"></script>
-  <!-- SweetAlert js -->
-  <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
 
   <script src="../public/js/buttons.js"></script>
+<<<<<<< Updated upstream
   </body>
 </html>
+=======
+</html>
+>>>>>>> Stashed changes

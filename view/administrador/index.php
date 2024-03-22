@@ -1,8 +1,4 @@
-<?php
-require_once '../../model/usuario.php';
 
-usuario::verificarSesion();
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -18,7 +14,19 @@ usuario::verificarSesion();
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
     <link rel="stylesheet" href="../public/css/style.css">
+        <!-- Jquery -->
+    <script src="../public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="../public/js/bootstrap.min.js"></script>
+  <!-- SweetAlert js -->
+  <script src="../public/js/sweetalert.min.js"></script>
   </head>
+  <?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+
+?>
   <body>
   <?php
   include 'include/header.php';
@@ -29,5 +37,6 @@ usuario::verificarSesion();
 
   include 'include/footer.php';
   ?> 
+
     </body>
 </html>
