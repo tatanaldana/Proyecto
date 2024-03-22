@@ -148,7 +148,7 @@ $(document).ready(function() {
     });
 
 
-
+/*
     //ventas en preparacion se cargan apenas ingrese a la pagina
     $(document).ready(function() {
         //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
@@ -157,6 +157,39 @@ $(document).ready(function() {
           $.ajax({
             method: 'POST',
             url: '../../../../controller/ventas/mostrarVentaspre.php',
+      
+            success: function(response) {
+              var datos = JSON.parse(response);
+              var tablaHTML = '';
+      
+              for (var i = 0; i < datos.length; i++) {
+                tablaHTML += '<tr>';
+                tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idcarrito="' + datos[i].carrito_idcarrito + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+                tablaHTML += '<td>' + datos[i].doc_cliente + '</td>';
+                tablaHTML += '<td>' + datos[i].fecha_venta + '</td>';
+                tablaHTML += '<td>' + datos[i].carrito_idcarrito + '</td>';
+                tablaHTML += '<td>' + datos[i].totalventa + '</td>';
+                tablaHTML += '<td>' + datos[i].estado + '</td>';
+                tablaHTML += '</tr>';
+            }
+      
+              $('#ventaspreparacion').html(tablaHTML);
+          },
+          error: function(xhr) {
+            console.error(xhr.responseText);
+          }
+      });
+      }
+      });
+      */
+//Vista para mostrar información de la sventas en preparación 
+      $(document).ready(function() {
+        //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
+        if (window.location.pathname.endsWith("form_preparacion.php")) {
+          //Se realiza la solicitud AJAX al cargar la página
+          $.ajax({
+            method: 'POST',
+            url: '../../../../controller/ventas/controllerviewventasPreparacion.php',
       
             success: function(response) {
               var datos = JSON.parse(response);
