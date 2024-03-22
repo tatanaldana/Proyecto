@@ -116,6 +116,21 @@ public function historico_pqr(){
   }
 } 
 
+public function view_pqr(){
+  try {
+    $conectar= parent::conexion();
+    parent::set_names();  
+    $stmt=  "SELECT* FROM view_pqr ";
+    $stmt=$conectar->prepare($stmt);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultado;
+  } catch (PDOException $e) {
+    echo 'Error al ejecutar la consulta SQL: ' . $e->getMessage();
+    return false;
+  }
+} 
+
 
 }
 

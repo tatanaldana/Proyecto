@@ -249,6 +249,22 @@ public function detalle_historico_venta2($idCarrito){
   }
 }
 
+public function viewventas_preparacion(){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt= "SELECT*FROM viewventa_preparacion";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
+
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
+}
+
 }
 
 ?>
