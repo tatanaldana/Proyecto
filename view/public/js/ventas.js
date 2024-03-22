@@ -523,4 +523,34 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("No se han encontrado datos del usuario");
     }
   });
+
+  //AJAX para mostrar la respuesta del procedimiento toal_venta_x_fecha<
+  $('#btntotal').click(function() {
+    var fecha_inicial=$('#fecha_inicial').val();
+    var fecha_final=$('#fecha_final').val();
+      console.log(fecha_inicial);
+      console.log(fecha_final);
+  //Se realiza la petición AJAX por metodo POST 
+      $.ajax({
+        method: 'POST',
+        url: '../../../../controller/ventas/procedimientoTotal.php',
+        //Ser envía el dato 'doc' al controlador PHP
+        data: { fecha_inicial_php: fecha_inicial,
+        fecha_final_php: fecha_final },
+        //Si la solicitud es exitosa
+        success: function(response) {
+            var data=JSON.parse(response);
+
+          if(data[0].TOTAL !==null){
+             var totalVentas = data[0].TOTAL;
+            swal('Exito', 'El valor total de las ventas hechas fueron: $'+totalVentas, 'success');       
+          }else{
+            swal('Información','No se encontraron ventas en el rango especificado','info');
+        }
+    },
+        error: function(error) {
+            console.error('Error en la petición AJAX: ' + error);
+        }
+      });
+    });
  
