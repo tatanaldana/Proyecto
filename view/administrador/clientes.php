@@ -84,8 +84,8 @@ usuario::verificarSesion();
   <?php
 
     include 'include/img_menu.php';
-
     include 'include/footer.php';
+    
   ?> 
   
 
@@ -99,5 +99,7 @@ usuario::verificarSesion();
   <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
+
+  <script src="../public/js/buttons.js"></script>
   </body>
 </html>

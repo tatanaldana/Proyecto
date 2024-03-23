@@ -78,6 +78,8 @@ $('#registro').click(function(){
   });
 
 });
+
+
 //Fomrulaio de registro administrador
 $(document).ready(function() {
   $('#btnregistro').click(function() {
@@ -243,62 +245,7 @@ $('#btnEditarContacto').click(function() {
 });
 
 
-$('#btneditar').click(function() {
-  var form1 = $('#formeditar').serialize();
 
-  console.log(form1);
-
-  $.ajax({
-    method: 'POST',
-    url: '../../../controller/usuario/editarDatosContacto.php',
-    data: form1,
-    beforeSend: function() {
-      $('#load').show();
-    },
-    success: function(res) {
-      $('#load').hide();
-
-      if (res == 'error_1') {
-        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-      } else {
-        window.location.href = res;
-      }
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-    }
-  });
-});
-
-
-
-
-// $('#btnEditarSeguridad').click(function() {
-//   var form1 = $('#formEditarSeguridad').serialize();
-
-
-//   $.ajax({
-//     method: 'POST',
-//     url: '../../../controller/usuario/editarClave.php',
-//     data: form1,
-//     beforeSend: function() {
-//       $('#load').show();
-//     },
-//     success: function(res) {
-//       $('#load').hide();
-
-//       if (res == 'error_1') {
-//         swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-//       } else {
-//         window.location.href = res;
-//       }
-//     },
-//     error: function(xhr) {
-//       console.error(xhr.responseText);
-//     }
-  
-//   });
-// });
 
 $(document).ready(function() {
   $('#btnEditarSeguridad').click(function() {

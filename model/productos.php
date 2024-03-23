@@ -1,10 +1,8 @@
 <?php
-<<<<<<< Updated upstream
+
 require_once 'conexion.php';
-=======
-  # Incluimos la clase conexion para poder heredar los metodos de ella.
-  require_once('conexion.php');
->>>>>>> Stashed changes
+
+
 
 class Productos extends Conexion{
 
@@ -43,6 +41,24 @@ class Productos extends Conexion{
                 return [];  // o return null; según tu lógica
             }
         }
+
+        
+
+        public function get_nombre_cat($idCategoria){
+            $conectar = parent::conexion();
+            parent::set_names();
+            $sql = "SELECT c.nombre_cat, p.nombre_pro, p.detalle, p.precio_pro, p.cod, p.img from productos as p JOIN categorias as c on categorias_idcategoria = id_categoria where id_categoria = :idCategoria;";
+            $sql = $conectar->prepare($sql);
+            $sql->bindParam(':idCategoria', $idCategoria);
+            $sql->execute();
+            if ($sql->rowCount() > 0) {
+                return $resultado = $sql->fetchAll(PDO::FETCH_ASSOC);
+            } else {
+                return [];  // o return null; según tu lógica
+            }
+        }
+
+
 
         //funcion que busca productos por codigo
         public function get_productos_por_codigo($cod){
