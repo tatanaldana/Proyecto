@@ -67,7 +67,7 @@ incluirTemplate('header')
             </div>
     </section>
     <!-- Js personalizado -->
-    <script src="../public/js/usuario.js"></script>
+    <script src="../public/js/sugerencias.js"></script>
 </body>
 
 <br><br><br><br><br><br><br>
