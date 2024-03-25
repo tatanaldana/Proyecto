@@ -6,23 +6,21 @@ require_once('conexion.php');
 class PQR extends Conexion{
 
 
-public function insert_pqr($sugerencia,$tipo_sugerencia,$fecha_pqr,$estado,$usuarios_id)
+public function insert_pqr($sugerencia,$tipo_sugerencia,$fecha_pqr,$usuarios_id)
 {
   try {
   $conectar = parent::conexion();  
   parent::set_names();
   $stmt = "INSERT INTO pqr(sugerencia, tipo_sugerencia, fecha_pqr, estado, usuarios_id)
-  VALUES (:sugerencia,:tipo_sugerencia, :fecha_pqr, :estado, :usuarios_id)";
+  VALUES (:sugerencia,:tipo_sugerencia, :fecha_pqr ,1, :usuarios_id)";
   $stmt = $conectar->prepare($stmt);
   $stmt->bindParam(':sugerencia', $sugerencia); 
   $stmt->bindParam(':tipo_sugerencia', $tipo_sugerencia); 
   $stmt->bindParam(':fecha_pqr', $fecha_pqr);
-  $stmt->bindParam(':estado', $estado);
   $stmt->bindParam(':usuarios_id', $usuarios_id); 
   $stmt->execute();
   $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    echo '../../ventas.php';
 } catch (PDOException $e) {
   echo 'Error en el registro: ' . $e->getMessage();
   return false;

@@ -8,7 +8,7 @@
   <div class='row'>
 
     <div class='col center'>
-    <input type='file'><img src='header/img/logo.jpg' alt='Imagen perfil' class='rounded-circle' width='100px' height='100px'>  
+    <img src='header/img/logo.jpg' alt='Imagen perfil' class='rounded-circle' width='100px' height='100px'>  
     </div>
 
     <div class='datos-perfil col center'>
@@ -28,7 +28,10 @@
       <a href='configuracion/editar.php?id=" <?php $_SESSION['doc'] ?>"'><button class='btn-event' id= "btn-editar" style = border:none ;><i class='fa fa-edit' style='font-size:20px'></i></button></a>
 
             <a href='configuracion/eliminar.php?id=" <?php $_SESSION['doc']  ?> "'><button class='btn-enviar' style = border:none ;><i class='fa fa-trash' style='font-size:20px'></i></button></a>
-        </div>
+
+            <a href='configuracion/subir.php?id=" <?php $_SESSION['doc']  ?> "'><button class='btn-enviar' style = border:none ;><i class='fa fa-camera' style='font-size:20px'></i></button></a>
+
+          </div>
       
       </div>
 
