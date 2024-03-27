@@ -1,5 +1,7 @@
 
-
+<?php
+session_start();
+?>
 <html data-bs-theme="light" lang="en">
 
 <head>
@@ -71,6 +73,7 @@ incluirTemplate('header')
 </body>
 
 <br><br><br><br><br><br><br>
+
 <?php
 incluirTemplate('footer');
 ?>

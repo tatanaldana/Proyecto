@@ -177,12 +177,6 @@ incluirTemplate('header');
     <?php
     incluirTemplate('footer');
     ?>
-<<<<<<< HEAD
-
-<script src="../../public/js/cate&Prod.js"></script>
-
-=======
->>>>>>> dce3665cacae41f199be9a54e9af2fd35a5bf9a7
 </body>
 
 </html>

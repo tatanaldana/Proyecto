@@ -88,19 +88,11 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">

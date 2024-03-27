@@ -22,7 +22,7 @@ $('#enviar').click(function(){
            text: 'Se ha enviado la PQR correctamente',
            type: 'success'
          }),
-        window.location.href = res ;
+        window.location.href = sugerenciasuser.php ;
       }
 
 

@@ -23,4 +23,5 @@ if (empty($sugerencia) || empty($tipo_sugerencia)) {
     $pqr->insert_pqr($sugerencia, $tipo_sugerencia, $fecha_pqr, $usuarios_id);
 }
 header("Location:../../view/user/sugerenciasuser.php");
+
 ?>
