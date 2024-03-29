@@ -70,7 +70,8 @@
                 <tr>
                   <td colspan="2" class="text-center">
                     <button type="button" class="btn btn-primary" id="btnmodificar">Modificar</button>
-                    <a href="../../gestion/ma_prima.php" class="btn btn-secondary">Cancelar</a>
+                    <a href="../ma_prima.php" class="btn btn-secondary">Cancelar</a>
+                   
                   </td>
                 </tr>
               </tbody>

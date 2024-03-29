@@ -105,12 +105,7 @@
 <?php 
    
     
-   // include '../forms/form_ma_prima.php';
-
-    //include '../gestion/ma_prima/tabla_ma_prima.php';
-
-    //include '../gestion/ma_prima/botones_ma_prima.php';
-
+   
     include '../include/img_menu.php';
 
     include '../include/footer.php';

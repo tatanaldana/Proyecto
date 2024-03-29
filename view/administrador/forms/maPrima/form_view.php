@@ -72,7 +72,7 @@ include("../../include/header.php");
                 </tr>
                 <tr>
                   <td colspan="2" class="text-center">
-                    <a href="../../gestion/ma_prima.php" class="btn btn-primary">Volver</a>
+                    <a href="../ma_prima.php" class="btn btn-primary">Volver</a>
                   </td>
                 </tr>
               </tbody>

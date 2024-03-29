@@ -63,7 +63,7 @@ $(document).ready(function() {
                   swal('Error', 'Campo obligatorio, ', 'warning');
               } else {
                   // Redirigir a otra página o realizar otra acción después de agregar la categoría
-                  window.location.href = '../../gestion/ma_prima.php';
+                  window.location.href = '../../forms/ma_prima.php';
               }
           },
           error: function(xhr, status, error) {
@@ -135,7 +135,7 @@ console.log (editarMaprima);
           swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
         } else {
           //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-          window.location.href = '../../gestion/ma_prima.php';
+          window.location.href = '../ma_prima.php';
 
         }
       },
@@ -216,7 +216,7 @@ $(document).ready(function() {
                       // La categoría se eliminó correctamente
                       alert(response.message);
                       // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                      window.location.href = '../../administrador/gestion/ma_prima.php';
+                      window.location.href = '../../administrador/forms/ma_prima.php';
                       // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
                       //../../administrador/forms/ma_prima.php'; ruta despues de cambiar la carpeta a a forms
                   } else {

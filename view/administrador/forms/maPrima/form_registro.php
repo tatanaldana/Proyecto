@@ -71,7 +71,7 @@ include("../../include/header.php");
         <td colspan="2" class="center">
             <div class="btn-group" role="group" aria-label="Botones">
                 <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarmaprima" name="agregarmaprima" value="registrar">Agregar</button> 
-                <a href="../../gestion/ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
+                <a href="../ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
             </div>
         </td>
     </tr>

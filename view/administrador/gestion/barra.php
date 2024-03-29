@@ -8,7 +8,7 @@ echo "
     </div>
 
     <div class='col-3'>
-        <a href='gestion/ma_prima.php'><button type='button' class='btn btn-primary' style=' margin-left: 120px;'>Materia Prima</button></a>
+        <a href=../administrador/forms/ma_prima.php><button type='button' class='btn btn-primary' style=' margin-left: 120px;'>Materia Prima</button></a>
     </div>
 
     <div class='col-3'>
