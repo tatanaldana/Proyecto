@@ -1,7 +1,7 @@
 <?php
 // Verificar si las variables POST están definidas
 
-if(isset($_POST['cod_materia_pri'])) {
+
     
     $referencia = $_POST['referencia'];
     $descripcion = $_POST['descripcion'];
@@ -29,7 +29,5 @@ if(isset($_POST['cod_materia_pri'])) {
             echo 'error en el registro';
         }
     }
-} else {
-    echo 'error_2'; // Alguna de las variables POST no está definida
-}
+
 ?>

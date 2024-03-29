@@ -64,13 +64,7 @@ include("../../include/header.php");
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="cuanto quedo en total" >
                     </div>
                     
-  </form>
 
-
-
-
-
-  
 
           <!-- Botón para enviar el formulario -->
           <tr>
@@ -81,9 +75,9 @@ include("../../include/header.php");
             </div>
         </td>
     </tr>
-</form>
+
     
-</form>
+
 
                         </tbody>
                     </table>
