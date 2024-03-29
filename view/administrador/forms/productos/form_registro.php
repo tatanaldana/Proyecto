@@ -21,7 +21,7 @@ include("../../include/header.php");
 <!-- Espacio en blanco -->
 <div class="my-5"></div>
 
-<form id="agregarCategoria">
+<form id="agregar">
    
     <div class="row d-flex justify-content-center">
         <div class="col-xs-3">
@@ -30,7 +30,7 @@ include("../../include/header.php");
                     <table>
                         <thead>
                             <tr>
-                                <th colspan="2" class="center">Nueva Categoría</th>
+                                <th colspan="5" class="center">Nueva Categoría</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,7 +42,7 @@ include("../../include/header.php");
     <tr>
         <td colspan="2" class="center">
             <div class="btn-group" role="group" aria-label="Botones">
-                <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarCategoria" name="btnregistrar" value="registrar">Agregar</button> 
+                <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarProducto" name="btnregistrar" value="registrar">Agregar</button> 
                 <a href="../categorias_adm.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
             </div>
         </td>
@@ -62,7 +62,7 @@ include("../../include/header.php");
 <!-- SweetAlert js -->
 <script src="../../../public/js/sweetalert.min.js"></script>
 <!-- Js personalizado -->
-<script src="../../../public/js/categorias.js"></script>
+<script src="../../../public/js/productos.js"></script>
 
 
 </body>

@@ -1,8 +1,8 @@
 
 <?php
 // Verificar si las variables POST están definidas
-if(isset($_POST['categoria'])) {
-    $nombre_cat = $_POST['categoria'];
+if(isset($_POST['id_categoria'])) {
+    $nombre_cat = $_POST['nombre_cat'];
 
     if(empty($nombre_cat)){
         echo 'error_1'; // Un campo está vacío y es obligatorio

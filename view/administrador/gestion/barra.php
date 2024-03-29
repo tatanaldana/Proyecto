@@ -16,7 +16,7 @@ echo "
     </div>
 
     <div class='col-3'>
-        <a href='gestion/categorias_adm.php'><button type='button' class='btn btn-primary' style=' margin-left: 120px;'>Categorias</button></a>
+        <a href='../administrador/forms/categorias_adm.php'><button type='button' class='btn btn-primary' style=' margin-left: 120px;'>Categorias</button></a>
     </div>
 
 </div>";

@@ -46,7 +46,7 @@
                 <tr>
                   <td colspan="2" class="text-center">
                     <button type="button" class="btn btn-primary" id="btnmodificar">Modificar</button>
-                    <a href="../../../administrador/gestion/categorias_adm.php" class="btn btn-secondary">Cancelar</a>
+                    <a href="../categorias_adm.php" class="btn btn-secondary">Cancelar</a>
                   </td>
                 </tr>
               </tbody>

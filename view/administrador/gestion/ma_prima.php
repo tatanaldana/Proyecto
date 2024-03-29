@@ -16,7 +16,7 @@
   <body>
   <?php
 
-  include '../crud/conexion.php';
+  //include '../crud/conexion.php';
 
   include '../include/header.php';
   ?>
@@ -28,29 +28,88 @@
     <li class="breadcrumb-item active" aria-current="page">Materia Prima</li>
   </ol>
 </nav>
-<form method="POST">
-<div class="container">
-<div class="mx-auto" style="width:300px">
-<div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="txtbuscar"/>
-  <div class="d-flex justify-content-around">
-  <button type="submit" class="btn btn-outline-primary" name="btnbuscar">Buscar</button>
-</div>
-</div>
-</div>
+<!-- Formulario de búsqueda -->
+<form id="formmostrar">
+    <div class="container">
+        <div class="contenedor-busqueda" id="contenedor-busqueda">
+            <div class="mx-auto " style="width:332px">
+            
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Ingrese codigo de materia prima " aria-label="Buscar" 
+                    aria-describedby="search-addon" name="buscar" id="buscar"required/>
+                    <div class="d-flex justify-content-around">
+                    
+                    <button type="button" class="btn btn-primary my-3" name="btnbuscar" id="btnbuscar">Buscar</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </form>
-<div class="my-5"></div>
-<br><br>
+
+
+<!-- Espacio en blanco -->
+<div class="my-5"></div> 
+
+<!-- Contenedor de la tabla -->
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-12 table-responsive">
+                <!-- Tabla de productos -->
+                <table class="table table-bordered border-primary" style="text-align:center">
+                    <thead>
+                        <tr>
+                            <th colspan="8" scope="col" style="text-align:center"> materia prima</th> <!-- Encabezado de la tabla -->
+                        </tr>
+                        <tr>
+                            <th scope="col">seleccionar</th> <!-- Encabezado de la columna -->
+                            <th scope="col">codigo</th><!-- Encabezado de la columna -->
+                            <th scope="col">referencia</th> <!-- Encabezado de la columna -->
+                            <th scope="col">descripcion</th> <!-- Encabezado de la columna -->
+                            <th scope="col">existencia</th> <!-- Encabezado de la columna -->
+                            <th scope="col">entrada</th> <!-- Encabezado de la columna -->
+                            <th scope="col">salida</th> <!-- Encabezado de la columna -->
+                            <th scope="col">stock</th> <!-- Encabezado de la columna -->
+                        </tr>
+                    </thead>
+                    <tbody id="filasTabla"></tbody> <!-- Cuerpo de la tabla -->
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contenedor de botones de acción -->
+<div class="container">
+    <div class="d-flex justify-content-around">
+        <div class="row">
+            <!-- Tabla de botones -->
+            <table class="table-responsive">                    
+                <tr>
+                    <td><a href="../forms/maPrima/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
+                    <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
+                    <td><a class="btn btn-primary ms-3" id="editButton">Editar</a></td>
+                    <td><button class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</button></td>
+                </tr> 
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 <?php 
    
     
-    include '../forms/form_ma_prima.php';
+   // include '../forms/form_ma_prima.php';
 
-    include '../gestion/ma_prima/tabla_ma_prima.php';
+    //include '../gestion/ma_prima/tabla_ma_prima.php';
 
-    include '../gestion/ma_prima/botones_ma_prima.php';
+    //include '../gestion/ma_prima/botones_ma_prima.php';
 
     include '../include/img_menu.php';
 
@@ -59,3 +118,11 @@
 
     </body>
 </html>
+
+<script src="../../public/js/jquery.js"></script>
+
+<script src="../../public/js/sweetalert.min.js"></script>
+<!-- Js usuarios -->
+<script src="../../public/js/maPrima.js"></script>
+
+<script src="../../public/js/buttons.js"></script>
