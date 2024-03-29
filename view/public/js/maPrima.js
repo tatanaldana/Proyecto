@@ -134,8 +134,8 @@ console.log (editarMaprima);
         if (response == 'error_1') {
           swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
         } else {
-          swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-         // window.location.href = '../../gestion/ma_prima.php';
+          //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
+          window.location.href = '../../gestion/ma_prima.php';
 
         }
       },
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('entrada').value = maprima.entrada;
     document.getElementById('salida').value = maprima.salida;
     document.getElementById('stock').value = maprima.stock;
-    document.getElementById('cod_hidden').value = maprima.cod_materia_pri;
+    document.getElementById('doc_hidden').value = maprima.cod_materia_pri;
     }
     //Llamamos la función para que se ejecute
     asignarvalores();
@@ -279,7 +279,7 @@ $(document).ready(function() {
           }
         });
       });
- /*   //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
+  //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
   //Verificamos que en la asesión del navegador exista el elemento llamado 'viewData'
   var viewData = sessionStorage.getItem('viewData');
@@ -321,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
   
-*/
 
 
 

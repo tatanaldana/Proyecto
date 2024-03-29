@@ -35,7 +35,7 @@
 
 // agregarcategorias.php
 
-$(document).ready(function() {
+
   $('#btnagregarCategoria').click(function() {
     // Serializar los datos del formulario
     var formData = $('#agregarCategoria').serialize();
@@ -67,7 +67,7 @@ $(document).ready(function() {
       }
     });
   });
-});
+
 
 
 

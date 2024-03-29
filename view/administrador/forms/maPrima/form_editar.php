@@ -64,9 +64,9 @@
                     <div class="mb-3">
                   </td>
                 </tr>
-                
+                <tr>
                   <input type="hidden" id="doc_hidden" name="cod_materia_pri">
-               
+                </tr>
                 <tr>
                   <td colspan="2" class="text-center">
                     <button type="button" class="btn btn-primary" id="btnmodificar">Modificar</button>

@@ -38,17 +38,14 @@ include("../../include/header.php");
                                 <td><label for="categoria"></label></td>
                                 <td><input type="text" class="form" id="categoria" name="categoria" placeholder="Ingresa la categoría"></td>
                             </tr>
-
-    <tr>
-        <td colspan="2" class="center">
-            <div class="btn-group" role="group" aria-label="Botones">
-                <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarCategoria" name="btnregistrar" value="registrar">Agregar</button> 
-                <a href="../categorias_adm.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
-            </div>
-        </td>
-    </tr>
-</form>
-
+                            <tr>
+                                <td colspan="2" class="center">
+                                    <div class="btn-group" role="group" aria-label="Botones">
+                                        <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarCategoria" name="btnregistrar" value="registrar">Agregar</button> 
+                                        <a href="../categorias_adm.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
+                                    </div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

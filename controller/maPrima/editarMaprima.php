@@ -2,7 +2,7 @@
 
     // Se obtienen los datos enviados del formulario
    
-    $cod_materia_pri= $_POST['cod_materia_pra'];
+    $cod_materia_pri= $_POST['cod_materia_pri'];
     $referencia= $_POST['referencia'];
     $descripcion= $_POST['descripcion'];
     $existencia= $_POST['existencia'];
