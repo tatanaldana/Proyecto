@@ -263,12 +263,13 @@ public function editar_clave_usuario($doc, $clave)
       try {
       $conectar = parent::conexion();  
       parent::set_names();
+      $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
       $stmt = "UPDATE usuarios SET
       clave=:clave
       WHERE 
       doc=:doc";
       $stmt = $conectar->prepare($stmt);
-      $stmt->bindParam(':clave', $clave);
+      $stmt->bindParam(':clave', $hashed_password);
       $stmt->bindParam(':doc', $doc);
       $stmt->execute();
 

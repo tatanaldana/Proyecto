@@ -85,7 +85,7 @@ include("../../include/header.php");
 
             <!-- Caja de texto para el tipo de documento -->
             <div class="input-group">
-              <div class="input-group-addon"><label for="genero">Tipo de documento:</label>
+              <div class="input-group-addon"><label for="tipo_doc">Tipo de documento:</label>
                 <select name="tipo_doc" id="tipo_doc">
                   <option value="CC">CC</option>
                   <option value="Tarjeta de identidad">Tarjeta de identidad</option>

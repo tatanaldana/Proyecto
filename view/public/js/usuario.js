@@ -111,7 +111,7 @@ $(document).ready(function() {
     });
   });
 });
-//formulario de consulta para llevar datos del registro a modificar
+//formulario de consulta para llevar datos del registro a modificar(administrador)
 //Uusamos la función $document.ready para que el DOM se cargue completamente antes de ejecutar el código.
 $(document).ready(function() {
   $('#editButton').click(function() {
@@ -129,6 +129,7 @@ $(document).ready(function() {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos la cadena de texto JSON a un objeto javascript
           var usuario = JSON.parse(response);
+          console.log(usuario);
           
           if (!usuario.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
@@ -136,7 +137,7 @@ $(document).ready(function() {
             
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
-              window.location.href = '../administrador/forms/clientes/form_editar.php';
+              window.location.href = '../administrador/forms/clientes/form_edit.php';
             }, 1000);
           } else {
             console.log(usuario.error);
@@ -154,7 +155,7 @@ $(document).ready(function() {
 
 
 
-//Datos para realizar update del registro
+//Datos para realizar update del registro(adminsitrador)
 $(document).ready(function() {
   $('#btneditar').click(function() {
     var form1 = $('#formeditar').serialize();
@@ -272,34 +273,6 @@ $('#btneditar').click(function() {
 
 
 
-
-// $('#btnEditarSeguridad').click(function() {
-//   var form1 = $('#formEditarSeguridad').serialize();
-
-
-//   $.ajax({
-//     method: 'POST',
-//     url: '../../../controller/usuario/editarClave.php',
-//     data: form1,
-//     beforeSend: function() {
-//       $('#load').show();
-//     },
-//     success: function(res) {
-//       $('#load').hide();
-
-//       if (res == 'error_1') {
-//         swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-//       } else {
-//         window.location.href = res;
-//       }
-//     },
-//     error: function(xhr) {
-//       console.error(xhr.responseText);
-//     }
-  
-//   });
-// });
-
 $(document).ready(function() {
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
@@ -345,11 +318,22 @@ $(document).ready(function() {
 
 
 //Solictud para eliminar registros
-$(document).ready(function() {
-  $('#deleteButton').click(function() {
-    var doc = $('input:checkbox:checked').data('doc-usuario');
-    console.log(doc);
 
+$('#deleteButton').click(function() {
+  swal({
+    title:"¿Estas seguro?",
+    text:"¿Realmente quieres eliminar el registro del cliente?",
+    icon:"warning",
+    buttons:{
+      cancel:"Cancelar",
+      confirm:"Aceptar",
+    },
+    dangerMode:true,
+  })
+  .then((willDelete) => {
+    if(willDelete){   
+      var doc = $('input:checkbox:checked').data('doc-usuario');
+   
     $.ajax({
       method: 'POST',
       url: '../../controller/usuario/eliminarController.php',
@@ -369,15 +353,33 @@ $(document).ready(function() {
         } else if (res == 'error_4') {
           swal('Error', 'Por favor ingresa un correo valido', 'warning');
         } else {
-          window.location.href = res;
+          swal({
+            title:"Exito",
+            text:"Se ha eliminado el registro exitosamente",
+            icon:"success",
+            buttons:{
+              confirm:"Aceptar",
+            },
+            dangerMode:true,
+          })
+          .then((willDelete) => {
+            if(willDelete){
+              window.location.href =res;
+            }
+
+          });
+
         }
       },
       error: function(xhr) {
         console.error(xhr.responseText);
       }
-    });
-  });
+    });}
+    else{
+  }
 });
+});
+
 
 //formulario de consulta para llevar datos del registro 
 //Uusamos la función $document.ready para que el DOM se cargue completamente antes de ejecutar el código.

@@ -11,11 +11,11 @@ require_once('conexion.php');
         try {
             $conectar = parent::conexion();  
             parent::set_names();
-            $stmt = "INSERT INTO com_venta (doc_cliente, fecha_venta, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
-                     VALUES (:doc_cliente, :fecha_venta, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
+            $stmt = "INSERT INTO com_venta (doc_cliente, fechaventa, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
+                     VALUES (:doc_cliente, :fechaventa, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
             $stmt = $conectar->prepare($stmt);
             $stmt->bindParam(':doc_cliente', $doc_cliente); 
-            $stmt->bindParam(':fecha_venta', $fechaventa); 
+            $stmt->bindParam(':fechaventa', $fechaventa); 
             $stmt->bindParam(':producto', $producto);
             $stmt->bindParam(':precio', $precio);
             $stmt->bindParam(':cantidad', $cantidad); 
@@ -106,7 +106,7 @@ public function historico_venta(){
   try {
     $conectar= parent::conexion();
     parent::set_names();  
-    $stmt=  "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
+    $stmt=  "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
     FROM com_venta AS c JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito WHERE c.estado = 2 GROUP BY cv.idcarrito";
     $stmt=$conectar->prepare($stmt);
     $stmt->execute();
@@ -123,8 +123,8 @@ public function historico_venta_x_fecha($fecha_inicial,$fecha_final){
   try {
     $conectar= parent::conexion();
     parent::set_names();  
-    $stmt=  "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
-    FROM com_venta AS c JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito  WHERE c.estado = 2 AND c.fecha_venta BETWEEN :fecha_inicial AND :fecha_final
+    $stmt=  "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 2 THEN 'Completada' ELSE 'Otro Estado' END AS estado
+    FROM com_venta AS c JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito  WHERE c.estado = 2 AND c.fechaventa BETWEEN :fecha_inicial AND :fecha_final
     GROUP BY cv.idcarrito";
     $stmt=$conectar->prepare($stmt);
     $stmt->bindParam(':fecha_inicial', $fecha_inicial);
@@ -198,7 +198,7 @@ public function get_venta_por_doc($doc_cliente) {
   try {
     $conectar = parent::conexion();
     parent::set_names();
-    $stmt = "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
+    $stmt = "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
              FROM com_venta AS c JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito WHERE c.estado = 1 AND c.doc_cliente LIKE :docCliente GROUP BY cv.idcarrito";
     $stmt = $conectar->prepare($stmt);
     $stmt->bindParam(':docCliente',  $docCliente . '%');
@@ -216,7 +216,7 @@ public function ver_venta2(){
   try {
   $conectar= parent::conexion();
   parent::set_names();
-  $stmt= "SELECT c.doc_cliente, c.fecha_venta, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
+  $stmt= "SELECT c.doc_cliente, c.fechaventa, c.carrito_idcarrito, c.totalventa, CASE WHEN c.estado = 1 THEN 'Preparación' ELSE 'Otro Estado' END AS estado
   FROM com_venta AS c JOIN carrito AS cv ON c.carrito_idcarrito = cv.idcarrito WHERE c.estado = 1 GROUP BY cv.idcarrito";
   $stmt=$conectar->prepare($stmt);
   $stmt->execute();
@@ -233,7 +233,7 @@ public function detalle_historico_venta($doc,$idCarrito){
   try {
     $conectar = parent::conexion();
     parent::set_names();
-    $stmt="SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fecha_venta, cv.totalventa, cv.estado
+    $stmt="SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fechaventa, cv.totalventa, cv.estado
     FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc = :doc AND cv.carrito_idcarrito = :idCarrito";
     $stmt = $conectar->prepare($stmt);
     $stmt->bindParam(':doc', $doc);
