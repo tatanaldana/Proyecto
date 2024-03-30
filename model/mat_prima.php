@@ -65,16 +65,9 @@ class Mat_prima extends Conexion{
         try{
         $conectar= parent::conexion();
         parent::set_names();
-        $stmt =" UPDATE mat_pri SET
-        referencia = :referencia,
-        descripcion = :descripcion,
-        existencia = :existencia,
-        entrada = :entrada,
-        salida = :salida,
-        stock = :stock
-        WHERE
-        cod_materia_pri = :cod_materia_pri";
-        $stmt =$conectar->prepare($stmt );
+        $stmt =" UPDATE mat_pri SET referencia = :referencia, descripcion = :descripcion, existencia = :existencia,
+        entrada = :entrada, salida = :salida, stock = :stock WHERE cod_materia_pri = :cod_materia_pri";
+        $stmt =$conectar->prepare($stmt);
         $stmt ->bindParam(':referencia', $referencia);
         $stmt ->bindParam(':descripcion', $descripcion);
         $stmt ->bindParam(':existencia', $existencia);

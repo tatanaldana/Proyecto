@@ -9,7 +9,10 @@
     $entrada= $_POST['entrada'];
     $salida= $_POST['salida'];
     $stock= $_POST['stock'];
-   
+
+    echo $cod_materia_pri;
+  
+   /*
     //Se verifica que ningun dato este vacio
   if(empty($cod_materia_pri) || empty($referencia) || empty($descripcion) || empty($existencia) || empty($entrada) 
   || empty($salida) || empty($stock))
@@ -19,22 +22,21 @@
 
   }
   else{
-    try{
 
         # Incluimos la clase MAT_PRIMA
-        require_once('../../model/mat_prima.php');
-
-        # Creamos un objeto de la clase materia prima
-        $mat_prima = new Mat_prima();
-
-        # Llamamos al metodo editar materia prima para realizar el update de los datos en la base de datos
-        $respuesta=$mat_prima-> update_mat_prima($cod_materia_pri,$referencia,$descripcion,$existencia,$entrada,$salida,$stock);
-      // se redirecciona a materia prima despues de realizar el update
-      
-      echo $respuesta;
-
-    }catch(PDOException $e){
-      echo 'Error en el registro';
-    }
+        require_once('../../model/mat_pri.php');
+        # Creamos un objeto de la clase usuario
+       $mat_pri = new Mat_prima();
+       # Llamamos al metodo  para realizar la consulta en la base de datos
+       $resultado = $mat_pri->update_mat_prima($cod_materia_pri,$referencia,$descripcion,$existencia,$entrada,$salida,$stock);
+       if ($resultado) {
+           #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTA POR MEDIO DEL AJAX
+           $json_response = json_encode($resultado);
+           echo $json_response;
+       } else {
+           $error = array('error' => 'No se encontraron datos del usuario');
+           echo json_encode($error);
+       }
   }
+  */
 ?>

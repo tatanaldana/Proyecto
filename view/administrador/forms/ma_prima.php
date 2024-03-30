@@ -109,11 +109,10 @@
     include '../include/img_menu.php';
 
     include '../include/footer.php';
-  ?> 
+  ?>
 
     </body>
-</html>
-
+    
 <script src="../../public/js/jquery.js"></script>
 
 <script src="../../public/js/sweetalert.min.js"></script>
@@ -121,3 +120,5 @@
 <script src="../../public/js/maPrima.js"></script>
 
 <script src="../../public/js/buttons.js"></script>
+</html>
+

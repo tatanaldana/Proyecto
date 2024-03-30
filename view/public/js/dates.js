@@ -26,8 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     //Llamamos la función para que se ejecute
     asignarvalores();
-    console.log(usuario.genero);
-    console.log(usuario.tipo_doc);
     console.log(document.getElementById('genero').value);
     console.log(document.getElementById('tipo_doc').value);
     //Eliminamos el elemento 'usuarioData' de la sesion de almacenamiento.
