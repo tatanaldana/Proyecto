@@ -257,9 +257,6 @@ public function editar_datos_Contacto($doc, $email, $tel, $direccion)
 
 public function editar_clave_usuario($doc, $clave) {
   try {
-      // Hashear la nueva contraseña
-      $hash = password_hash($clave, PASSWORD_DEFAULT);
-      
       $conectar = parent::conexion();  
       parent::set_names();
       $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
@@ -267,7 +264,6 @@ public function editar_clave_usuario($doc, $clave) {
       clave=:clave
       WHERE 
       doc=:doc";
-      $stmt = "UPDATE usuarios SET clave=:clave WHERE doc=:doc";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':clave', $hashed_password);
       $stmt->bindParam(':doc', $doc);

@@ -55,6 +55,7 @@ session_start();
     ?>
 
 
-<script src="../../public/js/cate&Prod.js"></script>
+<script src="../../public/js/categorias.js"></script>
+<script src="../../public/js/productos.js"></script>
 
 </html>

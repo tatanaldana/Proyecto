@@ -28,26 +28,26 @@
 
 <body>
 
-<?php
+    <?php
 
-require 'view/includeUsuario/funciones.php';
-    
+    require 'view/includeUsuario/funciones.php';
+
     incluirTemplate('header')
-?>
+    ?>
 
 
 
     <div class="imagenindex">
 
-        <?php 
-        if (isset($_SESSION['nombre'])){
-            echo 'Bienvenido'. ' ' . ucfirst ($_SESSION['nombre'] );
-        }else{
+        <?php
+        if (isset($_SESSION['nombre'])) {
+            echo 'Bienvenido' . ' ' . ucfirst($_SESSION['nombre']);
+        } else {
             echo 'Bienvenido';
         }
         ?>
 
-        
+
     </div>
 
     <!--hols-->
@@ -55,7 +55,7 @@ require 'view/includeUsuario/funciones.php';
 
     <div class="barramenu">
         <nav class="menu-productos row">
-        <a href="/Proyecto/view/user/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
+            <a href="/Proyecto/view/user/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
             <a href="/Proyecto/view/user/carrito/catpollo.php" class="col-sm"> <img src="/Proyecto/view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
             <a href="/Proyecto/view/user/carrito/catcombos.php" class="col-sm"> <img src="/Proyecto/view/public/img/combo.png" alt="icono Promociones">Combos </a>
             <a href="/Proyecto/view/user/carrito/catburguer.php" class="col-sm"> <img src="/Proyecto/view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
@@ -123,26 +123,20 @@ require 'view/includeUsuario/funciones.php';
                 <hr class="" style="color:var(--primario); " size="30px">
                 <p>Contamos con los mejores estandares de calidad para traer a sus casas la mejor comida rapida que ustedes pueden degustar.
                     Nos aseguramos que nuestra materia prima sea de la mejor calidad para contar con su total confiabilidad y siempre seamos tu primera opcion. Te invitamos a Revisar nuestro menú en el siguiente link</p>
-
-
                 <div class="center mt-3">
                     <a href='/Proyecto/view/user/categorias/categorias.php' class=""><img src="view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                 </div>
-
-
-
             </div>
-
         </div>
-
     </div>
-    </body>
+</body>
 
 
-    <br><br><br><br><br><br><br>
-    <?php
-        incluirTemplate('footer');
-      
-    ?>
+<br><br><br><br><br><br><br>
+
+<?php
+incluirTemplate('footer');
+
+?>
+
 </html>
-

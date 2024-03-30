@@ -1,20 +1,3 @@
-<?php
-
-// pagina con todas la propiedades de administrador del software
-session_start();
-
-//Validamos que existe un session ademas que el cargo que exista sea igual a 1 que es administrador
-if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
-    /* 
-    para redireccionar en php se utiliza header
-    pero al ser datos enviados por la cabecera debe esjecutarse
-    antes de mostrar cualquier informcaionen DOM es por eso que coloco
-    el codigo antes de la estructura del html 
-    */
-    header('location: ../login.php');
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -39,17 +22,24 @@ incluirTemplate('header')
 <div class="container">
     <div class="center mb-6">
         <?php
+
+
         require_once '../../../model/conexion.php';
 
         // Assign the connection object to the $conectar variable
-        $conectar = new mysqli('localhost', 'root', '', 'arca');
+        $conectar = new mysqli('localhost', 'root', 'Facnow123.', 'arca');
 
         // Check the connection
         if ($conectar->connect_error){
                 die("Connection failed: " . $conectar->connect_error);
             }
 
-        $buscar = $_POST['textbuscar'];
+    
+        if (isset($_POST['textbuscar'])) {
+            $buscar = $_POST['textbuscar'];
+            // Sanitizar $buscar para prevenir inyección de SQL (ejemplo):
+            $buscar = htmlspecialchars($buscar);
+        }
 
         $queryusuarios = mysqli_query($conectar, "SELECT * FROM productos WHERE nombre_pro like '%" . $buscar . "%'");
         if ($queryusuarios->num_rows > 0){
