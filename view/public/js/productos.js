@@ -77,13 +77,13 @@ $('#btn_agregar_prod').click(function(e) {
 
 $('#editButton').click(function() {
 // Cuando se da click en el boton con el id EditButton, se recupera el valor codMaprima del checkbox seleccionado
-var editar = $('input:checkbox:checked').data('idproducto');
+var editar = $('input:checkbox:checked').data('idProducto');
 // Se realiza la petición AJAX por método POST
 $.ajax({
   method: 'POST',
   url: '../../../controller/productos/viewProducto.php',
   // Se envía el dato 'idproducto' al controlador PHP
-  data: { idproducto:editar },
+  data: { idProducto:editar },
   // Si la solicitud es exitosa
   success: function(response) {
       try {
@@ -133,7 +133,7 @@ $.ajax({
       swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
     } else {
       //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-      window.location.href = '../productos_adm.php';
+     // window.location.href = '../productos_adm.php';
 
     }
   },
@@ -151,7 +151,7 @@ var productoData = sessionStorage.getItem('productoData');
 
 //Si maprimaData' existe, entonces convertimos el JSON almacenado en un array
 if (productoData) {
-var maprimaArray= JSON.parse(productoData);//este es el array
+var productoArray= JSON.parse(productoData);//este es el array
 //Obtenemos el primer objeto del array y lo asigna a la variable 'maprima'
 var producto = productoArray[0];
 console.log(producto);
@@ -183,7 +183,7 @@ console.log("No se han encontrado datos del producto");
 });
 
 
-
+//ok ko ok ok ok 
 //eliminarcategorias.php
 
 $(document).ready(function() {
@@ -216,7 +216,7 @@ $('#deleteButton').click(function() {
                   // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
                   window.location.href = '../../administrador/forms/productos_adm.php';
                   // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  //../../administrador/forms/ma_prima.php'; ruta despues de cambiar la carpeta a a forms
+                 
               } else {
                   // Ocurrió un error o la materia prima no se pudo eliminar
                   // Mostrar un mensaje de error o manejar el caso según sea necesario
@@ -239,7 +239,7 @@ $('#deleteButton').click(function() {
 
 
 
-//view MAPRIMA 
+//view productos 
 
 $('#viewButton').click(function() {
 //Cuando se da click en el boton con el id viewButton , se recupera el valor IDPRODUCTO del checkbox seleccionado

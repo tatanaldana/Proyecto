@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['idProducto'])) {
     $idProducto = $_POST['idProducto'];
-    // Aquí podrías sanitizar $id_categoria antes de utilizarlo en la consulta
+    // Aquí podrías sanitizar $id_producto antes de utilizarlo en la consulta
 
      # Incluimos la clase categorias
     require_once('../../model/productos.php');

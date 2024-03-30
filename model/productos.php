@@ -98,7 +98,7 @@ class Productos extends Conexion{
         detalle = :detalle,
         precio_pro = :precio_pro,
         categorias_idcategoria = :categorias_idcategoria,
-        foto= :foto,
+        foto = :foto,
         cod = :cod
         WHERE
         idProducto =:idProducto";

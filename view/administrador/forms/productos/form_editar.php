@@ -18,7 +18,7 @@
   <!-- Espacio en blanco -->
   <div class="my-5"></div>
 
-  <form id="editarMaprima">
+  <form id="editar_prod">
     <div class="row d-flex justify-content-center">
       <div class="col-xs-2">
         <div class="card mb-5">
