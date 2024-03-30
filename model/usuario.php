@@ -25,7 +25,7 @@ public function login($user, $clave)
             
             // Verificar si la contraseña coincide con el hash almacenado
             if (password_verify($clave, $hashed_password)) {
-  
+                // Generar un nuevo token CSRF y establecerlo en la sesión
                 session_start();
                 $_SESSION['doc'] = $resultado['doc'];
                 $_SESSION['nombre'] = $resultado['nombre'];
@@ -67,8 +67,10 @@ public static function verificarSesion() {
           if (strpos($_SERVER['REQUEST_URI'], 'view/administrador') !== false) {
               // Si es un cliente intentando acceder a la vista del administrador, redirigir al inicio de sesión
               echo "<script type='text/javascript'>
-                      alert('Acceso no autorizado');
+              document.addEventListener('DOMContentLoaded',function(){
+                      swal('Advertencia','Acceso no autorizado','forbibben');
                       window.location.href='/Proyecto/view/login.php';
+                    });
                     </script>";
               exit();
           }
@@ -79,8 +81,10 @@ public static function verificarSesion() {
 
   // Si no hay sesión iniciada o el usuario no tiene un cargo definido, redirigir al inicio de sesión
   echo "<script type='text/javascript'>
-          alert ('Debes iniciar sesión para acceder a este contenido');
+          document.addEventListener('DOMContentLoaded',function(){
+          swal('Aviso','Debes iniciar sesión para acceder a este contenido','warning');
           window.location.href='/Proyecto/view/login.php';
+        });
         </script>";
   exit();
 }
@@ -420,6 +424,54 @@ public function datos_usuario_venta($buscar){
   $stmt="SELECT doc,nombre,apellido,tel,email,direccion FROM usuarios WHERE doc= :buscar";
   $stmt=$conectar->prepare($stmt);
   $stmt->bindParam(':buscar', $buscar);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
+
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
+}
+
+function validarImagen($file) {
+  $nombre_img = $file["name"];
+  $tipo = $file["type"];
+  $ruta_temporal = $file["tmp_name"];
+  $tamano = $file["size"];
+
+  // Directorio donde se guardarán las imágenes
+  $carpeta_destino = "../../../public/img/";
+
+  // Validar el tipo de archivo
+  if (($tipo != 'image/jpeg') && ($tipo != 'image/png') && ($tipo != 'image/gif')) {
+      return "error_5"; // Error: el archivo no es una imagen válida
+  }
+
+  // Validar el tamaño del archivo (3MB máximo)
+  $tamano_maximo = 3 * 1024 * 1024; // 3MB en bytes
+  if ($tamano > $tamano_maximo) {
+      return "error_6"; // Error: tamaño máximo permitido excedido
+  }
+
+  // Generar una nueva ruta única para guardar la imagen
+  $ruta_destino = $carpeta_destino . uniqid('img_', true) . '.' . pathinfo($nombre_img, PATHINFO_EXTENSION);
+
+  // Mover el archivo cargado al directorio de destino
+  if (move_uploaded_file($ruta_temporal, $ruta_destino)) {
+      // El archivo se ha cargado correctamente, retorna la ruta de destino
+      return $ruta_destino;
+  } else {
+      return "error_7"; // Error al mover el archivo cargado
+  }
+}
+
+public function view_clientes(){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt="SELECT * FROM view_clientes";
+  $stmt=$conectar->prepare($stmt);
   $stmt->execute();
   $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
   return $resultado;

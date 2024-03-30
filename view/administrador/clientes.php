@@ -1,8 +1,4 @@
-<?php
-require_once '../../model/usuario.php';
 
-usuario::verificarSesion();
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,14 +13,24 @@ usuario::verificarSesion();
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+      <!-- Jquery -->
+  <script src="../public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="../public/js/bootstrap.min.js"></script> 
+      <!-- SweetAlert js -->
+  <script src="../public/js/sweetalert.min.js"></script>
   </head>
+
+  <?php
+require_once '../../model/usuario.php';
+
+usuario::verificarSesion();
+
+?>
 <body>
   <?php
     include 'include/header.php';
-
-    include 'include/img_clientes.php';
-
   ?> 
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -32,13 +38,17 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Clientes</li>
   </ol>
 </nav>
+<?php
+    include 'include/img_clientes.php';
+  ?>
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">
 <div class="mx-auto" style="width:300px">
 <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
-  <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
+  <div class="d-flex justify-content-around">
+  <button type="button" class="btn btn-outline-primary my-3 " name="btnbuscar" id="btnbuscar">Buscar</button>
 </div>
 </div>
 </div>
@@ -73,9 +83,9 @@ usuario::verificarSesion();
             <table class="table-responsive">
                 <tr>
                     <td><a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
-                    <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
-                    <td><a class="btn btn-primary" id="editButton">Editar</a></td>
-                    <td><a class="btn btn-primary delete-button" id="deleteButton">Eliminar</a></td>
+                    <td><a class="btn btn-primary " id="viewButton">Visualizar</a></td>
+                    <td><a class="btn btn-primary ms-3" id="editButton">Editar</a></td>
+                    <td><a class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</a></td>
                 </tr> 
             </table>
             </div>
@@ -91,12 +101,6 @@ usuario::verificarSesion();
 
   <!-- Final formulario login -->
 
-  <!-- Jquery -->
-  <script src="../public/js/jquery.js"></script>
-  <!-- Bootstrap js -->
-  <script src="../public/js/bootstrap.min.js"></script>
-  <!-- SweetAlert js -->
-  <script src="../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="../public/js/usuario.js"></script>
 

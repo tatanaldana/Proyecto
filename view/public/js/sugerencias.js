@@ -1,10 +1,10 @@
-$(document).ready(function() {
+  $(document).ready(function() {
     //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
     if (window.location.pathname.endsWith("sugerencias.php")) {
       //Se realiza la solicitud AJAX al cargar la página
       $.ajax({
         method: 'POST',
-        url: '../../controller/pqr/mostrartodoController.php',
+        url: '../../controller/pqr/controllerviewPQR.php',
   
         success: function(response) {
           var datos = JSON.parse(response);
@@ -29,4 +29,3 @@ $(document).ready(function() {
   });
   }
   });
-

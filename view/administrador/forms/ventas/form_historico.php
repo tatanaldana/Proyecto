@@ -52,6 +52,11 @@ usuario::verificarSesion();
                   <button type="button" class="btn btn-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
                 </td>
               </tr>
+              <tr>
+              <td colspan="5" align="center">
+                  <button type="button" class="btn btn-primary" name="btntotal" id="btntotal">Contabilizar</button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </form>
@@ -91,9 +96,12 @@ usuario::verificarSesion();
   include '../../include/footer.php';
   ?>
   <body>
-  <!-- Jquery -->
-  <script src="../../../public/js/jquery.js"></script>
-
+      <!-- Jquery -->
+      <script src="../../../public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="../../../public/js/bootstrap.min.js"></script> 
+      <!-- SweetAlert js -->
+  <script src="../../../public/js/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src= "../../../public/js/ventas.js"></script>
 

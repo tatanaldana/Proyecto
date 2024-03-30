@@ -17,16 +17,11 @@ usuario::verificarSesion();
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/style.css">
   </head>
   <body>
-  
-
   <?php
   include 'include/header.php';
-
- /* include 'forms/form_registro.php';*/
-
   ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -34,27 +29,25 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Gestion</li>
   </ol>
 </nav>
+<div class="my-5"></div>
   <?php
+
+  echo '<div class="my-5"></div>';
+
   include 'gestion/barra.php';
 
+  echo '<div class="my-5"></div>';
+  
   include 'include/img_gestion.php';
 
-    ?>
+  include 'include/img_menu.php';
 
+  include 'include/footer.php';
+  ?>
 
-<?php 
-    include 'crud/conexion.php';
-    
-    /*include 'crud/crud.php';*/
-
-    include 'include/img_menu.php';
-
-    include 'include/footer.php';
-  ?> 
 
 
 </body>
 </html>
 
-    </body>
-</html>
+    

@@ -17,13 +17,11 @@ usuario::verificarSesion();
     <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link rel="stylesheet" href="../public/css/style.css">
   </head>
   <body>
   <?php
   include 'include/header.php';
-
-  include 'include/img_ventas.php';
   ?>
   <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -31,6 +29,10 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Ventas</li>
   </ol>
 </nav>
+
+<?php
+    include 'include/img_ventas.php';
+  ?>
 <div class="my-5"></div>
 <form id="formbuscar">
   <div class="container">
@@ -60,8 +62,8 @@ usuario::verificarSesion();
         <div class="row">
         <table class="table-responsive">
             <tr>
-                <td><a href="forms/ventas/form_preparacion.php" class="btn btn-primary" >Verificar venta</a></td>
-                <td><a href="forms/ventas/form_historico.php"  class="btn btn-primary" >Historico</a></td>
+                <td><a href="forms/ventas/form_preparacion.php"  class="btn btn-primary "  >Verificar venta</a></td>
+                <td><a href="forms/ventas/form_historico.php"  class="btn btn-primary ms-5" >Historico</a></td>
             </tr> 
         </table>
         </div>

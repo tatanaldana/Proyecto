@@ -138,6 +138,23 @@ public function historico_venta_x_fecha($fecha_inicial,$fecha_final){
   }
 } 
 
+public function total_venta_x_fecha($fecha_inicial,$fecha_final){
+  try {
+    $conectar= parent::conexion();
+    parent::set_names();  
+    $stmt= "call total_ventas(:fecha_inicial,:fecha_final)";
+    $stmt=$conectar->prepare($stmt);
+    $stmt->bindParam(':fecha_inicial', $fecha_inicial);
+    $stmt->bindParam(':fecha_final', $fecha_final);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultado;
+  } catch (PDOException $e) {
+    echo 'Error al ejecutar la consulta SQL: ' . $e->getMessage();
+    return false;
+  }
+} 
+
 public function get_venta() {
   try {
       // ... tu código existente ...
@@ -247,6 +264,22 @@ public function detalle_historico_venta2($idCarrito){
     echo 'Error al consultar: ' . $e->getMessage();
     return false;
   }
+}
+
+public function viewventas_preparacion(){
+  try {
+  $conectar= parent::conexion();
+  parent::set_names();
+  $stmt= "SELECT*FROM viewventa_preparacion";
+  $stmt=$conectar->prepare($stmt);
+  $stmt->execute();
+  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  return $resultado;
+
+} catch (PDOException $e) {
+  echo 'Error: ' . $e->getMessage();
+  return false;
+}
 }
 
 }

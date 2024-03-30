@@ -1,3 +1,38 @@
+
+
+
+  //Funcion para ejecutar la busqueda cuando se haga click ene l boton btnbuscar
+    $('#btnbuscar').click(function() {
+        var buscar = $('#buscar').val();
+  //Se realiza la solicitud AJAX para buscar según el valor ingresado
+        $.ajax({
+            method: 'POST',
+            url: '../../../controller/categorias/mostrarCategoria.php',
+            //se envia el valor del campo al controlador
+            data: { buscar_php: buscar },
+            success: function(response) {
+                var datos = JSON.parse(response);
+                var tablaHTML = '';
+  //Se genera el HTML para visualizar el resultado de la busqueda en la tabla
+                for (var i = 0; i < datos.length; i++) {
+                    tablaHTML += '<tr>';
+                    tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-id_categoria="' + datos[i].id_categoria + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+                    tablaHTML += '<td>' + datos[i].id_categoria + '</td>';
+                    tablaHTML += '<td>' + datos[i].nombre_cat + '</td>';
+                    tablaHTML += '</tr>';
+                }
+  // se inserta el HTML generado en tbody de la tabla
+                $('#filasTabla').html(tablaHTML);
+            },
+            error: function(xhr) {
+                console.error(xhr.responseText);
+            }
+        });
+    });
+  
+
+
+
 // agregarcategorias.php
 
 $(document).ready(function() {

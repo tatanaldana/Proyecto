@@ -30,12 +30,11 @@ include("../../include/header.php");
         <!-- Margen superior (css personalizado )-->
         <div class="spacing-1"></div>
 
-        <form id="formregistro">
+        <form id="formregistro" enctype="multipart/form-data">
           <!-- Estructura del formulario -->
           <fieldset>
 
             <legend class="center">Registro</legend>
-
             <!-- Caja de texto para usuario -->
             <label class="sr-only" for="user">Nombre</label>
             <div class="input-group">
@@ -106,11 +105,11 @@ include("../../include/header.php");
             <!-- Div espaciador
               <div class="spacing-2"></div>
 
-              Caja de texto para email 
-              <label class="sr-only" for="user">Email</label>
+              Caja de texto para imagen
+              <label class="sr-only" for="imagen">Imagen de perfil:</label>
               <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                <input type="text" class="form-control" name="email" placeholder="Ingresa tu email">
+                    <input type="file" id="imagen" name="imagen" accept="image/*">
               </div> -->
 
             <!-- Div espaciador -->
@@ -178,22 +177,22 @@ include("../../include/header.php");
             <!-- Fin load -->
 
             <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-            <center>
+            <div class="my-5"></div>
+           <!--  <center>
               <div><input type="checkbox" class="che"><a href="#">Estoy de acuerdo con Terminos y Condiciones</a></div>
-            </center>
+            </center>-->
 
             <!-- Boton Login para activar la funcion click y enviar los datos mediante ajax -->
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
                 <div class="spacing-2"></div>
-                <button type="button" class="btn btn-primary btn-block"  name="button" id="Cancelar"><a href="../../clientes.php">Cancelar</a></button>
+               <a href="../../clientes.php"  type="button" class="btn btn-danger btn-block my-5"  name="button" id="Cancelar">Cancelar</a>
               </div>
-              <div class="spacing-4"><br></div>
+             
             </div>
             <div class="row">
               <div class="col-xs-8 col-xs-offset-2 ">
-                <div class="spacing-2"></div>
+                
                 <button type="button" class="btn btn-primary btn-block" name="button" id="btnregistro">Registrate</button>
               </div>
             </div>

@@ -1,7 +1,5 @@
 <?php
-
-require_once 'conexion.php';
-
+  require_once "conexion.php";
 
 
 class Productos extends Conexion{
@@ -41,8 +39,6 @@ class Productos extends Conexion{
                 return [];  // o return null; según tu lógica
             }
         }
-
-        
 
         public function get_nombre_cat($idCategoria){
             $conectar = parent::conexion();

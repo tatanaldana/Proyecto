@@ -148,7 +148,7 @@ $(document).ready(function() {
     });
 
 
-
+/*
     //ventas en preparacion se cargan apenas ingrese a la pagina
     $(document).ready(function() {
         //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
@@ -157,6 +157,39 @@ $(document).ready(function() {
           $.ajax({
             method: 'POST',
             url: '../../../../controller/ventas/mostrarVentaspre.php',
+      
+            success: function(response) {
+              var datos = JSON.parse(response);
+              var tablaHTML = '';
+      
+              for (var i = 0; i < datos.length; i++) {
+                tablaHTML += '<tr>';
+                tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idcarrito="' + datos[i].carrito_idcarrito + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+                tablaHTML += '<td>' + datos[i].doc_cliente + '</td>';
+                tablaHTML += '<td>' + datos[i].fecha_venta + '</td>';
+                tablaHTML += '<td>' + datos[i].carrito_idcarrito + '</td>';
+                tablaHTML += '<td>' + datos[i].totalventa + '</td>';
+                tablaHTML += '<td>' + datos[i].estado + '</td>';
+                tablaHTML += '</tr>';
+            }
+      
+              $('#ventaspreparacion').html(tablaHTML);
+          },
+          error: function(xhr) {
+            console.error(xhr.responseText);
+          }
+      });
+      }
+      });
+      */
+//Vista para mostrar información de la sventas en preparación 
+      $(document).ready(function() {
+        //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
+        if (window.location.pathname.endsWith("form_preparacion.php")) {
+          //Se realiza la solicitud AJAX al cargar la página
+          $.ajax({
+            method: 'POST',
+            url: '../../../../controller/ventas/controllerviewventasPreparacion.php',
       
             success: function(response) {
               var datos = JSON.parse(response);
@@ -490,4 +523,34 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log("No se han encontrado datos del usuario");
     }
   });
+
+  //AJAX para mostrar la respuesta del procedimiento toal_venta_x_fecha<
+  $('#btntotal').click(function() {
+    var fecha_inicial=$('#fecha_inicial').val();
+    var fecha_final=$('#fecha_final').val();
+      console.log(fecha_inicial);
+      console.log(fecha_final);
+  //Se realiza la petición AJAX por metodo POST 
+      $.ajax({
+        method: 'POST',
+        url: '../../../../controller/ventas/procedimientoTotal.php',
+        //Ser envía el dato 'doc' al controlador PHP
+        data: { fecha_inicial_php: fecha_inicial,
+        fecha_final_php: fecha_final },
+        //Si la solicitud es exitosa
+        success: function(response) {
+            var data=JSON.parse(response);
+
+          if(data[0].TOTAL !==null){
+             var totalVentas = data[0].TOTAL;
+            swal('Exito', 'El valor total de las ventas hechas fueron: $'+totalVentas, 'success');       
+          }else{
+            swal('Información','No se encontraron ventas en el rango especificado','info');
+        }
+    },
+        error: function(error) {
+            console.error('Error en la petición AJAX: ' + error);
+        }
+      });
+    });
  

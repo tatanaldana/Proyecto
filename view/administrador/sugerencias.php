@@ -22,8 +22,6 @@ usuario::verificarSesion();
   <body>
   <?php
     include 'include/header.php';
-
-    include 'include/img_sugerencias.php';
   ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">
@@ -31,13 +29,17 @@ usuario::verificarSesion();
     <li class="breadcrumb-item active" aria-current="page">Sugerencias</li>
   </ol>
 </nav>
+<?php
+    include 'include/img_sugerencias.php';
+  ?>
 <form id="formmostrar">
 <div class="container">
 <div class="contenedor-busqueda" id="contenedor-busqueda">
 <div class="mx-auto" style="width:300px">
 <div class="input-group">
   <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
-  <button type="button" class="btn btn-outline-primary" name="btnbuscar" id="btnbuscar">Buscar</button>
+  <div class="d-flex justify-content-around">
+  <button type="button" class="btn btn-outline-primary my-3" name="btnbuscar" id="btnbuscar">Buscar</button>
 </div>
 </div>
 </div>

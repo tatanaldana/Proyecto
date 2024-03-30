@@ -82,6 +82,9 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                         </div>
                     </div>
 
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
 
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
