@@ -176,13 +176,10 @@ $.ajax({
     if (response == 'error_1') {
       swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
     } else {
-<<<<<<< Updated upstream
-      //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-      window.location.href = '../ma_prima.php';
-=======
+
       swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
       window.location.href = '../productos_adm.php';
->>>>>>> Stashed changes
+
 
     }
   },
@@ -196,65 +193,59 @@ $.ajax({
 //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
 //Verificamos que en la asesión del navegador exista el elemento llamado 'MAPRIMAData'
-var maprimaData = sessionStorage.getItem('maprimaData');
+var productoData = sessionStorage.getItem('productoData');
 
 //Si maprimaData' existe, entonces convertimos el JSON almacenado en un array
-if (maprimaData) {
-var maprimaArray= JSON.parse(maprimaData);//este es el array
+if (productoData) {
+var productoArray= JSON.parse(productoData);//este es el array
 //Obtenemos el primer objeto del array y lo asigna a la variable 'maprima'
-var maprima = maprimaArray[0];
-console.log(maprima);
+var producto = productoArray[0];
+console.log(producto);
 //creamos la funcion para poder llenar los campos del formulario
 function asignarvalores(){
 //se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('cod_materia_pri').value = maprima.cod_materia_pri;
-document.getElementById('referencia').value = maprima.referencia;
-document.getElementById('descripcion').value = maprima.descripcion;
-document.getElementById('existencia').value = maprima.existencia;
-document.getElementById('entrada').value = maprima.entrada;
-document.getElementById('salida').value = maprima.salida;
-document.getElementById('stock').value = maprima.stock;
-document.getElementById('doc_hidden').value = maprima.cod_materia_pri;
+document.getElementById('idProducto').value = producto.idProducto;
+document.getElementById('nombre_pro').value = producto.nombre_pro;
+document.getElementById('detalle').value =producto.detalle;
+document.getElementById('precio_pro').value = producto.precio_pro;
+document.getElementById('categorias_idcategoria').value = producto.categorias_idcategoria;
+document.getElementById('foto').value = producto.foto;
+document.getElementById('cod').value = producto.cod;
+document.getElementById('doc_hidden').value = producto.idProducto;
 }
 //Llamamos la función para que se ejecute
 asignarvalores();
 
 //Luego deshabilitamos los campos que no vamos a modificar
-<<<<<<< Updated upstream
-document.getElementById('cod_materia_pri').disabled = true;
-//Eliminamos el elemento 'maprimaData' de la sesion de almacenamiento.
-sessionStorage.removeItem('maprimaData');
-=======
 document.getElementById('idProducto').disabled = true;
 //Eliminamos el elemento 'producto data ' de la sesion de almacenamiento.
 sessionStorage.removeItem('productoData');
->>>>>>> Stashed changes
 
 //si no se encuentra 'MAPRIMAData' entonces imprime el mensaje
 
 } else {
-console.log("No se han encontrado datos de la materia prima");
+console.log("No se han encontrado datos del producto");
 }
 });
 
 
 
-//eliminarcategorias.php
+//eliminar producto .php
 
 $(document).ready(function() {
 $('#deleteButton').click(function() {
   // Obtener el cod materia prima del checkbox marcado
-  var cod_materia_pri = $('input:checkbox:checked').data('cod_materia_pri');
+  var idproducto = $('input:checkbox:checked').data('idProducto');
 
   // Verificar si se seleccionó alguna materia prima
-  if (cod_materia_pri) {
-      console.log('ID de materia prima  a eliminar:', cod_materia_pri);
+  if (idproducto) {
+      console.log('ID de produto a eliminar:', idproducto);
 
       // Realizar la solicitud AJAX para eliminar la materia prima 
       $.ajax({
           method: 'POST',
-          url: '../../../controller/maPrima/eliminarMaprima.php',
-          data: { cod_materia_pri: cod_materia_pri },
+          url: '../../../controller/productos/eliminarProducto.php',
+          data: { idproducto: idproducto },
           beforeSend: function() {
               // Mostrar un indicador de carga mientras se procesa la solicitud
               $('#load').show();
@@ -269,9 +260,8 @@ $('#deleteButton').click(function() {
                   // La categoría se eliminó correctamente
                   alert(response.message);
                   // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  window.location.href = '../../administrador/forms/ma_prima.php';
-                  // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  //../../administrador/forms/ma_prima.php'; ruta despues de cambiar la carpeta a a forms
+                  window.location.href = '../../administrador/forms/productos_adm.php';
+                 
               } else {
                   // Ocurrió un error o la materia prima no se pudo eliminar
                   // Mostrar un mensaje de error o manejar el caso según sea necesario
@@ -298,36 +288,31 @@ $('#deleteButton').click(function() {
 
 $('#viewButton').click(function() {
 //Cuando se da click en el boton con el id viewButton , se recupera el valor cod_materia_pri del checkbox seleccionado
-    var view_materia_pri = $('input:checkbox:checked').data('cod_materia_pri');
+    var view_producto = $('input:checkbox:checked').data('idproducto');
 //Se realiza la petición AJAX por metodo POST 
     $.ajax({
       method: 'POST',
-<<<<<<< Updated upstream
-      url: '../../../controller/maPrima/viewMaprima.php',
-      //Se envía el dato 'cod_materia_pri' al controlador PHP
-      data: { cod_materia_pri: view_materia_pri},
-=======
-      url: '../../../controller/productos/viewProducto.php',
+      url:'../../../controller/productos/viewProducto.php',
       //Se envía el dato 'id producto' al controlador PHP
       data: {idProducto: view_producto},
->>>>>>> Stashed changes
+
       //Si la solicitud es exitosa
       success: function(response) {
         try {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos 
         //la cadena de texto JSON a un objeto javascript
-          var view_materia_pri = JSON.parse(response);
-          if (!view_materia_pri.error) {
+          var view_producto = JSON.parse(response);
+          if (!view_producto.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
             //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-            sessionStorage.setItem('viewData', JSON.stringify(view_materia_pri));
+            sessionStorage.setItem('produtoData', JSON.stringify(view_producto));
             //Se redirecciona al formulario de view luego de un segundo
             setTimeout(function() {
-              window.location.href = '../forms/maPrima/form_view.php';
+              window.location.href = '../forms/productos/form_view.php';
             }, 1000);
           } else {
-            console.log(view_materia_pri.error);
+            console.log(view_producto.error);
           }
         } catch (error) {
           console.error('Error al analizar la respuesta JSON:', error);
@@ -352,13 +337,13 @@ console.log(viewData);
 //creamos la funcion para poder llenar los campos del formulario
 function asignarvalores2(){
 //se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('cod_materia_pri').value = viewData.cod_materia_pri;
-document.getElementById('referencia').value = viewData.referencia;
-document.getElementById('descripcion').value = viewData.descripcion;
-document.getElementById('existencia').value = viewData.existencia;
-document.getElementById('entrada').value = viewData.entrada;
-document.getElementById('salida').value = viewData.salida;
-document.getElementById('stock').value = viewData.stock;
+document.getElementById('idProducto').value = viewData.idProducto;
+document.getElementById('nombre_pro').value = viewData.nombre_pro;
+document.getElementById('detalle').value = viewData.detalle;
+document.getElementById('precio_pro').value = viewData.precio_pro;
+document.getElementById('categorias_idcategoria').value = viewData.categorias_idcategoria;
+document.getElementById('foto').value = viewData.foto;
+document.getElementById('cod').value = viewData.cod;
 
 }
 //Llamamos la función para que se ejecute
@@ -366,48 +351,49 @@ asignarvalores2();
 //Eliminamos el elemento 'viewData' de la sesion de almacenamiento.
 sessionStorage.removeItem('viewData');
 //Luego deshabilitamos los campos que no vamos a modificar
-document.getElementById('cod_materia_pri').disabled = true;
-document.getElementById('referencia').disabled = true;
-document.getElementById('descripcion').disabled = true;
-document.getElementById('existencia').disabled = true;
-document.getElementById('entrada').disabled = true;
-document.getElementById('salida').disabled = true;
-document.getElementById('stock').disabled = true;
+
+document.getElementById('idProducto').disabled = true;
+document.getElementById('nombre_pro').disabled = true;
+document.getElementById('detalle').disabled = true;
+document.getElementById('precio_pro').disabled = true;
+document.getElementById('categorias_idcategoria').disabled = true;
+document.getElementById('foto').disabled = true;
+document.getElementById('cod').disabled = true;
 //si no se encuentra 'viewData' entonces imprime el mensaje
 
 } else {
-console.log("No se han encontrado datos de la materia prima");
+console.log("No se han encontrado datos del producto");
 }
 });
 
 
 
 
-
-/* todomat_prima.php*/
+//ok ok ok ok
+/* todoproducto.php*/
 //Mostrar registros existentes apenas ingresa a la pagina categorias.
 
 
 $(document).ready(function() {
 //Se verifica que la ruta del archivo termine en ma_prima.php para ejecutar la solicitud AJAX
-if (window.location.pathname.endsWith("ma_prima.php")) {
+if (window.location.pathname.endsWith("productos_adm.php")) {
 //Se realiza la solicitud AJAX al cargar la página
 $.ajax({
   method: 'POST',
-  url: '../../../controller/maPrima/todoMaprima.php',
+  url: '../../../controller/productos/todoProductos1.php',
   success: function(response) {
     var datos = JSON.parse(response);
     var tablaHTML = '';
     for (var i = 0; i < datos.length; i++) {
       tablaHTML += '<tr>';
-      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-cod_materia_pri="' + datos[i].cod_materia_pri + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
-      tablaHTML += '<td>' + datos[i].cod_materia_pri + '</td>';
-      tablaHTML += '<td>' + datos[i].referencia + '</td>';
-      tablaHTML += '<td>' + datos[i].descripcion + '</td>';
-      tablaHTML += '<td>' + datos[i].existencia + '</td>';
-      tablaHTML += '<td>' + datos[i].entrada + '</td>';
-      tablaHTML += '<td>' + datos[i].salida + '</td>';
-      tablaHTML += '<td>' + datos[i].stock + '</td>';
+      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idproducto="' + datos[i].idproducto + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+      tablaHTML += '<td>' + datos[i].idProducto + '</td>';
+      tablaHTML += '<td>' + datos[i].nombre_pro + '</td>';
+      tablaHTML += '<td>' + datos[i].detalle + '</td>';
+      tablaHTML += '<td>' + datos[i].precio_pro + '</td>';
+      tablaHTML += '<td>' + datos[i].categorias_idcategoria + '</td>';
+      tablaHTML += '<td>' + datos[i].foto + '</td>';
+      tablaHTML += '<td>' + datos[i].cod + '</td>';
       tablaHTML += '</tr>';
   }
 
