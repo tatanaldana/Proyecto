@@ -7,7 +7,7 @@ class Mat_prima extends Conexion{
         $conectar= parent::conexion();
         parent::set_names();
         $stmt ="SELECT * FROM mat_pri";
-        $stmt =$conectar->prepare($stmt );
+        $stmt =$conectar->prepare($stmt);
         $stmt ->execute();
         $resultado=$stmt ->fetchAll(PDO::FETCH_ASSOC);
         return $resultado;
@@ -92,7 +92,6 @@ class Mat_prima extends Conexion{
     public function eliminar_mat_prima($cod_materia_pri) {
         $conectar = parent::conexion();
         parent::set_names();
-        
         $stmt = $conectar->prepare("DELETE FROM mat_pri WHERE cod_materia_pri = :cod_materia_pri");
         $stmt->bindParam(':cod_materia_pri', $cod_materia_pri);
         $stmt->execute();
