@@ -63,29 +63,27 @@ include("../../include/header.php");
                       <label for="stock" class="form-label">stock</label>
                       <input type="number" class="form-control" id="stock" name="stock" placeholder="cuanto quedo en total" >
                     </div>
-                    
-
-
-          <!-- Botón para enviar el formulario -->
-          <tr>
-        <td colspan="2" class="center">
-            <div class="btn-group" role="group" aria-label="Botones">
-                <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarmaprima" name="agregarmaprima" value="registrar">Agregar</button> 
-                <a href="../ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
-            </div>
-        </td>
-    </tr>
-
-    
-
-
-                        </tbody>
+                    </tbody>
+                    <tr>
+                      <td colspan="2" class="center">
+                          <div class="btn-group" role="group" aria-label="Botones">
+                              <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarmaprima"  value="registrar" >Agregar</button> 
+                              <a href="../../gestion/ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
+                          </div>
+                      </td>
+                    </tr>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 </form>
+          <!-- Botón para enviar el formulario -->
+
+
+    
+
+
 
 <!-- Jquery -->
 <script src="../../../public/js/jquery.js"></script>

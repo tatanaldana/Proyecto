@@ -42,11 +42,10 @@
 
 // agregar maprima.php
 
-$(document).ready(function() {
-  $('#btnagregarmaprima').click(function(e) {
-      e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
+  $('#btnagregarmaprima').click(function() {
 
-      var formData = $('#agregar_maprima').serialize(); // Serializa los datos del formulario
+      var formData = $('#agregar_maprima').serialize(); 
+      console.log(formData);// Serializa los datos del formulario
 
       // Realiza la solicitud AJAX
       $.ajax({
@@ -66,12 +65,12 @@ $(document).ready(function() {
                   window.location.href = '../../forms/ma_prima.php';
               }
           },
-          error: function(xhr, status, error) {
-              console.error('Error en la solicitud AJAX:', status, error);
+          error: function(xhr) {
+            console.error(xhr.responseText);
           }
-      });
-  });
-});
+          });
+        });
+
 
 
 
@@ -135,8 +134,8 @@ console.log (editarMaprima);
           swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
         } else {
           //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-          window.location.href = '../ma_prima.php';
 
+          window.location.href = '../ma_prima.php';
         }
       },
       error: function(xhr) {
@@ -279,6 +278,7 @@ $(document).ready(function() {
           }
         });
       });
+
   //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
   //Verificamos que en la asesión del navegador exista el elemento llamado 'viewData'
@@ -320,9 +320,6 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("No se han encontrado datos de la materia prima");
   }
 });
-  
-
-
 
 
 /* todomat_prima.php*/

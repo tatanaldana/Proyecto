@@ -62,6 +62,7 @@
                       <input type="number" class="form-control" id="stock" name="stock" >
                     </div>
                     <div class="mb-3">
+                    <input type="hidden" id="doc_hidden" name="cod_materia_pri">
                   </td>
                 </tr>
                 <tr>
@@ -90,5 +91,9 @@
 <script src="../../../public/js/sweetalert.min.js"></script>
 <!-- Js personalizado -->
 <script src="../../../public/js/maPrima.js"></script>
+
+<script src="../../../public/js/DATOSMATPRIMA.js"></script>
+
+
 </body>
 </html>

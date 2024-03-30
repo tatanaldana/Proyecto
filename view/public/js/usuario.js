@@ -156,8 +156,7 @@ $(document).ready(function() {
 
 
 
-//Datos para realizar update del registro
-$(document).ready(function() {
+
   $('#btneditar').click(function() {
     var form1 = $('#formeditar').serialize();
 
@@ -165,7 +164,7 @@ $(document).ready(function() {
 
     $.ajax({
       method: 'POST',
-      url: '../../../controller/usuario/editarController.php',
+      url: '../../../../controller/usuario/editarController.php',
       data: form1,
       beforeSend: function() {
         $('#load').show();
@@ -176,7 +175,7 @@ $(document).ready(function() {
         if (res == 'error_1') {
           swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
         } else {
-          window.location.href = res;
+        //  window.location.href = res;
         }
       },
       error: function(xhr) {
@@ -184,7 +183,7 @@ $(document).ready(function() {
       }
     });
   });
-});
+
 
 //Editar Datos de Perfil
 
