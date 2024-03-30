@@ -95,8 +95,8 @@ usuario::verificarSesion();
   <?php
 
     include 'include/img_menu.php';
-
     include 'include/footer.php';
+    
   ?> 
   
 

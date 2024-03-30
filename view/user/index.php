@@ -12,12 +12,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
     el codigo antes de la estructura del html 
     */
     header('location: login.php');
-
-    
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -31,21 +26,21 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Restaurante La cabaña</title>
 
-        <?php 
-            include '../includeUsuario/head.php';
+        <?php
+        include '../includeUsuario/head.php';
         ?>
     </head>
 
     <?php
-        require '../includeUsuario/funciones.php';
-        incluirTemplate('header');
+    require '../includeUsuario/funciones.php';
+    incluirTemplate('header');
     ?>
 
 <body>
 
     <div class="imagenindex">
-        <p>Bienvenido <?php echo  ucfirst($_SESSION ['nombre']) ?></p>
-      
+        <p>Bienvenido <?php echo  ucfirst($_SESSION['nombre']) ?></p>
+
     </div>
     <div class="barramenu">
         <nav class="menu-productos row">
@@ -88,53 +83,67 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     <div class="item" style="background-color:#FD2626;">
                         <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
+
+                            <div class="item" style="background-color:#FD2626;">
+                                <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
+                                <div class="carousel-caption" style="color: #ffffff;">
+
+                                    <h3>Pollos Apanados</h3>
+                                    <p>We love the Big Apple!</p>
+                                </div>
+                            </div>
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-                    <div class="item" style="background-color:#FD2626;">
-                        <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">
-                        <div class="carousel-caption" style="color: #ffffff;">
+                            <div class="item" style="background-color:#FD2626;">
+                                <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">
+                                <div class="carousel-caption" style="color: #ffffff;">
 
-                            <h3>Pizzas Especiales</h3>
-                            <p>We love the Big Apple!</p>
+                                    <h3>Pizzas Especiales</h3>
+                                    <p>We love the Big Apple!</p>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div><!--Fin Carrusel-->
+                </div>
+                
+                <div class="col-sm-6">
+                    <h3 class="mt-0 center font-weight-bold " style="color:var(--primario); text-transform:uppercase;">Nuestros Productos</h3>
+
+                    <hr class="" style="color:var(--primario); " size="30px">
+                    <p>Contamos con los mejores estandares de calidad para traer a sus casas la mejor comida rapida que ustedes pueden degustar.
+                        Nos aseguramos que nuestra materia prima sea de la mejor calidad para contar con su total confiabilidad y siempre seamos tu primera opcion. Te invitamos a Revisar nuestro menú en el siguiente link</p>
+
+
+                    <div class="center mt-3">
+                        <a href="/Proyecto/view/user/categorias/categoriasuser.php" class=""><img src="/Proyecto/view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                     </div>
                 </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div><!--Fin Carrusel-->
-
-            <div class="col-sm-6">
-                <h3 class="mt-0 center font-weight-bold " style="color:var(--primario); text-transform:uppercase;">Nuestros Productos</h3>
-
-                <hr class="" style="color:var(--primario); " size="30px">
-                <p>Contamos con los mejores estandares de calidad para traer a sus casas la mejor comida rapida que ustedes pueden degustar.
-                    Nos aseguramos que nuestra materia prima sea de la mejor calidad para contar con su total confiabilidad y siempre seamos tu primera opcion. Te invitamos a Revisar nuestro menú en el siguiente link</p>
-
-
-                <div class="center mt-3">
-                    <a href="/Proyecto/view/user/categorias/categoriasuser.php" class=""><img src="/Proyecto/view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
-                </div>
-            </div>
+            </d>
         </div>
     </div>
-
+    </div>
 </body>
 
 <br><br><br><br><br><br><br>
 
-    <?php
-        incluirTemplate('footer');
-    ?>
+
+<?php
+incluirTemplate('footer');
+?>
+
+
 
 </html>

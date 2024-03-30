@@ -37,7 +37,8 @@ session_start();
 
 <br><br><br><br><br><br><br>
 
-<script src="../../public/js/cate&Prod.js"></script>
+<script src="../../public/js/categorias.js"></script>
+
     <?php
         
 

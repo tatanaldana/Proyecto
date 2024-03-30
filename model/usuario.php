@@ -255,12 +255,8 @@ public function editar_datos_Contacto($doc, $email, $tel, $direccion)
 }
 
 
-
-public function editar_clave_usuario($doc, $clave)
-    {
-
-
-      try {
+public function editar_clave_usuario($doc, $clave) {
+  try {
       $conectar = parent::conexion();  
       parent::set_names();
       $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
@@ -272,24 +268,20 @@ public function editar_clave_usuario($doc, $clave)
       $stmt->bindParam(':clave', $hashed_password);
       $stmt->bindParam(':doc', $doc);
       $stmt->execute();
-
+      return true; // Indicar que la actualización fue exitosa
   } catch (PDOException $e) {
-      echo 'Error en el registro: ' . $e->getMessage();
+      echo 'Error en la actualización de la contraseña: ' . $e->getMessage();
       return false;
-      
-  
-}
+  }
 }
 
-public function trae_campo_clave($docClave){
-
-
+public function trae_campo_clave($doc){
   try {
     $conectar = parent::conexion();  
     parent::set_names();
     $stmt = "SELECT clave FROM usuarios WHERE doc=:doc";
     $stmt = $conectar->prepare($stmt);
-    $stmt->bindParam(':doc', $docClave);
+    $stmt->bindParam(':doc', $doc);
     $stmt->execute();
     $resultado = $stmt->fetch(PDO::FETCH_ASSOC); 
     return $resultado['clave'];
@@ -369,20 +361,51 @@ public function active_usuario($doc){
 }
 } 
 
-public function delete_usuario($doc){
+public function delete_usuario($doc) {
   try {
-  $conectar= parent::conexion();
-  parent::set_names();
-  $stmt="DELETE FROM usuarios WHERE doc = :doc";
-  $stmt=$conectar->prepare($stmt);
-  $stmt->bindParam(':doc', $doc);
-  $stmt->execute();
-  $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-  echo 'Error al eliminar: ' . $e->getMessage();
-  return false;
+      $conectar = parent::conexion();
+      parent::set_names();
+
+ 
+
+      // Luego, eliminar al usuario
+      $stmt_delete_usuario = "DELETE FROM usuarios WHERE doc = :doc";
+      $stmt_delete_usuario = $conectar->prepare($stmt_delete_usuario);
+      $stmt_delete_usuario->bindParam(':doc', $doc);
+      $stmt_delete_usuario->execute();
+      
+      return true; // Devuelve true para indicar éxito en la eliminación
+  } catch (PDOException $e) {
+      echo 'Error al eliminar usuario: ' . $e->getMessage();
+      return false; // Devuelve false si ocurre un error durante la eliminación
+  }
 }
+
+
+public function verificar_referencias($doc) {
+  try {
+      $conectar = parent::conexion();
+      parent::set_names();
+      $stmt = "SELECT COUNT(*) FROM com_venta WHERE doc_cliente = :doc";
+      $stmt = $conectar->prepare($stmt);
+      $stmt->bindParam(':doc', $doc);
+      $stmt->execute();
+      $count = $stmt->fetchColumn();
+
+           // Eliminar registros asociados en la tabla com_venta
+           $stmt_delete_com_venta = "DELETE FROM com_venta WHERE doc_cliente = :doc";
+           $stmt_delete_com_venta = $conectar->prepare($stmt_delete_com_venta);
+           $stmt_delete_com_venta->bindParam(':doc', $doc);
+           $stmt_delete_com_venta->execute();
+           
+      return ($count > 0); // Devuelve true si hay referencias, false si no las hay
+  } catch (PDOException $e) {
+      echo 'Error al verificar referencias: ' . $e->getMessage();
+      return true; // Se asume un error como referencia existente para evitar la eliminación accidental
+  }
 }
+
+
 public function ver_usuario($buscar){
   try {
   $conectar= parent::conexion();

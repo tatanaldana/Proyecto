@@ -5,6 +5,7 @@ require_once('conexion.php');
 
 class Carrito extends Conexion{
     
+
     public function get_ventas_carrito(){
         $conectar= parent::conexion();
         parent::set_names();

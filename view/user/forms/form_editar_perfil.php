@@ -296,7 +296,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-                                    <input type="text" name="modal_doc_2" id="modal_doc_2">
+                                    <input type="text"  id="modal_doc_2">
                                 </div>
                             </div>
 
@@ -310,7 +310,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-                                    <input type="Password" name="modal_clave" id="modal_clave">
+                                    <input type="Password"  id="modal_clave">
                                 </div>
                             </div>
 
@@ -324,7 +324,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-                                    <input type="password" name="modal_validar_clave" id="modal_validar_clave">
+                                    <input type="password" id="modal_validar_clave">
                                 </div>
                             </div>
 
@@ -337,7 +337,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-                                    <input type="password" name="modal_confirma_clave" id="modal_confirma_clave">
+                                    <input type="password" id="modal_confirma_clave">
                                 </div>
                             </div>
                         </div>
@@ -362,68 +362,7 @@
 
 
 
-    <!--
-        <?php
 
-
-        echo '<pre>';
-
-        var_dump($_SESSION['doc']);
-
-        echo '</pre>';
-
-        ?>
-        <label for="">Apellido(s): </label>
-        <input type="text" name="apellido" value="<?php echo $consulta[2] ?>">
-
-        <label for="">Correo: </label>
-        <input type="email" name="email" value="<?php echo $consulta[3] ?>">
-
-        <label for="">Genero: </label>
-       
-        <input type="text" name="genero" value=" <?php echo $consulta[4] ?>" readonly>
-        
-
-        <label for="">Fecha Nacimiento: </label>
-        <input type="text" name="fecha_naci" value="<?php echo $consulta[5] ?>">
-
-        <label for="">Tipo Doc: </label>
-        <input type="text" name="tipo_doc" value="<?php echo $consulta[6] ?>" readonly/>
-        
-
-
-        <label for="">Documento Identidad: </label>
-        <input type="number" name="doc" value="<?php echo $consulta[7] ?>"readonly >
-
-    </fieldset>
-    
-   <fieldset>
-        <legend>Datos de Domicilio</legend>
-
-        <label for="">Telefono: </label>
-        <input type="tel" name="tel" value="<?php echo $consulta[8] ?>">
-
-        <label for="">Direccion: </label>
-        <input type="text" name="direccion" value="<?php echo $consulta[10] ?>">
-
-
-    </fieldset>
-    
-    <fieldset>
-
-        <legend>Datos Cuenta</legend>
-                        
-        <label for="">Nueva Contraseña: </label>
-        <input type="password" name="clave" >
-
-    </fieldset>
-
-    <br>
-    <button type="submit" name="guardar">Guardar</button>
-    
-
--->
-    <!--Fin del formulario-->
 
     </div>
 </section>

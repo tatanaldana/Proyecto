@@ -78,6 +78,8 @@ $('#registro').click(function(){
   });
 
 });
+
+
 //Fomrulaio de registro administrador
 $(document).ready(function() {
   $('#btnregistro').click(function() {
@@ -111,7 +113,7 @@ $(document).ready(function() {
     });
   });
 });
-//formulario de consulta para llevar datos del registro a modificar(administrador)
+//formulario de consulta para llevar datos del registro a modificar
 //Uusamos la función $document.ready para que el DOM se cargue completamente antes de ejecutar el código.
 $(document).ready(function() {
   $('#editButton').click(function() {
@@ -129,7 +131,6 @@ $(document).ready(function() {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos la cadena de texto JSON a un objeto javascript
           var usuario = JSON.parse(response);
-          console.log(usuario);
           
           if (!usuario.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
@@ -137,7 +138,7 @@ $(document).ready(function() {
             
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
-              window.location.href = '../administrador/forms/clientes/form_edit.php';
+              window.location.href = '../administrador/forms/clientes/form_editar.php';
             }, 1000);
           } else {
             console.log(usuario.error);
@@ -155,7 +156,7 @@ $(document).ready(function() {
 
 
 
-//Datos para realizar update del registro(adminsitrador)
+//Datos para realizar update del registro
 $(document).ready(function() {
   $('#btneditar').click(function() {
     var form1 = $('#formeditar').serialize();
@@ -244,39 +245,10 @@ $('#btnEditarContacto').click(function() {
 });
 
 
-$('#btneditar').click(function() {
-  var form1 = $('#formeditar').serialize();
 
-  console.log(form1);
-
-  $.ajax({
-    method: 'POST',
-    url: '../../../controller/usuario/editarDatosContacto.php',
-    data: form1,
-    beforeSend: function() {
-      $('#load').show();
-    },
-    success: function(res) {
-      $('#load').hide();
-
-      if (res == 'error_1') {
-        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-      } else {
-        window.location.href = res;
-      }
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-    }
-  });
-});
-
-
-
-$(document).ready(function() {
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
-      var clave = $('#modal_clave').val();
+      var claveActual = $('#modal_clave').val();
       var validarClave = $('#modal_validar_clave').val();
       var confirmaClave = $('#modal_confirma_clave').val();
 
@@ -292,8 +264,9 @@ $(document).ready(function() {
           url: '/Proyecto/controller/usuario/editarClave.php',
           data: {
               modal_doc_2: doc,
-              modal_clave: clave,
-              modal_validar_clave: validarClave
+              modal_clave: claveActual,
+              modal_validar_clave: validarClave,
+              modal_confirma_clave: confirmaClave
           },
           success: function(response) {
               // Verificar la respuesta del servidor
@@ -305,6 +278,7 @@ $(document).ready(function() {
                   alert("La contraseña actual no es correcta.");
               } else {
                   alert("Contraseña actualizada correctamente.");
+                  
               // Cerrar el modal después de actualizar la contraseña
               }
           },
@@ -314,26 +288,58 @@ $(document).ready(function() {
           }
       });
   });
+
+$(document).ready(function() {
+  $('#deleteUsuario').click(function() {
+    var doc = $('#doc').text();
+    $.ajax({
+      method: 'POST',
+      url: 'configuracion/eliminar.php',
+      data: { deleteUsuario: doc },
+      
+      beforeSend: function() {
+        $('#load').show();
+      },
+      success: function(res) {
+        $('#load').hide();
+        console.log("Respuesta del servidor:", res);
+        if (res.trim() == 'eliminacion exitosa') {
+            swal('Gracias', 'Usuario eliminado exitosamente', 'success');
+            // Si deseas redirigir después de la eliminación exitosa, utiliza window.location.href
+            // window.location.href = 'login.php';
+        } else {
+            swal('Error', 'No se pudo eliminar el usuario', 'error');
+        }
+    
+        console.log("consulta exitosa")
+  
+        if (res == 'error_1') {
+          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
+        } else if (res == 'error_3') {
+          swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
+        } else if (res == 'error_4') {
+          swal('Error', 'Por favor ingresa un correo valido', 'warning');
+        } else {
+          swal('Gracias', 'lamentamos que ya no estes aqui gracias.', 'success');
+
+          window.location.href = 'login.php';
+        }
+      },
+      error: function(xhr) {
+        console.error(xhr.responseText);
+      }
+    });
+  });
 });
 
-
 //Solictud para eliminar registros
+$(document).ready(function() {
+  $('#deleteButton').click(function() {
+    var doc = $('input:checkbox:checked').data('doc-usuario');
+    console.log(doc);
 
-$('#deleteButton').click(function() {
-  swal({
-    title:"¿Estas seguro?",
-    text:"¿Realmente quieres eliminar el registro del cliente?",
-    icon:"warning",
-    buttons:{
-      cancel:"Cancelar",
-      confirm:"Aceptar",
-    },
-    dangerMode:true,
-  })
-  .then((willDelete) => {
-    if(willDelete){   
-      var doc = $('input:checkbox:checked').data('doc-usuario');
-   
     $.ajax({
       method: 'POST',
       url: '../../controller/usuario/eliminarController.php',
@@ -353,33 +359,15 @@ $('#deleteButton').click(function() {
         } else if (res == 'error_4') {
           swal('Error', 'Por favor ingresa un correo valido', 'warning');
         } else {
-          swal({
-            title:"Exito",
-            text:"Se ha eliminado el registro exitosamente",
-            icon:"success",
-            buttons:{
-              confirm:"Aceptar",
-            },
-            dangerMode:true,
-          })
-          .then((willDelete) => {
-            if(willDelete){
-              window.location.href =res;
-            }
-
-          });
-
+          window.location.href = res;
         }
       },
       error: function(xhr) {
         console.error(xhr.responseText);
       }
-    });}
-    else{
-  }
+    });
+  });
 });
-});
-
 
 //formulario de consulta para llevar datos del registro 
 //Uusamos la función $document.ready para que el DOM se cargue completamente antes de ejecutar el código.
@@ -453,42 +441,8 @@ $(document).ready(function() {
       });
   });
 });
-/*
-//Mostrar registros existentes apenas ingresa a la pagina clientes.php
-$(document).ready(function() {
-  //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
-  if (window.location.pathname.endsWith("clientes.php")) {
-    //Se realiza la solicitud AJAX al cargar la página
-    $.ajax({
-      method: 'POST',
-      url: '../../controller/usuario/mostrartodoController.php',
 
-      success: function(response) {
-        var datos = JSON.parse(response);
-        var tablaHTML = '';
 
-        for (var i = 0; i < datos.length; i++) {
-          tablaHTML += '<tr>';
-          tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-doc-usuario="' + datos[i].doc + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
-          tablaHTML += '<td>' + datos[i].doc + '</td>';
-          tablaHTML += '<td>' + datos[i].nombre + '</td>';
-          tablaHTML += '<td>' + datos[i].apellido + '</td>';
-          tablaHTML += '<td>' + datos[i].tel + '</td>';
-          tablaHTML += '<td>' + datos[i].email + '</td>';
-          tablaHTML += '</tr>';
-      }
-
-        $('#filasTabla').html(tablaHTML);
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-    }
-});
-}
-});
-*/
-
-//Aplicacion de vista de la tabal de clientes de la sesiopn del administrador
 //Mostrar registros existentes apenas ingresa a la pagina clientes.php
 $(document).ready(function() {
   //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
@@ -748,6 +702,4 @@ $(document).ready(function() {
       });
   }
 });
-
-
 

@@ -12,7 +12,7 @@ require_once('conexion.php');
             $conectar = parent::conexion();  
             parent::set_names();
             $stmt = "INSERT INTO com_venta (doc_cliente, fechaventa, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
-                     VALUES (:doc_cliente, :fechaventa, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
+                     VALUES (:doc_cliente, :fecha_venta, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
             $stmt = $conectar->prepare($stmt);
             $stmt->bindParam(':doc_cliente', $doc_cliente); 
             $stmt->bindParam(':fechaventa', $fechaventa); 
