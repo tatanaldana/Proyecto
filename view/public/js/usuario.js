@@ -247,10 +247,10 @@ $('#btnEditarContacto').click(function() {
 
 
 
-$(document).ready(function() {
+
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
-      var clave = $('#modal_clave').val();
+      var claveActual = $('#modal_clave').val();
       var validarClave = $('#modal_validar_clave').val();
       var confirmaClave = $('#modal_confirma_clave').val();
 
@@ -266,8 +266,9 @@ $(document).ready(function() {
           url: '/Proyecto/controller/usuario/editarClave.php',
           data: {
               modal_doc_2: doc,
-              modal_clave: clave,
-              modal_validar_clave: validarClave
+              modal_clave: claveActual,
+              modal_validar_clave: validarClave,
+              modal_confirma_clave: confirmaClave
           },
           success: function(response) {
               // Verificar la respuesta del servidor
@@ -279,6 +280,7 @@ $(document).ready(function() {
                   alert("La contraseña actual no es correcta.");
               } else {
                   alert("Contraseña actualizada correctamente.");
+                  
               // Cerrar el modal después de actualizar la contraseña
               }
           },
@@ -288,8 +290,51 @@ $(document).ready(function() {
           }
       });
   });
-});
 
+$(document).ready(function() {
+  $('#deleteUsuario').click(function() {
+    var doc = $('#doc').text();
+    $.ajax({
+      method: 'POST',
+      url: 'configuracion/eliminar.php',
+      data: { deleteUsuario: doc },
+      
+      beforeSend: function() {
+        $('#load').show();
+      },
+      success: function(res) {
+        $('#load').hide();
+        console.log("Respuesta del servidor:", res);
+        if (res.trim() == 'eliminacion exitosa') {
+            swal('Gracias', 'Usuario eliminado exitosamente', 'success');
+            // Si deseas redirigir después de la eliminación exitosa, utiliza window.location.href
+            // window.location.href = 'login.php';
+        } else {
+            swal('Error', 'No se pudo eliminar el usuario', 'error');
+        }
+    
+        console.log("consulta exitosa")
+  
+        if (res == 'error_1') {
+          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+        } else if (res == 'error_2') {
+          swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
+        } else if (res == 'error_3') {
+          swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
+        } else if (res == 'error_4') {
+          swal('Error', 'Por favor ingresa un correo valido', 'warning');
+        } else {
+          swal('Gracias', 'lamentamos que ya no estes aqui gracias.', 'success');
+
+          window.location.href = 'login.php';
+        }
+      },
+      error: function(xhr) {
+        console.error(xhr.responseText);
+      }
+    });
+  });
+});
 
 //Solictud para eliminar registros
 $(document).ready(function() {
