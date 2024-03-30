@@ -7,10 +7,11 @@
         document.getElementById("form_prod").style.display="none";
     }
 </script>
-include '../crud/conexion.php';<?php
+<?php
+require_once("../../../model/conexion.php");
 
-$sql="SELECT id_categoria,nombre_cat FROM categorias";
-$result=mysqli_query($conexion,$sql);
+$conexion = new Conexion(); // Crear una nueva instancia de la clase Conexion
+$pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
 ?>
 <div class="caja_popup" id="form_prod">
     <form action="../gestion/productos/agregar_prod.php" class="contenedor_popup" method="POST" enctype="multipart/form-data">
@@ -34,10 +35,18 @@ $result=mysqli_query($conexion,$sql);
                 <label for="opciones"></label>
                 <select name="opciones" id="opciones">
                     <?php
-                    while ($fila = mysqli_fetch_assoc($result)) {
-                        if($fila['id_categoria']!=5){
-                        echo "<option value='" . $fila['id_categoria'] . "'>" . $fila['nombre_cat'] . "</option>";
-                    }}
+                     if ($statement) {
+                        // Iterar sobre los resultados y mostrar las opciones
+                        while ($fila = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            if ($fila['id_categoria'] != 5) {
+                                echo "<option value='" . $fila['id_categoria'] . "'>" . $fila['nombre_cat'] . "</option>";
+                            }
+                        }
+                    } else {
+                        echo "Error al ejecutar la consulta.";
+                    }
+                 
+            
                     ?>
                 </select>
                 </form>

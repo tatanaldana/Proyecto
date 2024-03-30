@@ -1,5 +1,8 @@
 <?php
-include '../../crud/conexion.php';
+require_once("../../../../model/conexion.php");
+
+$conexion = new Conexion(); // Crear una nueva instancia de la clase Conexion
+$conexion->set_names(); // Establecer el juego de caracteres
 
 
 if (isset($_POST['btnCalcular'])) {
@@ -11,9 +14,9 @@ if (isset($_POST['btnCalcular'])) {
     $sqlInsertpromocion = "INSERT INTO promocion (nom_promo,totalpromo,categorias_idcategoria) VALUES ('$nombrepromocion','$totalventa','$categoria')";
 
     // Ejecutar la consulta para insertar en la tabla `carrito`
-    if ($conexion->query($sqlInsertpromocion) === TRUE) {
+    if ($conexion->larausequery($sqlInsertpromocion) === TRUE) {
         // Obtener arrays de productos, precios, cantidades, etc. desde el formulario
-        $idpromocion = $conexion->insert_id;
+        $idpromocion = $conexion->conexion()->lastInsertId();
         $productos = $_POST['producto'];
         $precios = $_POST['precio'];
         $cantidades = $_POST['cantidad'];
@@ -37,7 +40,7 @@ if (isset($_POST['btnCalcular'])) {
             $sqlInsertDetPromo = "INSERT INTO det_promo (nom_prod, pre_prod, cantidad,descuento, subtotal, total, promocion_idpromo)
              VALUES ( '$producto', '$precio', '$cantidad','$descuento', '$subtotal', '$totalventa', '$idpromocion')";
             
-            if (!$conexion->query($sqlInsertDetPromo)) {
+            if (!$conexion->larausequery($sqlInsertDetPromo)) {
 
                 $todasInsercionesExitosas = false;
                 

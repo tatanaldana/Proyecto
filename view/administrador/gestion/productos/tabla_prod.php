@@ -22,18 +22,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                        include_once('../crud/conexion.php');
+                        
+                    <?php
+require_once("../../../model/conexion.php");
 
+$conexion = new Conexion(); // Crear una nueva instancia de la clase Conexion
+$pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
 
-                        if (isset($_POST['btnbuscar'])) {
-                            $buscar = $_POST['txtbuscar'];
-                            $queryproductos = mysqli_query($conexion, "SELECT idProducto,nombre_pro,detalle,precio_pro FROM productos WHERE idProducto LIKE '" . $buscar . "%'");
-                        } else {
-                            $queryproductos = mysqli_query($conexion, "SELECT * FROM productos ORDER BY idProducto ASC");
-                        }
+if ($pdo) {
+    if (isset($_POST['btnbuscar'])) {
+        $buscar = $_POST['txtbuscar'];
+        $queryproductos = $pdo->prepare("SELECT idProducto,nombre_pro,detalle,precio_pro FROM productos WHERE idProducto LIKE :buscar");
+        $queryproductos->execute(array(':buscar' => '%' . $buscar . '%'));
+    } else {
+        $queryproductos = $pdo->query("SELECT * FROM productos ORDER BY idProducto ASC");
+    }
 
-                        while ($mostrar = mysqli_fetch_array($queryproductos)) {
+    if ($queryproductos) {
+        // Resto de tu código para mostrar la tabla de productos
+        // ...
+    } else {
+        echo "Error al ejecutar la consulta.";
+    }
+} else  {
                             echo "<tr>";
                             echo "<td><div class='form-check' >
             <input  class='form-check-input' type='checkbox' value='' data-doc-producto='" . $mostrar['idProducto'] . "' style='text-align:center' onchange='toggleButtons(this)'/>
