@@ -1,27 +1,32 @@
 <?php
-include '../../crud/conexion.php';
+require_once("../../../../model/conexion.php");
+// Crear instancia de la clase Conexion
+$conexion = new Conexion();
+// Establecer la conexión
+$conexion->conexion();
 
 $sql = "SELECT idProducto, nombre_pro, precio_pro FROM productos";
-$result = $conexion->query($sql);
+$result = $conexion->larausequery($sql);
 
-if ($result->num_rows > 0) {
-    // Inicializa los arrays para almacenar los productos, precios y descuentos
-    $productos = array();
-    $precios = array();
-    $descuentos = array();
+if ($result) {
+    if (count($result) > 0) {
+        // Inicializa los arrays para almacenar los productos, precios y descuentos
+        $productos = array();
+        $precios = array();
+        $descuentos = array();
 
-    // Obtiene los datos de la tabla y los almacena en los arrays
-    while ($row = $result->fetch_assoc()) {
-        $productos[] = $row["nombre_pro"];
-        $precios[] = $row["precio_pro"];
-        $descuentos[] = 0; // Inicialmente, no hay descuento
+        // Obtiene los datos de la tabla y los almacena en los arrays
+        foreach ($result as $row) {
+            $productos[] = $row["nombre_pro"];
+            $precios[] = $row["precio_pro"];
+            $descuentos[] = 0; // Inicialmente, no hay descuento
+        }
+    } else {
+        echo "No se encontraron productos en la base de datos.";
     }
 } else {
-    echo "No se encontraron productos en la base de datos.";
+    echo "Error al ejecutar la consulta SQL.";
 }
-
-// Cierra la conexión a la base de datos
-$conexion->close();
 ?>
 
 <?php

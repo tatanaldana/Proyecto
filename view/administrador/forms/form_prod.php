@@ -7,8 +7,8 @@
         document.getElementById("form_prod").style.display="none";
     }
 </script>
-<?php
-include '../crud/conexion.php';
+include '../crud/conexion.php';<?php
+
 $sql="SELECT id_categoria,nombre_cat FROM categorias";
 $result=mysqli_query($conexion,$sql);
 ?>

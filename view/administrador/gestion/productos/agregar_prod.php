@@ -1,6 +1,6 @@
 <?php
 
-include_once('../../crud/conexion.php');
+require_once('../../model/conexion.php');
 
 $nombre_pro = $_POST['nombre_pro'];
 $detalle = $_POST['detalle'];

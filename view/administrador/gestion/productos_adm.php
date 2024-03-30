@@ -17,7 +17,12 @@
   <body>
   <?php
 
- 
+require_once("../../../model/conexion.php");
+
+// Crear instancia de la clase Conexion
+$conexion = new Conexion();
+// Establecer la conexión
+$conexion->conexion();
 
   include '../include/header.php';
 
