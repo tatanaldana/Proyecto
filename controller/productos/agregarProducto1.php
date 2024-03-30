@@ -1,7 +1,5 @@
+
 <?php
-
-include_once('../../crud/conexion.php');
-
 $nombre_pro = $_POST['nombre_pro'];
 $detalle = $_POST['detalle'];
 $precio_pro = $_POST['precio_pro'];
@@ -20,7 +18,8 @@ if (isset($_FILES["img"])) {
     $width = $dimensiones[0];
     $height =  $dimensiones[1];
     $carpeta = "../../../public/img/productos/";
-    if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/JPEG' && $tipo != 'image/png' && $tipo != 'image/gif') {
+    if ($tipo != 'image/jpg' && $tipo != 'image/JPG' && $tipo != 'image/jpeg' && $tipo != 'image/JPEG'
+     && $tipo != 'image/png' && $tipo != 'image/gif') {
         echo "Error, el archivo no es una imagen";
     } else if ($size > 3 * 1024 * 1024) {
         echo "Error, el tamaño maximo permitido es de 3MB";
@@ -32,6 +31,7 @@ if (isset($_FILES["img"])) {
 }
 //fin para guardar una imagen
  
-mysqli_query($conexion, "INSERT INTO productos(nombre_pro,detalle,precio_pro,categorias_idcategoria,cod,img) VALUES ('$nombre_pro','$detalle','$precio_pro','$categoria','$codigo','$img')");
+mysqli_query($conexion, "INSERT INTO productos(nombre_pro,detalle,precio_pro,categorias_idcategoria,cod,img)
+ VALUES ('$nombre_pro','$detalle','$precio_pro','$categoria','$codigo','$img')");
 header("Location:../productos_adm.php");
-
+?>
