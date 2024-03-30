@@ -92,6 +92,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                                     <p>We love the Big Apple!</p>
                                 </div>
                             </div>
+                            <h3>Pollos Apanados</h3>
+                            <p>We love the Big Apple!</p>
+                        </div>
+                    </div>
 
                             <div class="item" style="background-color:#FD2626;">
                                 <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">

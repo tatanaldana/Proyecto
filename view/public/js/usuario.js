@@ -246,8 +246,6 @@ $('#btnEditarContacto').click(function() {
 
 
 
-
-
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
       var claveActual = $('#modal_clave').val();

@@ -132,6 +132,22 @@ class Productos extends Conexion{
         return $sql;
     }
 
+
+    // Funcion para buscar una categoría
+    public function ver_producto($buscar)
+    {
+        $conectar = parent::conexion();
+        parent::set_names();
+        $stmt = "SELECT idProducto, nombre_pro, precio_pro FROM productos WHERE idProducto LIKE :buscar";
+        $stmt = $conectar->prepare($stmt);
+        $buscar = '%'.$buscar.'%';
+        $stmt->bindParam(':buscar', $buscar);
+        $stmt->execute();
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
+    }
+
+
 }  
 ?>
 

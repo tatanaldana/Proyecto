@@ -49,7 +49,7 @@ include("../../include/header.php");
                 </tr>
                 <tr>
                   <td colspan="2" class="text-center">
-                    <a href="../../../administrador/gestion/categorias_adm.php" class="btn btn-primary">Volver</a>
+                    <a href="../categorias_adm.php" class="btn btn-primary">Volver</a>
                   </td>
                 </tr>
               </tbody>

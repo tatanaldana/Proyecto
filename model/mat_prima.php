@@ -2,76 +2,122 @@
   require_once('conexion.php');
   
 class Mat_prima extends Conexion{
+
     public function get_mat_prima(){
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="SELECT * FROM mat_pri";
-        $sql=$conectar->prepare($sql);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        $stmt ="SELECT * FROM mat_pri";
+        $stmt =$conectar->prepare($stmt );
+        $stmt ->execute();
+        $resultado=$stmt ->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
     }
-
-    public function get_mat_prima_x_cod($cod){
+    
+    public function get_mat_prima_x_cod($cod_materia_pri){
         $conectar= parent::conexion();
         parent::set_names();
-        $sql="SELECT * FROM mat_pri WHERE cod = ?";
-        $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $cod);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        $stmt ="SELECT * FROM mat_pri WHERE cod_materia_pri = :cod_materia_pri";
+        $stmt =$conectar->prepare($stmt );
+        $stmt ->bindParam(':cod_materia_pri', $cod_materia_pri);
+        $stmt ->execute();
+        $resultado=$stmt ->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
     }
 
-    public function insert_mat_prima($cod,$referencia,$descripcion,$existencia,$entrada,$salida,$stock,){
-        $conectar= parent::conexion();
-        parent::set_names();
-        $sql="INSERT INTO mat_pri(cod,referencia,descripcion,existencia,entrada,salida,stock) VALUES (?,?,?,?,?,?,?);";
-        $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $cod);
-        $sql->bindValue(2, $referencia);
-        $sql->bindValue(3, $descripcion);
-        $sql->bindValue(4, $existencia);
-        $sql->bindValue(5, $entrada);
-        $sql->bindValue(6, $salida);
-        $sql->bindValue(7, $stock);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+    public function insert_mat_prima( $referencia, $descripcion, $existencia, $entrada, $salida, $stock) {
+        try {
+            $conectar = parent::conexion();
+            parent::set_names();
+
+            $stmt = "INSERT INTO mat_pri (referencia, descripcion, existencia, entrada, salida, stock) 
+                    VALUES (:referencia, :descripcion, :existencia, :entrada, :salida, :stock)";
+            $stmt = $conectar->prepare($stmt);
+            //$stmt->bindParam(':cod_materia_pri', $cod_materia_pri);
+            $stmt->bindParam(':referencia', $referencia);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':existencia', $existencia);
+            $stmt->bindParam(':entrada', $entrada);
+            $stmt->bindParam(':salida', $salida);
+            $stmt->bindParam(':stock', $stock);
+            $stmt->execute();
+
+            // Verificar si la inserción fue exitosa
+            if ($stmt->rowCount() > 0) {
+                // La inserción se realizó correctamente
+                return true;
+            } else {
+                // La inserción no tuvo éxito
+                echo "Error: No se pudo insertar el registro en la tabla mat_pri.";
+                return false;
+            }
+        } catch (PDOException $e) {
+            echo 'Error en el registro: ' . $e->getMessage();
+            return false;
+        }
     }
+
 
     
-    public function update_mat_prima($cod,$referencia,$descripcion,$existencia,$entrada,$salida,$stock,){
+
+    
+    public function update_mat_prima($cod_materia_pri,$referencia,$descripcion,$existencia,$entrada,$salida,$stock){
+
+        try{
         $conectar= parent::conexion();
         parent::set_names();
-        $sql=" UPDATE mat_pri set
-        referencia = ?,
-        descripcion = ?,
-        existencia = ?,
-        entrada = ?,
-        salida = ?,
-        stock = ?
+        $stmt =" UPDATE mat_pri SET
+        referencia = :referencia,
+        descripcion = :descripcion,
+        existencia = :existencia,
+        entrada = :entrada,
+        salida = :salida,
+        stock = :stock
         WHERE
-        cod =?";
-        $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $referencia);
-        $sql->bindValue(2, $descripcion);
-        $sql->bindValue(3, $existencia);
-        $sql->bindValue(4, $entrada);
-        $sql->bindValue(5, $salida);
-        $sql->bindValue(6, $stock);
-        $sql->bindValue(7, $cod);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        cod_materia_pri = :cod_materia_pri";
+        $stmt =$conectar->prepare($stmt );
+        $stmt ->bindParam(':referencia', $referencia);
+        $stmt ->bindParam(':descripcion', $descripcion);
+        $stmt ->bindParam(':existencia', $existencia);
+        $stmt ->bindParam(':entrada', $entrada);
+        $stmt ->bindParam(':salida', $salida);
+        $stmt ->bindParam(':stock', $stock);
+        $stmt ->bindParam(':cod_materia_pri', $cod_materia_pri);
+        $stmt ->execute();
+        }catch (PDOException $e) {
+            echo 'Error en la actualizacion: ' . $e->getMessage();
+            return false;}
     }
+    
 
-
-    public function eliminar_mat_prima($cod){
-        $conectar= parent::conexion();
+    public function eliminar_mat_prima($cod_materia_pri) {
+        $conectar = parent::conexion();
         parent::set_names();
-        $sql="DELETE FROM mat_pri WHERE cod = ?";
-        $sql=$conectar->prepare($sql);
-        $sql->bindValue(1, $cod);
-        $sql->execute();
-        return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+        
+        $stmt = $conectar->prepare("DELETE FROM mat_pri WHERE cod_materia_pri = :cod_materia_pri");
+        $stmt->bindParam(':cod_materia_pri', $cod_materia_pri);
+        $stmt->execute();
+        
+        // Verificar si la eliminación fue exitosa
+        if ($stmt->rowCount() > 0) {
+            return true; // Éxito al eliminar
+        } else {
+            return false; // Error al eliminar
+        }
     }
+
+    // Funcion para buscar una materia prima
+public function ver_mat_pri($buscar)
+{
+    $conectar = parent::conexion();
+    parent::set_names();
+    $stmt = "SELECT cod_materia_pri,referencia,descripcion,existencia,entrada,salida,stock FROM mat_pri WHERE cod_materia_pri LIKE :buscar";
+    $stmt = $conectar->prepare($stmt);
+    $buscar = '%'.$buscar.'%';
+    $stmt->bindParam(':buscar', $buscar);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $resultado;
+}
 
 }  
 ?>

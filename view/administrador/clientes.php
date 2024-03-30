@@ -19,7 +19,7 @@
   <!-- Bootstrap js -->
   <script src="../public/js/bootstrap.min.js"></script> 
       <!-- SweetAlert js -->
-  <script src="../public/js/sweetalert.min.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   </head>
 
   <?php
@@ -91,6 +91,7 @@ usuario::verificarSesion();
             </div>
         </div>
     </div>
+    </div> 
   <?php
 
     include 'include/img_menu.php';

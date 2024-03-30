@@ -1,7 +1,6 @@
 
 <?php
-// Verificar si las variables POST están definidas
-if(isset($_POST['categoria'])) {
+
     $nombre_cat = $_POST['categoria'];
 
     if(empty($nombre_cat)){
@@ -20,7 +19,5 @@ if(isset($_POST['categoria'])) {
             echo 'error en el registro';
         }
     }
-} else {
-    echo 'error_2'; // Alguna de las variables POST no está definida
-}
+
 ?>

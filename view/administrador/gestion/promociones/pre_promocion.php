@@ -18,7 +18,10 @@
   <?php
   include '../../include/header.php';
 
-  include '../../crud/conexion.php';
+  require_once("../../../../model/conexion.php");
+
+  
+
     ?>
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb">

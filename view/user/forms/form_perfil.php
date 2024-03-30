@@ -7,9 +7,9 @@
 
     <div class='row'>
 
-      <div class='col center'>
-        <input type='file'><img src='header/img/logo.jpg' alt='Imagen perfil' class='rounded-circle' width='100px' height='100px'>
-      </div>
+    <div class='col center'>
+    <img src='header/img/logo.jpg' alt='Imagen perfil' class='rounded-circle' width='100px' height='100px'>  
+    </div>
 
       <div class='datos-perfil col center'>
         <h4><b>Tipo de documento:</b>

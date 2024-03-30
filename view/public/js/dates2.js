@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('tel').value = usuario.tel;
     }
     //Llamamos la función para que se ejecute
+    console.log(usuario.genero);
+    console.log(usuario.tipo_doc);
     asignarvalores();
     //Eliminamos el elemento 'usuarioData' de la sesion de almacenamiento.
     sessionStorage.removeItem('usuarioData');

@@ -1,31 +1,32 @@
-  $(document).ready(function() {
-    //Se verifica que la ruta del archivo teremine en clientes.php para ejecutar la solicitud AJAX
-    if (window.location.pathname.endsWith("sugerencias.php")) {
-      //Se realiza la solicitud AJAX al cargar la página
-      $.ajax({
-        method: 'POST',
-        url: '../../controller/pqr/controllerviewPQR.php',
-  
-        success: function(response) {
-          var datos = JSON.parse(response);
-          var tablaHTML = '';
-  
-          for (var i = 0; i < datos.length; i++) {
-            tablaHTML += '<tr>';
-            tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-doc-usuario="' + datos[i].doc + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
-            tablaHTML += '<td>' + datos[i].usuarios_id + '</td>';
-            tablaHTML += '<td>' + datos[i].nombre + '</td>';
-            tablaHTML += '<td>' + datos[i].apellido + '</td>';
-            tablaHTML += '<td>' + datos[i].id + '</td>';
-            tablaHTML += '<td>' + datos[i].estado + '</td>';
-            tablaHTML += '</tr>';
-        }
-  
-          $('#filasTabla').html(tablaHTML);
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
+//formulario de registro pqr usuario
+$('#enviar').click(function(){
+
+  var form = $('#formulario_pqr').serialize();
+  console.log(form);
+
+  $.ajax({
+    method: 'POST',
+    url: '../../controller/pqr/agregarpqr.php',
+    data: form,
+    beforeSend: function(){
+      $('#load').show();
+    },
+    success: function(res){
+      $('#load').hide();
+
+      if(res == 'error_1'){
+        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+      }else{
+        swal({
+           title: '¡Correcto!',
+           text: 'Se ha enviado la PQR correctamente',
+           type: 'success'
+         }),
+        window.location.href = sugerenciasuser.php ;
       }
+
+
+    }
   });
-  }
-  });
+
+});

@@ -4,6 +4,8 @@
     $id_categoria = $_POST['id_categoria'];
     $nombre_cat = $_POST['nombre_cat'];
 
+    
+
    
     //Se verifica que ningun dato este vacio
   if(empty($id_categoria) || empty($nombre_cat) )
@@ -18,7 +20,7 @@
         # Incluimos la clase usuario
         require_once('../../model/categorias.php');
 
-        # Creamos un objeto de la clase usuario
+        # Creamos un objeto de la clase categorias
         $categorias = new Categorias();
 
         # Llamamos al metodo editarUsuario para realizar el update de los datos en la base de datos

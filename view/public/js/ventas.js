@@ -49,9 +49,21 @@ $(document).ready(function() {
                           }
                       });
                   } else {
-                      console.log(usuario.error);
-                      alert("El cliente no está registrado. Por favor genere el registro en el sistema");
-                      window.location.href = '../administrador/forms/clientes/form_registro.php';
+                    swal({
+                        title:"Alerta",
+                        text:"El cliente no está registrado. Por favor genere el registro en el sistema",
+                        icon:"warning",
+                        buttons:{
+                          confirm:"Aceptar",
+                        },
+                        dangerMode:true,
+                      })
+                      .then((willDelete) => {
+                        if(willDelete){
+                            window.location.href = '../administrador/forms/clientes/form_registro.php';
+                        }
+            
+                      });                     
                   }
               } catch (error) {
                   console.error('Error al analizar la respuesta JSON:', error);
@@ -199,7 +211,7 @@ $(document).ready(function() {
                 tablaHTML += '<tr>';
                 tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idcarrito="' + datos[i].carrito_idcarrito + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
                 tablaHTML += '<td>' + datos[i].doc_cliente + '</td>';
-                tablaHTML += '<td>' + datos[i].fecha_venta + '</td>';
+                tablaHTML += '<td>' + datos[i].fechaventa + '</td>';
                 tablaHTML += '<td>' + datos[i].carrito_idcarrito + '</td>';
                 tablaHTML += '<td>' + datos[i].totalventa + '</td>';
                 tablaHTML += '<td>' + datos[i].estado + '</td>';
@@ -289,13 +301,14 @@ $(document).ready(function() {
   
         success: function(response) {
           var datos = JSON.parse(response);
+          console.log(datos);
           var tablaHTML = '';
   
           for (var i = 0; i < datos.length; i++) {
             tablaHTML += '<tr>';
             tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idcarrito="' + datos[i].carrito_idcarrito + '" data-doc-usuario="' + datos[i].doc_cliente + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
             tablaHTML += '<td>' + datos[i].doc_cliente + '</td>';
-            tablaHTML += '<td>' + datos[i].fecha_venta + '</td>';
+            tablaHTML += '<td>' + datos[i].fechaventa + '</td>';
             tablaHTML += '<td>' + datos[i].carrito_idcarrito + '</td>';
             tablaHTML += '<td>' + datos[i].totalventa + '</td>';
             tablaHTML += '<td>' + datos[i].estado + '</td>';

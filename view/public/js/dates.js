@@ -2,6 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   //Verificamos que ne l asesión del navegador exista el elemnto llamado 'usuarioData'
   var usuarioData = sessionStorage.getItem('usuarioData');
+  console.log(usuarioData);
 
   //Si el 'usuarioData' existe, entonces convertimos el JSON alamacenado en un array
   if (usuarioData) {
@@ -25,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     //Llamamos la función para que se ejecute
     asignarvalores();
+    console.log(usuario.genero);
+    console.log(usuario.tipo_doc);
+    console.log(document.getElementById('genero').value);
+    console.log(document.getElementById('tipo_doc').value);
     //Eliminamos el elemento 'usuarioData' de la sesion de almacenamiento.
     sessionStorage.removeItem('usuarioData');
 //Luego deshabilitamos los campos que no vamos a modificar

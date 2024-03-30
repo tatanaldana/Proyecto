@@ -18,6 +18,13 @@ usuario::verificarSesion();
     <link rel="stylesheet" href="../public/css/sweetalert.css">
     <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
     <link rel="stylesheet" href="../public/css/style.css">
+      <!-- Jquery -->
+  <script src="../public/js/jquery.js"></script>
+  <!-- Bootstrap js -->
+  <script src="../public/js/bootstrap.min.js"></script> 
+      <!-- SweetAlert js -->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script src= "../public/js/ventas.js"></script>
   </head>
   <body>
   <?php
@@ -77,9 +84,4 @@ usuario::verificarSesion();
   ?> 
 
   </body>
-      <!-- Jquery -->
-  <script src="../public/js/jquery.js"></script>
-  <!-- Js personalizado -->
-  <script src= "../public/js/ventas.js"></script>
-
 </html>

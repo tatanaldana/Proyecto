@@ -35,7 +35,7 @@
 
 // agregarcategorias.php
 
-$(document).ready(function() {
+
   $('#btnagregarCategoria').click(function() {
     // Serializar los datos del formulario
     var formData = $('#agregarCategoria').serialize();
@@ -58,7 +58,7 @@ $(document).ready(function() {
           swal('Error', 'Campo obligatorio, ', 'warning');
         } else {
           // Redirigir a otra página o realizar otra acción después de agregar la categoría
-          window.location.href = '../../gestion/categorias_adm.php';
+          window.location.href = '../categorias_adm.php';
           
         }
       },
@@ -67,7 +67,7 @@ $(document).ready(function() {
       }
     });
   });
-});
+
 
 
 
@@ -131,7 +131,7 @@ console.log (editarCategoria);
         if (response == 'error_1') {
           swal('Error', 'Campos obligatorios, por favor llena nombre de la categoria', 'warning');
         } else {
-          window.location.href = '../../gestion/categorias_adm.php';
+          window.location.href = '../categorias_adm.php';
         }
       },
       error: function(xhr) {
@@ -205,7 +205,7 @@ $(document).ready(function() {
                       // La categoría se eliminó correctamente
                       alert(response.message);
                       // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                      window.location.href = '../gestion/categorias_adm.php';
+                      window.location.href = '../../administrador/forms/categorias_adm.php';
                       // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
                    
                   } else {
