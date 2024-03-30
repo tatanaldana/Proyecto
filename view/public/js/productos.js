@@ -120,14 +120,14 @@ $('#btn_agregar_prod').click(function(e) {
 //editarcategoria.php
 
 $('#editButton').click(function() {
-// Cuando se da click en el boton con el id EditButton, se recupera el valor codMaprima del checkbox seleccionado
-var editar = $('input:checkbox:checked').data('idProducto');
+// Cuando se da click en el boton con el id EditButton, se recupera el valor idproducto del checkbox seleccionado
+var editar = $('input:checkbox:checked').data('idproducto');
 // Se realiza la petición AJAX por método POST
 $.ajax({
   method: 'POST',
   url: '../../../controller/productos/viewProducto.php',
   // Se envía el dato 'idproducto' al controlador PHP
-  data: { idProducto:editar },
+  data: { idproducto:editar },
   // Si la solicitud es exitosa
   success: function(response) {
       try {
@@ -176,8 +176,13 @@ $.ajax({
     if (response == 'error_1') {
       swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
     } else {
+<<<<<<< Updated upstream
       //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
       window.location.href = '../ma_prima.php';
+=======
+      swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
+      window.location.href = '../productos_adm.php';
+>>>>>>> Stashed changes
 
     }
   },
@@ -215,9 +220,15 @@ document.getElementById('doc_hidden').value = maprima.cod_materia_pri;
 asignarvalores();
 
 //Luego deshabilitamos los campos que no vamos a modificar
+<<<<<<< Updated upstream
 document.getElementById('cod_materia_pri').disabled = true;
 //Eliminamos el elemento 'maprimaData' de la sesion de almacenamiento.
 sessionStorage.removeItem('maprimaData');
+=======
+document.getElementById('idProducto').disabled = true;
+//Eliminamos el elemento 'producto data ' de la sesion de almacenamiento.
+sessionStorage.removeItem('productoData');
+>>>>>>> Stashed changes
 
 //si no se encuentra 'MAPRIMAData' entonces imprime el mensaje
 
@@ -291,9 +302,15 @@ $('#viewButton').click(function() {
 //Se realiza la petición AJAX por metodo POST 
     $.ajax({
       method: 'POST',
+<<<<<<< Updated upstream
       url: '../../../controller/maPrima/viewMaprima.php',
       //Se envía el dato 'cod_materia_pri' al controlador PHP
       data: { cod_materia_pri: view_materia_pri},
+=======
+      url: '../../../controller/productos/viewProducto.php',
+      //Se envía el dato 'id producto' al controlador PHP
+      data: {idProducto: view_producto},
+>>>>>>> Stashed changes
       //Si la solicitud es exitosa
       success: function(response) {
         try {

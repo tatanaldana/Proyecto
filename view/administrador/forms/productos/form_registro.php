@@ -49,7 +49,7 @@ include("../../include/header.php");
                     </div>
                     <div class="mb-3">
                       <label for="foto" class="form-label">foto</label>
-                      <input type="file" class="form-control" id="fot" name="foto" placeholder="imagen">
+                      <input type="file" class="form-control" id="foto" name="foto" placeholder="imagen">
                     </div>
                     <div class="mb-3">               
                       <label for="cod" class="form-label">codigo</label>

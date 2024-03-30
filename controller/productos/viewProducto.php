@@ -1,13 +1,13 @@
 <?php
 if (isset($_POST['idProducto'])) {
     $idProducto = $_POST['idProducto'];
-    // Aquí podrías sanitizar $id_producto antes de utilizarlo en la consulta
+    // Aquí podrías sanitizar $idProducto antes de utilizarlo en la consulta
 
-     # Incluimos la clase categorias
+    # Incluimos la clase productos
     require_once('../../model/productos.php');
-     # Creamos un objeto de la clase categoria
+    # Creamos un objeto de la clase productos
     $productos = new Productos();
-    # Llamamos al metodo  para realizar la consulta en la base de datos
+    # Llamamos al método para realizar la consulta en la base de datos
     $resultado = $productos->get_productos_x_id($idProducto);
 
     if ($resultado) {
@@ -15,7 +15,7 @@ if (isset($_POST['idProducto'])) {
         $json_response = json_encode($resultado);
         echo $json_response;
     } else {
-        $error = array('error' => 'No se encontraron datos de la categoria');
+        $error = array('error' => 'No se encontraron datos del producto');
         echo json_encode($error);
     }
 } else {

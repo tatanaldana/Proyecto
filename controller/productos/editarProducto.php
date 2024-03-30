@@ -33,7 +33,7 @@
         $productos = new Productos();
 
         # Llamamos al metodo editarUsuario para realizar el update de los datos en la base de datos
-        $productos->  update_productos($idproducto,$nombre_pro,$detalle,$precio_pro,$categorias_idcategoria,$foto,$cod);
+        $productos->  update_productos($idProducto,$nombre_pro,$detalle,$precio_pro,$categorias_idcategoria,$foto,$cod);
       // se redirecciona al usuario despues de realizar el update
       
      
