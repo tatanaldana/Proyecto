@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Visualizar Categoría</title>
+  <title>Visualizar Productos</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="../../../public/css/bootstrap.min.css">
@@ -23,7 +23,7 @@ include("../../include/header.php");
   <!-- Espacio en blanco -->
   <div class="my-5"></div>
 
-  <form id="visualizar_productos">
+  <form id="view_prod">
     <div class="row d-flex justify-content-center">
       <div class="col-xs-2">
         <div class="card mb-5">
