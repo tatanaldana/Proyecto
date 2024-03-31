@@ -21,11 +21,11 @@ if ($resultado) {
         $response = array("success" => true, "message" => "Venta eliminada exitosamente");
     } else {
         // Si la actualización en la tabla carrito falló
-        $response = array("success" => false, "message" => "Error al eliminar en la tabla carrito");
+        $response = array("error" => false, "message" => "Error al eliminar en la tabla carrito");
     }
 } else {
     // Si la actualización en la tabla com_venta falló
-    $response = array("success" => false, "message" => "Error al actualizar en la tabla com_venta");
+    $response = array("error" => false, "message" => "Error al actualizar en la tabla com_venta");
 }
 }
 echo json_encode($response);

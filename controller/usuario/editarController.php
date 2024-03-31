@@ -24,9 +24,9 @@
         $usuario = new Usuario();
 
         # Llamamos al metodo editarUsuario para realizar el update de los datos en la base de datos
-        $usuario -> editarUsuario($email, $tel, $genero, $direccion,$doc);
+        $usuario -> editarUsuario($doc,$email, $tel, $genero, $direccion);
       // se redirecciona al usuario despues de realizar el update
-      echo '../../clientes.php';
+      
      
 
     }catch(PDOException $e){

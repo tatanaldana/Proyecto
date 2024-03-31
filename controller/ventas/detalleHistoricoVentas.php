@@ -2,7 +2,7 @@
 
 /*$response = array(); // Inicializamos el array de respuesta*/
 
-if (isset($_POST['doc_php']) && isset($_POST['idcarrito_php']) ) {
+if (isset($_POST['doc_php']) && isset($_POST['idcarrito_php'])) {
     $doc = $_POST['doc_php'];
     $idcarrito = $_POST['idcarrito_php'];
 
@@ -10,9 +10,8 @@ if (isset($_POST['doc_php']) && isset($_POST['idcarrito_php']) ) {
     $com_venta = new Com_venta();
 
     $resultado = $com_venta->detalle_historico_venta($doc, $idcarrito);
- 
+
     if ($resultado) {
-        #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTA POR MEDIO DEL AJAX
         $json_response = json_encode($resultado);
         echo $json_response;
     } else {
