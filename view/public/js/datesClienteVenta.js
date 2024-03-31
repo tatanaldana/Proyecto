@@ -1,5 +1,5 @@
 //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
-/*document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     //Verificamos que ne l asesión del navegador exista el elemnto llamado 'usuarioData'
     var usuarioData = sessionStorage.getItem('usuarioData');
     console.log(usuarioData);
@@ -29,4 +29,3 @@
       console.log("No se han encontrado datos del usuario");
     }
   });
-*/

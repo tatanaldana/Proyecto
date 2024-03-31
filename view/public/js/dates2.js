@@ -2,8 +2,6 @@
 document.addEventListener('DOMContentLoaded', function() {
   //Verificamos que ne l asesión del navegador exista el elemnto llamado 'usuarioData'
   var usuarioData = sessionStorage.getItem('usuarioData');
-  console.log(usuarioData);
-
   //Si el 'usuarioData' existe, entonces convertimos el JSON alamacenado en un array
   if (usuarioData) {
     var usuarioArray= JSON.parse(usuarioData);//este es el array
@@ -24,8 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('tel').value = usuario.tel;
     }
     //Llamamos la función para que se ejecute
-    console.log(usuario.genero);
-    console.log(usuario.tipo_doc);
     asignarvalores();
     //Eliminamos el elemento 'usuarioData' de la sesion de almacenamiento.
     sessionStorage.removeItem('usuarioData');
