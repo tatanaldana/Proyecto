@@ -82,7 +82,7 @@ function mostrarProductos(productos, idCategoria) {
 
 
 
-// agregar maprima.php
+// agregar producto.php
 
 $(document).ready(function() {
 $('#btn_agregar_prod').click(function(e) {
@@ -93,7 +93,7 @@ $('#btn_agregar_prod').click(function(e) {
   // Realiza la solicitud AJAX
   $.ajax({
       method: 'POST',
-      url: '../../../../controller/productos/agregarProducto.php',
+      url: '../../../../controller/productos/agregarProducto1.php',
       data: formData,
       beforeSend: function() {
           $('#load').show(); // Mostrar un indicador de carga si es necesario

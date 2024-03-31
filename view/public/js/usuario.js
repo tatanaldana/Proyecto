@@ -81,36 +81,47 @@ $('#registro').click(function(){
 
 
 //Fomrulaio de registro administrador
-$(document).ready(function() {
-  $('#btnregistro').click(function() {
-    var form1 = $('#formregistro').serialize();
-    
-    $.ajax({
-      method: 'POST',
-      url: '../../../../controller/usuario/registro2Controller.php',
-      data: form1,
-      beforeSend: function() {
-        $('#load').show();
-      },
-      success: function(res) {
-        $('#load').hide();
+$('#btnregistro').click(function() {
+  var form1 = $('#formregistro').serialize();
   
-        if (res == 'error_1') {
-          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-        } else if (res == 'error_2') {
-          swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
-        } else if (res == 'error_3') {
-          swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
-        } else if (res == 'error_4') {
-          swal('Error', 'Por favor ingresa un correo valido', 'warning');
-        } else {
-          window.location.href = res;
-        }
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
+  $.ajax({
+    method: 'POST',
+    url: '../../../../controller/usuario/registro2Controller.php',
+    data: form1,
+    beforeSend: function() {
+      $('#load').show();
+    },
+    success: function(res) {
+      $('#load').hide();
+
+      // Eliminar espacios en blanco alrededor de la respuesta
+      res = res.trim();
+
+      if (res == 'error_1') {
+        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+      } else if (res == 'error_2') {
+        swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
+      } else if (res == 'error_3') {
+        swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
+      } else if (res == 'error_4') {
+        swal('Error', 'Por favor ingresa un correo valido', 'warning');
+      } else {
+        swal({
+          title: "Éxito",
+          text: "El usuario ha sido registrado exitosamente",
+          icon: "success",
+          buttons: {
+              confirm: "Aceptar",
+          },
+          dangerMode: false,
+        }).then(function() {
+          window.location.href = "../../clientes.php";
+        });
       }
-    });
+    },
+    error: function(xhr) {
+      console.error(xhr.responseText);
+    }
   });
 });
 //formulario de consulta para llevar datos del registro a modificar
@@ -138,7 +149,7 @@ $(document).ready(function() {
             
             //Se redirecciona al formulario de edicion luego de un segundo
             setTimeout(function() {
-              window.location.href = '../administrador/forms/clientes/form_editar.php';
+              window.location.href = '../administrador/forms/clientes/form_edit.php';
             }, 1000);
           } else {
             console.log(usuario.error);
@@ -157,33 +168,44 @@ $(document).ready(function() {
 
 
 
-  $('#btneditar').click(function() {
-    var form1 = $('#formeditar').serialize();
+$('#btneditar').click(function() {
+  var form1 = $('#formeditar').serialize();
 
-    console.log(form1);
+  console.log(form1);
 
-    $.ajax({
-      method: 'POST',
-      url: '../../../../controller/usuario/editarController.php',
-      data: form1,
-      beforeSend: function() {
-        $('#load').show();
-      },
-      success: function(res) {
-        $('#load').hide();
-  
-        if (res == 'error_1') {
-          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-        } else {
-        //  window.location.href = res;
-        }
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
+  $.ajax({
+    method: 'POST',
+    url: '../../../../controller/usuario/editarController.php',
+    data: form1,
+    beforeSend: function() {
+      $('#load').show();
+    },
+    success: function(res) {
+      $('#load').hide();
+      if (res == 'error_1') {
+        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+      } else {
+        swal({
+          title: "Éxito",
+          text: "El registro se ha modificado de manera exitosa",
+          icon: "success",
+          buttons: {
+              confirm: "Aceptar",
+          },
+          dangerMode: false,
+        }).then((willConfirm) => {
+          if (willConfirm) {
+            // Realizar la redirección después de hacer clic en el botón de confirmación
+            window.location.href = "../../clientes.php";
+          }
+        });
       }
-    });
+    },
+    error: function(xhr) {
+      console.error(xhr.responseText);
+    }
   });
-
+});
 
 //Editar Datos de Perfil
 
@@ -334,37 +356,55 @@ $(document).ready(function() {
 });
 
 //Solictud para eliminar registros
-$(document).ready(function() {
-  $('#deleteButton').click(function() {
-    var doc = $('input:checkbox:checked').data('doc-usuario');
-    console.log(doc);
 
-    $.ajax({
-      method: 'POST',
-      url: '../../controller/usuario/eliminarController.php',
-      data: { doc_php: doc },
-      beforeSend: function() {
-        $('#load').show();
+$('#deleteButton').click(function() {
+  swal({
+      title: "¿Estás seguro?",
+      text: "¿Realmente quieres eliminar el registro del cliente?",
+      icon: "warning",
+      buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
       },
-      success: function(res) {
-        $('#load').hide();
-  
-        if (res == 'error_1') {
-          swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-        } else if (res == 'error_2') {
-          swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
-        } else if (res == 'error_3') {
-          swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
-        } else if (res == 'error_4') {
-          swal('Error', 'Por favor ingresa un correo valido', 'warning');
-        } else {
-          window.location.href = res;
-        }
-      },
-      error: function(xhr) {
-        console.error(xhr.responseText);
+      dangerMode: true,
+  }).then((willDelete) => {
+      if (willDelete) {
+          var doc = $('input:checkbox:checked').data('doc-usuario');
+          console.log(doc);
+
+          $.ajax({
+              method: 'POST',
+              url: '../../controller/usuario/eliminarController.php',
+              data: { doc_php: doc },
+              beforeSend: function() {
+                  $('#load').show();
+              },
+              success: function(res) {
+                  $('#load').hide();
+
+                  if (res.trim() == 'error_1') {
+                      swal('Error', 'Ocurrió un error al eliminar el usuario', 'error');
+                  } else {
+                      swal({
+                          title: "Éxito",
+                          text: "Usuario eliminado exitosamente",
+                          icon: "success",
+                          buttons: {
+                              confirm: "Aceptar",
+                          },
+                          dangerMode: false,
+                      }).then((willConfirm) => {
+                          if (willConfirm) {
+                              window.location.reload(); // Recargar la página para reflejar los cambios
+                          }
+                      });
+                  }
+              },
+              error: function(xhr) {
+                  console.error(xhr.responseText);
+              }
+          });
       }
-    });
   });
 });
 
