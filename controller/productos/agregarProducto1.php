@@ -1,14 +1,25 @@
 
 <?php
-$idproducto = $_POST['idProducto'];
+// Conectar a la base de datos
+$conexion = mysqli_connect('localhost', 'root', '', 'arca');
+
+// Verificar la conexión
+if (!$conexion) {
+    die("Error al conectar: " . mysqli_connect_error());
+}
+
+// Obtener los datos del formulario
+$idproducto = $_POST['idproducto'];
 $nombre_pro = $_POST['nombre_pro'];
 $detalle = $_POST['detalle'];
 $precio_pro = $_POST['precio_pro'];
 $categorias_idcategoria = $_POST['categorias_idcategoria'];
+$foto = $_POST['foto'];
 $cod = $_POST['cod'];
 
+
 //funcion para guardar una imagen 
-$img = '';
+/*$img = '';
 if (isset($_FILES["img"])) {
     $file = $_FILES["img"];
     $nombre = $file["name"];
@@ -29,10 +40,19 @@ if (isset($_FILES["img"])) {
         move_uploaded_file($ruta_provisional, $src);
         $img = "../../../public/img/productos/" . $nombre;
     }
-}
+}*/
 //fin para guardar una imagen
- 
-mysqli_query($conexion, "INSERT INTO productos(nombre_pro,detalle,precio_pro,categorias_idcategoria,cod,img)
- VALUES ('$nombre_pro','$detalle','$precio_pro','$categoria','$codigo','$img')");
-header("Location:../productos_adm.php");
+
+// Preparar y ejecutar la consulta SQL
+$stmt = "INSERT INTO productos (idProducto, nombre_pro, detalle, precio_pro, categorias_idcategoria, foto, cod) 
+VALUES ('$idproducto', '$nombre_pro', '$detalle', '$precio_pro', '$categorias_idcategoria', '$foto', '$cod')";
+
+if (mysqli_query($conexion, $stmt)) {
+    echo "Producto agregado correctamente";
+} else {
+    echo "Error al agregar producto: " . mysqli_error($conexion);
+}
+
+// Cerrar la conexión
+mysqli_close($conexion);
 ?>

@@ -105,7 +105,7 @@ $('#btn_agregar_prod').click(function(e) {
               swal('Error', 'Campo obligatorio, ', 'warning');
           } else {
               // Redirigir a otra página o realizar otra acción después de agregar la categoría
-            // window.location.href = '../../forms/productos_adm.php';
+            window.location.href = '../../forms/productos_adm.php';
           }
       },
       error: function(xhr, status, error) {
