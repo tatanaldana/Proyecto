@@ -138,46 +138,53 @@ public static function verificarSesion() {
       }
   }
 
-public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $genero, $fecha_naci , $tipo_doc, $doc, $fecha_reg, $direccion)
-{
-  try {
-  $conectar = parent::conexion();  
-  parent::set_names();
-  $stmt = "SELECT doc FROM usuarios WHERE email=:email";
-  $stmt = $conectar->prepare($stmt);
-  $stmt->bindParam(':email', $email); 
-  $stmt->execute();
-  $resultado = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  if ($resultado) {
-      echo 'error_3'; // Usuario ya registrado con ese correo
-  } else {
-
-    $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
-      // Insertar nuevo usuario
-      $stmt = "INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion,cargo) 
-               VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion,2)";
-      $stmt = $conectar->prepare($stmt);
-      $stmt->bindParam(':nombre', $nombre);
-      $stmt->bindParam(':email', $email);
-      $stmt->bindParam(':clave', $hashed_password); // Almacenar el hash de la contraseña
-      $stmt->bindParam(':tel', $tel);
-      $stmt->bindParam(':apellido', $apellido);
-      $stmt->bindParam(':genero', $genero);
-      $stmt->bindParam(':fecha_naci', $fecha_naci);
-      $stmt->bindParam(':tipo_doc', $tipo_doc);
-      $stmt->bindParam(':doc', $doc);
-      $stmt->bindParam(':fecha_reg', $fecha_reg);
-      $stmt->bindParam(':direccion', $direccion);
-      $stmt->execute();
-
-      echo '../../clientes.php';
+  public function registroUsuario2($nombre, $email, $clave, $tel, $apellido, $genero, $fecha_naci, $tipo_doc, $doc, $fecha_reg, $direccion)
+  {
+      try {
+          $conectar = parent::conexion();  
+          parent::set_names();
+          
+          // Validar si el correo electrónico ya está registrado
+          $stmt = $conectar->prepare("SELECT doc FROM usuarios WHERE email=:email");
+          $stmt->bindParam(':email', $email); 
+          $stmt->execute();
+          $resultado_email = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+          // Validar si el documento ya está registrado
+          $stmt = $conectar->prepare("SELECT* FROM usuarios WHERE doc=:doc");
+          $stmt->bindParam(':doc', $doc); 
+          $stmt->execute();
+          $resultado_doc = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+          if ($resultado_email && $resultado_doc) {
+            echo 'error_9'; // Usuario ya registrado con ese correo y documento
+        } elseif ($resultado_email) {
+            echo 'error_8'; // Usuario ya registrado con ese correo
+        } elseif ($resultado_doc) {
+            echo 'error_7'; // Usuario  ya registrado con ese documento
+          } else {
+              // Insertar nuevo usuario
+              $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
+              $stmt = $conectar->prepare("INSERT INTO usuarios (nombre, email, clave, tel, apellido, genero, fecha_naci, tipo_doc, doc, fecha_reg, direccion, cargo) 
+                                          VALUES (:nombre, :email, :clave, :tel, :apellido, :genero, :fecha_naci, :tipo_doc, :doc, :fecha_reg, :direccion, 2)");
+              $stmt->bindParam(':nombre', $nombre);
+              $stmt->bindParam(':email', $email);
+              $stmt->bindParam(':clave', $hashed_password);
+              $stmt->bindParam(':tel', $tel);
+              $stmt->bindParam(':apellido', $apellido);
+              $stmt->bindParam(':genero', $genero);
+              $stmt->bindParam(':fecha_naci', $fecha_naci);
+              $stmt->bindParam(':tipo_doc', $tipo_doc);
+              $stmt->bindParam(':doc', $doc);
+              $stmt->bindParam(':fecha_reg', $fecha_reg);
+              $stmt->bindParam(':direccion', $direccion);
+              $stmt->execute();
+          }
+      } catch (PDOException $e) {
+          echo 'Error en el registro: ' . $e->getMessage();
+          return false;
+      }
   }
-} catch (PDOException $e) {
-  echo 'Error en el registro: ' . $e->getMessage();
-  return false;
-}
-}
 
 public function editarUsuario($doc,$email, $tel, $genero, $direccion)
     {
