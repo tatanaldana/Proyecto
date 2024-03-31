@@ -208,7 +208,7 @@ include("../../include/header.php");
   <!-- Jquery -->
   <script src="../../../public/js/jquery.js"></script>
   <!-- SweetAlert js -->
-  <script src="../../../public/js/sweetalert.min.js"></script>
+  <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
   <!-- Js personalizado -->
   <script src= "../../../public/js/usuario.js"></script>
 </body>

@@ -72,14 +72,15 @@ usuario::verificarSesion();
   <?php
   include '../../include/footer.php';
   ?>
-  <body>
   <!-- Jquery -->
   <script src="../../../public/js/jquery.js"></script>
-
+ <!-- SweetAlert js -->
+ <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
   <!-- Js personalizado -->
   <script src= "../../../public/js/ventas.js"></script>
-
   <script src= "../../../public/js/datesClienteVenta.js"></script>
   <script src= "../../../public/js/datesProductos.js"></script>
+
+  <body>
 
 </html>
