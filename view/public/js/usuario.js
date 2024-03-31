@@ -92,20 +92,27 @@ $('#btnregistro').click(function() {
       $('#load').show();
     },
     success: function(res) {
-      $('#load').hide();
-
-      // Eliminar espacios en blanco alrededor de la respuesta
-      res = res.trim();
-
-      if (res == 'error_1') {
-        swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
-      } else if (res == 'error_2') {
-        swal('Error', 'Las claves deben ser iguales, por favor intentalo de nuevo', 'error');
-      } else if (res == 'error_3') {
-        swal('Error', 'El correo que ingresaste ya se encuentra registrado', 'error');
-      } else if (res == 'error_4') {
-        swal('Error', 'Por favor ingresa un correo valido', 'warning');
-      } else {
+      $('#load').hide()
+        // Manejar errores
+        if(res.startsWith('error')) {
+        if(res == 'error_1') {
+            swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
+        } else if(res == 'error_2') {
+          swal('Error', 'Por favor ingresa un correo válido', 'warning');
+      } else if(res == 'error_3') {
+            swal('Error', 'La contraseña debe tener al menos 8 caracteres alfanuméricos', 'warning');
+        }else if(res == 'error_4') {
+            swal('Error', 'Las claves deben ser iguales, por favor inténtalo de nuevo', 'error');
+        } else if(res == 'error_5') {
+            swal('Error', 'Ocurrió un error al registrar el usuario', 'error');
+        }else if(res == 'error_7') {
+          swal('Error', 'Usuario ya registrado con ese correo', 'error');
+       }else if(res == 'error_8') {
+            swal('Error', 'Usuario ya registrado con ese documento', 'error');
+         }else if(res == 'error_9') {
+        swal('Error', 'Usuario ya registrado con ese correo y documento', 'error');
+     }}
+          else {
         swal({
           title: "Éxito",
           text: "El usuario ha sido registrado exitosamente",
