@@ -30,7 +30,7 @@ include("../../include/header.php");
         <!-- Margen superior (css personalizado )-->
         <div class="spacing-1"></div>
 
-        <form id="formregistro" enctype="multipart/form-data">
+        <form id="formregistro">
           <!-- Estructura del formulario -->
           <fieldset>
 
