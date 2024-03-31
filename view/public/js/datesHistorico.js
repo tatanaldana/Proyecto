@@ -1,5 +1,6 @@
 //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
+  var totalventa;
     //Verificamos que ne l asesión del navegador exista el elemnto llamado 'usuarioData'
     var usuarioData = sessionStorage.getItem('usuarioData');
     console.log(usuarioData);
@@ -9,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var usuarioArray= JSON.parse(usuarioData);//este es el array
       //Obtenemos el primer objeto del array y lo asigna a la variable 'usuario'
       var resultado = usuarioArray[0];
-      if(resultado.estado=2){
+      if(resultado.estado==='Completado'){
       var tablaHTML = '';
       tablaHTML += '<tr><td colspan="3">Datos del cliente</td></tr>';
       tablaHTML += '<tr>';
@@ -28,7 +29,6 @@ document.addEventListener('DOMContentLoaded', function() {
       tablaHTML += '<td> Estado de venta: ' + resultado.estado + '</td>';
       tablaHTML += '</tr>';
       totalventa = resultado.totalventa
-      console.log(totalventa);
 
       $('#datosdetalle').html(tablaHTML);
       }else{
