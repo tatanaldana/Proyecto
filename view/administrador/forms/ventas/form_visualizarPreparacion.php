@@ -92,6 +92,6 @@
 
   <script src="../../../public/js/buttonsventas.js"></script>
 
-  <script src="../../../public/js/datesPreparacion.js"></script>
+  <script src="../../../public/js/datesHistorico.js"></script>
 
 </html>
