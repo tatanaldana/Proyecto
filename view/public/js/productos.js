@@ -105,7 +105,7 @@ $('#btn_agregar_prod').click(function(e) {
               swal('Error', 'Campo obligatorio, ', 'warning');
           } else {
               // Redirigir a otra página o realizar otra acción después de agregar la categoría
-              //window.location.href = '../../forms/productos_adm.php';
+            // window.location.href = '../../forms/productos_adm.php';
           }
       },
       error: function(xhr, status, error) {
@@ -116,18 +116,18 @@ $('#btn_agregar_prod').click(function(e) {
 });
 
 
-
-//editarcategoria.php
+//ok ok ok ok ok
+//editarproducto.php
 
 $('#editButton').click(function() {
 // Cuando se da click en el boton con el id EditButton, se recupera el valor idproducto del checkbox seleccionado
-var editar = $('input:checkbox:checked').data('idproducto');
+var editar_producto = $('input:checkbox:checked').data('idproducto');
 // Se realiza la petición AJAX por método POST
 $.ajax({
   method: 'POST',
   url: '../../../controller/productos/viewProducto.php',
   // Se envía el dato 'idproducto' al controlador PHP
-  data: { idproducto:editar },
+  data: { idProducto:editar_producto },
   // Si la solicitud es exitosa
   success: function(response) {
       try {
@@ -157,7 +157,7 @@ $.ajax({
 
 
 
-
+//ok ok ok ok 
 //Datos para realizar update del registro
 
 $('#btnmodificar').click(function() {
@@ -177,7 +177,7 @@ $.ajax({
       swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
     } else {
 
-      swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
+      swal('Exitoso', 'se ha modificado la materia prima', 'success');
       window.location.href = '../productos_adm.php';
 
 
@@ -229,13 +229,12 @@ console.log("No se han encontrado datos del producto");
 });
 
 
-
+//ok ok ok ok ok ok
 //eliminar producto .php
 
-$(document).ready(function() {
 $('#deleteButton').click(function() {
   // Obtener el cod materia prima del checkbox marcado
-  var idproducto = $('input:checkbox:checked').data('idProducto');
+  var idproducto = $('input:checkbox:checked').data('idproducto');
 
   // Verificar si se seleccionó alguna materia prima
   if (idproducto) {
@@ -260,7 +259,7 @@ $('#deleteButton').click(function() {
                   // La categoría se eliminó correctamente
                   alert(response.message);
                   // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  window.location.href = '../../administrador/forms/productos_adm.php';
+                 window.location.href = '../../administrador/forms/productos_adm.php';
                  
               } else {
                   // Ocurrió un error o la materia prima no se pudo eliminar
@@ -279,11 +278,10 @@ $('#deleteButton').click(function() {
       alert('Por favor, selecciona una mataria prima para eliminar');
   }
 });
-});
 
 
 
-
+//ok ok ok ok ok 
 //view MAPRIMA 
 
 $('#viewButton').click(function() {
@@ -295,6 +293,7 @@ $('#viewButton').click(function() {
       url:'../../../controller/productos/viewProducto.php',
       //Se envía el dato 'id producto' al controlador PHP
       data: {idProducto: view_producto},
+      
 
       //Si la solicitud es exitosa
       success: function(response) {
@@ -306,7 +305,7 @@ $('#viewButton').click(function() {
           if (!view_producto.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
             //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-            sessionStorage.setItem('produtoData', JSON.stringify(view_producto));
+            sessionStorage.setItem('productoData', JSON.stringify(view_producto));
             //Se redirecciona al formulario de view luego de un segundo
             setTimeout(function() {
               window.location.href = '../forms/productos/form_view.php';
@@ -386,7 +385,7 @@ $.ajax({
     var tablaHTML = '';
     for (var i = 0; i < datos.length; i++) {
       tablaHTML += '<tr>';
-      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idproducto="' + datos[i].idproducto + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-idProducto="' + datos[i].idProducto + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
       tablaHTML += '<td>' + datos[i].idProducto + '</td>';
       tablaHTML += '<td>' + datos[i].nombre_pro + '</td>';
       tablaHTML += '<td>' + datos[i].detalle + '</td>';

@@ -1,10 +1,11 @@
 
 <?php
+$idproducto = $_POST['idProducto'];
 $nombre_pro = $_POST['nombre_pro'];
 $detalle = $_POST['detalle'];
 $precio_pro = $_POST['precio_pro'];
-$categoria = $_POST['opciones'];
-$codigo = $_POST['cod'];
+$categorias_idcategoria = $_POST['categorias_idcategoria'];
+$cod = $_POST['cod'];
 
 //funcion para guardar una imagen 
 $img = '';
