@@ -25,15 +25,3 @@ function toggleButtons(checkbox) {
 
     }
 }
-
-
-
-deleteButtons.forEach(function(button) {
-    button.addEventListener('click', function(event) {
-        var confirmDelete = confirm('¿Estás seguro de eliminar este registro?');
-
-        if (!confirmDelete) {
-            event.preventDefault(); // Evita que el enlace se ejecute si se cancela la eliminación
-        }
-    });
-});
