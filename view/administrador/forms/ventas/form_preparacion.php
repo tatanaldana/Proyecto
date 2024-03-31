@@ -73,8 +73,8 @@ usuario::verificarSesion();
             <table class="table-responsive">
                 <tr>
                     <td><a class="btn btn-primary" id="addButton2">Completar</a></td>
-                    <td><a class="btn btn-primary" id="viewButton2">Visualizar</a></td>
-                    <td><a class="btn btn-primary delete-button" id="deleteButton2">Eliminar</a></td>
+                    <td><a class="btn btn-primary ms-3" id="viewButton2">Visualizar</a></td>
+                    <td><a class="btn btn-danger delete-button ms-3" id="deleteButton2">Eliminar</a></td>
                 </tr> 
             </table>
             </div>
@@ -88,7 +88,8 @@ usuario::verificarSesion();
   <body>
   <!-- Jquery -->
   <script src="../../../public/js/jquery.js"></script>
-
+  <!-- SweetAlert js -->
+  <script src = " https://unpkg.com/sweetalert/dist/sweetalert.min.js " > </script> 
   <!-- Js personalizado -->
   <script src= "../../../public/js/ventas.js"></script>
 
