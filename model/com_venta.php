@@ -12,7 +12,7 @@ require_once('conexion.php');
             $conectar = parent::conexion();  
             parent::set_names();
             $stmt = "INSERT INTO com_venta (doc_cliente, fechaventa, producto, precio, cantidad, subtotal, totalventa, carrito_idcarrito, estado)
-                     VALUES (:doc_cliente, :fecha_venta, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
+                     VALUES (:doc_cliente, :fechaventa, :producto, :precio, :cantidad, :subtotal, :totalventa, :carrito_idcarrito, :estado)";
             $stmt = $conectar->prepare($stmt);
             $stmt->bindParam(':doc_cliente', $doc_cliente); 
             $stmt->bindParam(':fechaventa', $fechaventa); 
@@ -233,8 +233,8 @@ public function detalle_historico_venta($doc,$idCarrito){
   try {
     $conectar = parent::conexion();
     parent::set_names();
-    $stmt="SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fechaventa, cv.totalventa, cv.estado
-    FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc = :doc AND cv.carrito_idcarrito = :idCarrito";
+    $stmt="SELECT u.doc, u.nombre, u.apellido, u.tel, u.email, u.direccion, cv.fechaventa, cv.totalventa, CASE WHEN cv.estado = 2 
+    THEN 'Completado' ELSE cv.estado END AS estado FROM usuarios AS u JOIN com_venta AS cv ON u.doc = cv.doc_cliente WHERE u.doc = :doc AND cv.carrito_idcarrito = :idCarrito";
     $stmt = $conectar->prepare($stmt);
     $stmt->bindParam(':doc', $doc);
     $stmt->bindParam(':idCarrito', $idCarrito);
