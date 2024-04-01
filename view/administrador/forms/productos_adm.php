@@ -68,7 +68,7 @@
                             <th scope="col">detalle</th> <!-- Encabezado de la columna -->
                             <th scope="col">precio producto</th> <!-- Encabezado de la columna -->
                             <th scope="col">id categoria</th> <!-- Encabezado de la columna -->
-                            <th scope="col">foto</th> <!-- Encabezado de la columna -->
+                            <th scope="col">img</th> <!-- Encabezado de la columna -->
                             <th scope="col">codigo</th> <!-- Encabezado de la columna -->
                             
                         </tr>

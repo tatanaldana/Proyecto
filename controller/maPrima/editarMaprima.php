@@ -12,7 +12,7 @@
 
     echo $cod_materia_pri;
   
-   /*
+   
     //Se verifica que ningun dato este vacio
   if(empty($cod_materia_pri) || empty($referencia) || empty($descripcion) || empty($existencia) || empty($entrada) 
   || empty($salida) || empty($stock))
@@ -24,7 +24,7 @@
   else{
 
         # Incluimos la clase MAT_PRIMA
-        require_once('../../model/mat_pri.php');
+        require_once('../../model/mat_prima.php');
         # Creamos un objeto de la clase usuario
        $mat_pri = new Mat_prima();
        # Llamamos al metodo  para realizar la consulta en la base de datos
@@ -38,5 +38,5 @@
            echo json_encode($error);
        }
   }
-  */
+  
 ?>

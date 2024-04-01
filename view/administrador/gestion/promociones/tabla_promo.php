@@ -14,6 +14,7 @@
                             <th scope="col">Id promoción</th>
                             <th scope="col">Promoción</th>
                             <th scope="col">Total</th>
+                            <th scope="col">id categoria</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -38,6 +39,7 @@
                             echo "<td>{$mostrar['id_promo']}</td>";
                             echo "<td>{$mostrar['nom_promo']}</td>";
                             echo "<td>{$mostrar['totalpromo']}</td>";
+                            echo "<td>{$mostrar['categorias_idcategoria']}</td>";
                             echo "</tr>";
                         }
                         ?>

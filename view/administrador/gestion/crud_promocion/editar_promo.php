@@ -16,7 +16,14 @@
 </head>
 <body>
 <?php
-include_once('../../crud/conexion.php');
+
+    // Conectar a la base de datos
+    $conexion = mysqli_connect('localhost', 'root', '', 'arca');
+    
+    // Verificar la conexión
+    if (!$conexion) {
+        die("Error al conectar: " . mysqli_connect_error());
+    }
 include '../../include/header.php';
 ?>
 

@@ -58,8 +58,8 @@ include("../../include/header.php");
                       <input type="number" class="form-control" id="categorias_idcategoria" name="categorias_idcategoria" readonly>
                     </div>
                     <div class="mb-3">
-                      <label for="foto" class="form-label">foto</label>
-                      <input type="text" class="form-control" id="foto" name="foto" readonly>
+                      <label for="img" class="form-label">foto</label>
+                      <input type="text" class="form-control" id="img" name="img" readonly>
                     </div>
                     <div class="mb-3">               
                       <label for="cod" class="form-label">codigo</label>

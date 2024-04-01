@@ -66,7 +66,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <input type="hidden" id="doc_hidden" name="cod_materia_pri">
+                
                 </tr>
                 <tr>
                   <td colspan="2" class="text-center">
@@ -92,7 +92,7 @@
 <!-- Js personalizado -->
 <script src="../../../public/js/maPrima.js"></script>
 
-<script src="../../../public/js/DATOSMATPRIMA.js"></script>
+<!-- <script src="../../../public/js/DATOSMATPRIMA.js"></script>-->
 
 
 </body>

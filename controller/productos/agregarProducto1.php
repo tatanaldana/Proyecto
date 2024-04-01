@@ -14,7 +14,7 @@ $nombre_pro = $_POST['nombre_pro'];
 $detalle = $_POST['detalle'];
 $precio_pro = $_POST['precio_pro'];
 $categorias_idcategoria = $_POST['categorias_idcategoria'];
-$foto = $_POST['foto'];
+$img = $_POST['img'];
 $cod = $_POST['cod'];
 
 
@@ -44,8 +44,8 @@ if (isset($_FILES["img"])) {
 //fin para guardar una imagen
 
 // Preparar y ejecutar la consulta SQL
-$stmt = "INSERT INTO productos (idProducto, nombre_pro, detalle, precio_pro, categorias_idcategoria, foto, cod) 
-VALUES ('$idproducto', '$nombre_pro', '$detalle', '$precio_pro', '$categorias_idcategoria', '$foto', '$cod')";
+$stmt = "INSERT INTO productos (idProducto, nombre_pro, detalle, precio_pro, categorias_idcategoria, img, cod) 
+VALUES ('$idproducto', '$nombre_pro', '$detalle', '$precio_pro', '$categorias_idcategoria', '$img', '$cod')";
 
 if (mysqli_query($conexion, $stmt)) {
     echo "Producto agregado correctamente";

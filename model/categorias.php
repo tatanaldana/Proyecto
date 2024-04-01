@@ -32,10 +32,10 @@ class Categorias extends Conexion
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $sql = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat)";
-        $sql = $conectar->prepare($sql);
-        $sql->bindParam(':nombre_cat', $nombre_cat);
-        $sql->execute();
+        $stmt = "INSERT INTO categorias(nombre_cat) VALUES (:nombre_cat)";
+        $stmt = $conectar->prepare($stmt);
+        $stmt->bindParam(':nombre_cat', $nombre_cat);
+        $stmt->execute();
         return "Insert Correcto";
     }
 

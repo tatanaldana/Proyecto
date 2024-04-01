@@ -4,7 +4,7 @@ echo "
 <div class='row justify-content-center'>
     
     <div class='col-3'>
-        <a href='gestion/promociones.php'><button type='button' class='btn btn-primary' style=' margin-left: 120px;' >Promociones</button></a>
+        <a href='../administrador/forms/promociones.php'><button type='button' class='btn btn-primary' style=' margin-left: 120px;' >Promociones</button></a>
     </div>
 
     <div class='col-3'>

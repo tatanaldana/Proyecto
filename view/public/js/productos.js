@@ -105,7 +105,7 @@ $('#btn_agregar_prod').click(function(e) {
               swal('Error', 'Campo obligatorio, ', 'warning');
           } else {
               // Redirigir a otra página o realizar otra acción después de agregar la categoría
-            window.location.href = '../../forms/productos_adm.php';
+          window.location.href = '../../forms/productos_adm.php';
           }
       },
       error: function(xhr, status, error) {
@@ -177,7 +177,7 @@ $.ajax({
       swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
     } else {
 
-      swal('Exitoso', 'se ha modificado la materia prima', 'success');
+      swal('Exitoso', 'se ha modificado el producto', 'success');
       window.location.href = '../productos_adm.php';
 
 
@@ -209,7 +209,7 @@ document.getElementById('nombre_pro').value = producto.nombre_pro;
 document.getElementById('detalle').value =producto.detalle;
 document.getElementById('precio_pro').value = producto.precio_pro;
 document.getElementById('categorias_idcategoria').value = producto.categorias_idcategoria;
-document.getElementById('foto').value = producto.foto;
+document.getElementById('img').value = producto.img;
 document.getElementById('cod').value = producto.cod;
 document.getElementById('doc_hidden').value = producto.idProducto;
 }
@@ -341,7 +341,7 @@ document.getElementById('nombre_pro').value = viewData.nombre_pro;
 document.getElementById('detalle').value = viewData.detalle;
 document.getElementById('precio_pro').value = viewData.precio_pro;
 document.getElementById('categorias_idcategoria').value = viewData.categorias_idcategoria;
-document.getElementById('foto').value = viewData.foto;
+document.getElementById('img').value = viewData.img;
 document.getElementById('cod').value = viewData.cod;
 
 }
@@ -356,7 +356,7 @@ document.getElementById('nombre_pro').disabled = true;
 document.getElementById('detalle').disabled = true;
 document.getElementById('precio_pro').disabled = true;
 document.getElementById('categorias_idcategoria').disabled = true;
-document.getElementById('foto').disabled = true;
+document.getElementById('img').disabled = true;
 document.getElementById('cod').disabled = true;
 //si no se encuentra 'viewData' entonces imprime el mensaje
 

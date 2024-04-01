@@ -118,7 +118,7 @@ if (isset($productos) && isset($precios) && isset($descuentos)) {
 }
 ?>
 
-<script>
+<!--<script>
     // Función para calcular y actualizar los valores de subtotal y total
     function calcularTotal() {
         var productos = document.getElementsByName('producto[]');
@@ -190,4 +190,4 @@ if (isset($productos) && isset($precios) && isset($descuentos)) {
             descuentoInput.value = ''; // Limpiar el campo en caso de un valor inválido
         }
     }
-</script>
+</script>-->

@@ -17,13 +17,13 @@
     } else {
 
             // Incluimos la clase Categorias
-            require_once('../../model/mat_prima.php');
+            require_once('../../model/promocion.php');
 
             // Creamos un objeto de la clase maprima
-            $mat_Prima = new Mat_Prima();
+            $promocion = new Promocion();
 
             // Llamamos al método insert_mat_prima para insertar los datos en la base de datos
-            $RESULTADO=$mat_Prima->insert_mat_prima($referencia,$descripcion,$existencia,$entrada,$salida,$stock);
+            $RESULTADO=$mat_Prima->insert_promocion($referencia,$descripcion,$existencia,$entrada,$salida,$stock);
 
             if ($RESULTADO){
                 echo json_encode($RESULTADO);

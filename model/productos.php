@@ -105,7 +105,7 @@ class Productos extends Conexion{
     }
 
     //actualizar productos
-    public function update_productos($idProducto,$nombre_pro,$detalle,$precio_pro,$categorias_idcategoria,$foto,$cod){
+    public function update_productos($idProducto,$nombre_pro,$detalle,$precio_pro,$categorias_idcategoria,$img,$cod){
         try{
         $conectar= parent::conexion();
         parent::set_names();
@@ -114,7 +114,7 @@ class Productos extends Conexion{
         detalle = :detalle,
         precio_pro = :precio_pro,
         categorias_idcategoria = :categorias_idcategoria,
-        foto = :foto,
+        img = :img,
         cod = :cod
         WHERE
         idProducto =:idProducto";
@@ -123,7 +123,7 @@ class Productos extends Conexion{
         $stmt->bindParam(':detalle', $detalle);
         $stmt->bindParam(':precio_pro', $precio_pro);
         $stmt->bindParam(':categorias_idcategoria', $categorias_idcategoria);
-        $stmt->bindParam(':foto', $foto);
+        $stmt->bindParam(':img', $img);
         $stmt->bindParam(':cod', $cod);
         $stmt->bindParam(':idProducto', $idProducto);
         $stmt->execute();
@@ -165,7 +165,7 @@ class Productos extends Conexion{
     {
         $conectar = parent::conexion();
         parent::set_names();
-        $stmt = "SELECT idProducto, nombre_pro, detalle, precio_pro, categorias_idcategoria, foto, cod FROM productos WHERE idProducto LIKE :buscar";
+        $stmt = "SELECT idProducto, nombre_pro, detalle, precio_pro, categorias_idcategoria, img, cod FROM productos WHERE idProducto LIKE :buscar";
         $stmt = $conectar->prepare($stmt);
         $buscar = '%'.$buscar.'%';
         $stmt->bindParam(':buscar', $buscar);

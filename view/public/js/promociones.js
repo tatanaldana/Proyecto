@@ -1,13 +1,13 @@
 
 
-
+//ok ok ok 
   //Funcion para ejecutar la barra de busqueda cuando se haga click en el boton btnbuscar
   $('#btnbuscar').click(function() {
     var buscar = $('#buscar').val();
 //Se realiza la solicitud AJAX para buscar según el valor ingresado
     $.ajax({
         method: 'POST',
-        url: '../../../controller/maPrima/mostrarMaprima.php',
+        url: '../../../controller/promociones/mostrarPromociones.php',
         //se envia el valor del campo al controlador
         data: { buscar_php: buscar },
         success: function(response) {
@@ -16,14 +16,11 @@
 //Se genera el HTML para visualizar el resultado de la busqueda en la tabla
             for (var i = 0; i < datos.length; i++) {
                 tablaHTML += '<tr>';
-                tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-cod_materia_pri="' + datos[i].cod_materia_pri + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
-                tablaHTML += '<td>' + datos[i].cod_materia_pri+ '</td>';
-                tablaHTML += '<td>' + datos[i].referencia + '</td>';
-                tablaHTML += '<td>' + datos[i].descripcion + '</td>';
-                tablaHTML += '<td>' + datos[i].existencia + '</td>';
-                tablaHTML += '<td>' + datos[i].entrada + '</td>';
-                tablaHTML += '<td>' + datos[i].salida + '</td>';
-                tablaHTML += '<td>' + datos[i].stock + '</td>';
+                tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-id_promo="' + datos[i].id_promo + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+                tablaHTML += '<td>' + datos[i].id_promo+ '</td>';
+                tablaHTML += '<td>' + datos[i].nom_promo + '</td>';
+                tablaHTML += '<td>' + datos[i].totalpromo + '</td>';
+                tablaHTML += '<td>' + datos[i].categorias_idcategoria + '</td>';
                 tablaHTML += '</tr>';
             }
 // se inserta el HTML generado en tbody de la tabla
@@ -41,15 +38,15 @@
 // agregar maprima.php
 
 $(document).ready(function() {
-$('#btnagregarmaprima').click(function(e) {
+$('#btnagregarpromo').click(function(e) {
   e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
 
-  var formData = $('#agregar_maprima').serialize(); // Serializa los datos del formulario
+  var formData = $('#agregar_promocion').serialize(); // Serializa los datos del formulario
 
   // Realiza la solicitud AJAX
   $.ajax({
       method: 'POST',
-      url: '../../../../controller/maPrima/agregarMaprima.php',
+      url: '../../../../controller/promociones/agregarPromociones.php',
       data: formData,
       beforeSend: function() {
           $('#load').show(); // Mostrar un indicador de carga si es necesario
@@ -60,8 +57,8 @@ $('#btnagregarmaprima').click(function(e) {
           if (response === 'error_1') {
               swal('Error', 'Campo obligatorio, ', 'warning');
           } else {
-              // Redirigir a otra página o realizar otra acción después de agregar la categoría
-              window.location.href = '../../forms/ma_prima.php';
+              // Redirigir a otra página o realizar otra acción después de agregar la promocion
+              window.location.href = '../../forms/promociones.php';
           }
       },
       error: function(xhr, status, error) {
@@ -73,33 +70,33 @@ $('#btnagregarmaprima').click(function(e) {
 
 
 
-//editarcategoria.php
+//editarpromociones.php
 
 $('#editButton').click(function() {
-// Cuando se da click en el boton con el id EditButton, se recupera el valor codMaprima del checkbox seleccionado
-var editar = $('input:checkbox:checked').data('cod_materia_pri');
+// Cuando se da click en el boton con el id EditButton, se recupera el valor id_promo del checkbox seleccionado
+var editar = $('input:checkbox:checked').data('id_promo');
 // Se realiza la petición AJAX por método POST
 $.ajax({
   method: 'POST',
-  url: '../../../controller/maPrima/viewMaprima.php',
-  // Se envía el dato 'cod_materia_pri' al controlador PHP
-  data: { cod_materia_pri:editar },
+  url: '../../../controller/promociones/viewPromociones.php',
+  // Se envía el dato 'id_promo' al controlador PHP
+  data: { id_promo:editar },
   // Si la solicitud es exitosa
   success: function(response) {
       try {
           // Se analiza la respuesta JSON obtenida del controlador y con la función JSON.parse convertimos la cadena de texto JSON a un objeto javascript
-          var maprimaData = JSON.parse(response);
-          if (!maprimaData.error) {
+          var promoData = JSON.parse(response);
+          if (!promoData.error) {
               // Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
               // convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-              sessionStorage.setItem('maprimaData', JSON.stringify(maprimaData));
+              sessionStorage.setItem('promoData', JSON.stringify(promoData));
               // Se redirecciona al formulario de edicion luego de un segundo
               setTimeout(function() {
-                  window.location.href = '../forms/maPrima/form_editar.php';
+                  window.location.href = '../forms/promociones/form_editar.php';
                   
               }, 1000);
           } else {
-              console.log(maprimaData.error);
+              console.log(promoData.error);
           }
       } catch (error) {
           console.error('Error al analizar la respuesta JSON:', error);
@@ -117,12 +114,12 @@ $.ajax({
 //Datos para realizar update del registro
 
 $('#btnmodificar').click(function() {
-var editarMaprima = $('#editarMaprima').serialize();
-console.log (editarMaprima);
+var editarpromo = $('#editarpromo').serialize();
+console.log (editarpromo);
 $.ajax({
   method: 'POST',
-  url: '../../../../controller/maPrima/editarMaprima.php',
-  data: editarMaprima,
+  url: '../../../../controller/promociones/editarPromociones.php',
+  data: editarpromo,
   beforeSend: function() {
     $('#load').show();
   },
@@ -130,10 +127,10 @@ $.ajax({
     $('#load').hide();
 
     if (response == 'error_1') {
-      swal('Error', 'Campos obligatorios,no se ha modificado la materia prima', 'warning');
+      swal('Error', 'Campos obligatorios,no se ha modificado la promocion', 'warning');
     } else {
-      //swal('Exitoso', 'Campos obligatorios,no se ha modificado la materia prima', 'success');
-      window.location.href = '../ma_prima.php';
+      //swal('Exitoso', 'Campos obligatorios,no se ha modificado la promocion', 'success');
+      window.location.href = '../promociones.php';
 
     }
   },
@@ -146,60 +143,57 @@ $.ajax({
 
 //Aca esperamos que cargue totalmente el DOM para poder iniciar el código
 document.addEventListener('DOMContentLoaded', function() {
-//Verificamos que en la asesión del navegador exista el elemento llamado 'MAPRIMAData'
-var maprimaData = sessionStorage.getItem('maprimaData');
+//Verificamos que en la asesión del navegador exista el elemento llamado 'promoData'
+var promoData = sessionStorage.getItem('promoData');
 
-//Si maprimaData' existe, entonces convertimos el JSON almacenado en un array
-if (maprimaData) {
-var maprimaArray= JSON.parse(maprimaData);//este es el array
-//Obtenemos el primer objeto del array y lo asigna a la variable 'maprima'
-var maprima = maprimaArray[0];
-console.log(maprima);
+//Si promoData' existe, entonces convertimos el JSON almacenado en un array
+if (promoData) {
+var promoArray= JSON.parse(promoData);//este es el array
+//Obtenemos el primer objeto del array y lo asigna a la variable 'promocion'
+var promocion = promoArray[0];
+console.log(promocion);
 //creamos la funcion para poder llenar los campos del formulario
 function asignarvalores(){
 //se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('cod_materia_pri').value = maprima.cod_materia_pri;
-document.getElementById('referencia').value = maprima.referencia;
-document.getElementById('descripcion').value = maprima.descripcion;
-document.getElementById('existencia').value = maprima.existencia;
-document.getElementById('entrada').value = maprima.entrada;
-document.getElementById('salida').value = maprima.salida;
-document.getElementById('stock').value = maprima.stock;
-document.getElementById('doc_hidden').value = maprima.cod_materia_pri;
+document.getElementById('id_promo').value = promocion.id_promo;
+document.getElementById('nom_promo').value = promocion.nom_promo;
+document.getElementById('totalpromo').value = promocion.totalpromo;
+document.getElementById('categorias_idcategoria').value = promocion.categorias_idcategoria;
+document.getElementById('doc_hidden').value =promocion.id_promo;
 }
 //Llamamos la función para que se ejecute
 asignarvalores();
 
 //Luego deshabilitamos los campos que no vamos a modificar
-document.getElementById('cod_materia_pri').disabled = true;
-//Eliminamos el elemento 'maprimaData' de la sesion de almacenamiento.
-sessionStorage.removeItem('maprimaData');
+document.getElementById('id_promo').disabled = true;
+//Eliminamos el elemento 'promoData' de la sesion de almacenamiento.
+sessionStorage.removeItem('promoData');
 
-//si no se encuentra 'MAPRIMAData' entonces imprime el mensaje
+//si no se encuentra 'promoData' entonces imprime el mensaje
 
 } else {
-console.log("No se han encontrado datos de la materia prima");
+console.log("No se han encontrado datos de la promocion");
 }
 });
 
 
 
-//eliminarcategorias.php
+//eliminar promociones.php
 
 $(document).ready(function() {
 $('#deleteButton').click(function() {
-  // Obtener el cod materia prima del checkbox marcado
-  var cod_materia_pri = $('input:checkbox:checked').data('cod_materia_pri');
+  // Obtener el id_promo del checkbox marcado
+  var id_promo = $('input:checkbox:checked').data('id_promo');
 
   // Verificar si se seleccionó alguna materia prima
-  if (cod_materia_pri) {
-      console.log('ID de materia prima  a eliminar:', cod_materia_pri);
+  if (id_promo) {
+      console.log('ID de promocion a eliminar:', id_promo);
 
-      // Realizar la solicitud AJAX para eliminar la materia prima 
+      // Realizar la solicitud AJAX para eliminar la promocion 
       $.ajax({
           method: 'POST',
-          url: '../../../controller/maPrima/eliminarMaprima.php',
-          data: { cod_materia_pri: cod_materia_pri },
+          url: '../../../controller/promociones/eliminarPromociones.php',
+          data: { id_promo: id_promo },
           beforeSend: function() {
               // Mostrar un indicador de carga mientras se procesa la solicitud
               $('#load').show();
@@ -211,16 +205,15 @@ $('#deleteButton').click(function() {
               // Verificar la respuesta del servidor
               if (response.success) {
                   
-                  // La categoría se eliminó correctamente
+                  // La promocion se eliminó correctamente
                   alert(response.message);
-                  // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  window.location.href = '../../administrador/forms/ma_prima.php';
-                  // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de usuario
-                  //../../administrador/forms/ma_prima.php'; ruta despues de cambiar la carpeta a a forms
+                  // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de promocion
+                  window.location.href = '../../administrador/forms/promociones.php';
+                 
               } else {
-                  // Ocurrió un error o la materia prima no se pudo eliminar
+                  // Ocurrió un error o la promocion no se pudo eliminar
                   // Mostrar un mensaje de error o manejar el caso según sea necesario
-                  alert('Ocurrió un error al eliminar la materia prima');
+                  alert('Ocurrió un error al eliminar la promocion');
               }
           },
           error: function(xhr) {
@@ -230,8 +223,8 @@ $('#deleteButton').click(function() {
           }
       });
   } else {
-      // No se seleccionó ninguna categoría, mostrar un mensaje de advertencia
-      alert('Por favor, selecciona una mataria prima para eliminar');
+      // No se seleccionó ninguna promocion, mostrar un mensaje de advertencia
+      alert('Por favor, selecciona una promocion para eliminar');
   }
 });
 });
@@ -242,28 +235,28 @@ $('#deleteButton').click(function() {
 //view MAPRIMA 
 
 $('#viewButton').click(function() {
-//Cuando se da click en el boton con el id viewButton , se recupera el valor cod_materia_pri del checkbox seleccionado
-    var view_materia_pri = $('input:checkbox:checked').data('cod_materia_pri');
+//Cuando se da click en el boton con el id viewButton , se recupera el valor id_promo del checkbox seleccionado
+    var viewid_promo = $('input:checkbox:checked').data('id_promo');
 //Se realiza la petición AJAX por metodo POST 
     $.ajax({
       method: 'POST',
-      url: '../../../controller/maPrima/viewMaprima.php',
-      //Se envía el dato 'cod_materia_pri' al controlador PHP
-      data: { cod_materia_pri: view_materia_pri},
+      url: '../../../controller/promociones/viewPromociones.php',
+      //Se envía el dato 'id_promo' al controlador PHP
+      data: { id_promo: viewid_promo},
       //Si la solicitud es exitosa
       success: function(response) {
         try {
 
         //Se analiza la respuesta JSON obtenida del controlador y con la función json.parse convertimos 
         //la cadena de texto JSON a un objeto javascript
-          var view_materia_pri = JSON.parse(response);
-          if (!view_materia_pri.error) {
+          var viewid_promo = JSON.parse(response);
+          if (!viewid_promo.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
             //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-            sessionStorage.setItem('viewData', JSON.stringify(view_materia_pri));
+            sessionStorage.setItem('viewData', JSON.stringify(viewid_promo));
             //Se redirecciona al formulario de view luego de un segundo
             setTimeout(function() {
-              window.location.href = '../forms/maPrima/form_view.php';
+              window.location.href = '../forms/promociones/form_view.php';
             }, 1000);
           } else {
             console.log(view_materia_pri.error);
@@ -291,13 +284,10 @@ console.log(viewData);
 //creamos la funcion para poder llenar los campos del formulario
 function asignarvalores2(){
 //se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('cod_materia_pri').value = viewData.cod_materia_pri;
-document.getElementById('referencia').value = viewData.referencia;
-document.getElementById('descripcion').value = viewData.descripcion;
-document.getElementById('existencia').value = viewData.existencia;
-document.getElementById('entrada').value = viewData.entrada;
-document.getElementById('salida').value = viewData.salida;
-document.getElementById('stock').value = viewData.stock;
+document.getElementById('id_promo').value = viewData.id_promo;
+document.getElementById('nom_promo').value = viewData.nom_promo;
+document.getElementById('totalpromo').value = viewData.totalpromo;
+document.getElementById('categorias_idcategoria').value = viewData.categorias_idcategoria;
 
 }
 //Llamamos la función para que se ejecute
@@ -305,17 +295,15 @@ asignarvalores2();
 //Eliminamos el elemento 'viewData' de la sesion de almacenamiento.
 sessionStorage.removeItem('viewData');
 //Luego deshabilitamos los campos que no vamos a modificar
-document.getElementById('cod_materia_pri').disabled = true;
-document.getElementById('referencia').disabled = true;
-document.getElementById('descripcion').disabled = true;
-document.getElementById('existencia').disabled = true;
-document.getElementById('entrada').disabled = true;
-document.getElementById('salida').disabled = true;
-document.getElementById('stock').disabled = true;
+document.getElementById('id_promo').disabled = true;
+document.getElementById('nom_promo').disabled = true;
+document.getElementById('totalpromo').disabled = true;
+document.getElementById('categorias_idcategoria').disabled = true;
+
 //si no se encuentra 'viewData' entonces imprime el mensaje
 
 } else {
-console.log("No se han encontrado datos de la materia prima");
+console.log("No se han encontrado datos de la promocion");
 }
 });
 
@@ -323,30 +311,27 @@ console.log("No se han encontrado datos de la materia prima");
 
 
 
-/* todomat_prima.php*/
-//Mostrar registros existentes apenas ingresa a la pagina categorias.
+/* todo promociones*/
+//Mostrar registros existentes apenas ingresa a la pagina promociones.
 
 
 $(document).ready(function() {
-//Se verifica que la ruta del archivo termine en ma_prima.php para ejecutar la solicitud AJAX
-if (window.location.pathname.endsWith("ma_prima.php")) {
+//Se verifica que la ruta del archivo termine en promociones.php para ejecutar la solicitud AJAX
+if (window.location.pathname.endsWith("promociones.php")) {
 //Se realiza la solicitud AJAX al cargar la página
 $.ajax({
   method: 'POST',
-  url: '../../../controller/maPrima/todoMaprima.php',
+  url: '../../../controller/promociones/todoPromociones.php',
   success: function(response) {
     var datos = JSON.parse(response);
     var tablaHTML = '';
     for (var i = 0; i < datos.length; i++) {
       tablaHTML += '<tr>';
-      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-cod_materia_pri="' + datos[i].cod_materia_pri + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
-      tablaHTML += '<td>' + datos[i].cod_materia_pri + '</td>';
-      tablaHTML += '<td>' + datos[i].referencia + '</td>';
-      tablaHTML += '<td>' + datos[i].descripcion + '</td>';
-      tablaHTML += '<td>' + datos[i].existencia + '</td>';
-      tablaHTML += '<td>' + datos[i].entrada + '</td>';
-      tablaHTML += '<td>' + datos[i].salida + '</td>';
-      tablaHTML += '<td>' + datos[i].stock + '</td>';
+      tablaHTML += '<td><div class="form-check"><input class="form-check-input" type="checkbox" data-id_promo="' + datos[i].id_promo + '" style="text-align:center" onchange="toggleButtons(this)"/></div></td>';
+      tablaHTML += '<td>' + datos[i].id_promo+ '</td>';
+      tablaHTML += '<td>' + datos[i].nom_promo + '</td>';
+      tablaHTML += '<td>' + datos[i].totalpromo + '</td>';
+      tablaHTML += '<td>' + datos[i].categorias_idcategoria + '</td>';
       tablaHTML += '</tr>';
   }
 
@@ -358,3 +343,81 @@ error: function(xhr) {
 });
 }
 });
+
+
+
+
+
+
+
+// Función para calcular y actualizar los valores de subtotal y total
+function calcularTotal() {
+  var productos = document.getElementsByName('producto[]');
+  var precios = document.getElementsByName('precio[]');
+  var cantidades = document.getElementsByName('cantidad[]');
+  var descuentos = document.getElementsByName('descuento[]'); // Nuevos descuentos
+  var subtotales = document.getElementsByName('subtotal[]');
+  var totalVenta = 0;
+
+  for (var i = 0; i < productos.length; i++) {
+      var precio = parseFloat(precios[i].value);
+      var cantidad = parseInt(cantidades[i].value);
+      var descuento = parseFloat(descuentos[i].value); // Nuevo descuento
+
+      if (cantidad >= 1) {
+          // Aplicar el descuento al precio
+          var precioConDescuento = precio * (1 - descuento / 100);
+          var subtotal = precioConDescuento * cantidad;
+      } else {
+          var subtotal = 0;
+      }
+
+      subtotales[i].value = subtotal.toFixed(0); // Mostrar dos decimales en el subtotal
+      totalVenta += subtotal;
+  }
+
+  // Actualizar el campo de total
+  document.getElementById('totalVenta').value = totalVenta.toFixed(0);
+}
+
+// Función para habilitar/deshabilitar la cantidad y descuento según el checkbox
+function habilitarCantidad(key) {
+  var checkbox = document.getElementsByName('seleccionar[]')[key];
+  var cantidadInput = document.getElementById('cantidad_' + key);
+  var descuentoInput = document.getElementsByName('descuento[]')[key];
+
+  if (checkbox.checked) {
+      cantidadInput.disabled = false;
+      descuentoInput.disabled = false; // Habilitar el descuento
+  } else {
+      cantidadInput.disabled = true;
+      descuentoInput.disabled = true; // Deshabilitar el descuento
+      cantidadInput.value = 0; // Reiniciar la cantidad si está deshabilitada
+      descuentoInput.value = 0; // Reiniciar el descuento si está deshabilitado
+  }
+
+  calcularTotal(); // Volver a calcular el total
+}
+
+// Asociar la función al evento de cambio en las cantidades
+var cantidades = document.getElementsByName('cantidad[]');
+for (var i = 0; i < cantidades.length; i++) {
+  cantidades[i].addEventListener('input', calcularTotal);
+}
+
+// Asociar la función al evento de cambio en los descuentos
+var descuentos = document.getElementsByName('descuento[]');
+for (var i = 0; i < descuentos.length; i++) {
+  descuentos[i].addEventListener('input', calcularTotal);
+}
+
+// Función para validar el descuento en el rango de 0% a 100%
+function validarDescuento(key) {
+  var descuentoInput = document.getElementsByName('descuento[]')[key];
+  var descuento = parseFloat(descuentoInput.value);
+
+  if (isNaN(descuento) || descuento < 0 || descuento > 100) {
+      alert("El descuento debe estar en el rango de 0% a 100%.");
+      descuentoInput.value = ''; // Limpiar el campo en caso de un valor inválido
+  }
+}

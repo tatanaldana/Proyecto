@@ -2,8 +2,8 @@
 require_once("../../../../model/conexion.php");
 
 $conexion = new Conexion(); // Crear una nueva instancia de la clase Conexion
+$conexion->conexion(); // Establecer la conexión a la base de datos
 $conexion->set_names(); // Establecer el juego de caracteres
-
 
 if (isset($_POST['btnCalcular'])) {
     // Obtén la fecha actual
@@ -56,7 +56,7 @@ if (isset($_POST['btnCalcular'])) {
             // Redirige solo si todas las inserciones fueron exitosas
             echo '<script type="text/javascript">
             alert("Venta ingresada exitosamente");
-            window.location.href="../promociones.php";
+            window.location.href="../../forms/promociones.php";
           </script>';
             exit();
         } else {

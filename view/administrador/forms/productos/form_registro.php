@@ -48,8 +48,8 @@ include("../../include/header.php");
                       <input type="number" class="form-control" id="categorias_idcategoria" name="categorias_idcategoria"placeholder="codigo categoria">
                     </div>
                     <div class="mb-3">
-                      <label for="foto" class="form-label">foto</label>
-                      <input type="file" class="form-control" id="foto" name="foto" placeholder="imagen">
+                      <label for="img" class="form-label">foto</label>
+                      <input type="file" class="form-control" id="img" name="img" placeholder="imagen">
                     </div>
                     <div class="mb-3">               
                       <label for="cod" class="form-label">codigo</label>

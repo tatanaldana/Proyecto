@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Visualizar Categoría</title>
+  <title>Visualizar promociones</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="../../../public/css/bootstrap.min.css">
@@ -29,50 +29,31 @@ include("../../include/header.php");
         <div class="card mb-5">
           <div class="card-body d-flex flex-column align-items-center">
             <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Visualizar Materia Prima</th>
-                </tr>
-              </thead>
+              
               <tbody>
-                <tr>
-                  <td>
-                  <div class="mb-3">
-                      <label for="cod_materia_pri" class="form-label">codigo</label>
-                      <input type="number" class="form-control" id="cod_materia_pri" name="cod_materia_pri" readonly>
+                <tr>   
+                   <div class="mb-3">
+                      <label for="id_promo" class="form-label">promociones</label>                     
+                    </div>             
+                    <div class="mb-3">
+                      <label for="id_promo" class="form-label">id promocion</label>
+                      <input type="number" class="form-control" id="id_promo" name="id_promo" readonly>
                     </div>
                     <div class="mb-3">
-                      <label for="referencia" class="form-label">referencia</label>
-                      <input type="text" class="form-control" id="referencia" name="referencia" readonly>
+                      <label for="nom_promo" class="form-label">nombre promocion</label>
+                      <input type="text" class="form-control" id="nom_promo" name="nom_promo" readonly>
                     </div>
                     <div class="mb-3">
-                      <label for="descripcion" class="form-label">descripcion</label>
-                      <input type="text" class="form-control" id="descripcion" name="descripcion" readonly>
+                      <label for="totalpromo" class="form-label">total</label>
+                      <input type="number" class="form-control" id="totalpromo" name="totalpromo" readonly>
                     </div>
                     <div class="mb-3">
-                      <label for="existencia" class="form-label">existencia</label>
-                      <input type="number" class="form-control" id="existencia" name="existencia" readonly>
+                      <label for="categorias_idcategoria" class="form-label">id categoria</label>
+                      <input type="number" class="form-control" id="categorias_idcategoria" name="categorias_idcategoria" readonly>
                     </div>
-                    <div class="mb-3">
-                    <div class="mb-3">
-                      <label for="entrada" class="form-label">entrada</label>
-                      <input type="number" class="form-control" id="entrada" name="entrada" readonly>
-                    </div>
-                    <div class="mb-3">
-                    <div class="mb-3">
-                      <label for="salida" class="form-label">salida</label>
-                      <input type="number" class="form-control" id="salida" name="salida" readonly>
-                    </div>
-                    <div class="mb-3">               
-                      <label for="stock" class="form-label">stock</label>
-                      <input type="number" class="form-control" id="stock" name="stock" readonly>
-                    </div>
-                    <div class="mb-3">
-                  </td>
-                </tr>
-                <tr>
+                </tr>  
                   <td colspan="2" class="text-center">
-                    <a href="../ma_prima.php" class="btn btn-primary">Volver</a>
+                    <a href="../promociones.php" class="btn btn-primary">Volver</a>
                   </td>
                 </tr>
               </tbody>
@@ -90,6 +71,6 @@ include("../../include/header.php");
 <!-- SweetAlert js -->
 <script src="../../../public/js/sweetalert.min.js"></script>
 <!-- Js personalizado -->
-<script src="../../../public/js/maPrima.js"></script>
+<script src="../../../public/js/promociones.js"></script>
 </body>
 </html>
