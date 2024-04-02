@@ -6,16 +6,16 @@
     $productos = new Productos();
 
     # Llamamos al metodo login para validar los datos en la base de datos
-    $resultado=$productos -> get_productos2();
+    $resultado = $productos -> get_productos2();
 
     
-    if ($resultado->rowCount() > 0) {
+    if ($resultado ->rowCount() > 0) {
         // Inicializa los arrays para almacenar los productos y precios
         $productos = array();
         $precios = array();
 
         // Obtiene los datos de la tabla y los almacena en los arrays
-        while ($row = $resultado->fetch(PDO::FETCH_ASSOC)) {
+        while ($row = $resultado ->fetch(PDO::FETCH_ASSOC)) {
             $productos[] = $row["nombre_pro"];
             $precios[] = $row["precio_pro"];
         }
