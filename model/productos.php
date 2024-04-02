@@ -31,7 +31,7 @@ class Productos extends Conexion{
         public function get_productos_por_categoria($idCategoria){
             $conectar = parent::conexion();
             parent::set_names();
-            $stmt = "SELECT * FROM productos WHERE categorias_idcategoria = :idCategoria";
+            $stmt=  "SELECT p.idProducto, p.nombre_pro, p.detalle, p.precio_pro, c.nombre_cat FROM productos AS p JOIN categorias AS c ON p.categorias_idcategoria = c.id_categoria where p.categorias_idcategoria = :idCategoria";
             $stmt = $conectar->prepare($stmt);
             $stmt->bindParam(':idCategoria', $idCategoria);
             $stmt->execute();
