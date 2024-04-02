@@ -31,35 +31,6 @@ if(!isset($_SESSION['cargo']) || $_SESSION['cargo'] !=2){
       incluirTemplate('header')
     ?>
 
-<?php
-     
-
-    //  $consulta = editarFormulario($_GET['doc']);
-     
-    // function editarFormulario($ident){
-    //     require_once '../conexion.php';
-    //     $editar = "SELECT * FROM usuarios WHERE doc= '".$ident. "'";
-    //     $resultado = $conexion -> query($editar) or die ('Error'.mysqli_error($conexion));
-    //     $file = $resultado -> fetch_assoc();
-
-    //     return[
-    //         $file['id'],
-    //         $file['nombre'],
-    //         $file['apellido'],
-    //         $file['email'],
-    //         $file['genero'],
-    //         $file['fecha_naci'],
-    //         $file['tipo_doc'],
-    //         $file['doc'],
-    //         $file['tel'],
-    //         $file['clave'],
-    //         $file['direccion']
-            
-    //     ];
-    // }
-?>
-
-
 <body>
         <?php
             include('../forms/form_editar_perfil.php')
