@@ -106,7 +106,12 @@
                                                 </label>
                                             </div>
                                             <div class="col-2 alinear">
-                                                <input type="text" name="modal_genero" id="modal_genero">
+                                                <select style="margin: 0; width: 100%; height:3rem;" name="modal_genero" id="modal_genero">
+                                                    <option value="">Seleccionar</option>
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                    <option value="Otro">Otro</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -259,8 +264,8 @@
 
         <div class="datosSeguridad">
             <div class="btn">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditarSeguridad">Editar</button>
-        </div>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEditarSeguridad">Editar</button>
+            </div>
         </div>
 
 
@@ -296,7 +301,11 @@
                                 </div>
 
                                 <div class="col-2 alinear">
+<<<<<<< Updated upstream
                                     <input type="text"  id="modal_doc_2">
+=======
+                                    <input type="text" id="modal_doc_2">
+>>>>>>> Stashed changes
                                 </div>
                             </div>
 
@@ -310,7 +319,11 @@
                                 </div>
 
                                 <div class="col-2 alinear">
+<<<<<<< Updated upstream
                                     <input type="Password"  id="modal_clave">
+=======
+                                    <input type="Password" id="modal_clave">
+>>>>>>> Stashed changes
                                 </div>
                             </div>
 
