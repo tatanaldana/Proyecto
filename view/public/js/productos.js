@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 function mostrarProductos(productos, idCategoria) {
     console.log('ID de categoría:', idCategoria);
     console.log('Productos:', productos);
@@ -42,6 +43,105 @@ function mostrarProductos(productos, idCategoria) {
       console.error("La respuesta no es un array o está vacía:", productos);
     }
   }
+=======
+//Muestra los productos de la Categoria
+
+$(document).ready(function() {
+  // Extraer el ID de la categoría de la URL
+  var idCategoria = new URLSearchParams(window.location.search).get('idCategoria');
+
+  // Llamar a la función para cargar productos
+  cargarProductosDeCategoria(idCategoria);
+});
+
+
+function cargarProductosDeCategoria(idCategoria) {
+  if (idCategoria !== null) {
+    console.log('Antes de la llamada AJAX');
+    $.ajax({
+      method: 'GET',
+      url: '../../../controller/productos/todoProductos.php?idCategoria=' + idCategoria,
+      success: function(response) {
+        console.log('Tipo de datos de la respuesta:', typeof response);
+        console.log('Respuesta del servidor:', response);
+        try {
+          var data;
+
+          // Si la respuesta ya es un objeto, úsala directamente
+          if (typeof response === 'object') {
+            data = response;
+          } else {
+            // Intenta parsear la respuesta como JSON
+            data = JSON.parse(response);
+          }
+
+          // Verifica si es un array antes de llamar a mostrarProductos
+          if (Array.isArray(data)) {
+            // Llama a la función para mostrar los productos y pasa el id de la categoría
+            mostrarProductos(data, idCategoria);
+          } else {
+            console.error('La respuesta del servidor no es un array:', data);
+          }
+        } catch (error) {
+          console.error('Error al procesar la respuesta:', error);
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.error('Error al cargar productos:', textStatus, errorThrown, jqXHR);
+        // Puedes agregar un mensaje o realizar alguna acción en caso de error
+      }
+    });
+  } else {
+    console.error('ID de categoría no definido');
+  }
+}
+
+
+function mostrarProductos(productos, idCategoria) {
+  console.log('ID de categoría:', idCategoria);
+  console.log('Productos:', productos);
+  var contenedorProductos = $('#listado-productos');
+  var contenedorTitulo = $('#titulo-producto');
+
+  // Limpiar el contenido existente en el contenedor
+  contenedorProductos.empty();
+  contenedorTitulo.empty();
+
+  if (Array.isArray(productos) && productos.length > 0) {
+    contenedorTitulo.append(`<div class="imagenindex"><h1>${productos[0].nombre_cat}</h1></div>`);
+
+    productos.forEach(function(producto) {
+      var productoHTML = `
+          <div class="contenedor_productos row categoria" data-id_categoria="${producto.id_categoria}">
+              <form method="POST" action="../productos/carrito.php?accion=agregar&cod=${producto.cod}">
+                  <div>
+                      <div class="d-flex flex-column align-items-center">
+                          <img src="../../public/img/categorias/cat pollo.jpg" alt="${producto.nombre_pro}">
+                          <div style="padding-top:20px;font-size:18px;">${producto.nombre_pro}</div>
+                          <div style="padding-top:20px;font-size:18px;"><?php echo $productos_array[$i]["nombre_pro"]; ?></div>
+                          <div style="padding-top:10px;font-size:20px;"><?php echo "$" . $productos_array[$i]["precio_pro"]; ?></div>
+                          <div class="d-flex flex-column align-items-center">
+                              <input type="number" name="txtcantidad" value="1" size="1" class="mb-2" />
+                              <input type="submit" value="Agregar" style="background: var(--primario); color: white; border:none; padding:10px; width:100%;" />
+                              <div class="contenido">${producto.detalle}</div>
+                              <div class="precio">$${producto.precio_pro}</div>      
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      `;
+
+      contenedorProductos.append(productoHTML);
+  });
+
+  } else {
+    
+    
+    console.error("La respuesta no es un array o está vacía:", productos);
+  }
+}
+>>>>>>> Stashed changes
 
 
 //ok ok ok ok ok ok
