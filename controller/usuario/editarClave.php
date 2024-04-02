@@ -7,9 +7,13 @@ require_once('../../model/usuario.php');
 $doc = $_POST['modal_doc_2'];
 $claveActual = $_POST['modal_clave'];
 $validarClave = $_POST['modal_validar_clave'];
+<<<<<<< Updated upstream
 $confirmaClave = $_POST['modal_confirma_clave'];
 
 
+=======
+$confirmaClave = $_POST['modal_validar_clave'];
+>>>>>>> Stashed changes
 
 // Verificamos que ningún dato esté vacío
 if (empty($claveActual) || empty($doc)) {
@@ -26,7 +30,11 @@ if (empty($claveActual) || empty($doc)) {
         // Obtenemos la contraseña actual del usuario
         $claveActualUsuario = $usuario->trae_campo_clave($doc);
 
+<<<<<<< Updated upstream
         if (password_verify($claveActual, $claveActualUsuario)) {
+=======
+        if (password_verify($clave, $docClave)) {
+>>>>>>> Stashed changes
             // Llamamos al método editar_clave_usuario para realizar el update de los datos en la base de datos
             $usuario->editar_clave_usuario($doc, $claveActual);
             echo 'success'; // Enviamos una respuesta de éxito
