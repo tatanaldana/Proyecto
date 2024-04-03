@@ -335,12 +335,9 @@ $(document).ready(function() {
 });
 
 
-<<<<<<< Updated upstream
 
 //USUARIO
 
-=======
->>>>>>> Stashed changes
 //Muestra las Categorias
 
 $(document).ready(function() {
@@ -412,7 +409,6 @@ function mostrarCategorias(categorias) {
   }
 }
 
-<<<<<<< Updated upstream
 
 //Muestra los productos de la Categoria
 
@@ -468,5 +464,3 @@ function cargarProductosDeCategoria(idCategoria) {
 
 
 
-=======
->>>>>>> Stashed changes

@@ -275,37 +275,9 @@ $('#btnEditarContacto').click(function() {
 //Datos Contacto
 
 
-<<<<<<< Updated upstream
-=======
-  console.log(form1);
+ 
 
-  $.ajax({
-    method: 'POST',
-    url: '../../../controller/usuario/editarDatosContacto.php',
-    data: form1,
-    beforeSend: function() {
-      $('#load').show();
-    },
-    success: function(res) {
-      $('#load').hide();
-
-      if (res == 'error_1') {
-        swal('Error', 'Por favor completa todos los campos', 'warning');
-      } else {
-        window.location.href = res;
-      }
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-    }
-  });
-});
-
-
-
-$(document).ready(function() {
->>>>>>> Stashed changes
-  $('#btnEditarSeguridad').click(function() {
+$('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
       var claveActual = $('#modal_clave').val();
       var validarClave = $('#modal_validar_clave').val();
@@ -323,11 +295,7 @@ $(document).ready(function() {
           url: '/Proyecto/controller/usuario/editarClave.php',
           data: {
               modal_doc_2: doc,
-<<<<<<< Updated upstream
               modal_clave: claveActual,
-=======
-              modal_clave: clave,
->>>>>>> Stashed changes
               modal_validar_clave: validarClave,
               modal_confirma_clave: confirmaClave
           },

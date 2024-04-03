@@ -13,6 +13,7 @@ require_once("../../../model/conexion.php");
 $conexion = new Conexion(); // Crear una nueva instancia de la clase Conexion
 $pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
 ?>
+
 <div class="caja_popup" id="form_prod">
     <form action="../gestion/productos/agregar_prod.php" class="contenedor_popup" method="POST" enctype="multipart/form-data">
         <div class="container">

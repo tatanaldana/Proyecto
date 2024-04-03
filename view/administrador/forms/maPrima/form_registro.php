@@ -18,6 +18,17 @@
 include("../../include/header.php");
 ?>
 
+
+<!-- miga de pan -->
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
+              <li class="breadcrumb-item"><a href="../ma_prima.php">Materia Prima</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agregar Materia Prima</li>
+            </ol>
+          </nav>
+
 <!-- Espacio en blanco -->
 <div class="my-5"></div>
 
@@ -68,7 +79,7 @@ include("../../include/header.php");
                       <td colspan="2" class="center">
                           <div class="btn-group" role="group" aria-label="Botones">
                               <button type="button" class="btn btn-primary my-4 ms-2" id="btnagregarmaprima"  value="registrar" >Agregar</button> 
-                              <a href="../../gestion/ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
+                              <a href="../ma_prima.php" class="btn btn-primary my-4 ms-4" id="backButton">Cancelar</a>
                           </div>
                       </td>
                     </tr>
@@ -81,7 +92,9 @@ include("../../include/header.php");
           <!-- Botón para enviar el formulario -->
 
 
-    
+          <?php
+include("../../include/footer.php");
+  ?> 
 
 
 

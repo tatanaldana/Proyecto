@@ -18,6 +18,21 @@
 include("../../include/header.php");
 ?>
 
+<!-- miga de pan -->
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
+              <li class="breadcrumb-item"><a href="../categorias_adm.php">Categorias</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agregar Categorias</li>
+            </ol>
+          </nav>
+
+
+<?php
+//include("../../gestion/barra.php");
+?>
+
 <!-- Espacio en blanco -->
 <div class="my-5"></div>
 
@@ -62,5 +77,9 @@ include("../../include/header.php");
 <script src="../../../public/js/categorias.js"></script>
 
 
+
+<?php
+include("../../include/footer.php");
+?>
 </body>
 </html>
