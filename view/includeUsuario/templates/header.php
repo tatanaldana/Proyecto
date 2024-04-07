@@ -41,16 +41,16 @@
                     if (isset($_SESSION['nombre'])){
                         echo 
                         "<a href='/Proyecto/view/user/index.php'>Inicio</a>
-                        <a href='/Proyecto/view/comollegar.php'>como llegar</a>
+                        <a href='/Proyecto/view/comollegar.php'>Como llegar</a>
                         <a href='/Proyecto/view/user/categorias/categoriasuser.php'>Menu</a>
                         <a href='/Proyecto/view/user/sugerenciasuser.php'>Sugerencias</a>
-                        <a href='/Proyecto/view/user/perfil.php'>perfil</a>
+                        <a href='/Proyecto/view/user/perfil.php'>Perfil</a>
                         <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
                         <a href='/Proyecto/view/user/productos/carrito.php'>Carrito</a>";
                     }else{
                         echo "
                         <a href='/Proyecto/index.php'>Inicio</a>
-                        <a href='/Proyecto/view/comollegar.php'>como llegar</a>
+                        <a href='/Proyecto/view/comollegar.php'>Como llegar</a>
                         <a href='/Proyecto/view/user/categorias/categorias.php'>Menu</a>
                         <a href='/Proyecto/view/sugerencias.php'>Sugerencias</a>
                         <a href='/Proyecto/view/login.php'>Iniciar Sesion</a>
@@ -70,7 +70,7 @@
                 <?php 
                     if (isset($_SESSION['nombre'])){
                         echo 
-                        "<a href='/Proyecto/view/user/perfil.php'>perfil</a>
+                        "<a href='/Proyecto/view/user/perfil.php'>Perfil</a>
                         <a href='/Proyecto/controller/usuario/cerrarSesion.php'>Cerrar Sesion</a>
                         <a href='/Proyecto/view/user/productos/carrito.php'>Carrito</a>";
                     }else{
