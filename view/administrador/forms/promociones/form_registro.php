@@ -76,49 +76,29 @@ include("../../include/header.php");
 
     <div class='container'>
     <div class='d-flex justify-content-center'>
-    <div class='row'>
-    <div class='col-md-12 table-responsive'>
-    <form method='POST' action='../crud_promocion/agregar_promo.php'>
-    <table class='table table-bordered border-primary' style='text-align:center'>
-    <tr>
-    <th scope='col' colspan='3'>Nombre Promocion</th> <!-- Agregamos la columna de selección-->
-    <th><input type='text' name='nombre_prom'></th>
-    </tr>
-    </table>
-    <div class='my-5'></div>
-
-    <table id='TablaPromo'class='table table-bordered border-primary' style='text-align:center'>
-      <thead>
-          <!--<tr>
-          <th colspan="8" scope="col" style="text-align:center"> promociones</th>-->   <!-- Encabezado de la tabla -->
-          <!--</tr>-->
-
-          <tr>
-            <th scope='col'>Seleccionar</th> <!-- Agregamos la columna de selección-->
-            <th scope='col'>Producto</th>
-            <th scope='col'>Precio</th>
-            <th scope='col'>Cantidad</th>
-            <th scope='col'>Descuento (%)</th> <!-- Nueva columna para el descuento-->
-            <th scope='col'>Subtotal</th> <!-- Agregamos una nueva columna con-->
-          </tr>
-        </thead>
-          <tbody id="filasTabla"></tbody> <!-- Cuerpo de la tabla -->
-          
-    
+      <div class='row'>
+        <div class='col-md-12 table-responsive'>
+          <form method='POST' action='../crud_promocion/agregar_promo.php'>
+            <table class='table table-bordered border-primary' style='text-align:center'>
               <tr>
-                <td colspan='6'>Total Venta: <input type='text' name='totalVenta' id='totalVenta'value='$totalVenta' readonly></td> <!-- Mostramos el total de la venta-->
+                <th scope='col' colspan='3'>Nombre Promocion</th> 
+                <th><input type='text' name='nombre_prom'></th>
               </tr>
-              <!-- botones del formulario-->
-              <tr>
-                <td colspan='3'><input type='submit' class='btn btn-outline-primary' name='btnCalcular' value='ingresar promocion'></td><!-- Botón para calcular el total-->
-                <td colspan='3'><a href='../promociones.php' class='btn btn-outline-primary' >Cancelar</a></td>
-              </tr>
-              </table>
-              </form> <!-- Cerramos el formulario-->
-              </div>
-              </div>
-              </div>
-              </div>
+            </table>
+            <div class='my-5'></div>
+            <table class='table table-bordered border-primary' style='text-align:center'>
+            <tbody id='TablaPromo'>
+            </tbody>
+            <tr>
+              <td colspan='3'><input type='submit' class='btn btn-outline-primary' name='btnCalcular' value='ingresar promocion'></td><!-- Botón para calcular el total-->
+              <td colspan='3'><a href='../promociones.php' class='btn btn-outline-primary' >Cancelar</a></td>
+            </tr>
+            </table>
+          </form> <!-- Cerramos el formulario-->
+        </div>
+      </div>
+    </div>
+  </div>
 
               <?php
 
