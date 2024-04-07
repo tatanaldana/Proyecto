@@ -41,191 +41,95 @@ incluirTemplate('header');
 
 
 <body>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-4 col-md-offset-4">
+      <div class="form-body">
+        <div class="form-holder">
+          <div class="form-content">
+            <div class="form-items">
+              <h3>Registrate hoy</h3>
+              <p>Diligencia los datos</p>
+                <form id="formulario_registro" novalidate>
 
-  <!-- 
-    Las clases que se utlizan y los divs son de Bootstrap
--->
+                  <div class="col-md-12">
+                    <input class="form-control" type="text" name="nombre" placeholder="Ingresa tus nombres" required>
+                  </div>
 
-  <!-- Formulario Login -->
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-4 col-md-offset-4">
-        <!-- Margen superior (css personalizado )-->
-        <div class="spacing-1"></div>
+                  <div class="col-md-12">
+                    <input class="form-control" type="text" name="apellido" placeholder="Ingresa tus apellidos" required>
+                  </div>
 
-        <form id="formulario_registro">
-          <!-- Estructura del formulario -->
-          <fieldset>
+                  <div class="col-md-12">
+                    <input class="form-control" type="date"  name="fecha_naci" required>
+                  </div>
 
-            <legend class="center">Registro</legend>
+                  <div class="col-md-12">
+                    <select name="tipo_doc" id="tipo_doc" class="form-select mt-3" required>
+                      <option value="CC">Cedula de ciudadania</option>
+                      <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                      <option value="CE">Cedula de extranejeria</option>
+                    </select>
+                  </div>
 
-            <!-- Caja de texto para usuario -->
-            <label class="sr-only" for="user">Nombre</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="nombre" placeholder="Ingresa tu nombre">
-            </div>
+                  <div class="col-md-12">
+                    <input class="form-control" type="number" name="doc" placeholder="Ingrese su documento de identidad" required>
+                  </div>
 
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
+                  <div class="col-md-12">
+                    <input class="form-control" type="email" name="email" placeholder="Ingrese su correo electronico" required>
+                  </div>
 
+                  <div class="col-md-12">
+                    <input class="form-control" type="text" name="direccion" placeholder="Ingrese su direccion" required>
+                  </div>
 
-            <!-- Caja de texto para apellido -->
-            <label class="sr-only" for="user">Apellido</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="apellido" placeholder="Ingresa tu apellido">
-            </div>
+                  <div class="col-md-12">
+                    <input class="form-control" type="tel" name="tel" placeholder="Ingrese su telefono" required>
+                  </div>
 
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
+                  <div class="col-md-12">
+                    <select name="genero" id="genero" class="form-select mt-3" required>
+                      <option value="hombre">Hombre</option>
+                      <option value="mujer">Mujer</option>
+                      <option value="otro">Otro</option>
+                    </select>
+                  </div>
 
-            <!-- Caja de texto para el Genero -->
-            <div class="input-group">
-              <div class="input-group-addon"><label for="genero">Genero:</label>
-                <select name="genero" id="genero">
-                  <option value="Hombre">Hombre</option>
-                  <option value="Mujer">Mujer</option>
-                </select>
+                  <div class="col-md-12">
+                    <input class="form-control" type="password" name="clave" placeholder="Ingrese su contraseña" autocomplete="new-password" required>
+                  </div>
+
+                  <div class="col-md-12">
+                  <input class="form-control" type="password" name="clave2" placeholder="Confirme su contraseña" autocomplete="new-password" required>
+                  </div>
+                  <div class="row" id="load" hidden="hidden">
+                    <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
+                      <img src="public/img/load.gif" width="100%" alt="">
+                    </div>
+                    <div class="col-xs-12 center text-accent">
+                      <span>Validando información...</span>
+                    </div>
+                  </div>
+                  <div class="my-5"></div>
+                  <div class="form-button mt-3">
+                    <button type="button" class="btn btn-primary btn-block" name="button" id="registro">Registrate</button>
+                  </div>
+                </form>
               </div>
             </div>
-
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para la fecha de nacimiento  -->
-            <label class="sr-only" for="user">Fecha nacimiento</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="date" class="form-control" name="fecha_naci">
-            </div>
-
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-
-            <!-- Caja de texto para el tipo de documento -->
-            <div class="input-group">
-              <div class="input-group-addon"><label for="genero">Tipo de documento:</label>
-                <select name="tipo_doc" id="tipo_doc">
-                  <option value="CC">CC</option>
-                  <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                </select>
-              </div>
-            </div>
-
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para numero de documento  -->
-            <label class="sr-only" for="user">No Documento</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="number" class="form-control" name="doc" placeholder="Ingresa tu numero de documento ">
-            </div>
-            <!-- Div espaciador
-              <div class="spacing-2"></div>
-
-              Caja de texto para email 
-              <label class="sr-only" for="user">Email</label>
-              <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                <input type="text" class="form-control" name="email" placeholder="Ingresa tu email">
-              </div> -->
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para Documento -->
-            <label class="sr-only" for="user">Documento</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="email" placeholder="Ingresa tu Email">
-            </div>
-
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para Direccion -->
-            <label class="sr-only" for="user">Direccion</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="text" class="form-control" name="direccion" placeholder="Ingresa tu Direccion">
-            </div>
-
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-
-            <!-- Caja de texto para Telefono -->
-            <label class="sr-only" for="user">telefono</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-user"></i></div>
-              <input type="tel" class="form-control" name="tel" placeholder="Ingresa tu Telefono">
-            </div>
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para la clave-->
-            <label class="sr-only" for="clave">Contraseña</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="password" autocomplete="off" class="form-control" name="clave" placeholder="Ingresa tu clave">
-            </div>
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-
-            <!-- Caja de texto para la clave-->
-            <label class="sr-only" for="clave">Verificar contraseña</label>
-            <div class="input-group">
-              <div class="input-group-addon"><i class="fa fa-lock"></i></div>
-              <input type="password" autocomplete="off" class="form-control" name="clave2" placeholder="Verificar clave">
-            </div>
-
-            <!-- Animacion de load (solo sera visible cuando el cliente espere una respuesta del servidor )-->
-            <div class="row" id="load" hidden="hidden">
-              <div class="col-xs-4 col-xs-offset-4 col-md-2 col-md-offset-5">
-                <img src="public/img/load.gif" width="100%" alt="">
-              </div>
-              <div class="col-xs-12 center text-accent">
-                <span>Validando información...</span>
-              </div>
-            </div>
-            <!-- Fin load -->
-
-            <!-- Div espaciador -->
-            <div class="spacing-2"></div>
-            <center>
-              <div><input type="checkbox" class="che"><a href="#">Estoy de acuerdo con Terminos y Condiciones</a></div>
-            </center>
-
-            <!-- Boton Login para activar la funcion click y enviar los datos mediante ajax -->
-            <div class="row">
-              <div class="col-xs-8 col-xs-offset-2 ">
-                <div class="spacing-2"></div>
-                <button type="button" class="btn btn-primary btn-block" name="button" id="registro">Registrate</button>
-              </div>
-            </div>
-
-          </fieldset>
-        </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
+<</div>    
   <!-- Final formulario login -->
 
   <!-- Jquery -->
   <script src="public/js/jquery.js"></script>
   <!-- SweetAlert js -->
-  <script src="public/js/sweetalert.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <!-- Js personalizado -->
   <script src="public/js/usuario.js"></script>
 </body>
