@@ -32,8 +32,39 @@
     });
 });
 
+$('#addButton').click(function(e) {
+  e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
 
+  $.ajax({
+    url: '../../../controller/productos/productosController.php',
+    method: 'get',
+    datatype: 'json',
+    success: function(response) {
+        try {
+            // Se analiza la respuesta JSON obtenida del controlador
+            var productosData = JSON.parse(response);
+            if (!productosData.error) {
+                // Si no hay errores en la respuesta, almacenamos los datos en sessionStorage
+                sessionStorage.setItem('PromoData', JSON.stringify(productosData));
+                console.log(productosData);
 
+                // Redireccionamos al formulario de venta después de completar ambas solicitudes AJAX
+                window.location.href = '../forms/promociones/form_registro.php';
+            } else {
+                // Si hay un error en la respuesta, mostramos un mensaje de alerta
+                console.log(productosData.error);
+                alert("Productos no registrados. Por favor genere el registro en el sistema");
+                window.location.href = '../administrador/forms/productos/form_registro.php';
+            }
+        } catch (error) {
+            console.error('Error al analizar la respuesta JSON:', error);
+        }
+    },
+    error: function(xhr) {
+        console.error(xhr.responseText);
+    }
+});
+});
 
 // agregar maprima.php
 

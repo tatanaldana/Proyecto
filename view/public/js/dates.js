@@ -40,3 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log("No se han encontrado datos del usuario");
   }
 });
+$(document).ready( function () {
+    $('#tabladatos').DataTable({
+        "paging": true, // Habilita la paginación
+        "lengthMenu": [ [5, 10, 25, 50, -1], [5, 10, 25, 50, "All"] ] // Define las opciones de cantidad de registros por página
+    });
+} );
