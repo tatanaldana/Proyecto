@@ -42,56 +42,59 @@ usuario::verificarSesion();
     include 'include/img_clientes.php';
   ?>
 <form id="formmostrar">
-<div class="container">
-<div class="contenedor-busqueda" id="contenedor-busqueda">
-<div class="mx-auto" style="width:300px">
-<div class="input-group">
-  <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar"required/>
-  <div class="d-flex justify-content-around">
-  <button type="button" class="btn btn-outline-primary my-3 " name="btnbuscar" id="btnbuscar">Buscar</button>
-</div>
-</div>
-</div>
-</div>
-</form>
-<div class="my-5"></div>
-<div class="container">
-<div class="d-flex justify-content-center">
-<div class="row">
-<div class="col-md-12 table-responsive" >
-   <table class="table table-bordered border-primary" style="text-align:center" >
-    <thead>
-        <tr>
-        <th scope="col">Seleccionar</th>
-        <th scope="col">Cedula</th>
-        <th scope="col">Nombres</th>
-        <th scope="col">Apellidos</th>
-        <th scope="col">Telefono</th>
-        <th scope="col">Correo</th>
-        </tr>
-    </thead>
-    <tbody id="filasTabla">
-    </tbody>
-    </table>
-    </div>
-    </div>
-    </div>
-    </div>
     <div class="container">
-        <div class="d-flex justify-content-around">
-            <div class="row">
-            <table class="table-responsive">
-                <tr>
-                    <td><a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
-                    <td><a class="btn btn-primary " id="viewButton">Visualizar</a></td>
-                    <td><a class="btn btn-primary ms-3" id="editButton">Editar</a></td>
-                    <td><a class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</a></td>
-                </tr> 
-            </table>
+        <div class="contenedor-busqueda" id="contenedor-busqueda">
+            <div class="mx-auto" style="max-width: 300px;">
+                <div class="input-group">
+                    <input type="search" class="form-control rounded" placeholder="Ingrese el documento" aria-label="Buscar" aria-describedby="search-addon" name="buscar" id="buscar" required/>
+                    <button type="button" class="btn btn-outline-primary my-3" name="btnbuscar" id="btnbuscar">Buscar</button>
+                </div>
             </div>
         </div>
     </div>
-    </div> 
+</form>
+
+<div class="my-5"></div>
+
+<div class="container">
+  <div class="d-flex justify-content-center">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-responsive"  style="max-height: 400px; overflow-y: auto;">
+          <table id="tabladatos"class="table table-bordered border-primary text-center">
+            <thead>
+                <tr>
+                    <th scope="col">Seleccionar</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Correo</th>
+                </tr>
+            </thead>
+            <tbody id="filasTabla">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-around">
+                    <a href="forms/clientes/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a>
+                    <a class="btn btn-primary" id="viewButton">Visualizar</a>
+                    <a class="btn btn-primary ms-3" id="editButton">Editar</a>
+                    <a class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
   <?php
 
     include 'include/img_menu.php';
