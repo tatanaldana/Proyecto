@@ -1,5 +1,4 @@
-<?php
-echo "
+
 <div class='redes'>
 <footer class='footer-basic' style='text-align: center;background-color: #31e621da'>
     <p class='copyright'>2002-COMIDAS RAPIDAS LA CABAÑA. Todos los derechos reservados ©</p>
@@ -9,6 +8,6 @@ echo "
         <a href='#'><img src='/Proyecto/view/public/img/twitter.png' alt='' class='rounded-circle'></a>
     </div>
 </footer>
-</div>";
-?>
+</div>
+
 
