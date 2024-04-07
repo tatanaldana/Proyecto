@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Administrador - Clientes</title>
+    <title>Administrador - Promociones</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="../../public/css/bootstrap.css">
@@ -81,7 +81,7 @@
             <!-- Tabla de botones -->
             <table class="table-responsive">                    
                 <tr>
-                    <td><a href="../forms/promociones/form_registro.php" class="btn btn-primary" id="addButton">Agregar</a></td>
+                    <td><a class="btn btn-primary" id="addButton">Agregar</a></td>
                     <td><a class="btn btn-primary" id="viewButton">Visualizar</a></td>
                     <td><a class="btn btn-primary ms-3" id="editButton">Editar</a></td>
                     <td><button class="btn btn-danger delete-button ms-3" id="deleteButton">Eliminar</button></td>
