@@ -27,7 +27,7 @@ incluirTemplate('header')
         require_once '../../../model/conexion.php';
 
         // Assign the connection object to the $conectar variable
-        $conectar = new mysqli('localhost', 'root', 'Facnow123.', 'arca');
+        $conectar = new mysqli('localhost', 'root', '', 'arca');
 
         // Check the connection
         if ($conectar->connect_error){
