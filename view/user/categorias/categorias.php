@@ -38,11 +38,7 @@ session_start();
 <br><br><br><br><br><br><br>
 
 <script src="../../public/js/categorias.js"></script>
-<<<<<<< Updated upstream
-
-=======
 <script src="../../public/js/productos.js"></script>
->>>>>>> Stashed changes
     <?php
         
 
