@@ -47,6 +47,8 @@ function mostrarDatosPerfil(){
 
 };
 
+
+
 function expandirDatosPersonales(){
     const datosCliente = document.querySelector('.datosPersonales')
 
@@ -82,8 +84,25 @@ function expandirDatosSeguridad(){
 
 };
 
+function mostrarBuscador() {
+    const desplegarlupa = document.querySelector('.buscarlupa');
+    desplegarlupa.addEventListener('click', expandirbuscador);
+}
 
+function expandirbuscador() {
+    console.log("prueba prueba");
+    const buscador = document.querySelector('.mostrar-buscador');
 
+    if (buscador.classList.contains('mostrarinfo')) {
+        buscador.classList.remove('mostrarinfo');
+    } else {
+        buscador.classList.add('mostrarinfo');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    mostrarBuscador(); // Llama a mostrarBuscador en lugar de expandirbuscador
+});
 // function eventListener(){
 //     const configurar = document.querySelector('.mostrar-config');
 

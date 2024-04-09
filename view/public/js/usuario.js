@@ -229,13 +229,22 @@ $('#btnEditarDatos').click(function() {
       $('#load').show();
     },
     success: function(res) {
+
       $('#load').hide();
 
       if (res == 'error_1') {
         swal('Error', 'Por favor completa todos los campos', 'warning');
-      } else {
-        window.location.href = res;
-      }
+      } else{
+        swal({
+          title: "Enhorabuena! :)",
+          text: "Datos Actualizados Correctamente.",
+          icon: "success",
+          buttons: {
+              cancel: "Cancelar",
+              confirm: "Aceptar",
+          },
+        })
+      };
     },
     error: function(xhr) {
       console.error(xhr.responseText);
@@ -263,8 +272,22 @@ $('#btnEditarContacto').click(function() {
       if (res == 'error_1') {
         swal('Error', 'Por favor completa todos los campos', 'warning');
       } else {
-        window.location.href = res;
-      }
+     
+      swal({
+        title: "Datos actualizados :)",
+        text: "Datos Actualizados Correctamente.",
+        icon: "success",
+        buttons: {
+            cancel: "Cancelar",
+            confirm: "Aceptar",
+        },
+        dangerMode: true,
+      })
+      window.location.href = res;
+      // Cerrar el modal después de actualizar la contraseña
+      };
+    
+
     },
     error: function(xhr) {
       console.error(xhr.responseText);
@@ -273,49 +296,11 @@ $('#btnEditarContacto').click(function() {
 });
 
 //Datos Contacto
-
-
-<<<<<<< Updated upstream
-=======
-  console.log(form1);
-
-  $.ajax({
-    method: 'POST',
-    url: '../../../controller/usuario/editarDatosContacto.php',
-    data: form1,
-    beforeSend: function() {
-      $('#load').show();
-    },
-    success: function(res) {
-      $('#load').hide();
-
-      if (res == 'error_1') {
-        swal('Error', 'Por favor completa todos los campos', 'warning');
-      } else {
-        window.location.href = res;
-      }
-    },
-    error: function(xhr) {
-      console.error(xhr.responseText);
-    }
-  });
-});
-
-
-
-$(document).ready(function() {
->>>>>>> Stashed changes
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
       var claveActual = $('#modal_clave').val();
       var validarClave = $('#modal_validar_clave').val();
       var confirmaClave = $('#modal_confirma_clave').val();
-
-      // Verificar que la contraseña nueva y la confirmación coincidan
-      if (validarClave !== confirmaClave) {
-          alert("La nueva contraseña y la confirmación no coinciden.");
-          return;
-      }
 
       // Enviar los datos del formulario al servidor
       $.ajax({
@@ -323,25 +308,68 @@ $(document).ready(function() {
           url: '/Proyecto/controller/usuario/editarClave.php',
           data: {
               modal_doc_2: doc,
-<<<<<<< Updated upstream
               modal_clave: claveActual,
-=======
-              modal_clave: clave,
->>>>>>> Stashed changes
               modal_validar_clave: validarClave,
               modal_confirma_clave: confirmaClave
           },
-          success: function(response) {
+          
+          success: function(res) {
               // Verificar la respuesta del servidor
-              if (response === 'error_1') {
-                  alert("Por favor, completa todos los campos.");
-              } else if (response === 'No a iniciado Sesion.') {
-                  alert("No ha iniciado sesión.");
-              } else if (response === 'La contraseña actual no es correcta') {
-                  alert("La contraseña actual no es correcta.");
-              } else {
-                  alert("Contraseña actualizada correctamente.");
-                  
+              if (res === 'error_1') {
+                swal({
+                  title: "¿Estás seguro?",
+                  text: "Por favor, completa todos los campos.",
+                  icon: "warning",
+                  buttons: {
+                      cancel: "Cancelar",
+                      confirm: "Aceptar",
+                  },
+                  dangerMode: true,
+                })
+              } else if (res === 'error_2') {
+                swal({
+                  title: "¡Algo salio mal! :(",
+                  text: "La clave nueva y de confirmacion, no coinciden.",
+                  icon: "warning",
+                  buttons: {
+                      cancel: "Cancelar",
+                      confirm: "Aceptar",
+                  },
+                  dangerMode: true,
+                })
+              } else if (res === 'error_3') {
+                swal({
+                  title: "¡Algo salio mal! :(",
+                  text:  "La contraseña no cumple con los requisitos mínimos de seguridad",
+                  icon: "warning",
+                  buttons: {
+                      cancel: "Cancelar",
+                      confirm: "Aceptar",
+                  },
+                  dangerMode: true,
+                })
+              } else if (res === 'error_4') {
+                swal({
+                  title: "¡Algo salio mal! :(",
+                  text: "la contraseña actual no es correcta.",
+                  icon: "warning",
+                  buttons: {
+                      cancel: "Cancelar",
+                      confirm: "Aceptar",
+                  },
+                  dangerMode: true,
+                })
+              }else {
+                swal({
+                  title: "Datos actualizados :)",
+                  text: "Contraseña actualizada correctamente.",
+                  icon: "warning",
+                  buttons: {
+                      cancel: "Cancelar",
+                      confirm: "Aceptar",
+                  },
+                  dangerMode: true,
+                })
               // Cerrar el modal después de actualizar la contraseña
               }
           },
@@ -562,17 +590,24 @@ $(document).ready(function() {
 $(document).ready(function() {
   // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
   if (window.location.pathname.endsWith("perfil.php")) {
+
+
       // Se realiza la solicitud AJAX al cargar la página
       $.ajax({
           method: 'POST',
           url: '../../controller/usuario/mostrartodoUsuario.php',
+      
           success: function(response) {
             console.log(response);  // Imprime la respuesta en la consola
         
             // No es necesario parsear la respuesta si ya es un objeto JSON
             var datos = Array.isArray(response) ? response[0] : response;
             console.log(datos);     // Imprime los datos en la consola
+          // Concatenar nombre y apellido
+          var nombreCompleto = datos.nombre + " " + datos.apellido;
         
+          // Utiliza text() para elementos que muestran texto (como h6)
+          $('#nombreCompleto').text(nombreCompleto);
             // Utiliza text() para elementos que muestran texto (como h6)
             $('#nombre').text(datos.nombre);
             $('#apellido').text(datos.apellido);
@@ -582,7 +617,7 @@ $(document).ready(function() {
             $('#tipo_doc').text(datos.tipo_doc);
             $('#doc').text(datos.doc);
             $('#tel').text(datos.tel);
-            $('#direccion').text(datos.direccion);
+            $('#direccion').text(datos.direccion);    
         },
           error: function(xhr, status, error) {
             console.error(xhr.responseText);
@@ -599,9 +634,6 @@ $(document).ready(function() {
 $(document).ready(function() {
   // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
   if (window.location.pathname.endsWith("editar.php")) {
-
-    console.log('sirvio')
-      // Se realiza la solicitud AJAX al cargar la página
       $.ajax({
           method: 'POST',
           url: '/Proyecto/controller/usuario/mostrartodoUsuario.php',
