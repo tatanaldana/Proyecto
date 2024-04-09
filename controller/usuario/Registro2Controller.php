@@ -24,7 +24,7 @@ usuario::verificarSesion();
             echo 'error_2'; // Por favor ingresa un correo válido
         } else {
             // Validar contraseña (mínimo 8 caracteres alfanuméricos)
-            $caracteres_especiales_permitidos = '!@#$%^&*()-_+=[]{}|;:,.<>?';
+            $caracteres_especiales_permitidos = '!@#$%^&*().';
             if (strlen($clave) < 8 || 
                 !preg_match('/[A-Za-z]/', $clave) || 
                 !preg_match('/[0-9]/', $clave) || 
