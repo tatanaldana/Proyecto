@@ -723,7 +723,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
-  if (window.location.pathname.endsWith("chekckout.php")) {
+  if (window.location.pathname.endsWith("checktout.php")) {
       // Se realiza la solicitud AJAX al cargar la página
       $.ajax({
           method: 'POST',
