@@ -13,14 +13,13 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    
+
     <title>Categorias</title>
     <?php
         include '../../includeUsuario/head.php';
     ?>
     
 
-  
 </head>
 
     <?php
@@ -32,18 +31,19 @@ session_start();
 
     ?>
 
+
   <body>
 
   <div class="titulo-producto" id="titulo-producto"></div>
 
-
+<div class="container titulo-producto">
     <main class="container">
 
       <div class="listado-productos" id="listado-productos"></div>
 
     </main>
   
-    
+    </div>
   </body>
 
 

@@ -44,10 +44,16 @@ incluirTemplate('header')
 <script src="../public/js/buttons.js"></script>
 
 <script src="../public/js/usuario.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
 
 </body>
 
-<br><br><br><br><br><br><br>
+
+
+
+</body>
+
 <?php
 incluirTemplate('footer');
 ?>

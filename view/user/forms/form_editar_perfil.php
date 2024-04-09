@@ -1,7 +1,7 @@
 <section class="container">
 
     <div class="crear-formulario">
-        <h1 class="center">Informacion personal</h1>
+        <h1 class="text-center">Informacion personal</h1>
 
         <!--Inicio formulario configuracion perfil-->
 
@@ -65,14 +65,10 @@
                                     <div class="container">
                                         <div class="row">
 
-                                            <div class="col-2 alinear">
-                                                <label for="documento">
-                                                    <h4><b>Documento: </b>
-                                                </label>
-                                            </div>
+        
 
                                             <div class="col-2 alinear">
-                                                <input type="text" name="modal_doc" id="modal_doc">
+                                                <p name="modal_doc" id="modal_doc">
                                             </div>
                                         </div>
 
@@ -301,11 +297,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-<<<<<<< Updated upstream
                                     <input type="text"  id="modal_doc_2">
-=======
-                                    <input type="text" id="modal_doc_2">
->>>>>>> Stashed changes
                                 </div>
                             </div>
 
@@ -319,11 +311,7 @@
                                 </div>
 
                                 <div class="col-2 alinear">
-<<<<<<< Updated upstream
                                     <input type="Password"  id="modal_clave">
-=======
-                                    <input type="Password" id="modal_clave">
->>>>>>> Stashed changes
                                 </div>
                             </div>
 
@@ -379,4 +367,4 @@
 
     </div>
 </section>
-<a href="../perfil.php"><button type="submit" name="atras">Atras</button></a>
+<a href="../perfil.php"><button type="button" name="atras" class="btn regular-button">Atras</button></a>

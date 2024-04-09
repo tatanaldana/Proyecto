@@ -31,6 +31,10 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
         ?>
     </head>
 
+    <script src="../public/js/categorias.js"></script>
+    <script src="../public/js/productos.js"></script>
+
+
     <?php
     require '../includeUsuario/funciones.php';
     incluirTemplate('header');
@@ -38,21 +42,41 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
 
 <body>
 
+
+
     <div class="imagenindex">
+
         <p>Bienvenido <?php echo  ucfirst($_SESSION['nombre']) ?></p>
+        <div class="container estilo-buscador">
+            <div class="buscarlupa">
+                <img src="/Proyecto/view/public/img/utilidades/lupa.ico" width='35px' height='35px' alt="boton de busqueda">
+            </div>
+            <form action="/Proyecto/view/includeUsuario/templates/buscar.php" class="mostrar-buscador" method="POST">
+                <div class="container-fluid buscador-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="buscar">
+                                <div class="input-group">
+
+                                    <input type="search" class="form-control " name="textbuscar" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Buscar Producto" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
+                </div>
+                <div class="estilo-buscador">
+                        <button class="btn btn-outline-secondary" style="background: var(--primario); color: white;" type="submit" name="btnbuscar" style="border-radius:50%; width:30px; height:30px;">Buscar</button>
+                    </div>
+            </form>
+        </div>
 
     </div>
     <div class="barramenu">
-        <nav class="menu-productos row">
-            <a href="Proyecto/view/user/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
-            <a href="/Proyecto/view/user/carrito/catpollo.php" class="col-sm"> <img src="/Proyecto/view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
-            <a href="/Proyecto/view/user/carrito/catcombos.php" class="col-sm"> <img src="/Proyecto/view/public/img/combo.png" alt="icono Promociones">Combos </a>
-            <a href="/Proyecto/view/user/carrito/catburguer.php" class="col-sm"> <img src="/Proyecto/view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
-            <a href="/Proyecto/view/user/carrito/catespecialidades.php" class="col-sm"> <img src="/Proyecto/view/public/img/especialidades.png" alt="icono Especiales">Especialidades</a>
-            <a href="/Proyecto/view/user/carrito/catbebidas.php" class="col-sm"> <img src="/Proyecto/view/public/img/bebida.png" alt="icono Bebidas">Bebidas</a>
-        </nav>
 
+        <div class="listado-categorias-index " id="listado-categorias-index"></div>
     </div>
+
 
     <div class="container">
 
@@ -72,7 +96,7 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                 <div class="carousel-inner width:50% height:50%;">
 
                     <div class="item active" style="background-color:#FD2626;">
-                        <img src="/proyecto/view/public/img/Hamburguesa.png" alt="Los Angeles" style="width:50%;;">
+                        <img src="/proyecto/view/public/img/iconosCategorias/catHambur.png" alt="Los Angeles" style="width:50%;;">
                         <div class="carousel-caption" style="color: #ffffff;">
 
                             <h3>Hamburguesa</h3>
@@ -81,60 +105,53 @@ if (!isset($_SESSION['cargo']) || $_SESSION['cargo'] != 2) {
                     </div>
 
                     <div class="item" style="background-color:#FD2626;">
-                        <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
+                        <img src="/proyecto/view/public/img/iconosCategorias/catPollo.png" alt="Chicago" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
 
-                            <div class="item" style="background-color:#FD2626;">
-                                <img src="/proyecto/view/public/img/pollo.png" alt="Chicago" style="width:50%;">
-                                <div class="carousel-caption" style="color: #ffffff;">
-
-                                    <h3>Pollos Apanados</h3>
-                                    <p>We love the Big Apple!</p>
-                                </div>
-                            </div>
-                            <h3>Pollos Apanados</h3>
+                            <h3>Hamburguesa</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
-                            <div class="item" style="background-color:#FD2626;">
-                                <img src="/proyecto/view/public/img/pizza.png" alt="New york" style="width:50%;">
-                                <div class="carousel-caption" style="color: #ffffff;">
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="/proyecto/view/public/img/iconosCategorias/catPizza.png" alt="New york" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
 
-                                    <h3>Pizzas Especiales</h3>
-                                    <p>We love the Big Apple!</p>
-                                </div>
-                            </div>
+                            <h3>Pizzas Especiales</h3>
+                            <p>We love the Big Apple!</p>
                         </div>
-
-                        <!-- Left and right controls -->
-                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left"></span>
-                            <span class="sr-only">Previous</span>
-                        </a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right"></span>
-                            <span class="sr-only">Next</span>
-                        </a>
-                    </div><!--Fin Carrusel-->
-                </div>
-                
-                <div class="col-sm-6">
-                    <h3 class="mt-0 center font-weight-bold " style="color:var(--primario); text-transform:uppercase;">Nuestros Productos</h3>
-
-                    <hr class="" style="color:var(--primario); " size="30px">
-                    <p>Contamos con los mejores estandares de calidad para traer a sus casas la mejor comida rapida que ustedes pueden degustar.
-                        Nos aseguramos que nuestra materia prima sea de la mejor calidad para contar con su total confiabilidad y siempre seamos tu primera opcion. Te invitamos a Revisar nuestro menú en el siguiente link</p>
-
-
-                    <div class="center mt-3">
-                        <a href="/Proyecto/view/user/categorias/categoriasuser.php" class=""><img src="/Proyecto/view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
                     </div>
                 </div>
-            </d>
+
+                <!-- Left and right controls -->
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div><!--Fin Carrusel-->
         </div>
+
+        <div class="col-sm-6">
+            <h3 class="mt-0 center font-weight-bold " style="color:var(--primario); text-transform:uppercase;">Nuestros Productos</h3>
+
+            <hr class="" style="color:var(--primario); " size="30px">
+            <p>Contamos con los mejores estandares de calidad para traer a sus casas la mejor comida rapida que ustedes pueden degustar.
+                Nos aseguramos que nuestra materia prima sea de la mejor calidad para contar con su total confiabilidad y siempre seamos tu primera opcion. Te invitamos a Revisar nuestro menú en el siguiente link</p>
+
+
+            <div class="center mt-3">
+                <a href="/Proyecto/view/user/categorias/categoriasuser.php" class=""><img src="/Proyecto/view/public/img/bandejacomida.png" alt="Imagen Bandeja Comida" style="width: 100px; height:100px;"><button type="buttom" class="btn regular-button" style="background: var(--primario); color: white;"> Continuar </button></a>
+            </div>
+        </div>
+
     </div>
     </div>
+    </div>
+
 </body>
 
 <br><br><br><br><br><br><br>
