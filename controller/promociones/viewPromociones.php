@@ -4,11 +4,11 @@ if (isset($_POST['id_promo'])) {
     // Aquí podrías sanitizar $id_promo antes de utilizarlo en la consulta
 
      # Incluimos la clase promocion
-    require_once('../../model/promocion.php');
+    require_once('../../model/det_promo.php');
      # Creamos un objeto de la clase promocion
-    $promocion = new Promocion();
+    $det_promo = new Det_promo();
     # Llamamos al metodo  para realizar la consulta en la base de datos
-    $resultado = $promocion->get_promocion_x_id($id_promo);
+    $resultado = $det_promo->detalle_promo($id_promo);
 
     if ($resultado) {
         #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTA POR MEDIO DEL AJAX

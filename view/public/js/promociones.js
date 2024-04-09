@@ -46,8 +46,6 @@ $('#addButton').click(function(e) {
             if (!productosData.error) {
                 // Si no hay errores en la respuesta, almacenamos los datos en sessionStorage
                 sessionStorage.setItem('PromoData', JSON.stringify(productosData));
-                console.log(productosData);
-
                 // Redireccionamos al formulario de venta después de completar ambas solicitudes AJAX
                 window.location.href = '../forms/promociones/form_registro.php';
             } else {
@@ -69,34 +67,56 @@ $('#addButton').click(function(e) {
 // agregar maprima.php
 
 $(document).ready(function() {
-$('#btnagregarpromo').click(function(e) {
-  e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
+  $('#btnCalcular').click(function(e) {
+    e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
 
-  var formData = $('#agregar_promocion').serialize(); // Serializa los datos del formulario
+    var formData = $('#agregar_promocion').serialize(); // Serializa los datos del formulario
 
-  // Realiza la solicitud AJAX
-  $.ajax({
+    // Realiza la solicitud AJAX
+    $.ajax({
       method: 'POST',
       url: '../../../../controller/promociones/agregarPromociones.php',
       data: formData,
+      dataType: 'json',
       beforeSend: function() {
-          $('#load').show(); // Mostrar un indicador de carga si es necesario
+        $('#load').show(); // Mostrar un indicador de carga si es necesario
       },
       success: function(response) {
-          $('#load').hide(); // Ocultar el indicador de carga
-
-          if (response === 'error_1') {
-              swal('Error', 'Campo obligatorio, ', 'warning');
-          } else {
-              // Redirigir a otra página o realizar otra acción después de agregar la promocion
-              window.location.href = '../../forms/promociones.php';
-          }
+        $('#load').hide(); // Ocultar el indicador de carga
+      console.log(response);
+        // Verificar si la respuesta contiene un mensaje de éxito
+        if (response.success) {
+          swal({
+            title: 'Éxito',
+            text: response.success,
+            icon: 'success',
+            buttons: {
+              confirm: 'Aceptar',
+            },
+            dangerMode: false,
+          }).then((willConfirm) => {
+            if (willConfirm) {
+              window.location.href = '../../forms/promociones.php'; // Recargar la página para reflejar los cambios
+            }
+          });
+          console.log(response.error);
+        } else if (response.error) {
+          // Si la respuesta contiene un mensaje de error, mostrar el mensaje de error
+          swal('Error', response.error, 'warning');
+          console.log("Error encontrado:", response.error);
+        } else {
+          // Si la respuesta no contiene ni éxito ni error, mostrar un mensaje de error genérico
+          swal('Error', 'No se pudo procesar la solicitud', 'warning');
+          console.log("Error encontrado:", response.error);
+        }
       },
       error: function(xhr, status, error) {
-          console.error('Error en la solicitud AJAX:', status, error);
+        console.error('Error en la solicitud AJAX:', status, error);
+        // Mostrar un mensaje de error en caso de que ocurra un error en la solicitud AJAX
+        swal('Error', 'Ocurrió un error en la solicitud AJAX', 'error');
       }
+    });
   });
-});
 });
 
 
@@ -104,6 +124,35 @@ $('#btnagregarpromo').click(function(e) {
 //editarpromociones.php
 
 $('#editButton').click(function() {
+
+  $.ajax({
+    url: '../../../controller/productos/productosController.php',
+    method: 'get',
+    datatype: 'json',
+    success: function(response) {
+        try {
+            // Se analiza la respuesta JSON obtenida del controlador
+            var productosData = JSON.parse(response);
+     
+            if (!productosData.error) {
+                // Si no hay errores en la respuesta, almacenamos los datos en sessionStorage
+                sessionStorage.setItem('PromoData', JSON.stringify(productosData));
+                // Redireccionamos al formulario de venta después de completar ambas solicitudes AJAX
+                window.location.href = '../forms/promociones/form_editar.php';
+            } else {
+                // Si hay un error en la respuesta, mostramos un mensaje de alerta
+                console.log(productosData.error);
+                alert("Productos no registrados. Por favor genere el registro en el sistema");
+                window.location.href = '../administrador/forms/productos/form_registro.php';
+            }
+        } catch (error) {
+            console.error('Error al analizar la respuesta JSON:', error);
+        }
+    },
+    error: function(xhr) {
+        console.error(xhr.responseText);
+    }
+});
 // Cuando se da click en el boton con el id EditButton, se recupera el valor id_promo del checkbox seleccionado
 var editar = $('input:checkbox:checked').data('id_promo');
 // Se realiza la petición AJAX por método POST
@@ -116,18 +165,15 @@ $.ajax({
   success: function(response) {
       try {
           // Se analiza la respuesta JSON obtenida del controlador y con la función JSON.parse convertimos la cadena de texto JSON a un objeto javascript
-          var promoData = JSON.parse(response);
-          if (!promoData.error) {
+          var detpromoData = JSON.parse(response);
+          console.log(detpromoData);
+          if (!detpromoData.error) {
               // Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
               // convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-              sessionStorage.setItem('promoData', JSON.stringify(promoData));
+              sessionStorage.setItem('detpromoData', JSON.stringify(detpromoData));
               // Se redirecciona al formulario de edicion luego de un segundo
-              setTimeout(function() {
-                  window.location.href = '../forms/promociones/form_editar.php';
-                  
-              }, 1000);
           } else {
-              console.log(promoData.error);
+              console.log(detpromoData.error);
           }
       } catch (error) {
           console.error('Error al analizar la respuesta JSON:', error);
@@ -145,121 +191,128 @@ $.ajax({
 //Datos para realizar update del registro
 
 $('#btnmodificar').click(function() {
-var editarpromo = $('#editarpromo').serialize();
-console.log (editarpromo);
-$.ajax({
-  method: 'POST',
-  url: '../../../../controller/promociones/editarPromociones.php',
-  data: editarpromo,
-  beforeSend: function() {
-    $('#load').show();
-  },
-  success: function(response) {
-    $('#load').hide();
+  // Cuando se da click en el boton con el id EditButton, se recupera el valor id_promo del checkbox seleccionado
+  var formData = $('#editarpromo').serialize(); // Serializa los datos del formulario
 
-    if (response == 'error_1') {
-      swal('Error', 'Campos obligatorios,no se ha modificado la promocion', 'warning');
-    } else {
-      //swal('Exitoso', 'Campos obligatorios,no se ha modificado la promocion', 'success');
-      window.location.href = '../promociones.php';
+  // Realiza la solicitud AJAX
+  $.ajax({
+    method: 'POST',
+    url: '../../../../controller/promociones/editarPromociones.php',
+    data: formData,
+      dataType: 'json',
+      beforeSend: function() {
+        $('#load').show(); // Mostrar un indicador de carga si es necesario
+      },
+      success: function(response) {
+        $('#load').hide(); // Ocultar el indicador de carga
+      console.log(response);
+        // Verificar si la respuesta contiene un mensaje de éxito
+        if (response.success) {
+          swal({
+            title: 'Éxito',
+            text: response.success,
+            icon: 'success',
+            buttons: {
+              confirm: 'Aceptar',
+            },
+            dangerMode: false,
+          }).then((willConfirm) => {
+            if (willConfirm) {
+              window.location.href = '../../forms/promociones.php'; // Recargar la página para reflejar los cambios
+            }
+          });
+          console.log(response.error);
+        } else if (response.error) {
+          // Si la respuesta contiene un mensaje de error, mostrar el mensaje de error
+          swal('Error', response.error, 'warning');
+          console.log("Error encontrado:", response.error);
+        } else {
+          // Si la respuesta no contiene ni éxito ni error, mostrar un mensaje de error genérico
+          swal('Error', 'No se pudo procesar la solicitud', 'warning');
+          console.log("Error encontrado:", response.error);
+        }
+      },
+      error: function(xhr, status, error) {
+        console.error('Error en la solicitud AJAX:', status, error);
+        // Mostrar un mensaje de error en caso de que ocurra un error en la solicitud AJAX
+        swal('Error', 'Ocurrió un error en la solicitud AJAX', 'error');
+      }
+    });
+  });
 
-    }
-  },
-  error: function(xhr) {
-    console.error(xhr.responseText);
-  }
-});
-});
-
-
-//Aca esperamos que cargue totalmente el DOM para poder iniciar el código
-document.addEventListener('DOMContentLoaded', function() {
-//Verificamos que en la asesión del navegador exista el elemento llamado 'promoData'
-var promoData = sessionStorage.getItem('promoData');
-
-//Si promoData' existe, entonces convertimos el JSON almacenado en un array
-if (promoData) {
-var promoArray= JSON.parse(promoData);//este es el array
-//Obtenemos el primer objeto del array y lo asigna a la variable 'promocion'
-var promocion = promoArray[0];
-console.log(promocion);
-//creamos la funcion para poder llenar los campos del formulario
-function asignarvalores(){
-//se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('id_promo').value = promocion.id_promo;
-document.getElementById('nom_promo').value = promocion.nom_promo;
-document.getElementById('totalpromo').value = promocion.totalpromo;
-document.getElementById('categorias_idcategoria').value = promocion.categorias_idcategoria;
-document.getElementById('doc_hidden').value =promocion.id_promo;
-}
-//Llamamos la función para que se ejecute
-asignarvalores();
-
-//Luego deshabilitamos los campos que no vamos a modificar
-document.getElementById('id_promo').disabled = true;
-//Eliminamos el elemento 'promoData' de la sesion de almacenamiento.
-sessionStorage.removeItem('promoData');
-
-//si no se encuentra 'promoData' entonces imprime el mensaje
-
-} else {
-console.log("No se han encontrado datos de la promocion");
-}
-});
 
 
 
 //eliminar promociones.php
 
-$(document).ready(function() {
+
 $('#deleteButton').click(function() {
-  // Obtener el id_promo del checkbox marcado
-  var id_promo = $('input:checkbox:checked').data('id_promo');
+  swal({
+      title: "¿Estás seguro?",
+      text: "¿Realmente quieres eliminar el registro del cliente?",
+      icon: "warning",
+      buttons: {
+          cancel: "Cancelar",
+          confirm: "Aceptar",
+      },
+      dangerMode: true,
+  }).then((willDelete) => {
+      if (willDelete) {
+          // Obtener el id_promo del checkbox marcado
+          var id_promo = $('input:checkbox:checked').data('id_promo');
 
-  // Verificar si se seleccionó alguna materia prima
-  if (id_promo) {
-      console.log('ID de promocion a eliminar:', id_promo);
+          // Verificar si se seleccionó alguna materia prima
+          if (id_promo) {
+              console.log('ID de promoción a eliminar:', id_promo);
 
-      // Realizar la solicitud AJAX para eliminar la promocion 
-      $.ajax({
-          method: 'POST',
-          url: '../../../controller/promociones/eliminarPromociones.php',
-          data: { id_promo: id_promo },
-          beforeSend: function() {
-              // Mostrar un indicador de carga mientras se procesa la solicitud
-              $('#load').show();
-          },
-          success: function(res) {
-              // Ocultar el indicador de carga después de completar la solicitud
-              $('#load').hide();
-              response=JSON.parse(res);
-              // Verificar la respuesta del servidor
-              if (response.success) {
-                  
-                  // La promocion se eliminó correctamente
-                  alert(response.message);
-                  // Puedes realizar cualquier acción adicional necesaria, como actualizar la interfaz de promocion
-                  window.location.href = '../../administrador/forms/promociones.php';
-                 
-              } else {
-                  // Ocurrió un error o la promocion no se pudo eliminar
-                  // Mostrar un mensaje de error o manejar el caso según sea necesario
-                  alert('Ocurrió un error al eliminar la promocion');
-              }
-          },
-          error: function(xhr) {
-              // Manejar errores de la solicitud AJAX
-              console.error('Error en la solicitud AJAX:', xhr.responseText);
-              alert('Ocurrió un error en la solicitud AJAX');
+              // Realizar la solicitud AJAX para eliminar la promoción 
+              $.ajax({
+                  method: 'POST',
+                  url: '../../../controller/promociones/eliminarPromociones.php',
+                  data: { id_promo: id_promo },
+                  beforeSend: function() {
+                      // Mostrar un indicador de carga mientras se procesa la solicitud
+                      $('#load').show();
+                  },
+                  success: function(res) {
+                      // Ocultar el indicador de carga después de completar la solicitud
+                      $('#load').hide();
+                      var response = JSON.parse(res);
+                      // Verificar la respuesta del servidor
+                      if (response.success) {
+                          swal({
+                              title: "Éxito",
+                              text: "Promoción eliminada exitosamente",
+                              icon: "success",
+                              buttons: {
+                                  confirm: "Aceptar",
+                              },
+                              dangerMode: false,
+                          }).then((willConfirm) => {
+                              if (willConfirm) {
+                                  window.location.reload(); // Recargar la página para reflejar los cambios
+                              }
+                          });
+
+                      } else {
+                          // Ocurrió un error o la promoción no se pudo eliminar
+                          // Mostrar un mensaje de error
+                          swal("Error", "Ocurrió un error al eliminar la promoción", "error");
+                      }
+                  },
+                  error: function(xhr) {
+                      // Manejar errores de la solicitud AJAX
+                      console.error('Error en la solicitud AJAX:', xhr.responseText);
+                      swal("Error", "Ocurrió un error en la solicitud AJAX", "error");
+                  }
+              });
+          } else {
+              // No se seleccionó ninguna promoción
+              swal("Advertencia", "Por favor, selecciona una promoción para eliminar", "warning");
           }
-      });
-  } else {
-      // No se seleccionó ninguna promocion, mostrar un mensaje de advertencia
-      alert('Por favor, selecciona una promocion para eliminar');
-  }
+      }
+  });
 });
-});
-
 
 
 
@@ -284,7 +337,7 @@ $('#viewButton').click(function() {
           if (!viewid_promo.error) {
             //Si no hay errores en la respuesta, se almacena los datos de la consulta en un 'sessionstorage', pero debemos 
             //convertir las valores de la consulta otravez en una cadena json por medio de la funcion JSON.stringify
-            sessionStorage.setItem('viewData', JSON.stringify(viewid_promo));
+            sessionStorage.setItem('detpromoData', JSON.stringify(viewid_promo));
             //Se redirecciona al formulario de view luego de un segundo
             setTimeout(function() {
               window.location.href = '../forms/promociones/form_view.php';
@@ -301,46 +354,6 @@ $('#viewButton').click(function() {
       }
     });
   });
-//Aca esperamos que cargue totalmente el DOM para poder iniciar el código
-document.addEventListener('DOMContentLoaded', function() {
-//Verificamos que en la asesión del navegador exista el elemento llamado 'viewData'
-var viewData = sessionStorage.getItem('viewData');
-
-//Si el 'viewData' existe, entonces convertimos el JSON almacenado en un array
-if (viewData) {
-var viewArray= JSON.parse(viewData);//este es el array
-//Obtenemos el primer objeto del array y lo asigna a la variable 'viewdata'
-var viewData = viewArray[0];
-console.log(viewData);
-//creamos la funcion para poder llenar los campos del formulario
-function asignarvalores2(){
-//se llenan los campos de acuerdo al id de cada uno en el formulario
-document.getElementById('id_promo').value = viewData.id_promo;
-document.getElementById('nom_promo').value = viewData.nom_promo;
-document.getElementById('totalpromo').value = viewData.totalpromo;
-document.getElementById('categorias_idcategoria').value = viewData.categorias_idcategoria;
-
-}
-//Llamamos la función para que se ejecute
-asignarvalores2();
-//Eliminamos el elemento 'viewData' de la sesion de almacenamiento.
-sessionStorage.removeItem('viewData');
-//Luego deshabilitamos los campos que no vamos a modificar
-document.getElementById('id_promo').disabled = true;
-document.getElementById('nom_promo').disabled = true;
-document.getElementById('totalpromo').disabled = true;
-document.getElementById('categorias_idcategoria').disabled = true;
-
-//si no se encuentra 'viewData' entonces imprime el mensaje
-
-} else {
-console.log("No se han encontrado datos de la promocion");
-}
-});
-
-
-
-
 
 /* todo promociones*/
 //Mostrar registros existentes apenas ingresa a la pagina promociones.
@@ -362,7 +375,6 @@ $.ajax({
       tablaHTML += '<td>' + datos[i].id_promo+ '</td>';
       tablaHTML += '<td>' + datos[i].nom_promo + '</td>';
       tablaHTML += '<td>' + datos[i].totalpromo + '</td>';
-      tablaHTML += '<td>' + datos[i].categorias_idcategoria + '</td>';
       tablaHTML += '</tr>';
   }
 

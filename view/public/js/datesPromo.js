@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Verificamos que en la sesión del navegador exista el elemento llamado 'PromoData'
     var PromoData = sessionStorage.getItem('PromoData');
-    console.log(PromoData);
 
     // Si el 'PromoData' existe, entonces convertimos el JSON almacenado en un array
     if (PromoData) {
@@ -12,8 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var tablaHTML = '';
         tablaHTML += '<tr><th scope="col">Seleccionar</th><th scope="col">Producto</th><th scope="col">Precio</th><th scope="col">Cantidad</th><th scope="col">Descuento</th><th scope="col">Subtotal</th></tr>';
-        var totalVenta = 0;
-        var detallesVenta = [];
+
 
         // Construimos las filas de la tabla dinámicamente
         for (var i = 0; i < productos.length; i++) {
@@ -32,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('TablaPromo').innerHTML = tablaHTML;
     }
 
+
     // Asociar la función actualizarSubtotal al evento input de todos los campos de cantidad
     var cantidades = document.getElementsByName('cantidad[]');
     for (var i = 0; i < cantidades.length; i++) {
@@ -46,19 +45,18 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Función para calcular y actualizar los valores de subtotal y total
-// Función para calcular y actualizar los valores de subtotal y total
 function calcularTotal() {
     var productos = document.getElementsByName('producto[]');
     var precios = document.getElementsByName('precio[]');
     var cantidades = document.getElementsByName('cantidad[]');
-    var descuentos = document.getElementsByName('descuento[]'); // Nuevos descuentos
+    var descuentos = document.getElementsByName('descuento[]');
     var subtotales = document.getElementsByName('subtotal[]');
     var totalVenta = 0;
 
     for (var i = 0; i < productos.length; i++) {
         var precio = parseFloat(precios[i].value);
         var cantidad = parseInt(cantidades[i].value);
-        var descuento = parseFloat(descuentos[i].value); // Nuevo descuento
+        var descuento = parseFloat(descuentos[i].value);
 
         if (isNaN(descuento) || descuento < 0 || descuento > 100) {
             alert("El descuento debe estar en el rango de 0% a 100%.");
@@ -67,14 +65,13 @@ function calcularTotal() {
         }
 
         if (cantidad >= 1) {
-            // Aplicar el descuento al precio
             var precioConDescuento = precio * (1 - descuento / 100);
             var subtotal = precioConDescuento * cantidad;
         } else {
             var subtotal = 0;
         }
 
-        subtotales[i].value = subtotal.toFixed(0); // Mostrar dos decimales en el subtotal
+        subtotales[i].value = subtotal.toFixed(0);
         totalVenta += subtotal;
     }
 
@@ -90,15 +87,23 @@ function habilitarCantidad(key) {
 
     if (checkbox.checked) {
         cantidadInput.disabled = false;
-        descuentoInput.disabled = false; // Habilitar el descuento
+        descuentoInput.disabled = false;
     } else {
         cantidadInput.disabled = true;
-        descuentoInput.disabled = true; // Deshabilitar el descuento
-        cantidadInput.value = 0; // Reiniciar la cantidad si está deshabilitada
-        descuentoInput.value = 0; // Reiniciar el descuento si está deshabilitado
+        descuentoInput.disabled = true;
+        cantidadInput.value = 0;
+        descuentoInput.value = 0;
     }
 
-    calcularTotal(); // Volver a calcular el total
+    calcularTotal();
+}
+
+// Asociar la función al evento de cambio en los checkboxes de selección
+var checkboxes = document.getElementsByName('seleccionar[]');
+for (var i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('change', function() {
+        habilitarCantidad(this.value);
+    });
 }
 
 // Asociar la función al evento de cambio en las cantidades
@@ -110,30 +115,5 @@ for (var i = 0; i < cantidades.length; i++) {
 // Asociar la función al evento de cambio en los descuentos
 var descuentos = document.getElementsByName('descuento[]');
 for (var i = 0; i < descuentos.length; i++) {
-    descuentos[i].addEventListener('blur', function() {
-        validarDescuento(i);
-    });
-}
-
-// Función para validar el descuento en el rango de 0% a 100% cuando el campo pierde el foco
-function validarDescuento(key) {
-    var descuentoInput = document.getElementsByName('descuento[]')[key];
-    var descuento = descuentoInput.value.trim(); // Eliminar espacios en blanco al inicio y al final
-
-    // Verificar si el campo de descuento está vacío o si el valor está fuera del rango
-    if (descuento !== "") {
-        descuento = parseFloat(descuento); // Convertir a número
-        if (isNaN(descuento) || descuento < 0 || descuento > 100) {
-            alert("El descuento debe estar en el rango de 0% a 100%.");
-            descuentoInput.value = ''; // Limpiar el campo en caso de un valor inválido
-            calcularTotal(); // Volver a calcular el total después de la validación
-        }
-    }
-
-}
-var descuentos = document.getElementsByName('descuento[]');
-for( var i=0;i<descuentos.lenght;i++){
-descuentos[i].addEventListener('blur',function(){
-    validarDescuento(i);
-});
+    descuentos[i].addEventListener('input', calcularTotal);
 }

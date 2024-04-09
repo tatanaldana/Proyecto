@@ -63,8 +63,7 @@
                             <th scope="col">Seleccionar</th><!-- Encabezado de la columna -->
                             <th scope="col">Id promoción</th><!-- Encabezado de la columna -->
                             <th scope="col">Promoción</th><!-- Encabezado de la columna -->
-                            <th scope="col">Total</th><!-- Encabezado de la columna -->
-                            <th scope="col">id categoria</th><!-- Encabezado de la columna -->                          
+                            <th scope="col">Total</th><!-- Encabezado de la columna -->                     
                         </tr>
                     </thead>
                     <tbody id="filasTabla"></tbody> <!-- Cuerpo de la tabla -->
@@ -91,15 +90,8 @@
     </div>
 </div>
 
-
-
-
-
-
 <?php 
    
-  
-
    //nclude '../gestion/promociones/ing_promocion.php';
    
     include '../include/img_menu.php';
@@ -108,12 +100,13 @@
   ?> 
 
     </body>
-</html>
-
 <script src="../../public/js/jquery.js"></script>
 
-<script src="../../public/js/sweetalert.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="../../public/js/promociones.js"></script>
 
 <script src="../../public/js/buttons.js"></script>
+</html>
+
+
