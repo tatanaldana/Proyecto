@@ -19,6 +19,15 @@
 include("../../include/header.php");
 ?>
 
+<!-- miga de pan -->
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
+              <li class="breadcrumb-item"><a href="../ma_prima.php">Promociones</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Agregar Promociones </li>
+            </ol>
+          </nav>
 <!-- Espacio en blanco -->
 <div class="my-5"></div>
  <form id="agregar_promocion">
@@ -46,11 +55,7 @@ include("../../include/header.php");
                       <input type="number" class="form-control" id="categorias_idcategoria" name="categorias_idcategoria">
                     </div>
                 </tr>  
-
-
-
-
-  
+ 
                 <!-- Botón para enviar el formulario -->
                  <tr>
                     <td colspan="2" class="center">
@@ -69,12 +74,46 @@ include("../../include/header.php");
     </div>
   </form>
 
+    <div class='container'>
+    <div class='d-flex justify-content-center'>
+      <div class='row'>
+        <div class='col-md-12 table-responsive'>
+          <form method='POST' action='../crud_promocion/agregar_promo.php'>
+            <table class='table table-bordered border-primary' style='text-align:center'>
+              <tr>
+                <th scope='col' colspan='3'>Nombre Promocion</th> 
+                <th><input type='text' name='nombre_prom'></th>
+              </tr>
+            </table>
+            <div class='my-5'></div>
+            <table class='table table-bordered border-primary' style='text-align:center'>
+            <tbody id='TablaPromo'>
+            </tbody>
+            <tr>
+              <td colspan='3'><input type='submit' class='btn btn-outline-primary' name='btnCalcular' value='ingresar promocion'></td><!-- Botón para calcular el total-->
+              <td colspan='3'><a href='../promociones.php' class='btn btn-outline-primary' >Cancelar</a></td>
+            </tr>
+            </table>
+          </form> <!-- Cerramos el formulario-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+              <?php
+
+include("../../include/footer.php");
+?>
+
 <!-- Jquery -->
 <script src="../../../public/js/jquery.js"></script>
 <!-- SweetAlert js -->
 <script src="../../../public/js/sweetalert.min.js"></script>
 <!-- Js personalizado -->
 <script src="../../../public/js/promociones.js"></script>
+<!-- Js dates -->
+<script src="../../../public/js/datesPromo.js"></script>
+
 
 
 </body>

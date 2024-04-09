@@ -156,7 +156,8 @@ class Productos extends Conexion{
         $stmt="SELECT idProducto, nombre_pro, precio_pro FROM productos";
         $stmt=$conectar->prepare($stmt);
         $stmt->execute();
-        return $stmt;
+        $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resultado;
     }
 
 

@@ -1,5 +1,3 @@
-<?php
-echo "
 <header class='py-3 mb-3 border-bottom' style='background-color: #31e621da'>
     <div class='container'>
       <div class='d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start'>
@@ -31,6 +29,4 @@ echo "
       </div>
     </div>
   </header>
-  <div class='my-5'></div>";
-
-  ?>
+  <div class='my-5'></div>

@@ -33,7 +33,7 @@
           </nav>
 <!-- Formulario de búsqueda -->
 <form id="formmostrar">
-    <div class="container">
+    <!--<div class="container">-->
         <div class="contenedor-busqueda" id="contenedor-busqueda">
             <div class="mx-auto " style="width:332px">
             
@@ -95,10 +95,6 @@
 </div>
 
         <?php 
-
-    
-        
-            
             
           include '../include/img_menu.php';
 

@@ -40,10 +40,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $item_price = $item["txtcantidad"] * $item["larause_pre"];
 
                 // Obtener arrays de productos, precios, cantidades, etc. desde el formulario
-                $productos = $item["larause_nom"];
-                $precios = $item["larause_pre"];
-                $cantidad = $item["txtcantidad"];
-                $subtotal = $item["larause_pre"];
+                $productos = (is_null($item["larause_nom"])) ? '' : $item["larause_nom"];
+                $precios = (is_null($item["larause_pre"])) ? '' : $item["larause_pre"];
+                $cantidad = (is_null($item["txtcantidad"])) ? '' : $item["txtcantidad"];
+                $subtotal = (is_null($item["larause_pre"])) ? '' : $item["larause_pre"];
 
                 // Insertar en la tabla com_venta
                 $sqlInsertComVenta = "INSERT INTO com_venta (producto, precio, cantidad, subtotal, totalventa, doc_cliente, fechaventa, carrito_idcarrito, estado)

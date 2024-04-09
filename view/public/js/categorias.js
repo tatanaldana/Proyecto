@@ -462,9 +462,7 @@ function mostrarCategoriasIndex(categoriasIndex) {
       listadoCategorias.append(categoriaHTML);
     });
   } else {
-    // Si categoriasIndex no es un array, muestra un mensaje de error
-    console.error("La respuesta no es un array:", categoriasIndex);
-    // Puedes agregar un mensaje o realizar alguna acción en caso de error
+    console.error('ID de categoría no definido');
   }
 }
 

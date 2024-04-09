@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
   <title>Registro-Adminsitrador</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" >
   <!-- Importamos los estilos de Bootstrap -->
   <link rel="stylesheet" href="../../../public/css/bootstrap.min.css">
@@ -12,7 +13,6 @@
   <link rel="stylesheet" href="../../../public/css/sweetalert.css">
   <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
   <link rel="stylesheet" href="../../../public/css/style.css">
-  <!-- Personalizado daniel  -->
 </head>
 <?php
 include("../../include/header.php");
@@ -25,7 +25,7 @@ include("../../include/header.php");
 
   <!-- Formulario Login -->
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <div class="col-xs-12 col-md-4 col-md-offset-4">
         <!-- Margen superior (css personalizado )-->
         <div class="spacing-1"></div>

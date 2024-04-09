@@ -60,6 +60,7 @@ $('#registro').click(function(){
     },
     success: function(res){
       $('#load').hide();
+      swal('Respuesta del servidor', res, 'info');
 
       if(res == 'error_1'){
         swal('Error', 'Campos obligatorios, por favor llena el email y las claves', 'warning');
@@ -86,7 +87,7 @@ $('#btnregistro').click(function() {
   
   $.ajax({
     method: 'POST',
-    url: '../../../../controller/usuario/registro2Controller.php',
+    url: '../../../Proyecto/controller/usuario/registro2Controller.php',
     data: form1,
     beforeSend: function() {
       $('#load').show();
@@ -296,6 +297,11 @@ $('#btnEditarContacto').click(function() {
 });
 
 //Datos Contacto
+
+
+ 
+
+$('#btnEditarSeguridad').click(function() {
   $('#btnEditarSeguridad').click(function() {
       var doc = $('#modal_doc_2').val();
       var claveActual = $('#modal_clave').val();
@@ -379,6 +385,7 @@ $('#btnEditarContacto').click(function() {
           }
       });
   });
+});
 
 $(document).ready(function() {
   $('#deleteUsuario').click(function() {
@@ -784,7 +791,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   // Se verifica que la ruta del archivo termine en usuario.php para ejecutar la solicitud AJAX
-  if (window.location.pathname.endsWith("chekckout.php")) {
+  if (window.location.pathname.endsWith("checktout.php")) {
       // Se realiza la solicitud AJAX al cargar la página
       $.ajax({
           method: 'POST',
@@ -813,6 +820,6 @@ $(document).ready(function() {
             console.error("Error: " + error);
         }
       });
-  }
-});
+    }
+  });
 

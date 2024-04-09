@@ -1,4 +1,3 @@
-
 //Muestra los productos de la Categoria
 
 $(document).ready(function() {
@@ -148,6 +147,7 @@ function mostrarProductos(productos, idCategoria) {
     }
   });
 }
+
 
 //ok ok ok ok ok ok
   //Funcion para ejecutar la barra de busqueda cuando se haga click en el boton btnbuscar

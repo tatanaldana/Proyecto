@@ -32,8 +32,39 @@
     });
 });
 
+$('#addButton').click(function(e) {
+  e.preventDefault(); // Previene el comportamiento predeterminado del envío del formulario
 
+  $.ajax({
+    url: '../../../controller/productos/productosController.php',
+    method: 'get',
+    datatype: 'json',
+    success: function(response) {
+        try {
+            // Se analiza la respuesta JSON obtenida del controlador
+            var productosData = JSON.parse(response);
+            if (!productosData.error) {
+                // Si no hay errores en la respuesta, almacenamos los datos en sessionStorage
+                sessionStorage.setItem('PromoData', JSON.stringify(productosData));
+                console.log(productosData);
 
+                // Redireccionamos al formulario de venta después de completar ambas solicitudes AJAX
+                window.location.href = '../forms/promociones/form_registro.php';
+            } else {
+                // Si hay un error en la respuesta, mostramos un mensaje de alerta
+                console.log(productosData.error);
+                alert("Productos no registrados. Por favor genere el registro en el sistema");
+                window.location.href = '../administrador/forms/productos/form_registro.php';
+            }
+        } catch (error) {
+            console.error('Error al analizar la respuesta JSON:', error);
+        }
+    },
+    error: function(xhr) {
+        console.error(xhr.responseText);
+    }
+});
+});
 
 // agregar maprima.php
 
@@ -348,76 +379,3 @@ error: function(xhr) {
 
 
 
-
-
-// Función para calcular y actualizar los valores de subtotal y total
-function calcularTotal() {
-  var productos = document.getElementsByName('producto[]');
-  var precios = document.getElementsByName('precio[]');
-  var cantidades = document.getElementsByName('cantidad[]');
-  var descuentos = document.getElementsByName('descuento[]'); // Nuevos descuentos
-  var subtotales = document.getElementsByName('subtotal[]');
-  var totalVenta = 0;
-
-  for (var i = 0; i < productos.length; i++) {
-      var precio = parseFloat(precios[i].value);
-      var cantidad = parseInt(cantidades[i].value);
-      var descuento = parseFloat(descuentos[i].value); // Nuevo descuento
-
-      if (cantidad >= 1) {
-          // Aplicar el descuento al precio
-          var precioConDescuento = precio * (1 - descuento / 100);
-          var subtotal = precioConDescuento * cantidad;
-      } else {
-          var subtotal = 0;
-      }
-
-      subtotales[i].value = subtotal.toFixed(0); // Mostrar dos decimales en el subtotal
-      totalVenta += subtotal;
-  }
-
-  // Actualizar el campo de total
-  document.getElementById('totalVenta').value = totalVenta.toFixed(0);
-}
-
-// Función para habilitar/deshabilitar la cantidad y descuento según el checkbox
-function habilitarCantidad(key) {
-  var checkbox = document.getElementsByName('seleccionar[]')[key];
-  var cantidadInput = document.getElementById('cantidad_' + key);
-  var descuentoInput = document.getElementsByName('descuento[]')[key];
-
-  if (checkbox.checked) {
-      cantidadInput.disabled = false;
-      descuentoInput.disabled = false; // Habilitar el descuento
-  } else {
-      cantidadInput.disabled = true;
-      descuentoInput.disabled = true; // Deshabilitar el descuento
-      cantidadInput.value = 0; // Reiniciar la cantidad si está deshabilitada
-      descuentoInput.value = 0; // Reiniciar el descuento si está deshabilitado
-  }
-
-  calcularTotal(); // Volver a calcular el total
-}
-
-// Asociar la función al evento de cambio en las cantidades
-var cantidades = document.getElementsByName('cantidad[]');
-for (var i = 0; i < cantidades.length; i++) {
-  cantidades[i].addEventListener('input', calcularTotal);
-}
-
-// Asociar la función al evento de cambio en los descuentos
-var descuentos = document.getElementsByName('descuento[]');
-for (var i = 0; i < descuentos.length; i++) {
-  descuentos[i].addEventListener('input', calcularTotal);
-}
-
-// Función para validar el descuento en el rango de 0% a 100%
-function validarDescuento(key) {
-  var descuentoInput = document.getElementsByName('descuento[]')[key];
-  var descuento = parseFloat(descuentoInput.value);
-
-  if (isNaN(descuento) || descuento < 0 || descuento > 100) {
-      alert("El descuento debe estar en el rango de 0% a 100%.");
-      descuentoInput.value = ''; // Limpiar el campo en caso de un valor inválido
-  }
-}

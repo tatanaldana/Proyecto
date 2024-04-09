@@ -14,6 +14,23 @@
   <link rel="stylesheet" href="../../../public/css/styles.css">
   <!-- Personalizado daniel  -->
 </head>
+
+<?php
+include("../../include/header.php");
+?>
+
+
+<!-- miga de pan -->
+<nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="../../index.php">Inicio</a></li>
+              <li class="breadcrumb-item"><a href="../../gestion.php">Gestion</a></li>
+              <li class="breadcrumb-item"><a href="../ma_prima.php">Promociones</a></li>
+              <li class="breadcrumb-item active" aria-current="page">Editar Promociones </li>
+            </ol>
+          </nav>
+<!-- Espacio en blanco -->
+
 <body>
   <!-- Espacio en blanco -->
   <div class="my-5"></div>
@@ -67,6 +84,10 @@
       </div>
     </div>
   </form>
+
+  <?php
+include("../../include/footer.php");
+?>
 
 </body>
 </html>
