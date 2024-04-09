@@ -16,7 +16,7 @@ $pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
 
 <div class="caja_popup" id="form_prod">
     <form action="../gestion/productos/agregar_prod.php" class="contenedor_popup" method="POST" enctype="multipart/form-data">
-        <div class="container">
+       <!-- <div class="container">-->
         <div class="d-flex justify-content-center">
         <div class="row">
         <div class="col-md-12 table-responsive" >
@@ -30,29 +30,30 @@ $pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
                     <td><input type="text" name="nombre_pro" required></td>
                 </tr>
                 <tr>
-                <td>Categoria</td>
-                <td>
-                <form>
-                <label for="opciones"></label>
-                <select name="opciones" id="opciones">
-                    <?php
-                     if ($statement) {
-                        // Iterar sobre los resultados y mostrar las opciones
-                        while ($fila = $statement->fetch(PDO::FETCH_ASSOC)) {
-                            if ($fila['id_categoria'] != 5) {
-                                echo "<option value='" . $fila['id_categoria'] . "'>" . $fila['nombre_cat'] . "</option>";
-                            }
-                        }
-                    } else {
-                        echo "Error al ejecutar la consulta.";
-                    }
-                 
-            
-                    ?>
-                </select>
-                </form>
-                </td>
+                    <td>Categoria</td>
+                    <td>
+                        <form>
+                            <label for="opciones"></label>
+                                <select name="opciones" id="opciones">
+                                    <?php
+                                    if ($statement) {
+                                        // Iterar sobre los resultados y mostrar las opciones
+                                        while ($fila = $statement->fetch(PDO::FETCH_ASSOC)) {
+                                            if ($fila['id_categoria'] != 5) {
+                                                echo "<option value='" . $fila['id_categoria'] . "'>" . $fila['nombre_cat'] . "</option>";
+                                            }
+                                        }
+                                    } else {
+                                        echo "Error al ejecutar la consulta.";
+                                    }
+                                
+                            
+                                    ?>
+                                </select>
+                        </form>
+                    </td>
                 </tr>
+
                 <tr>
                     <td>Detalle</td>
                     <td><input type="text" name="detalle" required></td>
@@ -79,12 +80,12 @@ $pdo = $conexion->conexion(); // Obtener el objeto de conexión PDO
                         ('¿Deseas registrar este nuevo producto?');">
                     </td>
                 </tr>
-            </table>
-        </form>
+        </table>
         </div>
         </div>
         </div>
-    </div>
+        </div>
+    </form>   
+</div>
 
 
-    </div>
