@@ -247,7 +247,7 @@ public function editar_datos_Contacto($doc, $email, $tel, $direccion)
       tel=:tel,
       direccion=:direccion
       WHERE 
-      email=:email";
+      doc=:doc";
       $stmt = $conectar->prepare($stmt);
       $stmt->bindParam(':email', $email);
       $stmt->bindParam(':tel', $tel);
@@ -262,18 +262,12 @@ public function editar_datos_Contacto($doc, $email, $tel, $direccion)
 }
 
 
-<<<<<<< Updated upstream
-public function editar_clave_usuario($doc, $clave) {
+public function editar_clave_usuario($doc, $claveActual) 
+{
   try {
-=======
-
-public function editar_clave_usuario($doc, $clave)
-    {
-      try {
->>>>>>> Stashed changes
       $conectar = parent::conexion();  
       parent::set_names();
-      $hashed_password = password_hash($clave, PASSWORD_DEFAULT);
+      $hashed_password = password_hash($claveActual, PASSWORD_DEFAULT);
       $stmt = "UPDATE usuarios SET
       clave=:clave
       WHERE 
@@ -282,23 +276,14 @@ public function editar_clave_usuario($doc, $clave)
       $stmt->bindParam(':clave', $hashed_password);
       $stmt->bindParam(':doc', $doc);
       $stmt->execute();
-      return true; // Indicar que la actualización fue exitosa
+
   } catch (PDOException $e) {
-<<<<<<< Updated upstream
       echo 'Error en la actualización de la contraseña: ' . $e->getMessage();
       return false;
   }
 }
 
 public function trae_campo_clave($doc){
-=======
-      echo 'Error en el registro: ' . $e->getMessage();
-      return false; 
-}
-}
-
-public function trae_campo_clave($docClave){
->>>>>>> Stashed changes
   try {
     $conectar = parent::conexion();  
     parent::set_names();
