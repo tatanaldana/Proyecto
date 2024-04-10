@@ -6,63 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restaurante La cabaña</title>
 
-    <!-- bootstrap online -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <!-- Importamos los estilos de Bootstrap -->
-    <link rel="stylesheet" href="view/public/css/bootstrap.min.css">
-    <!-- Font Awesome: para los iconos -->
-    <link rel="stylesheet" href="view/public/css/font-awesome.min.css">
-    <!-- Sweet Alert: alertas JavaScript presentables para el usuario  -->
-    <link rel="stylesheet" href="view/public/css/sweetalert.css">
-    <!-- Estilos personalizados: archivo personalizado 100% real no feik -->
-    <link rel="stylesheet" href="view/public/css/style.css">
-    <!-- Personalizado daniel  -->
-    <link rel="stylesheet" href="view/public/css/stylesg.css" type="text/css" media="all">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+    <?php
+    include 'view/includeUsuario/head.php';
+    ?>
 </head>
+
+<script src="view/public/js/categorias.js"></script>
+<script src="view/public/js/productos.js"></script>
 
 <body>
 
     <?php
 
     require 'view/includeUsuario/funciones.php';
-
     incluirTemplate('header')
     ?>
 
 
 
     <div class="imagenindex">
-
-        <?php
-        if (isset($_SESSION['nombre'])) {
-            echo 'Bienvenido' . ' ' . ucfirst($_SESSION['nombre']);
-        } else {
-            echo 'Bienvenido';
-        }
-        ?>
-
-
+        <p>Bienvenido </p>
     </div>
-
-    <!--hols-->
-
-
     <div class="barramenu">
-        <nav class="menu-productos row">
-            <a href="/Proyecto/view/user/carrito/catpizza.php" class="col-sm"> <img src="/Proyecto/view/public/img/pizza.png" alt="icono Pizzas">Pizzas</a>
-            <a href="/Proyecto/view/user/carrito/catpollo.php" class="col-sm"> <img src="/Proyecto/view/public/img/pollo.png" alt="icono Pollos">Pollos</a>
-            <a href="/Proyecto/view/user/carrito/catcombos.php" class="col-sm"> <img src="/Proyecto/view/public/img/combo.png" alt="icono Promociones">Combos </a>
-            <a href="/Proyecto/view/user/carrito/catburguer.php" class="col-sm"> <img src="/Proyecto/view/public/img/hamburguesa.png" alt="icono Pollos">Hamburguesas</a>
-            <a href="/Proyecto/view/user/carrito/catespecialidades.php" class="col-sm"> <img src="/Proyecto/view/public/img/especialidades.png" alt="icono Especiales">Especialidades</a>
-            <a href="/Proyecto/view/user/carrito/catbebidas.php" class="col-sm"> <img src="/Proyecto/view/public/img/bebida.png" alt="icono Bebidas">Bebidas</a>
-        </nav>
 
+        <div class="listado-categorias-index " id="listado-categorias-index"></div>
     </div>
 
     <div class="container">
@@ -77,20 +44,22 @@
                     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                     <li data-target="#myCarousel" data-slide-to="1"></li>
                     <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                    <li data-target="#myCarousel" data-slide-to="4"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner width:50% height:50%;">
                     <div class="item active" style="background-color:#FD2626;">
-                        <img src="view/public/img/Hamburguesa.png" alt="Los Angeles" style="width:50%;;">
+                        <img src="view/public/img/iconosCategorias/cathambur.png" alt="Los Angeles" style="width:50%;;">
                         <div class="carousel-caption" style="color: #ffffff;">
-                            <h3>Hamburguesa</h3>
+                            <h3>Hamburguesas</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
 
                     <div class="item" style="background-color:#FD2626;">
-                        <img src="view/public/img/pollo.png" alt="Chicago" style="width:50%;">
+                        <img src="view/public/img/iconosCategorias/catpollo.png" alt="Chicago" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
                             <h3>Pollos Apanados</h3>
                             <p>We love the Big Apple!</p>
@@ -98,12 +67,30 @@
                     </div>
 
                     <div class="item" style="background-color:#FD2626;">
-                        <img src="view/public/img/pizza.png" alt="New york" style="width:50%;">
+                        <img src="view/public/img/iconosCategorias/catpizza.png" alt="New york" style="width:50%;">
                         <div class="carousel-caption" style="color: #ffffff;">
-                            <h3>Pizzas Especiales</h3>
+                            <h3>Pizzas</h3>
                             <p>We love the Big Apple!</p>
                         </div>
                     </div>
+
+
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="view/public/img/iconosCategorias/catcombo.png" alt="rusia" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
+                            <h3>Combos Especiales</h3>
+                            <p>We love the Big Apple!</p>
+                        </div>
+                    </div>
+
+                    <div class="item" style="background-color:#FD2626;">
+                        <img src="view/public/img/iconosCategorias/catbebida.png" alt="colombia" style="width:50%;">
+                        <div class="carousel-caption" style="color: #ffffff;">
+                            <h3>Bebidas</h3>
+                            <p>We love the Big Apple!</p>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- Left and right controls -->
@@ -133,6 +120,7 @@
 
 
 <br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 <?php
 incluirTemplate('footer');

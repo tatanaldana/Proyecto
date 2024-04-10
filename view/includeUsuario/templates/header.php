@@ -23,13 +23,27 @@
 
         </div>
 
-        <div class="buscar">
-            <form action="/Proyecto/view/includeUsuario/templates/buscar.php" method="POST">
-                <div class="input-group center">
-                  
-                    <input class="px-4" type="search" name="textbuscar" placeholder="&#128270; Buscar Producto" required>
-                    <button  class="input-group-addon" type="submit" name="btnbuscar" style="border-radius:50%; width:30px; height:30px;"><i class='bi bi-search' ></i></button>
+        <div class="container estilo-buscador">
+            <div class="buscarlupa">
+                <img src="/Proyecto/view/public/img/utilidades/lupa.ico" width='35px' height='35px' alt="boton de busqueda">
+            </div>
+            <form action="/Proyecto/view/includeUsuario/templates/buscar.php" class="mostrar-buscador" method="POST">
+                <div class="container-fluid buscador-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="buscar">
+                                <div class="input-group">
+
+                                    <input type="search" class="form-control " name="textbuscar" aria-label="Default" aria-describedby="inputGroup-sizing-default" placeholder="Buscar Producto" required>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+          
                 </div>
+                <div class="estilo-buscador">
+                        <button class="btn btn-outline-secondary" style="background: var(--primario); color: white;" type="submit" name="btnbuscar" style="border-radius:50%; width:30px; height:30px;">Buscar</button>
+                    </div>
             </form>
         </div>  
 
