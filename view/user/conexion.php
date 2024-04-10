@@ -1,5 +1,5 @@
 <?php
-$conexion = mysqli_connect("localhost", "root", "Facnow123.", "arca");
+$conexion = mysqli_connect("localhost", "root", "", "arca");
 //Comproprobar conexion
 if(mysqli_connect_errno())
 {
