@@ -25,7 +25,7 @@
 
         <div class="container estilo-buscador">
             <div class="buscarlupa">
-                <img src="/Proyecto/view/public/img/utilidades/lupa.ico" width='35px' height='35px' alt="boton de busqueda">
+                <img src="/Proyecto/view/public/img/utilidades/system-regular-42-search.gif" width='35px' height='35px' alt="boton de busqueda">
             </div>
             <form action="/Proyecto/view/includeUsuario/templates/buscar.php" class="mostrar-buscador" method="POST">
                 <div class="container-fluid buscador-header">

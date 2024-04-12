@@ -9,7 +9,7 @@
             <div class="wrapper">
               <div class="my-5"></div>
               <div class="logo">
-                <img src="/Proyecto/view/public/img/logomoto.jpeg" alt="">
+                <img src="/Proyecto/view/public/icons/system-solid-64-shopping-bag.gif" alt="">
               </div>
               <div class="text-center mt-4 name">
                 Tus Datos
