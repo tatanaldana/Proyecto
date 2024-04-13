@@ -19,9 +19,13 @@
                     <i class="mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                   </div>
                   <div class="card-block text-center text-white">
-                    <a href='configuracion/editar.php?id=" <?php $_SESSION['doc'] ?>"'><button class='opacity-icono btn btn-danger' id="btn-editar" style="border:none;"><i class='bi bi-pencil' style='font-size:20px; color:black;'></i></button></a>
+                    <a href='configuracion/editar.php?id=<?php $_SESSION['doc'] ?>'><button class='opacity-icono btn btn-danger' id='deleteUsuario' style="border:none;">
+                        <img src='/Proyecto/view/public/icons/wired-lineal-35-edit.gif' alt='Icono de eliminar' style='width:20px; height:20px;' />
+                      </button></a>
 
-                    <button type="button" style="border:none" id="deleteUsuario" class="opacity-icono btn btn-danger" data-doc="<?php echo $_SESSION['doc']; ?>"><i class='bi bi-trash-fill' style='font-size:20px; color:black;'></i></button>
+                    <button type="button" style="border:none" id="deleteUsuario" class="opacity-icono btn btn-danger" data-doc="<?php echo $_SESSION['doc']; ?>">
+                      <img src='/Proyecto/view/public/icons/wired-lineal-185-trash-bin.gif' alt='Icono de eliminación' style='width:20px; height:20px;' />
+                    </button>
                   </div>
                 </div>
                 <div class="col-sm-8">
