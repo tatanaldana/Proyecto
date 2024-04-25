@@ -15,7 +15,8 @@ switch($_GET["arc"]){
         break;
 
         case "Get_Id_det_promo":
-            $datos=$Promo->get_promo_x_idpromo($body["idpromo"]);
+            $datos=$Promo->
+            
             echo json_encode($datos);
             break;
 

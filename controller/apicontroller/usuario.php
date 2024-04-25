@@ -45,7 +45,7 @@ switch($_GET["arc"]){
                             break;
 
                             case "Get_buscar":
-                                $datos=$Usuarios->ver_usuario($body["buscar"]);
+                                $datos=$Usuarios->ver_usuario($_GET["buscar_php"]);
                                 echo json_encode($datos);
                                 break;
 

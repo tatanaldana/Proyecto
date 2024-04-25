@@ -9,7 +9,7 @@ if (isset($_POST['buscar_php'])) {
      # Creamos un objeto de la clase usuario
     $usuario = new Usuario();
     # Llamamos al metodo  para realizar la consulta en la base de datos
-    $resultado = $usuario->ver_usuario($buscar);
+    $resultado = $usuario->ver_usuario3($buscar);
     if ($resultado) {
         #GUARDAMOS LA VARIABLE EN FORMATO json PARA PODER ENVIAR LOS DATOS DE LA CONSULTA POR MEDIO DEL AJAX
         $json_response = json_encode($resultado);

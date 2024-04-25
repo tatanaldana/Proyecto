@@ -2,10 +2,13 @@
 
   # Incluimos la clase conexion para poder heredar los metodos de ella.
   require_once('conexion.php');
+  require_once('APIRest.php');
 
 #Creamos la clase usuarios y heredamos los metodos de la clase conexion.
   class Usuario extends Conexion
   {
+
+  use Rutasapi;
 #Creamos la funi
 public function login($user, $clave)
 {

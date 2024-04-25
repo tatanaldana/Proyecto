@@ -87,7 +87,7 @@ $('#btnregistro').click(function() {
   
   $.ajax({
     method: 'POST',
-    url: '../../../Proyecto/controller/usuario/registro2Controller.php',
+    url: '../../../../controller/usuario/registro2Controller.php',
     data: form1,
     beforeSend: function() {
       $('#load').show();

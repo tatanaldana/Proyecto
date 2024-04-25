@@ -1,8 +1,10 @@
 <?php
 
 require_once('conexion.php');
+require_once('APIRest.php');
 
 class Det_promo extends Conexion{
+    use Rutasapi;
     //se obtiene todos los registros de la tabla det_prom
     public function get_promo(){
         $conectar= parent::conexion();
